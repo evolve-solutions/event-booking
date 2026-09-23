@@ -15,10 +15,13 @@ You get a live event-ticketing website. Test it the way a QA engineer would on a
 |---|---|
 | Site | **https://candidate-01.207.148.118.135.sslip.io** |
 | API reference | **https://candidate-01.207.148.118.135.sslip.io/docs** |
-| Customer account | `meadow-60b5@example.invalid` / `eventpass123` |
+| Customer account 1 | `meadow-60b5@example.invalid` / `eventpass123` |
+| Customer account 2 | `cobalt-7ad0@example.invalid` / `eventpass123` |
+| Customer account 3 | `juniper-f15b@example.invalid` / `eventpass123` |
 
-The account above is shared by everyone who reads this page. If you want a cart and an order
-history nobody else touches, register an account of your own on the site — registration is open.
+Use more than one account whenever a case needs more than one buyer. These accounts are shared by
+everyone who reads this page; if you want carts and order histories nobody else touches, register
+accounts of your own on the site — registration is open.
 
 Start with **[`round-1-brief.md`](./round-1-brief.md)**. It is the business brief: it defines how the
 system is supposed to behave, so it is what decides whether something you see is a bug. Read it

@@ -76,24 +76,25 @@ operations**. A customer account must never be able to perform them, by any rout
 ## What you get
 
 - The site: **https://candidate-01.207.148.118.135.sslip.io**
-- One customer account, below.
+- Three customer accounts, below.
 - This document.
 - An API reference at **https://candidate-01.207.148.118.135.sslip.io/docs**
 - This repository, where you hand your work back as a pull request.
 
-### Customer account
+### Customer accounts
 
 | Email | Password |
 |---|---|
 | `meadow-60b5@example.invalid` | `eventpass123` |
+| `cobalt-7ad0@example.invalid` | `eventpass123` |
+| `juniper-f15b@example.invalid` | `eventpass123` |
 
-This account is published here, so other people may be using it at the same time. If you want a
-cart and an order history nobody else touches, register an account of your own — registration is
+All three are ordinary customers. Use more than one whenever a case needs more than one buyer —
+comparing what two customers can see, or several people acting on the same thing at the same time.
+
+These accounts are published here, so other people may be using them at the same time. If you want
+a cart and an order history nobody else touches, register accounts of your own — registration is
 open and takes a moment.
-
-Whenever a case needs a second buyer — comparing what two customers can see, or two people
-competing for the same ticket — register a fresh account of your own. Registration is open and
-takes a moment.
 
 You do **not** get the source code.
 
