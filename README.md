@@ -30,7 +30,7 @@ asset in it. Fork the repository and put everything under `submissions/<your-git
 ```
 submissions/<your-github-username>/
 ├── bugs.md          every bug you found
-├── test-cases.md    your test cases, in the columns of test-case-template.md
+├── test-cases.md    your test cases
 └── assets/          screenshots, screen recordings, request/response captures
 ```
 

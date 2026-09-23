@@ -116,8 +116,10 @@ submissions/<your-github-username>/
    reproduce it without asking you: what you did, what you expected, what happened instead, and how
    severe you judge it. Link the evidence for it from `assets/`.
 2. **`test-cases.md` — a set of test cases** for **one** of these three flows, your choice: applying
-   a discount code, cancelling tickets, or registering an account. Use the seven columns defined by
-   [`test-case-template.md`](./test-case-template.md) and say at the top which flow you picked.
+   a discount code, cancelling tickets, or registering an account. Say at the top which flow you
+   picked. The format is yours, but every test case needs numbered steps with one action each, an
+   expected result you can observe (a number, a state or a specific message, never "the system
+   works correctly"), its type — `positive`, `negative` or `boundary` — and a priority.
 3. **`assets/`** — everything `bugs.md` and `test-cases.md` link to. Keep all of it inside your own
    folder.
 
