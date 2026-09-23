@@ -37,7 +37,7 @@ questions you have for us.
 
 ## What to bring
 
-- Your round 1 spreadsheet tab, open and ready to share on screen.
+- Your round 1 pull request, open and ready to share on screen.
 - Access to the site, so you can reproduce a bug live if we ask.
 
 Nothing else. You do not need slides.

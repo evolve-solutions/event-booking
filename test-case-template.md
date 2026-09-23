@@ -1,8 +1,8 @@
 # Test case template
 
-This file is the **column definition**. You fill in a **spreadsheet** (a Google Sheet) shared by
-the interviewer, one tab per candidate — there is no Markdown file to hand in. Write test cases for
-the one flow the interviewer named when they sent you this exercise.
+This file is the **column definition** for `submissions/<your-github-username>/test-cases.md`, a
+Markdown table in your pull request. Write test cases for the one flow you picked — applying a
+discount code, cancelling tickets, or registering an account — and name it at the top of the file.
 
 All seven columns below are required.
 

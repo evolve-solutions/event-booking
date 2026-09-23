@@ -79,8 +79,7 @@ operations**. A customer account must never be able to perform them, by any rout
 - One customer account, below.
 - This document.
 - An API reference at **https://candidate-01.207.148.118.135.sslip.io/docs**
-- A shared spreadsheet with one tab for you, where you record your findings. The link comes with
-  your invitation email.
+- This repository, where you hand your work back as a pull request.
 
 ### Customer account
 
@@ -100,14 +99,30 @@ You do **not** get the source code.
 
 ## What you hand back
 
-You work through this **on your own**, at your own pace, with nobody watching. Two things go into
-your tab of the spreadsheet:
+You work through this **on your own**, at your own pace, with nobody watching. You have **one week**
+from the day you receive the invitation.
 
-1. **A bug list.** Every bug you find, in the columns of the bug list in your tab.
-2. **A set of test cases** for the one flow the interviewer named when they sent you this exercise,
-   in the seven columns defined by [`test-case-template.md`](./test-case-template.md).
+Hand your work back as **one pull request to the `develop` branch** of this repository. Fork the
+repository, add a folder named after your GitHub username, and open the pull request from your fork:
 
-Work to the deadline the interviewer gave you.
+```
+submissions/<your-github-username>/
+├── bugs.md          every bug you found
+├── test-cases.md    your test cases
+└── assets/          screenshots, screen recordings, request/response captures
+```
+
+1. **`bugs.md` — a bug list.** Every bug you find. Each one must give someone else enough to
+   reproduce it without asking you: what you did, what you expected, what happened instead, and how
+   severe you judge it. Link the evidence for it from `assets/`.
+2. **`test-cases.md` — a set of test cases** for **one** of these three flows, your choice: applying
+   a discount code, cancelling tickets, or registering an account. Use the seven columns defined by
+   [`test-case-template.md`](./test-case-template.md) and say at the top which flow you picked.
+3. **`assets/`** — everything `bugs.md` and `test-cases.md` link to. Keep all of it inside your own
+   folder.
+
+Put your name in the pull request title. Everything must be in the pull request before the deadline;
+commits pushed after it are not read. Do not change anything outside your own folder.
 
 ## Using an AI assistant
 
