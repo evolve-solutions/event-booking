@@ -1,0 +1,23 @@
+{
+  "upcoming": {
+    "id": 7,
+    "title": "Mid-Autumn Lantern Night",
+    "startsAt": "2026-10-04T17:30:00.000Z"
+  },
+  "upcoming2": {
+    "id": 4,
+    "title": "Da Nang Startup Summit",
+    "startsAt": "2026-10-18T01:30:00.000Z"
+  },
+  "quiet": {
+    "id": 23,
+    "title": "New Year Countdown Hanoi",
+    "startsAt": "2026-12-31T15:00:00.000Z"
+  },
+  "past": {
+    "id": 11,
+    "title": "Autumn Symphony Night",
+    "startsAt": "2026-08-15T12:00:00.000Z"
+  },
+  "chosenAt": "2026-09-24T17:28:28.504Z"
+}

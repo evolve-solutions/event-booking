@@ -1,0 +1,1463 @@
+{
+  "config": {
+    "argv": [
+      "~/.nvm/versions/node/v22.23.2/bin/node",
+      "submissions/tunt01102/automation/node_modules/.bin/playwright",
+      "test",
+      "--project=evidence",
+      "bugs.evidence"
+    ],
+    "configFile": "submissions/tunt01102/automation/playwright.config.ts",
+    "rootDir": "submissions/tunt01102/automation",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "api",
+        "name": "api",
+        "testDir": "submissions/tunt01102/automation/tests/api",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "smoke",
+        "name": "smoke",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/smoke",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "regression",
+        "name": "regression",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/regression",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "slow",
+        "name": "slow",
+        "testDir": "submissions/tunt01102/automation/tests/slow",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 2400000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "evidence",
+        "name": "evidence",
+        "testDir": "submissions/tunt01102/automation/tests/evidence",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/evidence/20260924T111603058.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report/20260924T111603058-evidence",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "tests/evidence/bugs.evidence.spec.ts",
+      "file": "tests/evidence/bugs.evidence.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "[BUG-01] customer can edit an event via PUT",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3178,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:03.308Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-01-customer-can-edit-an-event-via-PUT-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-01-customer-can-edit-an-event-via-PUT-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-76a3d38358eaed85b0ac",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 24,
+          "column": 1
+        },
+        {
+          "title": "[BUG-02] a customer can cancel another customer's order",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3815,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:03.308Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-02-a-cu-fae2c-el-another-customer-s-order-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-02-a-cu-fae2c-el-another-customer-s-order-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-6b613cc879850f655028",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 40,
+          "column": 1
+        },
+        {
+          "title": "[BUG-03] a customer can read another customer's order",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3888,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:06.716Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-03-a-cu-4b6d1-ad-another-customer-s-order-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-03-a-cu-4b6d1-ad-another-customer-s-order-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-167b22e5fb93c3cf71e1",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 59,
+          "column": 1
+        },
+        {
+          "title": "[BUG-04] cart accepts zero and negative quantities",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3815,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:07.376Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-04-cart-305d3-ero-and-negative-quantities-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-04-cart-305d3-ero-and-negative-quantities-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-41216afbb288918b079c",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 79,
+          "column": 1
+        },
+        {
+          "title": "[BUG-05] the same discount code stacks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7547,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:10.760Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-05-the-same-discount-code-stacks-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-05-the-same-discount-code-stacks-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-38d09c4456625243a14d",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 95,
+          "column": 1
+        },
+        {
+          "title": "[BUG-06] discount reduces VIP tickets",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 5870,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:11.325Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-06-discount-reduces-VIP-tickets-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-06-discount-reduces-VIP-tickets-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-1b1defae4a0205d93747",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 111,
+          "column": 1
+        },
+        {
+          "title": "[BUG-07] service fee is charged before the discount",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 6627,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:17.395Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-07-serv-83ae0-charged-before-the-discount-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-07-serv-83ae0-charged-before-the-discount-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-61a5e3d564c7dfe190cf",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 126,
+          "column": 1
+        },
+        {
+          "title": "[BUG-08] five VIP tickets are accepted",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5328,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:18.536Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-08-five-VIP-tickets-are-accepted-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-08-five-VIP-tickets-are-accepted-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-acb32eed80f94a949a06",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 141,
+          "column": 1
+        },
+        {
+          "title": "[BUG-09] a past event can be booked through the API",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6930,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:24.080Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-09-a-pa-4dc27-n-be-booked-through-the-API-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-09-a-pa-4dc27-n-be-booked-through-the-API-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-846a3dddbb56d684d467",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 156,
+          "column": 1
+        },
+        {
+          "title": "[BUG-10] cancelling after the start refunds 100%",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4948,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:24.231Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-10-canc-3695d-fter-the-start-refunds-100--evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-10-canc-3695d-fter-the-start-refunds-100--evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-93255bba0ad05a47e37d",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 179,
+          "column": 1
+        },
+        {
+          "title": "[BUG-11] repeated cancels return stock again each time",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3475,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:29.306Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-11-repe-f75d8-eturn-stock-again-each-time-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-11-repe-f75d8-eturn-stock-again-each-time-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-3c5b447773c5bd2dfa6a",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 198,
+          "column": 1
+        },
+        {
+          "title": "[BUG-14] recipient over 50 characters is silently truncated",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4028,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:31.176Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-14-reci-17879-cters-is-silently-truncated-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-14-reci-17879-cters-is-silently-truncated-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-4fd311dd3394271fd457",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 216,
+          "column": 1
+        },
+        {
+          "title": "[BUG-15] checkout accepts a 9 digit phone",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 5115,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:32.939Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-15-checkout-accepts-a-9-digit-phone-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-15-checkout-accepts-a-9-digit-phone-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-9287fd0718db6416b816",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 233,
+          "column": 1
+        },
+        {
+          "title": "[BUG-16] checkout accepts a blank recipient",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3117,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:35.337Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-16-checkout-accepts-a-blank-recipient-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-16-checkout-accepts-a-blank-recipient-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-c549f4123a21bbe335ab",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 252,
+          "column": 1
+        },
+        {
+          "title": "[BUG-17] registration accepts malformed emails",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3661,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:38.204Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-17-registration-accepts-malformed-emails-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-17-registration-accepts-malformed-emails-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-6db15a71a7c331b7f5c3",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 266,
+          "column": 1
+        },
+        {
+          "title": "[BUG-18] profile accepts a phone made of letters",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4324,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:38.594Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-18-prof-a1573-pts-a-phone-made-of-letters-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-18-prof-a1573-pts-a-phone-made-of-letters-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-d490c44e5f5e01c66083",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 280,
+          "column": 1
+        },
+        {
+          "title": "[BUG-19] duplicate account through a leading space",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3321,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:41.940Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-19-dupl-c6204-unt-through-a-leading-space-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-19-dupl-c6204-unt-through-a-leading-space-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-52f454cadf7571440a9b",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 296,
+          "column": 1
+        },
+        {
+          "title": "[BUG-20] new password equal to the current one is accepted",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4395,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:43.014Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-20-new--72e96-the-current-one-is-accepted-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-20-new--72e96-the-current-one-is-accepted-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-f49c9b474f051c1ff343",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 309,
+          "column": 1
+        },
+        {
+          "title": "[BUG-21] search \"rock\" finds nothing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4030,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:45.392Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-21-search-rock-finds-nothing-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-21-search-rock-finds-nothing-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-e0e399c143c3d117c77d",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 328,
+          "column": 1
+        },
+        {
+          "title": "[BUG-22] search \"%\" returns every event",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4097,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:47.512Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-22-search-returns-every-event-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-22-search-returns-every-event-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-2d491f8f2a8634ca16f5",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 343,
+          "column": 1
+        },
+        {
+          "title": "[BUG-23] sort by name is per page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3685,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:49.539Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-23-sort-by-name-is-per-page-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-23-sort-by-name-is-per-page-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-981b8cde129671edef47",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 356,
+          "column": 1
+        },
+        {
+          "title": "[BUG-24] paging repeats an event",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2989,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:51.768Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-24-paging-repeats-an-event-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-24-paging-repeats-an-event-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-d0146dea228d35ce04c3",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 368,
+          "column": 1
+        },
+        {
+          "title": "[BUG-25] at 360 px Add is off screen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3259,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:53.349Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-25-at-360-px-Add-is-off-screen-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-25-at-360-px-Add-is-off-screen-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-474aba078ca3e93a1a60",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 384,
+          "column": 1
+        },
+        {
+          "title": "[BUG-26] profile scrolls sideways at 360 px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2964,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:54.930Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-26-profile-scrolls-sideways-at-360-px-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-26-profile-scrolls-sideways-at-360-px-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-f449a7b81852ae9600c3",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 404,
+          "column": 1
+        },
+        {
+          "title": "[BUG-27] event detail shows the UTC date",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3128,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:56.678Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-27-event-detail-shows-the-UTC-date-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-27-event-detail-shows-the-UTC-date-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-85dd26073221a5d77bfe",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 425,
+          "column": 1
+        },
+        {
+          "title": "[BUG-28] checkout phone label focuses the recipient field",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3493,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:57.931Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-28-chec-3bc7a-focuses-the-recipient-field-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-28-chec-3bc7a-focuses-the-recipient-field-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-2cc79a978e338d76223a",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 439,
+          "column": 1
+        },
+        {
+          "title": "[BUG-29] fields without a visible label",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3228,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:16:59.951Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-29-fields-without-a-visible-label-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-29-fields-without-a-visible-label-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-319c28119532074c4800",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 455,
+          "column": 1
+        },
+        {
+          "title": "[BUG-30] confirmation total is a bare number",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3452,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:17:01.554Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-30-confirmation-total-is-a-bare-number-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-30-confirmation-total-is-a-bare-number-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-cea3b74e6ed08aa263e7",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 471,
+          "column": 1
+        },
+        {
+          "title": "[BUG-31] admin event screen renders for a customer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4306,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T04:17:03.310Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-31-admi-0336e-reen-renders-for-a-customer-evidence/test-finished-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/20260924T111603058-evidence/bugs.evidence--BUG-31-admi-0336e-reen-renders-for-a-customer-evidence/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "34371add29b2847b81e2-1223b71684c19b7f4c94",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 489,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-24T04:16:03.064Z",
+    "duration": 64755.196,
+    "expected": 29,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,2225 @@
+{
+  "config": {
+    "argv": [
+      "~/.nvm/versions/node/v22.23.2/bin/node",
+      "submissions/tunt01102/automation/node_modules/.bin/playwright",
+      "test",
+      "--project=regression"
+    ],
+    "configFile": "submissions/tunt01102/automation/playwright.config.ts",
+    "rootDir": "submissions/tunt01102/automation",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "submissions/tunt01102/automation/tests/support/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T234454233-regression",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "smoke",
+        "name": "smoke",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/smoke",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T234454233-regression",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "api",
+        "name": "api",
+        "testDir": "submissions/tunt01102/automation/tests/api",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T234454233-regression",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "regression",
+        "name": "regression",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/regression",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T234454233-regression",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "smoke-firefox",
+        "name": "smoke-firefox",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/smoke",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T234454233-regression",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "smoke-webkit",
+        "name": "smoke-webkit",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/smoke",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T234454233-regression",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-webkit",
+        "name": "mobile-webkit",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/regression",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T234454233-regression",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "slow",
+        "name": "slow",
+        "testDir": "submissions/tunt01102/automation/tests/slow",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 2400000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T234454233-regression",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "evidence-timing",
+        "name": "evidence-timing",
+        "testDir": "submissions/tunt01102/automation/tests/evidence",
+        "testIgnore": [],
+        "testMatch": [
+          "timing.evidence.spec.ts"
+        ],
+        "timeout": 2700000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T234454233-regression",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "evidence",
+        "name": "evidence",
+        "testDir": "submissions/tunt01102/automation/tests/evidence",
+        "testIgnore": [],
+        "testMatch": [
+          "bugs.evidence.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/regression/20260924T234454233.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report/20260924T234454233-regression",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "tests/e2e/regression/regression.spec.ts",
+      "file": "tests/e2e/regression/regression.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Phone screens (360 px) @regression",
+          "file": "tests/e2e/regression/regression.spec.ts",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-UI-01] a buyer can reach quantity and Add without scrolling sideways",
+              "ok": false,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-25",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 10,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1151,
+                      "error": {
+                        "message": "Error: event-detail-ticket-STANDARD-qty right edge must be within 360 px\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m360\u001b[39m\nReceived:    \u001b[31m512.84375\u001b[39m",
+                        "stack": "Error: event-detail-ticket-STANDARD-qty right edge must be within 360 px\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m360\u001b[39m\nReceived:    \u001b[31m512.84375\u001b[39m\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:17:77",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                          "column": 77,
+                          "line": 17
+                        },
+                        "snippet": "  15 |       expect(box, `${id} is rendered`).not.toBeNull();\n  16 |       expect(box!.x, `${id} left edge`).toBeGreaterThanOrEqual(0);\n> 17 |       expect(box!.x + box!.width, `${id} right edge must be within 360 px`).toBeLessThanOrEqual(360);\n     |                                                                             ^\n  18 |     }\n  19 |     await page.getByTestId('event-detail-ticket-STANDARD-add-button').click({ trial: true, timeout: 3_000 });\n  20 |   });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 77,
+                            "line": 17
+                          },
+                          "message": "Error: event-detail-ticket-STANDARD-qty right edge must be within 360 px\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m360\u001b[39m\nReceived:    \u001b[31m512.84375\u001b[39m\n\n  15 |       expect(box, `${id} is rendered`).not.toBeNull();\n  16 |       expect(box!.x, `${id} left edge`).toBeGreaterThanOrEqual(0);\n> 17 |       expect(box!.x + box!.width, `${id} right edge must be within 360 px`).toBeLessThanOrEqual(360);\n     |                                                                             ^\n  18 |     }\n  19 |     await page.getByTestId('event-detail-ticket-STANDARD-add-button').click({ trial: true, timeout: 3_000 });\n  20 |   });\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:17:77"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:44:54.828Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-25",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 10,
+                            "column": 3
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Phone-screens-3-4c7a3--without-scrolling-sideways-regression/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Phone-screens-3-4c7a3--without-scrolling-sideways-regression/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Phone-screens-3-4c7a3--without-scrolling-sideways-regression/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Phone-screens-3-4c7a3--without-scrolling-sideways-regression/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "column": 77,
+                        "line": 17
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-474a178b089ddd015e57",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 10,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-02] no buyer screen scrolls sideways",
+              "ok": false,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-26",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 22,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 6025,
+                      "error": {
+                        "message": "Error: scrollWidth per screen: {\"/\":360,\"/events/7\":360,\"/cart\":360,\"/checkout\":360,\"/my-orders\":360,\"/profile\":495}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 6\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Array [\u001b[39m\n\u001b[31m+     \"/profile\",\u001b[39m\n\u001b[31m+     495,\u001b[39m\n\u001b[31m+   ],\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                        "stack": "Error: scrollWidth per screen: {\"/\":360,\"/events/7\":360,\"/cart\":360,\"/checkout\":360,\"/my-orders\":360,\"/profile\":495}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 6\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Array [\u001b[39m\n\u001b[31m+     \"/profile\",\u001b[39m\n\u001b[31m+     495,\u001b[39m\n\u001b[31m+   ],\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:41:74",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                          "column": 74,
+                          "line": 41
+                        },
+                        "snippet": "  39 |     }\n  40 |     const tooWide = Object.entries(widths).filter(([, w]) => w > 360);\n> 41 |     expect(tooWide, `scrollWidth per screen: ${JSON.stringify(widths)}`).toEqual([]);\n     |                                                                          ^\n  42 |   });\n  43 | });\n  44 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 74,
+                            "line": 41
+                          },
+                          "message": "Error: scrollWidth per screen: {\"/\":360,\"/events/7\":360,\"/cart\":360,\"/checkout\":360,\"/my-orders\":360,\"/profile\":495}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 6\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Array [\u001b[39m\n\u001b[31m+     \"/profile\",\u001b[39m\n\u001b[31m+     495,\u001b[39m\n\u001b[31m+   ],\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  39 |     }\n  40 |     const tooWide = Object.entries(widths).filter(([, w]) => w > 360);\n> 41 |     expect(tooWide, `scrollWidth per screen: ${JSON.stringify(widths)}`).toEqual([]);\n     |                                                                          ^\n  42 |   });\n  43 | });\n  44 |\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:41:74"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:44:56.285Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-26",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 22,
+                            "column": 3
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Phone-screens-3-b361c-yer-screen-scrolls-sideways-regression/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Phone-screens-3-b361c-yer-screen-scrolls-sideways-regression/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Phone-screens-3-b361c-yer-screen-scrolls-sideways-regression/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Phone-screens-3-b361c-yer-screen-scrolls-sideways-regression/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "column": 74,
+                        "line": 41
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-053988b7c0bfe59460cb",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 22,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Forms and messages @regression",
+          "file": "tests/e2e/regression/regression.spec.ts",
+          "line": 45,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-UI-03] clicking each form label focuses its field",
+              "ok": false,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-28",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 46,
+                        "column": 3
+                      }
+                    },
+                    {
+                      "type": "bug",
+                      "description": "BUG-29",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 46,
+                        "column": 3
+                      }
+                    },
+                    {
+                      "type": "label-audit",
+                      "description": "[{\"page\":\"/login\",\"field\":\"auth-email-input\",\"hasVisibleLabel\":true,\"labelFocusesField\":true},{\"page\":\"/login\",\"field\":\"auth-password-input\",\"hasVisibleLabel\":true,\"labelFocusesField\":true},{\"page\":\"/login (register)\",\"field\":\"auth-email-input\",\"hasVisibleLabel\":true,\"labelFocusesField\":true},{\"page\":\"/login (register)\",\"field\":\"auth-password-input\",\"hasVisibleLabel\":true,\"labelFocusesField\":true},{\"page\":\"/login (register)\",\"field\":\"auth-phone-input\",\"hasVisibleLabel\":true,\"labelFocusesField\":true},{\"page\":\"/\",\"field\":\"events-search-input\",\"hasVisibleLabel\":false,\"labelFocusesField\":false},{\"page\":\"/\",\"field\":\"events-venue-select\",\"hasVisibleLabel\":true,\"labelFocusesField\":true},{\"page\":\"/\",\"field\":\"events-sort-select\",\"hasVisibleLabel\":true,\"labelFocusesField\":true},{\"page\":\"/cart\",\"field\":\"cart-item-qty-1327\",\"hasVisibleLabel\":false,\"labelFocusesField\":false},{\"page\":\"/cart\",\"field\":\"cart-discount-input\",\"hasVisibleLabel\":false,\"labelFocusesField\":false},{\"page\":\"/checkout\",\"field\":\"checkout-recipient-input\",\"hasVisibleLabel\":true,\"labelFocusesField\":true},{\"page\":\"/checkout\",\"field\":\"checkout-phone-input\",\"hasVisibleLabel\":false,\"labelFocusesField\":false},{\"page\":\"/profile\",\"field\":\"profile-phone-input\",\"hasVisibleLabel\":true,\"labelFocusesField\":true},{\"page\":\"/profile\",\"field\":\"profile-current-password-input\",\"hasVisibleLabel\":true,\"labelFocusesField\":true},{\"page\":\"/profile\",\"field\":\"profile-new-password-input\",\"hasVisibleLabel\":true,\"labelFocusesField\":true}]"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5253,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  -  1\u001b[39m\n\u001b[31m+ Received  + 26\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"field\": \"events-search-input\",\u001b[39m\n\u001b[31m+     \"hasVisibleLabel\": false,\u001b[39m\n\u001b[31m+     \"labelFocusesField\": false,\u001b[39m\n\u001b[31m+     \"page\": \"/\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"field\": \"cart-item-qty-1327\",\u001b[39m\n\u001b[31m+     \"hasVisibleLabel\": false,\u001b[39m\n\u001b[31m+     \"labelFocusesField\": false,\u001b[39m\n\u001b[31m+     \"page\": \"/cart\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"field\": \"cart-discount-input\",\u001b[39m\n\u001b[31m+     \"hasVisibleLabel\": false,\u001b[39m\n\u001b[31m+     \"labelFocusesField\": false,\u001b[39m\n\u001b[31m+     \"page\": \"/cart\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"field\": \"checkout-phone-input\",\u001b[39m\n\u001b[31m+     \"hasVisibleLabel\": false,\u001b[39m\n\u001b[31m+     \"labelFocusesField\": false,\u001b[39m\n\u001b[31m+     \"page\": \"/checkout\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  -  1\u001b[39m\n\u001b[31m+ Received  + 26\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"field\": \"events-search-input\",\u001b[39m\n\u001b[31m+     \"hasVisibleLabel\": false,\u001b[39m\n\u001b[31m+     \"labelFocusesField\": false,\u001b[39m\n\u001b[31m+     \"page\": \"/\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"field\": \"cart-item-qty-1327\",\u001b[39m\n\u001b[31m+     \"hasVisibleLabel\": false,\u001b[39m\n\u001b[31m+     \"labelFocusesField\": false,\u001b[39m\n\u001b[31m+     \"page\": \"/cart\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"field\": \"cart-discount-input\",\u001b[39m\n\u001b[31m+     \"hasVisibleLabel\": false,\u001b[39m\n\u001b[31m+     \"labelFocusesField\": false,\u001b[39m\n\u001b[31m+     \"page\": \"/cart\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"field\": \"checkout-phone-input\",\u001b[39m\n\u001b[31m+     \"hasVisibleLabel\": false,\u001b[39m\n\u001b[31m+     \"labelFocusesField\": false,\u001b[39m\n\u001b[31m+     \"page\": \"/checkout\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:65:20",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                          "column": 20,
+                          "line": 65
+                        },
+                        "snippet": "  63 |     const broken = results.filter((r) => !r.hasVisibleLabel || !r.labelFocusesField);\n  64 |     test.info().annotations.push({ type: 'label-audit', description: JSON.stringify(results) });\n> 65 |     expect(broken).toEqual([]);\n     |                    ^\n  66 |   });\n  67 |\n  68 |   test(tc('TC-UI-09', 'event detail message reflects the latest add'), bug('BUG-33'), async ({ page, context, buyer }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 20,
+                            "line": 65
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  -  1\u001b[39m\n\u001b[31m+ Received  + 26\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"field\": \"events-search-input\",\u001b[39m\n\u001b[31m+     \"hasVisibleLabel\": false,\u001b[39m\n\u001b[31m+     \"labelFocusesField\": false,\u001b[39m\n\u001b[31m+     \"page\": \"/\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"field\": \"cart-item-qty-1327\",\u001b[39m\n\u001b[31m+     \"hasVisibleLabel\": false,\u001b[39m\n\u001b[31m+     \"labelFocusesField\": false,\u001b[39m\n\u001b[31m+     \"page\": \"/cart\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"field\": \"cart-discount-input\",\u001b[39m\n\u001b[31m+     \"hasVisibleLabel\": false,\u001b[39m\n\u001b[31m+     \"labelFocusesField\": false,\u001b[39m\n\u001b[31m+     \"page\": \"/cart\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"field\": \"checkout-phone-input\",\u001b[39m\n\u001b[31m+     \"hasVisibleLabel\": false,\u001b[39m\n\u001b[31m+     \"labelFocusesField\": false,\u001b[39m\n\u001b[31m+     \"page\": \"/checkout\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  63 |     const broken = results.filter((r) => !r.hasVisibleLabel || !r.labelFocusesField);\n  64 |     test.info().annotations.push({ type: 'label-audit', description: JSON.stringify(results) });\n> 65 |     expect(broken).toEqual([]);\n     |                    ^\n  66 |   });\n  67 |\n  68 |   test(tc('TC-UI-09', 'event detail message reflects the latest add'), bug('BUG-33'), async ({ page, context, buyer }) => {\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:65:20"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:45:02.727Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-28",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 46,
+                            "column": 3
+                          }
+                        },
+                        {
+                          "type": "bug",
+                          "description": "BUG-29",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 46,
+                            "column": 3
+                          }
+                        },
+                        {
+                          "type": "label-audit",
+                          "description": "[{\"page\":\"/login\",\"field\":\"auth-email-input\",\"hasVisibleLabel\":true,\"labelFocusesField\":true},{\"page\":\"/login\",\"field\":\"auth-password-input\",\"hasVisibleLabel\":true,\"labelFocusesField\":true},{\"page\":\"/login (register)\",\"field\":\"auth-email-input\",\"hasVisibleLabel\":true,\"labelFocusesField\":true},{\"page\":\"/login (register)\",\"field\":\"auth-password-input\",\"hasVisibleLabel\":true,\"labelFocusesField\":true},{\"page\":\"/login (register)\",\"field\":\"auth-phone-input\",\"hasVisibleLabel\":true,\"labelFocusesField\":true},{\"page\":\"/\",\"field\":\"events-search-input\",\"hasVisibleLabel\":false,\"labelFocusesField\":false},{\"page\":\"/\",\"field\":\"events-venue-select\",\"hasVisibleLabel\":true,\"labelFocusesField\":true},{\"page\":\"/\",\"field\":\"events-sort-select\",\"hasVisibleLabel\":true,\"labelFocusesField\":true},{\"page\":\"/cart\",\"field\":\"cart-item-qty-1327\",\"hasVisibleLabel\":false,\"labelFocusesField\":false},{\"page\":\"/cart\",\"field\":\"cart-discount-input\",\"hasVisibleLabel\":false,\"labelFocusesField\":false},{\"page\":\"/checkout\",\"field\":\"checkout-recipient-input\",\"hasVisibleLabel\":true,\"labelFocusesField\":true},{\"page\":\"/checkout\",\"field\":\"checkout-phone-input\",\"hasVisibleLabel\":false,\"labelFocusesField\":false},{\"page\":\"/profile\",\"field\":\"profile-phone-input\",\"hasVisibleLabel\":true,\"labelFocusesField\":true},{\"page\":\"/profile\",\"field\":\"profile-current-password-input\",\"hasVisibleLabel\":true,\"labelFocusesField\":true},{\"page\":\"/profile\",\"field\":\"profile-new-password-input\",\"hasVisibleLabel\":true,\"labelFocusesField\":true}]"
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Forms-and-messa-cf1b2-orm-label-focuses-its-field-regression/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Forms-and-messa-cf1b2-orm-label-focuses-its-field-regression/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Forms-and-messa-cf1b2-orm-label-focuses-its-field-regression/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Forms-and-messa-cf1b2-orm-label-focuses-its-field-regression/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "column": 20,
+                        "line": 65
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-b0efbc2ff66dabd11d1d",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 46,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-09] event detail message reflects the latest add",
+              "ok": false,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-33",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 68,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 12274,
+                      "error": {
+                        "message": "Error: stale \"Added to cart\" after a failed add\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('event-detail-message')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - stale \"Added to cart\" after a failed add getByTestId('event-detail-message') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('event-detail-message')\u001b[22m\n\u001b[2m    24 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n",
+                        "stack": "Error: stale \"Added to cart\" after a failed add\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('event-detail-message')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - stale \"Added to cart\" after a failed add getByTestId('event-detail-message') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('event-detail-message')\u001b[22m\n\u001b[2m    24 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:79:104",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                          "column": 104,
+                          "line": 79
+                        },
+                        "snippet": "  77 |     await addTicketViaUi(page, 'VIP', 6);\n  78 |     await expect(page.getByTestId('event-detail-error')).toBeVisible();\n> 79 |     await expect(page.getByTestId('event-detail-message'), 'stale \"Added to cart\" after a failed add').toHaveCount(0);\n     |                                                                                                        ^\n  80 |   });\n  81 |\n  82 |   test(tc('TC-DISC-12', 'applying WELCOME10 in the cart shows the code and the discount line'), bug('BUG-07'), async ({ page, context, buyer }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 104,
+                            "line": 79
+                          },
+                          "message": "Error: stale \"Added to cart\" after a failed add\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('event-detail-message')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - stale \"Added to cart\" after a failed add getByTestId('event-detail-message') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('event-detail-message')\u001b[22m\n\u001b[2m    24 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n\n  77 |     await addTicketViaUi(page, 'VIP', 6);\n  78 |     await expect(page.getByTestId('event-detail-error')).toBeVisible();\n> 79 |     await expect(page.getByTestId('event-detail-message'), 'stale \"Added to cart\" after a failed add').toHaveCount(0);\n     |                                                                                                        ^\n  80 |   });\n  81 |\n  82 |   test(tc('TC-DISC-12', 'applying WELCOME10 in the cart shows the code and the discount line'), bug('BUG-07'), async ({ page, context, buyer }) => {\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:79:104"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:45:08.378Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-33",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 68,
+                            "column": 3
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Forms-and-messa-2ae7c-age-reflects-the-latest-add-regression/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Forms-and-messa-2ae7c-age-reflects-the-latest-add-regression/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Forms-and-messa-2ae7c-age-reflects-the-latest-add-regression/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Forms-and-messa-2ae7c-age-reflects-the-latest-add-regression/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "column": 104,
+                        "line": 79
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-20d56368e3cc4bff2b5b",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 68,
+              "column": 3
+            },
+            {
+              "title": "[TC-DISC-12] applying WELCOME10 in the cart shows the code and the discount line",
+              "ok": false,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-07",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 82,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1885,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m9000\u001b[39m\nReceived: \u001b[31m10000\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m9000\u001b[39m\nReceived: \u001b[31m10000\u001b[39m\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:92:63",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                          "column": 63,
+                          "line": 92
+                        },
+                        "snippet": "  90 |     const want = expectedTotals([{ ticketTypeName: 'STANDARD', unitPrice: STANDARD.price, quantity: 2 }], 'WELCOME10');\n  91 |     expect(await money(page.getByTestId('cart-discount'))).toBe(want.discount);\n> 92 |     expect(await money(page.getByTestId('cart-service-fee'))).toBe(want.serviceFee);\n     |                                                               ^\n  93 |     expect(await money(page.getByTestId('cart-total'))).toBe(want.total);\n  94 |   });\n  95 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 63,
+                            "line": 92
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m9000\u001b[39m\nReceived: \u001b[31m10000\u001b[39m\n\n  90 |     const want = expectedTotals([{ ticketTypeName: 'STANDARD', unitPrice: STANDARD.price, quantity: 2 }], 'WELCOME10');\n  91 |     expect(await money(page.getByTestId('cart-discount'))).toBe(want.discount);\n> 92 |     expect(await money(page.getByTestId('cart-service-fee'))).toBe(want.serviceFee);\n     |                                                               ^\n  93 |     expect(await money(page.getByTestId('cart-total'))).toBe(want.total);\n  94 |   });\n  95 |\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:92:63"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:45:21.023Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-07",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 82,
+                            "column": 3
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Forms-and-messa-3fbcb--code-and-the-discount-line-regression/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Forms-and-messa-3fbcb--code-and-the-discount-line-regression/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Forms-and-messa-3fbcb--code-and-the-discount-line-regression/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Forms-and-messa-3fbcb--code-and-the-discount-line-regression/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "column": 63,
+                        "line": 92
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-f1cd617aa1db69f4238b",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 82,
+              "column": 3
+            },
+            {
+              "title": "[TC-DISC-13] after a refused code, a valid code leaves no stale error",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2065,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:45:23.189Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-0c32deb1916d43d6329b",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 96,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-10] cancel from My Orders shows CANCELLED and the refund",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1771,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:45:25.324Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-ecd101f6d3b2bec34ee4",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 110,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Order confirmation @regression",
+          "file": "tests/e2e/regression/regression.spec.ts",
+          "line": 125,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-UI-13] confirmation shows every amount in the same currency format",
+              "ok": false,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-30",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 126,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1318,
+                      "error": {
+                        "message": "Error: total uses the same format as the other lines\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/^₫[\\d,]+$/\u001b[39m\nReceived string:  \u001b[31m\"210000\"\u001b[39m",
+                        "stack": "Error: total uses the same format as the other lines\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/^₫[\\d,]+$/\u001b[39m\nReceived string:  \u001b[31m\"210000\"\u001b[39m\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:136:68",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                          "column": 68,
+                          "line": 136
+                        },
+                        "snippet": "  134 |     const total = (await page.getByTestId('order-confirm-total').innerText()).trim();\n  135 |     expect(fee, 'reference line is currency formatted').toMatch(/^₫[\\d,]+$/);\n> 136 |     expect(total, 'total uses the same format as the other lines').toMatch(/^₫[\\d,]+$/);\n      |                                                                    ^\n  137 |   });\n  138 | });\n  139 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 68,
+                            "line": 136
+                          },
+                          "message": "Error: total uses the same format as the other lines\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/^₫[\\d,]+$/\u001b[39m\nReceived string:  \u001b[31m\"210000\"\u001b[39m\n\n  134 |     const total = (await page.getByTestId('order-confirm-total').innerText()).trim();\n  135 |     expect(fee, 'reference line is currency formatted').toMatch(/^₫[\\d,]+$/);\n> 136 |     expect(total, 'total uses the same format as the other lines').toMatch(/^₫[\\d,]+$/);\n      |                                                                    ^\n  137 |   });\n  138 | });\n  139 |\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:136:68"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:45:27.099Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-30",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 126,
+                            "column": 3
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Order-confirmat-984ff-in-the-same-currency-format-regression/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Order-confirmat-984ff-in-the-same-currency-format-regression/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Order-confirmat-984ff-in-the-same-currency-format-regression/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Order-confirmat-984ff-in-the-same-currency-format-regression/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "column": 68,
+                        "line": 136
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-16b1e0ef90bf5d10b399",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 126,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Time zone @regression",
+          "file": "tests/e2e/regression/regression.spec.ts",
+          "line": 140,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-UI-04] event detail shows the start in Vietnam time",
+              "ok": false,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-27",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 141,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 897,
+                      "error": {
+                        "message": "Error: \"2026-10-04\" should show the Vietnam date of 2026-10-04T17:30:00.000Z\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                        "stack": "Error: \"2026-10-04\" should show the Vietnam date of 2026-10-04T17:30:00.000Z\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:145:102",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                          "column": 102,
+                          "line": 145
+                        },
+                        "snippet": "  143 |     await openEvent(page, EVENTS.upcoming.id);\n  144 |     const text = await page.getByTestId('event-detail-starts').innerText();\n> 145 |     expect(showsVnDate(text, e.startsAt), `\"${text}\" should show the Vietnam date of ${e.startsAt}`).toBe(true);\n      |                                                                                                      ^\n  146 |     expect(showsVnTime(text, e.startsAt), `\"${text}\" should show the Vietnam time of ${e.startsAt}`).toBe(true);\n  147 |   });\n  148 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 102,
+                            "line": 145
+                          },
+                          "message": "Error: \"2026-10-04\" should show the Vietnam date of 2026-10-04T17:30:00.000Z\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  143 |     await openEvent(page, EVENTS.upcoming.id);\n  144 |     const text = await page.getByTestId('event-detail-starts').innerText();\n> 145 |     expect(showsVnDate(text, e.startsAt), `\"${text}\" should show the Vietnam date of ${e.startsAt}`).toBe(true);\n      |                                                                                                      ^\n  146 |     expect(showsVnTime(text, e.startsAt), `\"${text}\" should show the Vietnam time of ${e.startsAt}`).toBe(true);\n  147 |   });\n  148 |\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:145:102"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:45:28.631Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-27",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 141,
+                            "column": 3
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Time-zone-regre-03e10-s-the-start-in-Vietnam-time-regression/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Time-zone-regre-03e10-s-the-start-in-Vietnam-time-regression/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Time-zone-regre-03e10-s-the-start-in-Vietnam-time-regression/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Time-zone-regre-03e10-s-the-start-in-Vietnam-time-regression/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "column": 102,
+                        "line": 145
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-86bda25ef15c8b40d59b",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 141,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-05] event list shows starts in Vietnam time",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 880,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:45:29.822Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-925e277a61bc99ecb60c",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 149,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-11] cart shows the hold expiry in Vietnam time",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1141,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:45:30.774Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-aa25b7c7362696230d78",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 158,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Search, sort and paging @regression",
+          "file": "tests/e2e/regression/regression.spec.ts",
+          "line": 168,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-UI-06] search \"rock\" shows Hanoi Rock Fest",
+              "ok": false,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-21",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 169,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 11175,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-testid^=\"events-item-title-\"]').filter({ hasText: 'Hanoi Rock Fest' })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('[data-testid^=\"events-item-title-\"]').filter({ hasText: 'Hanoi Rock Fest' }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-testid^=\"events-item-title-\"]').filter({ hasText: 'Hanoi Rock Fest' })\u001b[22m\n\u001b[2m    24 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-testid^=\"events-item-title-\"]').filter({ hasText: 'Hanoi Rock Fest' })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('[data-testid^=\"events-item-title-\"]').filter({ hasText: 'Hanoi Rock Fest' }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-testid^=\"events-item-title-\"]').filter({ hasText: 'Hanoi Rock Fest' })\u001b[22m\n\u001b[2m    24 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:173:110",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                          "column": 110,
+                          "line": 173
+                        },
+                        "snippet": "  171 |     await page.getByTestId('events-search-input').fill('rock');\n  172 |     await page.getByTestId('events-search-button').click();\n> 173 |     await expect(page.locator('[data-testid^=\"events-item-title-\"]').filter({ hasText: 'Hanoi Rock Fest' })).toHaveCount(1);\n      |                                                                                                              ^\n  174 |   });\n  175 |\n  176 |   test(tc('TC-UI-07', 'sort by name opens with the first event alphabetically'), bug('BUG-23'), async ({ page, anon }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 110,
+                            "line": 173
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-testid^=\"events-item-title-\"]').filter({ hasText: 'Hanoi Rock Fest' })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('[data-testid^=\"events-item-title-\"]').filter({ hasText: 'Hanoi Rock Fest' }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-testid^=\"events-item-title-\"]').filter({ hasText: 'Hanoi Rock Fest' })\u001b[22m\n\u001b[2m    24 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  171 |     await page.getByTestId('events-search-input').fill('rock');\n  172 |     await page.getByTestId('events-search-button').click();\n> 173 |     await expect(page.locator('[data-testid^=\"events-item-title-\"]').filter({ hasText: 'Hanoi Rock Fest' })).toHaveCount(1);\n      |                                                                                                              ^\n  174 |   });\n  175 |\n  176 |   test(tc('TC-UI-07', 'sort by name opens with the first event alphabetically'), bug('BUG-23'), async ({ page, anon }) => {\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:173:110"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:45:31.921Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-21",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 169,
+                            "column": 3
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Search-sort-and-64741--rock-shows-Hanoi-Rock-Fest-regression/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Search-sort-and-64741--rock-shows-Hanoi-Rock-Fest-regression/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Search-sort-and-64741--rock-shows-Hanoi-Rock-Fest-regression/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Search-sort-and-64741--rock-shows-Hanoi-Rock-Fest-regression/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "column": 110,
+                        "line": 173
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-f78b262e2ff80f08114a",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 169,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-07] sort by name opens with the first event alphabetically",
+              "ok": false,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-23",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 176,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 11352,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-testid^=\"events-item-title-\"]')\nTimeout: 10000ms\n\u001b[32m- Expected  - 5\u001b[39m\n\u001b[31m+ Received  + 5\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   \"Autumn Symphony Night\",\u001b[39m\n\u001b[2m    \"Bat Trang Pottery Workshop\",\u001b[22m\n\u001b[32m-   \"Buon Ma Thuot Coffee Festival\",\u001b[39m\n\u001b[32m-   \"Da Lat Flower Festival\",\u001b[39m\n\u001b[2m    \"Da Nang Startup Summit\",\u001b[22m\n\u001b[2m    \"Ha Long Marathon\",\u001b[22m\n\u001b[32m-   \"Hanoi Autumn Jazz Evening\",\u001b[39m\n\u001b[2m    \"Hanoi Rock Fest\",\u001b[22m\n\u001b[2m    \"Hue Photography Exhibition\",\u001b[22m\n\u001b[32m-   \"Hue Royal Cuisine Cooking Class\",\u001b[39m\n\u001b[31m+   \"Mid-Autumn Lantern Night\",\u001b[39m\n\u001b[31m+   \"My Tam Live in Concert\",\u001b[39m\n\u001b[31m+   \"Saigon Street Food Festival\",\u001b[39m\n\u001b[31m+   \"Stage Play: The Good Neighbour\",\u001b[39m\n\u001b[31m+   \"Trinh Cong Son Tribute Night\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('[data-testid^=\"events-item-title-\"]') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-testid^=\"events-item-title-\"]')\u001b[22m\n\u001b[2m    24 × locator resolved to 10 elements\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-testid^=\"events-item-title-\"]')\nTimeout: 10000ms\n\u001b[32m- Expected  - 5\u001b[39m\n\u001b[31m+ Received  + 5\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   \"Autumn Symphony Night\",\u001b[39m\n\u001b[2m    \"Bat Trang Pottery Workshop\",\u001b[22m\n\u001b[32m-   \"Buon Ma Thuot Coffee Festival\",\u001b[39m\n\u001b[32m-   \"Da Lat Flower Festival\",\u001b[39m\n\u001b[2m    \"Da Nang Startup Summit\",\u001b[22m\n\u001b[2m    \"Ha Long Marathon\",\u001b[22m\n\u001b[32m-   \"Hanoi Autumn Jazz Evening\",\u001b[39m\n\u001b[2m    \"Hanoi Rock Fest\",\u001b[22m\n\u001b[2m    \"Hue Photography Exhibition\",\u001b[22m\n\u001b[32m-   \"Hue Royal Cuisine Cooking Class\",\u001b[39m\n\u001b[31m+   \"Mid-Autumn Lantern Night\",\u001b[39m\n\u001b[31m+   \"My Tam Live in Concert\",\u001b[39m\n\u001b[31m+   \"Saigon Street Food Festival\",\u001b[39m\n\u001b[31m+   \"Stage Play: The Good Neighbour\",\u001b[39m\n\u001b[31m+   \"Trinh Cong Son Tribute Night\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('[data-testid^=\"events-item-title-\"]') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-testid^=\"events-item-title-\"]')\u001b[22m\n\u001b[2m    24 × locator resolved to 10 elements\u001b[22m\n\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:186:71",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                          "column": 71,
+                          "line": 186
+                        },
+                        "snippet": "  184 |     await sorted;\n  185 |     const want = expectedOrder(all, 'title').slice(0, 10).map((e) => e.title);\n> 186 |     await expect(page.locator('[data-testid^=\"events-item-title-\"]')).toHaveText(want);\n      |                                                                       ^\n  187 |   });\n  188 |\n  189 |   test(tc('TC-UI-12', 'paging shows each event once'), bug('BUG-24'), async ({ page, anon }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 71,
+                            "line": 186
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-testid^=\"events-item-title-\"]')\nTimeout: 10000ms\n\u001b[32m- Expected  - 5\u001b[39m\n\u001b[31m+ Received  + 5\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   \"Autumn Symphony Night\",\u001b[39m\n\u001b[2m    \"Bat Trang Pottery Workshop\",\u001b[22m\n\u001b[32m-   \"Buon Ma Thuot Coffee Festival\",\u001b[39m\n\u001b[32m-   \"Da Lat Flower Festival\",\u001b[39m\n\u001b[2m    \"Da Nang Startup Summit\",\u001b[22m\n\u001b[2m    \"Ha Long Marathon\",\u001b[22m\n\u001b[32m-   \"Hanoi Autumn Jazz Evening\",\u001b[39m\n\u001b[2m    \"Hanoi Rock Fest\",\u001b[22m\n\u001b[2m    \"Hue Photography Exhibition\",\u001b[22m\n\u001b[32m-   \"Hue Royal Cuisine Cooking Class\",\u001b[39m\n\u001b[31m+   \"Mid-Autumn Lantern Night\",\u001b[39m\n\u001b[31m+   \"My Tam Live in Concert\",\u001b[39m\n\u001b[31m+   \"Saigon Street Food Festival\",\u001b[39m\n\u001b[31m+   \"Stage Play: The Good Neighbour\",\u001b[39m\n\u001b[31m+   \"Trinh Cong Son Tribute Night\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('[data-testid^=\"events-item-title-\"]') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-testid^=\"events-item-title-\"]')\u001b[22m\n\u001b[2m    24 × locator resolved to 10 elements\u001b[22m\n\n\n  184 |     await sorted;\n  185 |     const want = expectedOrder(all, 'title').slice(0, 10).map((e) => e.title);\n> 186 |     await expect(page.locator('[data-testid^=\"events-item-title-\"]')).toHaveText(want);\n      |                                                                       ^\n  187 |   });\n  188 |\n  189 |   test(tc('TC-UI-12', 'paging shows each event once'), bug('BUG-24'), async ({ page, anon }) => {\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:186:71"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:45:43.374Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-23",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 176,
+                            "column": 3
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Search-sort-and-28b3b--first-event-alphabetically-regression/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Search-sort-and-28b3b--first-event-alphabetically-regression/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Search-sort-and-28b3b--first-event-alphabetically-regression/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Search-sort-and-28b3b--first-event-alphabetically-regression/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "column": 71,
+                        "line": 186
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-d7850f44b93c9512f394",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 176,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-12] paging shows each event once",
+              "ok": false,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-24",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 189,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1758,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"Mui Ne Kitesurf Open\",\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"Mui Ne Kitesurf Open\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:206:21",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                          "column": 21,
+                          "line": 206
+                        },
+                        "snippet": "  204 |     }\n  205 |     const repeats = titles.filter((t, i) => titles.indexOf(t) !== i);\n> 206 |     expect(repeats).toEqual([]);\n      |                     ^\n  207 |     expect(titles).toHaveLength(total);\n  208 |   });\n  209 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 21,
+                            "line": 206
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"Mui Ne Kitesurf Open\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  204 |     }\n  205 |     const repeats = titles.filter((t, i) => titles.indexOf(t) !== i);\n> 206 |     expect(repeats).toEqual([]);\n      |                     ^\n  207 |     expect(titles).toHaveLength(total);\n  208 |   });\n  209 |\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:206:21"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:45:55.081Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-24",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 189,
+                            "column": 3
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Search-sort-and-abeec-aging-shows-each-event-once-regression/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Search-sort-and-abeec-aging-shows-each-event-once-regression/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Search-sort-and-abeec-aging-shows-each-event-once-regression/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Search-sort-and-abeec-aging-shows-each-event-once-regression/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "column": 21,
+                        "line": 206
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-d93ef9c549dd2cc68aa3",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 189,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-08] past event shows Past and offers no Add button",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 739,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:45:57.241Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-40ad3f56be9d60bcb3ab",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 210,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Administration in the UI @regression",
+          "file": "tests/e2e/regression/regression.spec.ts",
+          "line": 219,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-ADM-09] a customer sees no admin navigation and cannot use admin screens",
+              "ok": false,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-31",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 220,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 12953,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('admin-events-create-button')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByTestId('admin-events-create-button') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('admin-events-create-button')\u001b[22m\n\u001b[2m    24 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('admin-events-create-button')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByTestId('admin-events-create-button') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('admin-events-create-button')\u001b[22m\n\u001b[2m    24 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:233:66",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                          "column": 66,
+                          "line": 233
+                        },
+                        "snippet": "  231 |     await page.waitForLoadState('networkidle');\n  232 |     await expect(page.locator('main, #root').first()).not.toBeEmpty();\n> 233 |     await expect(page.getByTestId('admin-events-create-button')).toHaveCount(0);\n      |                                                                  ^\n  234 |     await expect(page.locator('[data-testid^=\"admin-events-delete-button-\"]')).toHaveCount(0);\n  235 |   });\n  236 | });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 66,
+                            "line": 233
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('admin-events-create-button')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByTestId('admin-events-create-button') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('admin-events-create-button')\u001b[22m\n\u001b[2m    24 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n\n  231 |     await page.waitForLoadState('networkidle');\n  232 |     await expect(page.locator('main, #root').first()).not.toBeEmpty();\n> 233 |     await expect(page.getByTestId('admin-events-create-button')).toHaveCount(0);\n      |                                                                  ^\n  234 |     await expect(page.locator('[data-testid^=\"admin-events-delete-button-\"]')).toHaveCount(0);\n  235 |   });\n  236 | });\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:233:66"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:45:58.051Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-31",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 220,
+                            "column": 3
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Administration--c285f-nd-cannot-use-admin-screens-regression/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Administration--c285f-nd-cannot-use-admin-screens-regression/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Administration--c285f-nd-cannot-use-admin-screens-regression/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Administration--c285f-nd-cannot-use-admin-screens-regression/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "column": 66,
+                        "line": 233
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-67222fd96375cb4c0a96",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 220,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Cart, orders and navigation details @regression",
+          "file": "tests/e2e/regression/regression.spec.ts",
+          "line": 238,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-UI-14] Next is disabled on the last page of the event list",
+              "ok": false,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-32",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 239,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 11722,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('events-next-button')\nExpected: disabled\nReceived: enabled\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByTestId('events-next-button') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('events-next-button')\u001b[22m\n\u001b[2m    24 × locator resolved to <button type=\"button\" class=\"btn btn-secondary btn-sm\" data-testid=\"events-next-button\">Next →</button>\u001b[22m\n\u001b[2m       - unexpected value \"enabled\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('events-next-button')\nExpected: disabled\nReceived: enabled\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByTestId('events-next-button') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('events-next-button')\u001b[22m\n\u001b[2m    24 × locator resolved to <button type=\"button\" class=\"btn btn-secondary btn-sm\" data-testid=\"events-next-button\">Next →</button>\u001b[22m\n\u001b[2m       - unexpected value \"enabled\"\u001b[22m\n\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:251:58",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                          "column": 58,
+                          "line": 251
+                        },
+                        "snippet": "  249 |     }\n  250 |     await expect(page.getByTestId('events-page')).toHaveText(String(pages));\n> 251 |     await expect(page.getByTestId('events-next-button')).toBeDisabled();\n      |                                                          ^\n  252 |   });\n  253 |\n  254 |   test(tc('TC-UI-15', 'removing the last cart line resets the totals on screen'), bug('BUG-34'), async ({ page, context, buyer }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 58,
+                            "line": 251
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('events-next-button')\nExpected: disabled\nReceived: enabled\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByTestId('events-next-button') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('events-next-button')\u001b[22m\n\u001b[2m    24 × locator resolved to <button type=\"button\" class=\"btn btn-secondary btn-sm\" data-testid=\"events-next-button\">Next →</button>\u001b[22m\n\u001b[2m       - unexpected value \"enabled\"\u001b[22m\n\n\n  249 |     }\n  250 |     await expect(page.getByTestId('events-page')).toHaveText(String(pages));\n> 251 |     await expect(page.getByTestId('events-next-button')).toBeDisabled();\n      |                                                          ^\n  252 |   });\n  253 |\n  254 |   test(tc('TC-UI-15', 'removing the last cart line resets the totals on screen'), bug('BUG-34'), async ({ page, context, buyer }) => {\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:251:58"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:46:11.254Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-32",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 239,
+                            "column": 3
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Cart-orders-and-a6b8c-last-page-of-the-event-list-regression/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Cart-orders-and-a6b8c-last-page-of-the-event-list-regression/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Cart-orders-and-a6b8c-last-page-of-the-event-list-regression/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Cart-orders-and-a6b8c-last-page-of-the-event-list-regression/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "column": 58,
+                        "line": 251
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-5a65c13e25aab1d740d6",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 239,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-15] removing the last cart line resets the totals on screen",
+              "ok": false,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-34",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 254,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1445,
+                      "error": {
+                        "message": "Error: total still shown after the cart emptied\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m105000\u001b[39m",
+                        "stack": "Error: total still shown after the cart emptied\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m105000\u001b[39m\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:267:101",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                          "column": 101,
+                          "line": 267
+                        },
+                        "snippet": "  265 |     await expect(page.getByTestId('cart-empty')).toBeVisible();\n  266 |     const total = page.getByTestId('cart-total');\n> 267 |     if (await total.count()) expect(await money(total), 'total still shown after the cart emptied').toBe(0);\n      |                                                                                                     ^\n  268 |   });\n  269 |\n  270 |   test(tc('TC-UI-16', 'each cart line shows its ticket type'), bug('BUG-35'), async ({ page, context, buyer }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 101,
+                            "line": 267
+                          },
+                          "message": "Error: total still shown after the cart emptied\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m105000\u001b[39m\n\n  265 |     await expect(page.getByTestId('cart-empty')).toBeVisible();\n  266 |     const total = page.getByTestId('cart-total');\n> 267 |     if (await total.count()) expect(await money(total), 'total still shown after the cart emptied').toBe(0);\n      |                                                                                                     ^\n  268 |   });\n  269 |\n  270 |   test(tc('TC-UI-16', 'each cart line shows its ticket type'), bug('BUG-35'), async ({ page, context, buyer }) => {\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:267:101"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:46:23.388Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-34",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 254,
+                            "column": 3
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Cart-orders-and-79d0a-resets-the-totals-on-screen-regression/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Cart-orders-and-79d0a-resets-the-totals-on-screen-regression/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Cart-orders-and-79d0a-resets-the-totals-on-screen-regression/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Cart-orders-and-79d0a-resets-the-totals-on-screen-regression/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "column": 101,
+                        "line": 267
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-45b31489ca42f8186491",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 254,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-16] each cart line shows its ticket type",
+              "ok": false,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-35",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 270,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1445,
+                      "error": {
+                        "message": "Error: line name \"Mid-Autumn Lantern Night — Standard\" is clipped on screen\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m",
+                        "stack": "Error: line name \"Mid-Autumn Lantern Night — Standard\" is clipped on screen\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:280:90",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                          "column": 90,
+                          "line": 280
+                        },
+                        "snippet": "  278 |     for (const el of await names.all()) {\n  279 |       const clipped = await el.evaluate((e) => e.scrollWidth > e.clientWidth);\n> 280 |       expect.soft(clipped, `line name \"${await el.textContent()}\" is clipped on screen`).toBe(false);\n      |                                                                                          ^\n  281 |     }\n  282 |     const visible = await names.evaluateAll((els) => els.map((e) => (e.scrollWidth > e.clientWidth ? null : e.textContent)));\n  283 |     expect(new Set(visible).size, 'the two lines must be told apart by what is visible').toBe(2);"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 90,
+                            "line": 280
+                          },
+                          "message": "Error: line name \"Mid-Autumn Lantern Night — Standard\" is clipped on screen\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  278 |     for (const el of await names.all()) {\n  279 |       const clipped = await el.evaluate((e) => e.scrollWidth > e.clientWidth);\n> 280 |       expect.soft(clipped, `line name \"${await el.textContent()}\" is clipped on screen`).toBe(false);\n      |                                                                                          ^\n  281 |     }\n  282 |     const visible = await names.evaluateAll((els) => els.map((e) => (e.scrollWidth > e.clientWidth ? null : e.textContent)));\n  283 |     expect(new Set(visible).size, 'the two lines must be told apart by what is visible').toBe(2);\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:280:90"
+                        },
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 90,
+                            "line": 280
+                          },
+                          "message": "Error: line name \"Mid-Autumn Lantern Night — VIP\" is clipped on screen\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  278 |     for (const el of await names.all()) {\n  279 |       const clipped = await el.evaluate((e) => e.scrollWidth > e.clientWidth);\n> 280 |       expect.soft(clipped, `line name \"${await el.textContent()}\" is clipped on screen`).toBe(false);\n      |                                                                                          ^\n  281 |     }\n  282 |     const visible = await names.evaluateAll((els) => els.map((e) => (e.scrollWidth > e.clientWidth ? null : e.textContent)));\n  283 |     expect(new Set(visible).size, 'the two lines must be told apart by what is visible').toBe(2);\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:280:90"
+                        },
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 90,
+                            "line": 283
+                          },
+                          "message": "Error: the two lines must be told apart by what is visible\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m2\u001b[39m\nReceived: \u001b[31m1\u001b[39m\n\n  281 |     }\n  282 |     const visible = await names.evaluateAll((els) => els.map((e) => (e.scrollWidth > e.clientWidth ? null : e.textContent)));\n> 283 |     expect(new Set(visible).size, 'the two lines must be told apart by what is visible').toBe(2);\n      |                                                                                          ^\n  284 |   });\n  285 |\n  286 |   test(tc('TC-UI-17', 'a cancelled order offers no Cancel button'), bug('BUG-36'), async ({ page, context, buyer }) => {\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:283:90"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:46:25.103Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-35",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 270,
+                            "column": 3
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Cart-orders-and-354df--line-shows-its-ticket-type-regression/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Cart-orders-and-354df--line-shows-its-ticket-type-regression/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Cart-orders-and-354df--line-shows-its-ticket-type-regression/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Cart-orders-and-354df--line-shows-its-ticket-type-regression/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "column": 90,
+                        "line": 280
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-bf22a6e952fdf8bf9918",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 270,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-17] a cancelled order offers no Cancel button",
+              "ok": false,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-36",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 286,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 11679,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('my-orders-cancel-button-545')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByTestId('my-orders-cancel-button-545') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('my-orders-cancel-button-545')\u001b[22m\n\u001b[2m    24 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('my-orders-cancel-button-545')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByTestId('my-orders-cancel-button-545') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('my-orders-cancel-button-545')\u001b[22m\n\u001b[2m    24 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:294:71",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                          "column": 71,
+                          "line": 294
+                        },
+                        "snippet": "  292 |     await page.goto('/my-orders');\n  293 |     await expect(page.getByTestId(`my-orders-status-${o.id}`)).toHaveText('CANCELLED');\n> 294 |     await expect(page.getByTestId(`my-orders-cancel-button-${o.id}`)).toHaveCount(0);\n      |                                                                       ^\n  295 |   });\n  296 | });\n  297 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 71,
+                            "line": 294
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('my-orders-cancel-button-545')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByTestId('my-orders-cancel-button-545') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('my-orders-cancel-button-545')\u001b[22m\n\u001b[2m    24 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n\n  292 |     await page.goto('/my-orders');\n  293 |     await expect(page.getByTestId(`my-orders-status-${o.id}`)).toHaveText('CANCELLED');\n> 294 |     await expect(page.getByTestId(`my-orders-cancel-button-${o.id}`)).toHaveCount(0);\n      |                                                                       ^\n  295 |   });\n  296 | });\n  297 |\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:294:71"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:46:26.830Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-36",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 286,
+                            "column": 3
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Cart-orders-and-90a59-der-offers-no-Cancel-button-regression/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Cart-orders-and-90a59-der-offers-no-Cancel-button-regression/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Cart-orders-and-90a59-der-offers-no-Cancel-button-regression/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Cart-orders-and-90a59-der-offers-no-Cancel-button-regression/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "column": 71,
+                        "line": 294
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-bb0fd3b5f63633fea856",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 286,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Phone navigation (360 px) @regression",
+          "file": "tests/e2e/regression/regression.spec.ts",
+          "line": 298,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-UI-18] the menu links can be tapped",
+              "ok": false,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-37",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 301,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 15,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1329,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 5\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"nav-cart-link is covered by undefined\",\u001b[39m\n\u001b[31m+   \"nav-my-orders-link is covered by event-detail-title\",\u001b[39m\n\u001b[31m+   \"nav-profile-link is covered by event-detail-title\",\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 5\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"nav-cart-link is covered by undefined\",\u001b[39m\n\u001b[31m+   \"nav-my-orders-link is covered by event-detail-title\",\u001b[39m\n\u001b[31m+   \"nav-profile-link is covered by event-detail-title\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:314:20",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                          "column": 20,
+                          "line": 314
+                        },
+                        "snippet": "  312 |       if (onTop !== id) hidden.push(`${id} is covered by ${onTop}`);\n  313 |     }\n> 314 |     expect(hidden).toEqual([]);\n      |                    ^\n  315 |   });\n  316 |   test(tc('TC-UI-19', 'logged out, Log in in the menu can be tapped'), bug('BUG-37'), async ({ page }) => {\n  317 |     await page.goto('/');"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 20,
+                            "line": 314
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 5\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"nav-cart-link is covered by undefined\",\u001b[39m\n\u001b[31m+   \"nav-my-orders-link is covered by event-detail-title\",\u001b[39m\n\u001b[31m+   \"nav-profile-link is covered by event-detail-title\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  312 |       if (onTop !== id) hidden.push(`${id} is covered by ${onTop}`);\n  313 |     }\n> 314 |     expect(hidden).toEqual([]);\n      |                    ^\n  315 |   });\n  316 |   test(tc('TC-UI-19', 'logged out, Log in in the menu can be tapped'), bug('BUG-37'), async ({ page }) => {\n  317 |     await page.goto('/');\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:314:20"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:46:38.796Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-37",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 301,
+                            "column": 3
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Phone-navigatio-3cb02-he-menu-links-can-be-tapped-regression/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Phone-navigatio-3cb02-he-menu-links-can-be-tapped-regression/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Phone-navigatio-3cb02-he-menu-links-can-be-tapped-regression/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Phone-navigatio-3cb02-he-menu-links-can-be-tapped-regression/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "column": 20,
+                        "line": 314
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-8455adbca8d231ffe466",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 301,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-19] logged out, Log in in the menu can be tapped",
+              "ok": false,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-37",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 316,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 16,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 681,
+                      "error": {
+                        "message": "Error: element on top of Log in\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"nav-login-link\"\u001b[39m\nReceived: \u001b[31m\"events-title\"\u001b[39m",
+                        "stack": "Error: element on top of Log in\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"nav-login-link\"\u001b[39m\nReceived: \u001b[31m\"events-title\"\u001b[39m\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:324:47",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                          "column": 47,
+                          "line": 324
+                        },
+                        "snippet": "  322 |     const box = (await link.boundingBox())!;\n  323 |     const onTop = await page.evaluate(([x, y]) => (document.elementFromPoint(x, y) as HTMLElement | null)?.closest('[data-testid]')?.getAttribute('data-testid'), [box.x + box.width / 2, box.y + box.height / 2] as const);\n> 324 |     expect(onTop, 'element on top of Log in').toBe('nav-login-link');\n      |                                               ^\n  325 |   });\n  326 | });\n  327 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 47,
+                            "line": 324
+                          },
+                          "message": "Error: element on top of Log in\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"nav-login-link\"\u001b[39m\nReceived: \u001b[31m\"events-title\"\u001b[39m\n\n  322 |     const box = (await link.boundingBox())!;\n  323 |     const onTop = await page.evaluate(([x, y]) => (document.elementFromPoint(x, y) as HTMLElement | null)?.closest('[data-testid]')?.getAttribute('data-testid'), [box.x + box.width / 2, box.y + box.height / 2] as const);\n> 324 |     expect(onTop, 'element on top of Log in').toBe('nav-login-link');\n      |                                               ^\n  325 |   });\n  326 | });\n  327 |\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:324:47"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:46:40.431Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-37",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 316,
+                            "column": 3
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Phone-navigatio-26e1c-n-in-the-menu-can-be-tapped-regression/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Phone-navigatio-26e1c-n-in-the-menu-can-be-tapped-regression/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Phone-navigatio-26e1c-n-in-the-menu-can-be-tapped-regression/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234454233-regression/regression-Phone-navigatio-26e1c-n-in-the-menu-can-be-tapped-regression/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "column": 47,
+                        "line": 324
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-eeb2b6d959394ecff423",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 316,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-24T16:44:54.238Z",
+    "duration": 106999.211,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 17,
+    "flaky": 0
+  }
+}

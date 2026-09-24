@@ -1,0 +1,642 @@
+{
+  "config": {
+    "argv": [
+      "~/.nvm/versions/node/v22.23.2/bin/node",
+      "submissions/tunt01102/automation/node_modules/.bin/playwright",
+      "test",
+      "--project=mobile-webkit"
+    ],
+    "configFile": "submissions/tunt01102/automation/playwright.config.ts",
+    "rootDir": "submissions/tunt01102/automation",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "submissions/tunt01102/automation/tests/support/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "smoke",
+        "name": "smoke",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/smoke",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "api",
+        "name": "api",
+        "testDir": "submissions/tunt01102/automation/tests/api",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "regression",
+        "name": "regression",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/regression",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "smoke-firefox",
+        "name": "smoke-firefox",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/smoke",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "smoke-webkit",
+        "name": "smoke-webkit",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/smoke",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-webkit",
+        "name": "mobile-webkit",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/regression",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "slow",
+        "name": "slow",
+        "testDir": "submissions/tunt01102/automation/tests/slow",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 2400000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "evidence-timing",
+        "name": "evidence-timing",
+        "testDir": "submissions/tunt01102/automation/tests/evidence",
+        "testIgnore": [],
+        "testMatch": [
+          "timing.evidence.spec.ts"
+        ],
+        "timeout": 2700000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "evidence",
+        "name": "evidence",
+        "testDir": "submissions/tunt01102/automation/tests/evidence",
+        "testIgnore": [],
+        "testMatch": [
+          "bugs.evidence.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/mobile-webkit/20260924T234641712.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report/20260924T234641712-mobile-webkit",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "tests/e2e/regression/regression.spec.ts",
+      "file": "tests/e2e/regression/regression.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Phone screens (360 px) @regression",
+          "file": "tests/e2e/regression/regression.spec.ts",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-UI-01] a buyer can reach quantity and Add without scrolling sideways",
+              "ok": false,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-25",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 10,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-webkit",
+                  "projectName": "mobile-webkit",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1454,
+                      "error": {
+                        "message": "Error: event-detail-ticket-STANDARD-qty right edge must be within 360 px\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m360\u001b[39m\nReceived:    \u001b[31m512.84375\u001b[39m",
+                        "stack": "Error: event-detail-ticket-STANDARD-qty right edge must be within 360 px\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m360\u001b[39m\nReceived:    \u001b[31m512.84375\u001b[39m\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:17:77",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                          "column": 77,
+                          "line": 17
+                        },
+                        "snippet": "  15 |       expect(box, `${id} is rendered`).not.toBeNull();\n  16 |       expect(box!.x, `${id} left edge`).toBeGreaterThanOrEqual(0);\n> 17 |       expect(box!.x + box!.width, `${id} right edge must be within 360 px`).toBeLessThanOrEqual(360);\n     |                                                                             ^\n  18 |     }\n  19 |     await page.getByTestId('event-detail-ticket-STANDARD-add-button').click({ trial: true, timeout: 3_000 });\n  20 |   });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 77,
+                            "line": 17
+                          },
+                          "message": "Error: event-detail-ticket-STANDARD-qty right edge must be within 360 px\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m360\u001b[39m\nReceived:    \u001b[31m512.84375\u001b[39m\n\n  15 |       expect(box, `${id} is rendered`).not.toBeNull();\n  16 |       expect(box!.x, `${id} left edge`).toBeGreaterThanOrEqual(0);\n> 17 |       expect(box!.x + box!.width, `${id} right edge must be within 360 px`).toBeLessThanOrEqual(360);\n     |                                                                             ^\n  18 |     }\n  19 |     await page.getByTestId('event-detail-ticket-STANDARD-add-button').click({ trial: true, timeout: 3_000 });\n  20 |   });\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:17:77"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:46:42.313Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-25",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 10,
+                            "column": 3
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit/regression-Phone-screens-3-4c7a3--without-scrolling-sideways-mobile-webkit/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit/regression-Phone-screens-3-4c7a3--without-scrolling-sideways-mobile-webkit/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit/regression-Phone-screens-3-4c7a3--without-scrolling-sideways-mobile-webkit/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit/regression-Phone-screens-3-4c7a3--without-scrolling-sideways-mobile-webkit/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "column": 77,
+                        "line": 17
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-719cd401a399d77cd869",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 10,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-02] no buyer screen scrolls sideways",
+              "ok": false,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-26",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 22,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-webkit",
+                  "projectName": "mobile-webkit",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 6301,
+                      "error": {
+                        "message": "Error: scrollWidth per screen: {\"/\":360,\"/events/7\":360,\"/cart\":360,\"/checkout\":360,\"/my-orders\":360,\"/profile\":500}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 6\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Array [\u001b[39m\n\u001b[31m+     \"/profile\",\u001b[39m\n\u001b[31m+     500,\u001b[39m\n\u001b[31m+   ],\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                        "stack": "Error: scrollWidth per screen: {\"/\":360,\"/events/7\":360,\"/cart\":360,\"/checkout\":360,\"/my-orders\":360,\"/profile\":500}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 6\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Array [\u001b[39m\n\u001b[31m+     \"/profile\",\u001b[39m\n\u001b[31m+     500,\u001b[39m\n\u001b[31m+   ],\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:41:74",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                          "column": 74,
+                          "line": 41
+                        },
+                        "snippet": "  39 |     }\n  40 |     const tooWide = Object.entries(widths).filter(([, w]) => w > 360);\n> 41 |     expect(tooWide, `scrollWidth per screen: ${JSON.stringify(widths)}`).toEqual([]);\n     |                                                                          ^\n  42 |   });\n  43 | });\n  44 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 74,
+                            "line": 41
+                          },
+                          "message": "Error: scrollWidth per screen: {\"/\":360,\"/events/7\":360,\"/cart\":360,\"/checkout\":360,\"/my-orders\":360,\"/profile\":500}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 6\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Array [\u001b[39m\n\u001b[31m+     \"/profile\",\u001b[39m\n\u001b[31m+     500,\u001b[39m\n\u001b[31m+   ],\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  39 |     }\n  40 |     const tooWide = Object.entries(widths).filter(([, w]) => w > 360);\n> 41 |     expect(tooWide, `scrollWidth per screen: ${JSON.stringify(widths)}`).toEqual([]);\n     |                                                                          ^\n  42 |   });\n  43 | });\n  44 |\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:41:74"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:46:44.180Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-26",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 22,
+                            "column": 3
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit/regression-Phone-screens-3-b361c-yer-screen-scrolls-sideways-mobile-webkit/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit/regression-Phone-screens-3-b361c-yer-screen-scrolls-sideways-mobile-webkit/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit/regression-Phone-screens-3-b361c-yer-screen-scrolls-sideways-mobile-webkit/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit/regression-Phone-screens-3-b361c-yer-screen-scrolls-sideways-mobile-webkit/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "column": 74,
+                        "line": 41
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-4cbc6b1884524909b459",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 22,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Phone navigation (360 px) @regression",
+          "file": "tests/e2e/regression/regression.spec.ts",
+          "line": 298,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-UI-18] the menu links can be tapped",
+              "ok": false,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-37",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 301,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-webkit",
+                  "projectName": "mobile-webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1617,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 5\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"nav-cart-link is covered by undefined\",\u001b[39m\n\u001b[31m+   \"nav-my-orders-link is covered by event-detail-title\",\u001b[39m\n\u001b[31m+   \"nav-profile-link is covered by event-detail-title\",\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 5\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"nav-cart-link is covered by undefined\",\u001b[39m\n\u001b[31m+   \"nav-my-orders-link is covered by event-detail-title\",\u001b[39m\n\u001b[31m+   \"nav-profile-link is covered by event-detail-title\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:314:20",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                          "column": 20,
+                          "line": 314
+                        },
+                        "snippet": "  312 |       if (onTop !== id) hidden.push(`${id} is covered by ${onTop}`);\n  313 |     }\n> 314 |     expect(hidden).toEqual([]);\n      |                    ^\n  315 |   });\n  316 |   test(tc('TC-UI-19', 'logged out, Log in in the menu can be tapped'), bug('BUG-37'), async ({ page }) => {\n  317 |     await page.goto('/');"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 20,
+                            "line": 314
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 5\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"nav-cart-link is covered by undefined\",\u001b[39m\n\u001b[31m+   \"nav-my-orders-link is covered by event-detail-title\",\u001b[39m\n\u001b[31m+   \"nav-profile-link is covered by event-detail-title\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  312 |       if (onTop !== id) hidden.push(`${id} is covered by ${onTop}`);\n  313 |     }\n> 314 |     expect(hidden).toEqual([]);\n      |                    ^\n  315 |   });\n  316 |   test(tc('TC-UI-19', 'logged out, Log in in the menu can be tapped'), bug('BUG-37'), async ({ page }) => {\n  317 |     await page.goto('/');\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:314:20"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:46:50.901Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-37",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 301,
+                            "column": 3
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit/regression-Phone-navigatio-3cb02-he-menu-links-can-be-tapped-mobile-webkit/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit/regression-Phone-navigatio-3cb02-he-menu-links-can-be-tapped-mobile-webkit/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit/regression-Phone-navigatio-3cb02-he-menu-links-can-be-tapped-mobile-webkit/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit/regression-Phone-navigatio-3cb02-he-menu-links-can-be-tapped-mobile-webkit/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "column": 20,
+                        "line": 314
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-0285f68719d75394973d",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 301,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-19] logged out, Log in in the menu can be tapped",
+              "ok": false,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-37",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 316,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-webkit",
+                  "projectName": "mobile-webkit",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 847,
+                      "error": {
+                        "message": "Error: element on top of Log in\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"nav-login-link\"\u001b[39m\nReceived: \u001b[31m\"events-title\"\u001b[39m",
+                        "stack": "Error: element on top of Log in\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"nav-login-link\"\u001b[39m\nReceived: \u001b[31m\"events-title\"\u001b[39m\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:324:47",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                          "column": 47,
+                          "line": 324
+                        },
+                        "snippet": "  322 |     const box = (await link.boundingBox())!;\n  323 |     const onTop = await page.evaluate(([x, y]) => (document.elementFromPoint(x, y) as HTMLElement | null)?.closest('[data-testid]')?.getAttribute('data-testid'), [box.x + box.width / 2, box.y + box.height / 2] as const);\n> 324 |     expect(onTop, 'element on top of Log in').toBe('nav-login-link');\n      |                                               ^\n  325 |   });\n  326 | });\n  327 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "column": 47,
+                            "line": 324
+                          },
+                          "message": "Error: element on top of Log in\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"nav-login-link\"\u001b[39m\nReceived: \u001b[31m\"events-title\"\u001b[39m\n\n  322 |     const box = (await link.boundingBox())!;\n  323 |     const onTop = await page.evaluate(([x, y]) => (document.elementFromPoint(x, y) as HTMLElement | null)?.closest('[data-testid]')?.getAttribute('data-testid'), [box.x + box.width / 2, box.y + box.height / 2] as const);\n> 324 |     expect(onTop, 'element on top of Log in').toBe('nav-login-link');\n      |                                               ^\n  325 |   });\n  326 | });\n  327 |\n    at submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts:324:47"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T16:46:52.910Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-37",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                            "line": 316,
+                            "column": 3
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit/regression-Phone-navigatio-26e1c-n-in-the-menu-can-be-tapped-mobile-webkit/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit/regression-Phone-navigatio-26e1c-n-in-the-menu-can-be-tapped-mobile-webkit/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit/regression-Phone-navigatio-26e1c-n-in-the-menu-can-be-tapped-mobile-webkit/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260924T234641712-mobile-webkit/regression-Phone-navigatio-26e1c-n-in-the-menu-can-be-tapped-mobile-webkit/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "column": 47,
+                        "line": 324
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-a78259d6fb46ffef4509",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 316,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-24T16:46:41.718Z",
+    "duration": 12232.881,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

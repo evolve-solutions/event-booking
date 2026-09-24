@@ -1,0 +1,197 @@
+{
+ "playbook": "https://github.com/tunt01102/agentic-quality-engineering-playbook",
+ "entries": [
+  {
+   "phase": "Specify",
+   "what": "Read round-1-brief.md directly and extracted 34 requirement ids with quoted sentences; listed 8 spec gaps.",
+   "rule": "PRINCIPLES 14: read the policy source directly, never a paraphrase",
+   "artefact": "spec/requirements.json"
+  },
+  {
+   "phase": "Observe",
+   "what": "Captured /docs/json (27 operations), the frontend bundle's data-testid list and live responses before writing any test.",
+   "rule": "PRINCIPLES 32 / VERIFICATION 9: look at the real system before writing code against a description of it",
+   "artefact": "project-overview.md"
+  },
+  {
+   "phase": "Observe",
+   "what": "Found WELCOME10 by probing, since the brief names no codes; recorded as GAP-01 instead of assuming.",
+   "rule": "PRINCIPLES 12: premises carry a verdict and a source",
+   "artefact": "spec/requirements.json#GAP-01"
+  },
+  {
+   "phase": "Oracle",
+   "what": "Encoded pricing, refund, validation, listing and Vietnam-time rules as a unit-tested oracle; every expected number in the suites comes from it, never from the system under test.",
+   "rule": "VERIFICATION 4: a reference the check writes itself can never fail",
+   "artefact": "automation/src/spec"
+  },
+  {
+   "phase": "Oracle",
+   "what": "I sabotaged the fee rule on purpose (fee on the subtotal): 2 unit tests went red; I restored it and the suite went green again.",
+   "rule": "PRINCIPLES 35 / VERIFICATION 3: prove that a check can fail",
+   "artefact": "automation/tests/unit/pricing.test.ts"
+  },
+  {
+   "phase": "Design",
+   "what": "Designed test cases from requirements with boundaries, equivalence classes, state transitions and an authorisation matrix.",
+   "rule": "SDD: every test case names the requirement it proves",
+   "artefact": "spec/test-cases.json"
+  },
+  {
+   "phase": "Automate",
+   "what": "Retries set to 0 and every result records its route (first attempt, retry, not run).",
+   "rule": "PRINCIPLES 34 / VERIFICATION 1: a pass must name the mechanism that produced it",
+   "artefact": "automation/playwright.config.ts"
+  },
+  {
+   "phase": "Automate",
+   "what": "Tests that expose a bug are left red with a bug annotation, never marked expected-to-fail, so a fixed bug turns them green and an unrelated failure cannot hide behind the bug.",
+   "rule": "VERIFICATION 1: green-by-expected-failure rubber-stamps",
+   "artefact": "automation/tests/support/fixtures.ts"
+  },
+  {
+   "phase": "Automate",
+   "what": "Positive preconditions: paging checks assert the list is longer than one page; the label audit asserts more than 8 fields were found.",
+   "rule": "VERIFICATION 2: the success state must be distinguishable from the not-yet-started state",
+   "artefact": "tests/api/events.spec.ts, tests/e2e/regression"
+  },
+  {
+   "phase": "Run",
+   "what": "First API run: 32 failures; 30 mapped to known bugs, 2 unexplained (TC-VIP-05, TC-DISC-10). Investigated: PATCH also allows 5 VIP (BUG-08) and the late-added discount still gets the pre-discount fee (BUG-07). No failure left unexplained.",
+   "rule": "VERIFICATION 8: a finding must be allowed to survive",
+   "artefact": "reports/api.json"
+  },
+  {
+   "phase": "Run",
+   "what": "TC-UI-02 passed although the profile overflows: the check measured the page before the email loaded, and random test emails were short and hyphenated. Fixed the wait and used a realistic email; the check now fails for the right reason (scrollWidth 494).",
+   "rule": "VERIFICATION 2 and 3: an empty or not-yet-loaded world passes",
+   "artefact": "tests/e2e/regression/regression.spec.ts"
+  },
+  {
+   "phase": "Run",
+   "what": "TC-UI-12 was classified 'known bug' while it failed on a test-code error. Lesson: a known-bug label is trusted only after reading the error text; fixed the race and it now fails on the real duplicate.",
+   "rule": "VERIFICATION 7: do not fool yourself with the measuring instrument itself",
+   "artefact": "src/report/aggregate.ts"
+  },
+  {
+   "phase": "Run",
+   "what": "No destructive request was ever sent to shared data: admin edit probed with an empty body, delete with a non-existent id, stock PATCH with its current value; every created order is cancelled once at teardown.",
+   "rule": "PRINCIPLES 20 and 38: never touch what is not yours; writes stay inside what is ours",
+   "artefact": "tests/api/orders-admin.spec.ts"
+  },
+  {
+   "phase": "Run",
+   "what": "The 50% refund tier cannot be executed here; it is a skipped test with the reason, not substituted with another event.",
+   "rule": "PRINCIPLES 33: a named thing that is not there is a finding, not an obstacle",
+   "artefact": "TC-CAN-04"
+  },
+  {
+   "phase": "Evidence",
+   "what": "Each bug reproduced in a real browser with video, screenshot, HAR and a request/response log; cookies, tokens and passwords redacted before writing.",
+   "rule": "PRINCIPLES 20: never store credentials; PRINCIPLES 25: the deliverable is the artefact",
+   "artefact": "assets/BUG-*"
+  },
+  {
+   "phase": "Trace",
+   "what": "RTM generated from requirements, test cases, results and bugs; catalogue drift (cases not automated, ids in code missing from the catalogue, bugs without a test) is computed and shown.",
+   "rule": "PRINCIPLES 37: improving a source and refreshing its copies is one act",
+   "artefact": "rtm.md, dashboard"
+  },
+  {
+   "phase": "Evidence",
+   "what": "The first 10 and 30 minute evidence runs broke at teardown: another Playwright run in parallel wiped the shared test-results folder that held their traces. Continuous recordings of the wait were also 16 MB and 133 MB. Fix: the evidence project got its own output folder, and long waits are recorded as two short clips (before and after) that share one session through storageState. Both bugs had already been confirmed by the slow suite and by screenshots.",
+   "rule": "VERIFICATION 7: the instrument is code too, and it fails quietly; PRINCIPLES 36: state the cost before buying another round",
+   "artefact": "automation/playwright.config.ts, tests/evidence/timing.evidence.spec.ts"
+  },
+  {
+   "phase": "Run",
+   "what": "Stability: npm run test:stability runs smoke, API and regression three times in a row, each under its own run id, and compares every test outcome; no test changed outcome between runs (latest counts on the dashboard).",
+   "rule": "PRINCIPLES 6: three consistent runs before a pull request",
+   "artefact": "automation/scripts/stability.mjs, automation/reports/stability/"
+  },
+  {
+   "phase": "Explore",
+   "what": "Chased the IDOR pattern one step further: PATCH on another customer's cart line. It holds (404), so it became a passing check (TC-ORD-05) rather than a bug.",
+   "rule": "VERIFICATION 8: a finding must be allowed to survive, and so must a negative result",
+   "artefact": "tests/api/orders-admin.spec.ts"
+  },
+  {
+   "phase": "Report",
+   "what": "I moved every run output to YYYYMMDDTHHmmssSSS names (reports, coverage, Playwright output, evidence, logs); filtered runs go to <suite>-partial. Earlier fixed-name outputs were migrated using their file time or recordedAt, so no history was lost.",
+   "rule": "PRINCIPLES 27: restate a correction and write it down with its reason; VERIFICATION 7",
+   "artefact": "automation/src/report/runId.ts"
+  },
+  {
+   "phase": "Review",
+   "what": "I reviewed the whole submission from five angles: SDET, QA manager, fullstack developer, solution architect and DevOps. About 60 findings; the changes below are what came out of it.",
+   "rule": "PRINCIPLES 16: several reviewer perspectives catch what one misses",
+   "artefact": "this log, README.md"
+  },
+  {
+   "phase": "Review",
+   "what": "Developer view: the frontend bundle is source for the UI. Ten feature flags in it (f01, f03, f04, f24, f30 to f35) each switch a UI defect on. Four of those defects I had missed, plus two more I found checking the rest: BUG-32 to BUG-37 (pager past the last page, stale success message, stale total, clipped cart lines, Cancel on cancelled orders, phone menu hidden behind the page). All six reproduced live and got tests and evidence.",
+   "rule": "VERIFICATION 9: look at the real system; PRINCIPLES 32",
+   "artefact": "spec/bugs.json BUG-32..37"
+  },
+  {
+   "phase": "Review",
+   "what": "SDET view: TC-UI-07 passed for the wrong reason (the unsorted list already opened with the expected title), so it now waits for the sorted response and compares the whole page; it now fails on BUG-23 as it should. The BUG-21 evidence could report 'reproduced' from a list still loading; it now decides from the API. Conditional assertions (TC-CAN-03, TC-DISC-10) were made explicit or turned into a stated skip.",
+   "rule": "VERIFICATION 2 and 3: a check that cannot fail, or passes on an empty world, measures nothing",
+   "artefact": "tests/e2e/regression, tests/evidence"
+  },
+  {
+   "phase": "Review",
+   "what": "SDET view: any failure of a bug-tagged test used to count as 'known bug', so a timeout could hide behind an old bug. Now only an assertion failure counts, and a bug-tagged test that passes while its bug is open is flagged. Proved by sabotage: forcing every failure to count as an assertion turned the new unit test red.",
+   "rule": "VERIFICATION 1 and PRINCIPLES 35",
+   "artefact": "src/report/aggregate.ts"
+  },
+  {
+   "phase": "Review",
+   "what": "QA manager view: BUG-11's text described a 3-ticket run while its recording showed 1 ticket; the steps are now written from the recorded run on a dedicated quiet event. Expected results in the discount test cases were formulas; they are now numbers. Added three boundary cases, raised BUG-03 to Critical (same flaw as BUG-02), and rewrote causes as hypotheses.",
+   "rule": "PRINCIPLES 5: done is a verified state; the evidence must match the claim",
+   "artefact": "bugs.md, test-cases.md"
+  },
+  {
+   "phase": "Review",
+   "what": "Architect view: event ids were hard-coded. A global setup now chooses the events by rule from the live list at the start of each run and writes the choice to reports/world/<run id>.json. Spec files are schema-checked and cross-referenced by a unit test and by the dashboard build, which now fails on any drift. Evidence is written to a '.incomplete' folder and renamed only when complete. Config lives in one module.",
+   "rule": "PRINCIPLES 32 and 37; LESSONS: the same setting in two stores",
+   "artefact": "src/data/world.ts, src/spec/catalogue.ts, src/config.ts"
+  },
+  {
+   "phase": "Review",
+   "what": "DevOps view: the stability script could never fail, and no CI gate existed because the API and regression suites are red by design. Added scripts/gate.mjs, which fails only on unexplained failures, flaky tests, missing reports, or bug-tagged tests that pass. The first gate run caught two real problems (TC-VIP-04 exposed a new route to BUG-08; TC-ADM-03 exposed validation before authorisation, noted as OBS-05). Also: Node pinned to 22.18 or later, portable npm scripts, a CI template inside the submission folder, and clean and prune scripts.",
+   "rule": "PRINCIPLES 7: gates are mechanised and fail closed",
+   "artefact": "automation/scripts, automation/ci/github-actions.yml"
+  },
+  {
+   "phase": "Iteration 3",
+   "what": "I wrote the plan for the open items as an SDD first, re-checking every premise against the code. One premise was partly refuted: the API stock-delta tests already run serially in one file; only the evidence suite had a real overlap (BUG-36 and BUG-11 on the quiet event).",
+   "rule": "PRINCIPLES 12: premises are checked the same day they are acted on",
+   "artefact": "test-plan.md §13"
+  },
+  {
+   "phase": "Iteration 3",
+   "what": "Five reviewers read the SDD before any code. The QA-manager view changed the priorities most: a severity pass came first, and three plumbing items were cut down. OI-7 (reusing a cart from an earlier run) was dropped: it would store working logins, always skip in CI, and skip exactly when BUG-12 is fixed.",
+   "rule": "PRINCIPLES 16: plan review before implementation, several perspectives",
+   "artefact": "test-plan.md §13"
+  },
+  {
+   "phase": "Iteration 3",
+   "what": "Each new mechanism was broken on purpose once: a misspelt id fails tsc; a corrupted dashboard payload fails the build; an evidence test touching the quiet event fails the isolation test; unmerged shard blobs fail the gate. The 124-title codemod was proved by an identical --list output before and after, and the 2-shard API run merged to 94 tests with no outcome different from the full run.",
+   "rule": "PRINCIPLES 35: prove that a check can fail",
+   "artefact": "tests/unit, scripts/merge-shards.mjs"
+  },
+  {
+   "phase": "Iteration 3",
+   "what": "The DevOps review caught that the locally installed Firefox and WebKit builds did not match Playwright 1.63; I installed the matching ones before the first cross-engine run. Smoke passed on both; the three phone bugs reproduced on WebKit's iPhone profile too, which backs findings that rested on Chromium emulation alone.",
+   "rule": "PRINCIPLES 10: environment first",
+   "artefact": "src/projects.ts, reports/mobile-webkit"
+  },
+  {
+   "phase": "Report",
+   "what": "I kept every shared artefact in English for the reviewers, and my own working notes in Vietnamese.",
+   "rule": "PRINCIPLES 23: audience decides the language",
+   "artefact": "all files"
+  }
+ ]
+}

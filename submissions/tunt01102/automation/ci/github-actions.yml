@@ -1,0 +1,95 @@
+# CI template. The brief forbids changes outside submissions/<user>/, so this file is not active here:
+# to use it, copy it to .github/workflows/qa.yml in a repository you own.
+#
+# Design: typecheck, unit tests and smoke are hard gates (they must be green). API and regression are red by
+# design while bugs are open, so their exit codes are ignored and scripts/gate.mjs decides: it fails only on
+# an unexplained failure, a flaky test, a test tagged with an open bug that passed, or a missing report.
+name: qa
+on:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 20 * * *' # 03:00 Vietnam time: the nightly run includes the 30 minute slow suite
+
+defaults:
+  run:
+    working-directory: submissions/tunt01102/automation
+
+env:
+  BASE_URL: ${{ vars.BASE_URL }}   # required in CI; src/config.ts refuses to start without it
+  ENV_NAME: ${{ vars.ENV_NAME }}
+  RUN_SCOPE: full
+  CI: 1
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: submissions/tunt01102/automation/.nvmrc
+          cache: npm
+          cache-dependency-path: submissions/tunt01102/automation/package-lock.json
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run typecheck
+      - run: npm run test:unit            # hard gate: 80% coverage thresholds in vitest.config.ts
+      - run: npm run test:smoke           # hard gate: the shortest buyer path must be green
+      - run: npx playwright install --with-deps firefox webkit
+      - run: node scripts/run-suites.mjs api,regression,smoke-firefox,smoke-webkit,mobile-webkit
+      - run: npm run gate                 # the real verdict for every gated project in src/projects.ts
+      - run: npm run dashboard            # fails on spec problems or catalogue drift
+        if: always()
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: qa-${{ github.run_id }}
+          retention-days: 14
+          path: |
+            submissions/tunt01102/automation/reports
+            submissions/tunt01102/automation/playwright-report
+            submissions/tunt01102/automation/test-results
+            submissions/tunt01102/dashboard/index.html
+
+  slow:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version-file: submissions/tunt01102/automation/.nvmrc, cache: npm, cache-dependency-path: submissions/tunt01102/automation/package-lock.json }
+      - run: npm ci && npx playwright install --with-deps chromium
+      - run: npm run test:slow || true
+      - run: node scripts/gate.mjs slow
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: qa-slow-${{ github.run_id }}
+          retention-days: 14
+          path: submissions/tunt01102/automation/reports
+
+# Evidence recording (npm run test:evidence) is deliberately not in CI: it writes the committed assets/ folder
+# and is run by a person after triage.
+
+# Sharding pattern (not enabled: the suites are short and the site is shared). Every shard of one run must
+# share one RUN_ID, so a setup job mints it once and passes it on; a merge job turns the blobs into the usual
+# reports/<suite>/<RUN_ID>.json before the gate runs.
+#
+#  setup:
+#    runs-on: ubuntu-latest
+#    outputs: { id: ${{ steps.s.outputs.id }} }
+#    steps: [{ id: s, run: 'echo "id=$(TZ=Asia/Ho_Chi_Minh date +%Y%m%dT%H%M%S000)" >> $GITHUB_OUTPUT' }]
+#  api-shard:
+#    needs: setup
+#    strategy: { fail-fast: false, matrix: { shard: [1, 2] } }
+#    env: { RUN_ID: '${{ needs.setup.outputs.id }}', SHARD: '${{ matrix.shard }}/2' }
+#    steps: [checkout, setup-node, npm ci, 'npx playwright test --project=api || true',
+#            { uses: actions/upload-artifact@v4, with: { name: 'blob-${{ matrix.shard }}', path: 'submissions/tunt01102/automation/reports/api/*.blobs' } }]
+#  api-merge:
+#    needs: [setup, api-shard]
+#    steps: [checkout, setup-node, npm ci,
+#            { uses: actions/download-artifact@v4, with: { pattern: 'blob-*', merge-multiple: true, path: 'submissions/tunt01102/automation/reports/api/${{ needs.setup.outputs.id }}.blobs' } },
+#            'node scripts/merge-shards.mjs api ${{ needs.setup.outputs.id }}', 'node scripts/gate.mjs api']

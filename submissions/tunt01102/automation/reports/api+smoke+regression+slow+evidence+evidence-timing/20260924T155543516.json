@@ -1,0 +1,4263 @@
+{
+  "config": {
+    "argv": [
+      "~/.nvm/versions/node/v22.23.2/bin/node",
+      "submissions/tunt01102/automation/node_modules/.bin/playwright",
+      "test",
+      "--list",
+      "--project=api",
+      "--project=smoke",
+      "--project=regression",
+      "--project=slow",
+      "--project=evidence",
+      "--project=evidence-timing"
+    ],
+    "configFile": "submissions/tunt01102/automation/playwright.config.ts",
+    "rootDir": "submissions/tunt01102/automation",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "submissions/tunt01102/automation/tests/support/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {},
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T155543516-api+smoke+regression+slow+evidence+evidence-timing",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "api",
+        "name": "api",
+        "testDir": "submissions/tunt01102/automation/tests/api",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T155543516-api+smoke+regression+slow+evidence+evidence-timing",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "smoke",
+        "name": "smoke",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/smoke",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T155543516-api+smoke+regression+slow+evidence+evidence-timing",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "regression",
+        "name": "regression",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/regression",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T155543516-api+smoke+regression+slow+evidence+evidence-timing",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "slow",
+        "name": "slow",
+        "testDir": "submissions/tunt01102/automation/tests/slow",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 2400000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T155543516-api+smoke+regression+slow+evidence+evidence-timing",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "evidence-timing",
+        "name": "evidence-timing",
+        "testDir": "submissions/tunt01102/automation/tests/evidence",
+        "testIgnore": [],
+        "testMatch": [
+          "timing.evidence.spec.ts"
+        ],
+        "timeout": 2700000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T155543516-api+smoke+regression+slow+evidence+evidence-timing",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "evidence",
+        "name": "evidence",
+        "testDir": "submissions/tunt01102/automation/tests/evidence",
+        "testIgnore": [],
+        "testMatch": [
+          "bugs.evidence.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/api+smoke+regression+slow+evidence+evidence-timing/20260924T155543516.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report/20260924T155543516-api+smoke+regression+slow+evidence+evidence-timing",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "tests/api/cart-vip.spec.ts",
+      "file": "tests/api/cart-vip.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Cart",
+          "file": "tests/api/cart-vip.spec.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-CART-01] one Standard ticket is priced per the spec",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2ec6c043b8ac0e39a613-7d979a17049e66153aab",
+              "file": "tests/api/cart-vip.spec.ts",
+              "line": 6,
+              "column": 3
+            },
+            {
+              "title": "[TC-CART-02] quantity 0 is refused",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-04",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/cart-vip.spec.ts",
+                        "line": 15,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2ec6c043b8ac0e39a613-ae84154ac59c6dfc4b5c",
+              "file": "tests/api/cart-vip.spec.ts",
+              "line": 15,
+              "column": 3
+            },
+            {
+              "title": "[TC-CART-03] negative quantity is refused and the total never goes below zero",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-04",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/cart-vip.spec.ts",
+                        "line": 21,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2ec6c043b8ac0e39a613-323fc1585e3752eba29b",
+              "file": "tests/api/cart-vip.spec.ts",
+              "line": 21,
+              "column": 3
+            },
+            {
+              "title": "[TC-CART-04] fractional quantity is refused",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2ec6c043b8ac0e39a613-d0882e298e4308046472",
+              "file": "tests/api/cart-vip.spec.ts",
+              "line": 29,
+              "column": 3
+            },
+            {
+              "title": "[TC-CART-05] unknown ticket type is refused",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2ec6c043b8ac0e39a613-5da162e43f92ce44a2fd",
+              "file": "tests/api/cart-vip.spec.ts",
+              "line": 34,
+              "column": 3
+            },
+            {
+              "title": "[TC-CART-06] hold expiry is 10 minutes after the most recent add",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2ec6c043b8ac0e39a613-238d6cf38a867a03c122",
+              "file": "tests/api/cart-vip.spec.ts",
+              "line": 40,
+              "column": 3
+            },
+            {
+              "title": "[TC-CART-07] changing a line quantity reprices the cart",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2ec6c043b8ac0e39a613-19424ba73aaadfaebcb6",
+              "file": "tests/api/cart-vip.spec.ts",
+              "line": 55,
+              "column": 3
+            },
+            {
+              "title": "[TC-CART-08] mixed cart without discount shows the fee on its own line",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2ec6c043b8ac0e39a613-8e14fe04e4e60931e222",
+              "file": "tests/api/cart-vip.spec.ts",
+              "line": 65,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "VIP cap",
+          "file": "tests/api/cart-vip.spec.ts",
+          "line": 75,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-VIP-01] four VIP tickets in one add are accepted",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2ec6c043b8ac0e39a613-f1d0d5451d34487d93aa",
+              "file": "tests/api/cart-vip.spec.ts",
+              "line": 76,
+              "column": 3
+            },
+            {
+              "title": "[TC-VIP-02] five VIP tickets in one add are refused",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-08",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/cart-vip.spec.ts",
+                        "line": 83,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2ec6c043b8ac0e39a613-7b19de0ac6cc9f10a636",
+              "file": "tests/api/cart-vip.spec.ts",
+              "line": 83,
+              "column": 3
+            },
+            {
+              "title": "[TC-VIP-03] a fifth VIP added to four is refused",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-08",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/cart-vip.spec.ts",
+                        "line": 90,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2ec6c043b8ac0e39a613-c065e428cf7155832bd9",
+              "file": "tests/api/cart-vip.spec.ts",
+              "line": 90,
+              "column": 3
+            },
+            {
+              "title": "[TC-VIP-04] the cap counts all events in the order",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-08",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/cart-vip.spec.ts",
+                        "line": 97,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2ec6c043b8ac0e39a613-6b9622a5dc831a769eea",
+              "file": "tests/api/cart-vip.spec.ts",
+              "line": 97,
+              "column": 3
+            },
+            {
+              "title": "[TC-VIP-05] raising a VIP line above four by PATCH is refused",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-08",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/cart-vip.spec.ts",
+                        "line": 108,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2ec6c043b8ac0e39a613-5e5fa617b51c6a023b67",
+              "file": "tests/api/cart-vip.spec.ts",
+              "line": 108,
+              "column": 3
+            },
+            {
+              "title": "[TC-VIP-06] checkout refuses an order holding five VIP tickets",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-08",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/cart-vip.spec.ts",
+                        "line": 115,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "2ec6c043b8ac0e39a613-94e81edd14e2099f41f5",
+              "file": "tests/api/cart-vip.spec.ts",
+              "line": 115,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tests/api/discount.spec.ts",
+      "file": "tests/api/discount.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Discount codes",
+          "file": "tests/api/discount.spec.ts",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-DISC-01] WELCOME10 takes 10% off a Standard-only cart",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4fd283f0e64b8c0a2ed8-438a7577df94f6e02360",
+              "file": "tests/api/discount.spec.ts",
+              "line": 8,
+              "column": 3
+            },
+            {
+              "title": "[TC-DISC-02] unknown code is refused and totals do not change",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4fd283f0e64b8c0a2ed8-428364be935c1b749f21",
+              "file": "tests/api/discount.spec.ts",
+              "line": 17,
+              "column": 3
+            },
+            {
+              "title": "[TC-DISC-03] applying the same code twice does not discount twice",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-05",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/discount.spec.ts",
+                        "line": 28,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4fd283f0e64b8c0a2ed8-27637a0fd764e558e035",
+              "file": "tests/api/discount.spec.ts",
+              "line": 28,
+              "column": 3
+            },
+            {
+              "title": "[TC-DISC-04] discount does not reduce VIP tickets",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-06",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/discount.spec.ts",
+                        "line": 39,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4fd283f0e64b8c0a2ed8-3a1bfac8f14d7636315d",
+              "file": "tests/api/discount.spec.ts",
+              "line": 39,
+              "column": 3
+            },
+            {
+              "title": "[TC-DISC-05] discount does not reduce Student tickets",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-06",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/discount.spec.ts",
+                        "line": 47,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4fd283f0e64b8c0a2ed8-aaf99a4a814dee1e0aad",
+              "file": "tests/api/discount.spec.ts",
+              "line": 47,
+              "column": 3
+            },
+            {
+              "title": "[TC-DISC-06] mixed cart: discount only on the Standard part",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-06",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/discount.spec.ts",
+                        "line": 54,
+                        "column": 3
+                      }
+                    },
+                    {
+                      "type": "bug",
+                      "description": "BUG-07",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/discount.spec.ts",
+                        "line": 54,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4fd283f0e64b8c0a2ed8-48bb7b9846d7e0f7d807",
+              "file": "tests/api/discount.spec.ts",
+              "line": 54,
+              "column": 3
+            },
+            {
+              "title": "[TC-DISC-07] service fee is charged on what is left after the discount",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-07",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/discount.spec.ts",
+                        "line": 64,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4fd283f0e64b8c0a2ed8-f2fd251d2ab6a1de2ced",
+              "file": "tests/api/discount.spec.ts",
+              "line": 64,
+              "column": 3
+            },
+            {
+              "title": "[TC-DISC-08] order confirmation keeps the discount and a single code",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-05",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/discount.spec.ts",
+                        "line": 74,
+                        "column": 3
+                      }
+                    },
+                    {
+                      "type": "bug",
+                      "description": "BUG-07",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/discount.spec.ts",
+                        "line": 74,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4fd283f0e64b8c0a2ed8-7bb3262f1e440c701fb2",
+              "file": "tests/api/discount.spec.ts",
+              "line": 74,
+              "column": 3
+            },
+            {
+              "title": "[TC-DISC-09] blank code is refused",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4fd283f0e64b8c0a2ed8-018a1167a23232e4e425",
+              "file": "tests/api/discount.spec.ts",
+              "line": 85,
+              "column": 3
+            },
+            {
+              "title": "[TC-DISC-10] discount follows Standard tickets added after the code",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-07",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/discount.spec.ts",
+                        "line": 94,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4fd283f0e64b8c0a2ed8-708b9654b16fd7b25a68",
+              "file": "tests/api/discount.spec.ts",
+              "line": 94,
+              "column": 3
+            },
+            {
+              "title": "[TC-DISC-11] anonymous caller cannot apply a code",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4fd283f0e64b8c0a2ed8-325ac9cf0adcddeb5536",
+              "file": "tests/api/discount.spec.ts",
+              "line": 103,
+              "column": 3
+            },
+            {
+              "title": "[TC-DISC-14] smallest discounted cart: one Standard ticket",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-07",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/discount.spec.ts",
+                        "line": 107,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4fd283f0e64b8c0a2ed8-e56cc02d5f4722d722aa",
+              "file": "tests/api/discount.spec.ts",
+              "line": 107,
+              "column": 3
+            },
+            {
+              "title": "[TC-DISC-15] removing every Standard line takes the discount back to zero",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-06",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/discount.spec.ts",
+                        "line": 114,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4fd283f0e64b8c0a2ed8-b15166dfbe7c0ec87606",
+              "file": "tests/api/discount.spec.ts",
+              "line": 114,
+              "column": 3
+            },
+            {
+              "title": "[TC-DISC-16] discount follows a quantity change on the Standard line",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-07",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/discount.spec.ts",
+                        "line": 125,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4fd283f0e64b8c0a2ed8-00117caec79f9e218f8f",
+              "file": "tests/api/discount.spec.ts",
+              "line": 125,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tests/api/events.spec.ts",
+      "file": "tests/api/events.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Event listing",
+          "file": "tests/api/events.spec.ts",
+          "line": 23,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-EVT-01] paginated at 10 per page with a total",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "42b677eba564a90dbb18-05d869d7636c19b92721",
+              "file": "tests/api/events.spec.ts",
+              "line": 24,
+              "column": 3
+            },
+            {
+              "title": "[TC-EVT-02] detail offers Standard, VIP and Student",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "42b677eba564a90dbb18-ea54af4e089c21a54732",
+              "file": "tests/api/events.spec.ts",
+              "line": 31,
+              "column": 3
+            },
+            {
+              "title": "[TC-EVT-03] unknown event id returns 404",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "42b677eba564a90dbb18-8ff747d9fe6d3081370d",
+              "file": "tests/api/events.spec.ts",
+              "line": 41,
+              "column": 3
+            },
+            {
+              "title": "[TC-EVT-04] search \"rock\" returns Hanoi Rock Fest",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-21",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/events.spec.ts",
+                        "line": 45,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "42b677eba564a90dbb18-e69b76bf3b7eb9cf49aa",
+              "file": "tests/api/events.spec.ts",
+              "line": 45,
+              "column": 3
+            },
+            {
+              "title": "[TC-EVT-05] search ignores letter case",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "42b677eba564a90dbb18-1ce485acc58d1fe0d26c",
+              "file": "tests/api/events.spec.ts",
+              "line": 54,
+              "column": 3
+            },
+            {
+              "title": "[TC-EVT-06] search treats % and _ as literal text",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-22",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/events.spec.ts",
+                        "line": 61,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "42b677eba564a90dbb18-9acaf4fed439fce7098a",
+              "file": "tests/api/events.spec.ts",
+              "line": 61,
+              "column": 3
+            },
+            {
+              "title": "[TC-EVT-07] venue filter returns the exact venue",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "42b677eba564a90dbb18-cba00305f63b1897d6b6",
+              "file": "tests/api/events.spec.ts",
+              "line": 68,
+              "column": 3
+            },
+            {
+              "title": "[TC-EVT-08] venue filter does not match partial or differently cased venues",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "42b677eba564a90dbb18-c706aa2ff3cd63fa445a",
+              "file": "tests/api/events.spec.ts",
+              "line": 74,
+              "column": 3
+            },
+            {
+              "title": "[TC-EVT-09] sort by name covers the whole list",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-23",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/events.spec.ts",
+                        "line": 79,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "42b677eba564a90dbb18-5fa17540c571e6fdeb9d",
+              "file": "tests/api/events.spec.ts",
+              "line": 79,
+              "column": 3
+            },
+            {
+              "title": "[TC-EVT-10] sort by date is ascending over the whole list",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "42b677eba564a90dbb18-b1f1b670af631950d691",
+              "file": "tests/api/events.spec.ts",
+              "line": 86,
+              "column": 3
+            },
+            {
+              "title": "[TC-EVT-11] paging shows each event exactly once",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-24",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/events.spec.ts",
+                        "line": 94,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "42b677eba564a90dbb18-1631e0edb1b5ca756e9e",
+              "file": "tests/api/events.spec.ts",
+              "line": 94,
+              "column": 3
+            },
+            {
+              "title": "[TC-EVT-12] pageSize boundaries",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "42b677eba564a90dbb18-171bbb595a1bd81aef20",
+              "file": "tests/api/events.spec.ts",
+              "line": 101,
+              "column": 3
+            },
+            {
+              "title": "[TC-EVT-13] events that already started are marked PAST",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "42b677eba564a90dbb18-ef28fcb627326b88c1e1",
+              "file": "tests/api/events.spec.ts",
+              "line": 110,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tests/api/meta-auth.spec.ts",
+      "file": "tests/api/meta-auth.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Meta",
+          "file": "tests/api/meta-auth.spec.ts",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-META-01] health endpoint reports ok",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-008b170330d8478be8f7",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 8,
+              "column": 3
+            },
+            {
+              "title": "[TC-META-02] every documented operation has an API test",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-55410190606ddf09b7d2",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 14,
+              "column": 3
+            },
+            {
+              "title": "[TC-META-03] config and robots respond",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-2299ca1ad9c4650fe683",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 26,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Registration",
+          "file": "tests/api/meta-auth.spec.ts",
+          "line": 36,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-REG-01] registers with a well-formed email and 8+ character password",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-496fdb97f79d2702f624",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 37,
+              "column": 3
+            },
+            {
+              "title": "[TC-REG-02] refuses a malformed email",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-17",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/meta-auth.spec.ts",
+                        "line": 44,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-2f1f8a18a47592563f32",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 44,
+              "column": 3
+            },
+            {
+              "title": "[TC-REG-03] refuses a 7 character password",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-07167841c5a1dc44f7e7",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 51,
+              "column": 3
+            },
+            {
+              "title": "[TC-REG-04] accepts an 8 character password",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-1d2328d01bcce51b3361",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 57,
+              "column": 3
+            },
+            {
+              "title": "[TC-REG-05] phone length boundaries",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-d779bf2f0fd607deaebf",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 62,
+              "column": 3
+            },
+            {
+              "title": "[TC-REG-06] refuses a phone made of letters",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-18",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/meta-auth.spec.ts",
+                        "line": 70,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-eee784067e435452be50",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 70,
+              "column": 3
+            },
+            {
+              "title": "[TC-REG-07] refuses an email already registered",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-777be3acd91b7a45b448",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 75,
+              "column": 3
+            },
+            {
+              "title": "[TC-REG-08] refuses the same email in another letter case",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-5f3f478afd1ba32a705d",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 83,
+              "column": 3
+            },
+            {
+              "title": "[TC-REG-09] refuses the same email with surrounding spaces",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-19",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/meta-auth.spec.ts",
+                        "line": 89,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-810f20f34db49962a756",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 89,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Session",
+          "file": "tests/api/meta-auth.spec.ts",
+          "line": 97,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-AUTH-01] login sets an HttpOnly session cookie and /me identifies the user",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-62f3ba891dc0960e9f8e",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 98,
+              "column": 3
+            },
+            {
+              "title": "[TC-AUTH-02] wrong password is refused",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-2f41eee1db6977beb2aa",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 112,
+              "column": 3
+            },
+            {
+              "title": "[TC-AUTH-03] session token lifetime is 30 minutes",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-c4e82d568a01bca68091",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 120,
+              "column": 3
+            },
+            {
+              "title": "[TC-AUTH-04] logout ends the session",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-d2a102bfc70d43769ba0",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 125,
+              "column": 3
+            },
+            {
+              "title": "[TC-AUTH-05] login-only endpoints refuse anonymous callers",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-f314580a5b508b555eb7",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 130,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Profile",
+          "file": "tests/api/meta-auth.spec.ts",
+          "line": 136,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-PROF-01] updates phone with 10 digits",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-83f771778dbdc26d1ae5",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 137,
+              "column": 3
+            },
+            {
+              "title": "[TC-PROF-02] refuses 9 and 16 digit phones",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-79443c4f7f5b487e86d3",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 142,
+              "column": 3
+            },
+            {
+              "title": "[TC-PROF-03] refuses a phone made of letters",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-18",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/meta-auth.spec.ts",
+                        "line": 147,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-2a0d67a7c12ca8c4b30a",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 147,
+              "column": 3
+            },
+            {
+              "title": "[TC-PROF-04] password change takes effect for the next login",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-9a0ac454198854b53b0f",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 153,
+              "column": 3
+            },
+            {
+              "title": "[TC-PROF-05] wrong current password is refused",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-1824e247b953754c19a3",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 160,
+              "column": 3
+            },
+            {
+              "title": "[TC-PROF-06] new password equal to the current one is refused",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-20",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/meta-auth.spec.ts",
+                        "line": 166,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-75dcb295a748f3a01026",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 166,
+              "column": 3
+            },
+            {
+              "title": "[TC-PROF-07] new password of 7 characters is refused",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-edda46b22001fb2c2888",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 171,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tests/api/orders-admin.spec.ts",
+      "file": "tests/api/orders-admin.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Checkout",
+          "file": "tests/api/orders-admin.spec.ts",
+          "line": 19,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-CHK-01] valid checkout confirms, empties the cart and takes stock",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-56054cc9996d20657e5e",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 20,
+              "column": 3
+            },
+            {
+              "title": "[TC-CHK-02] checkout of an empty cart is refused",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-a7be993e2b20dd384b6e",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 35,
+              "column": 3
+            },
+            {
+              "title": "[TC-CHK-03] recipient of exactly 50 characters is accepted",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-d0d72c9ddf0dbed9d133",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 41,
+              "column": 3
+            },
+            {
+              "title": "[TC-CHK-04] recipient of 51 characters is refused",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-14",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/orders-admin.spec.ts",
+                        "line": 49,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-e4948e2079dbc15e7949",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 49,
+              "column": 3
+            },
+            {
+              "title": "[TC-CHK-05] blank recipient is refused",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-16",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/orders-admin.spec.ts",
+                        "line": 55,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-edbb1a3729e8e9720947",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 55,
+              "column": 3
+            },
+            {
+              "title": "[TC-CHK-06] phone with 9 digits is refused",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-15",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/orders-admin.spec.ts",
+                        "line": 60,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-9c3a0a6940f91f5a51b3",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 60,
+              "column": 3
+            },
+            {
+              "title": "[TC-CHK-07] phone without digits is refused",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-15",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/orders-admin.spec.ts",
+                        "line": 65,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-61caabcdcf791d159c46",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 65,
+              "column": 3
+            },
+            {
+              "title": "[TC-CHK-08] phone with exactly 10 digits is accepted",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-885eaa9f0ff0e05fca3a",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 70,
+              "column": 3
+            },
+            {
+              "title": "[TC-CHK-09] student ticket without a card number is refused",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-4bce76b3822dee145163",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 75,
+              "column": 3
+            },
+            {
+              "title": "[TC-CHK-10] student ticket with any card value is accepted",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-33307b9cd69f1e529f93",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 85,
+              "column": 3
+            },
+            {
+              "title": "[TC-CHK-11] a past event cannot be booked through the API",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-09",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/orders-admin.spec.ts",
+                        "line": 93,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-31323fe05d5ab5317ef3",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 93,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Orders and ownership",
+          "file": "tests/api/orders-admin.spec.ts",
+          "line": 102,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-ORD-01] my orders lists only my own orders",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-23c6aa37be1ad64e4575",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 103,
+              "column": 3
+            },
+            {
+              "title": "[TC-ORD-02] order detail is readable by its owner",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-9686e6f582486b13d0b2",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 111,
+              "column": 3
+            },
+            {
+              "title": "[TC-ORD-03] another customer cannot read my order",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-03",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/orders-admin.spec.ts",
+                        "line": 119,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-4f769d0de4b3756163bf",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 119,
+              "column": 3
+            },
+            {
+              "title": "[TC-ORD-04] another customer cannot cancel my order",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-02",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/orders-admin.spec.ts",
+                        "line": 127,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-95e582b1a5084d514d76",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 127,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Cart ownership",
+          "file": "tests/api/orders-admin.spec.ts",
+          "line": 137,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-ORD-05] another customer cannot change a line in my cart",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-67309c59e953ab08ed74",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 138,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Cancellation and refunds",
+          "file": "tests/api/orders-admin.spec.ts",
+          "line": 147,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-CAN-01] cancelling more than 24 h ahead refunds 100% and returns stock",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-e72ded5a929ec80bf86c",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 148,
+              "column": 3
+            },
+            {
+              "title": "[TC-CAN-02] a cancelled order cannot be cancelled again",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-11",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/orders-admin.spec.ts",
+                        "line": 162,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-421df397c96df2c8ef07",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 162,
+              "column": 3
+            },
+            {
+              "title": "[TC-CAN-03] cancelling after the start refunds 0%",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-10",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/orders-admin.spec.ts",
+                        "line": 174,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-bb5876c72bdc9131f4bc",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 174,
+              "column": 3
+            },
+            {
+              "title": "[TC-CAN-04] cancelling within 24 h refunds 50%",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-586a5d724171117fed1e",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 186,
+              "column": 3
+            },
+            {
+              "title": "[TC-CAN-05] cancelling an unknown order returns 404",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-1ea1de810891784a084b",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 190,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Administration is admin-only",
+          "file": "tests/api/orders-admin.spec.ts",
+          "line": 195,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-ADM-01] customer cannot list all orders",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-7b514b7f53277caeec04",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 196,
+              "column": 3
+            },
+            {
+              "title": "[TC-ADM-02] customer cannot export orders as CSV",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-826b6371b4abfc7150b1",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 200,
+              "column": 3
+            },
+            {
+              "title": "[TC-ADM-03] customer cannot create an event",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-a1b0541aa0af0311382e",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 206,
+              "column": 3
+            },
+            {
+              "title": "[TC-ADM-04] customer cannot edit an event",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-01",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/orders-admin.spec.ts",
+                        "line": 215,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-7ff1f6aed6f1b4a5b3a6",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 215,
+              "column": 3
+            },
+            {
+              "title": "[TC-ADM-05] customer cannot delete an event",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-c1c32fdfb92fa08d8c17",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 226,
+              "column": 3
+            },
+            {
+              "title": "[TC-ADM-06] customer cannot adjust ticket stock",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-84abf5960ab4b6ac032e",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 230,
+              "column": 3
+            },
+            {
+              "title": "[TC-ADM-07] customer cannot delete an order through the admin route",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-f92176f133d695e4e399",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 235,
+              "column": 3
+            },
+            {
+              "title": "[TC-ADM-08] anonymous callers get 401 on every admin route",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a8990f52b704c9c334b0-3cdcb30f88554d74566e",
+              "file": "tests/api/orders-admin.spec.ts",
+              "line": 242,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tests/e2e/smoke/smoke.spec.ts",
+      "file": "tests/e2e/smoke/smoke.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Smoke @smoke",
+          "file": "tests/e2e/smoke/smoke.spec.ts",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-SMK-01] the event list loads",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "smoke",
+                  "projectName": "smoke",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4219922fea2e2bd3c691-c8a62234d472e599bff0",
+              "file": "tests/e2e/smoke/smoke.spec.ts",
+              "line": 8,
+              "column": 3
+            },
+            {
+              "title": "[TC-SMK-02] an event detail shows the three ticket types",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "smoke",
+                  "projectName": "smoke",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4219922fea2e2bd3c691-71dbaf934afd10b2c4e1",
+              "file": "tests/e2e/smoke/smoke.spec.ts",
+              "line": 16,
+              "column": 3
+            },
+            {
+              "title": "[TC-SMK-03] register through the UI",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "smoke",
+                  "projectName": "smoke",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4219922fea2e2bd3c691-e4c9bb3d0298986a1829",
+              "file": "tests/e2e/smoke/smoke.spec.ts",
+              "line": 26,
+              "column": 3
+            },
+            {
+              "title": "[TC-SMK-04] log in through the UI",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "smoke",
+                  "projectName": "smoke",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4219922fea2e2bd3c691-f8770d4ca55b45bf8978",
+              "file": "tests/e2e/smoke/smoke.spec.ts",
+              "line": 36,
+              "column": 3
+            },
+            {
+              "title": "[TC-SMK-05] add a Standard ticket and see it priced in the cart",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "smoke",
+                  "projectName": "smoke",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4219922fea2e2bd3c691-d3bb1d048a4c51606a47",
+              "file": "tests/e2e/smoke/smoke.spec.ts",
+              "line": 45,
+              "column": 3
+            },
+            {
+              "title": "[TC-SMK-06] check out through the UI and see the confirmation",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "smoke",
+                  "projectName": "smoke",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4219922fea2e2bd3c691-91fbddd3aabe30ee6966",
+              "file": "tests/e2e/smoke/smoke.spec.ts",
+              "line": 58,
+              "column": 3
+            },
+            {
+              "title": "[TC-SMK-07] my orders shows the new order",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "smoke",
+                  "projectName": "smoke",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "4219922fea2e2bd3c691-5019c50d3230236f8caf",
+              "file": "tests/e2e/smoke/smoke.spec.ts",
+              "line": 74,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tests/e2e/regression/regression.spec.ts",
+      "file": "tests/e2e/regression/regression.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Phone screens (360 px) @regression",
+          "file": "tests/e2e/regression/regression.spec.ts",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-UI-01] a buyer can reach quantity and Add without scrolling sideways",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-25",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 10,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-474a178b089ddd015e57",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 10,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-02] no buyer screen scrolls sideways",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-26",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 22,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-053988b7c0bfe59460cb",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 22,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Forms and messages @regression",
+          "file": "tests/e2e/regression/regression.spec.ts",
+          "line": 45,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-UI-03] clicking each form label focuses its field",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-28",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 46,
+                        "column": 3
+                      }
+                    },
+                    {
+                      "type": "bug",
+                      "description": "BUG-29",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 46,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-b0efbc2ff66dabd11d1d",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 46,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-09] event detail message reflects the latest add",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-33",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 68,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-20d56368e3cc4bff2b5b",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 68,
+              "column": 3
+            },
+            {
+              "title": "[TC-DISC-12] applying WELCOME10 in the cart shows the code and the discount line",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-07",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 82,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-f1cd617aa1db69f4238b",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 82,
+              "column": 3
+            },
+            {
+              "title": "[TC-DISC-13] after a refused code, a valid code leaves no stale error",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-0c32deb1916d43d6329b",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 96,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-10] cancel from My Orders shows CANCELLED and the refund",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-ecd101f6d3b2bec34ee4",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 110,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Order confirmation @regression",
+          "file": "tests/e2e/regression/regression.spec.ts",
+          "line": 125,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-UI-13] confirmation shows every amount in the same currency format",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-30",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 126,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-16b1e0ef90bf5d10b399",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 126,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Time zone @regression",
+          "file": "tests/e2e/regression/regression.spec.ts",
+          "line": 140,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-UI-04] event detail shows the start in Vietnam time",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-27",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 141,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-86bda25ef15c8b40d59b",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 141,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-05] event list shows starts in Vietnam time",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-925e277a61bc99ecb60c",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 149,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-11] cart shows the hold expiry in Vietnam time",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-aa25b7c7362696230d78",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 158,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Search, sort and paging @regression",
+          "file": "tests/e2e/regression/regression.spec.ts",
+          "line": 168,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-UI-06] search \"rock\" shows Hanoi Rock Fest",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-21",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 169,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-f78b262e2ff80f08114a",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 169,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-07] sort by name opens with the first event alphabetically",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-23",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 176,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-d7850f44b93c9512f394",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 176,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-12] paging shows each event once",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-24",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 189,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-d93ef9c549dd2cc68aa3",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 189,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-08] past event shows Past and offers no Add button",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-40ad3f56be9d60bcb3ab",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 210,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Administration in the UI @regression",
+          "file": "tests/e2e/regression/regression.spec.ts",
+          "line": 219,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-ADM-09] a customer sees no admin navigation and cannot use admin screens",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-31",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 220,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-67222fd96375cb4c0a96",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 220,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Cart, orders and navigation details @regression",
+          "file": "tests/e2e/regression/regression.spec.ts",
+          "line": 238,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-UI-14] Next is disabled on the last page of the event list",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-32",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 239,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-5a65c13e25aab1d740d6",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 239,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-15] removing the last cart line resets the totals on screen",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-34",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 254,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-45b31489ca42f8186491",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 254,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-16] each cart line shows its ticket type",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-35",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 270,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-bf22a6e952fdf8bf9918",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 270,
+              "column": 3
+            },
+            {
+              "title": "[TC-UI-17] a cancelled order offers no Cancel button",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-36",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 286,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-bb0fd3b5f63633fea856",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 286,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Phone navigation (360 px) @regression",
+          "file": "tests/e2e/regression/regression.spec.ts",
+          "line": 298,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-UI-18] the menu links can be tapped",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-37",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/e2e/regression/regression.spec.ts",
+                        "line": 301,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-8455adbca8d231ffe466",
+              "file": "tests/e2e/regression/regression.spec.ts",
+              "line": 301,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tests/slow/timeouts.spec.ts",
+      "file": "tests/slow/timeouts.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "[TC-AUTH-06] a session older than 30 minutes is refused",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 2400000,
+              "annotations": [
+                {
+                  "type": "bug",
+                  "description": "BUG-13",
+                  "location": {
+                    "file": "submissions/tunt01102/automation/tests/slow/timeouts.spec.ts",
+                    "line": 8,
+                    "column": 1
+                  }
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "slow",
+              "projectName": "slow",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cb8346c69b45e295b85-d87771bffa889b31e2a8",
+          "file": "tests/slow/timeouts.spec.ts",
+          "line": 8,
+          "column": 1
+        },
+        {
+          "title": "[TC-CHK-12] checkout after the 10 minute hold has lapsed is refused",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 2400000,
+              "annotations": [
+                {
+                  "type": "bug",
+                  "description": "BUG-12",
+                  "location": {
+                    "file": "submissions/tunt01102/automation/tests/slow/timeouts.spec.ts",
+                    "line": 15,
+                    "column": 1
+                  }
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "slow",
+              "projectName": "slow",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2cb8346c69b45e295b85-7863274a54e55d1d64e3",
+          "file": "tests/slow/timeouts.spec.ts",
+          "line": 15,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "tests/evidence/timing.evidence.spec.ts",
+      "file": "tests/evidence/timing.evidence.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "[BUG-12] checkout succeeds after the cart hold lapsed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 2700000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence-timing",
+              "projectName": "evidence-timing",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bea2b84affdb35e3a496-7e3b70c69be7220a573d",
+          "file": "tests/evidence/timing.evidence.spec.ts",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "[BUG-13] session still valid after 30 minutes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 2700000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence-timing",
+              "projectName": "evidence-timing",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bea2b84affdb35e3a496-e6cea3b71d549018d59b",
+          "file": "tests/evidence/timing.evidence.spec.ts",
+          "line": 39,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "tests/evidence/bugs.evidence.spec.ts",
+      "file": "tests/evidence/bugs.evidence.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "[BUG-01] customer can edit an event via PUT",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-76a3d38358eaed85b0ac",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 24,
+          "column": 1
+        },
+        {
+          "title": "[BUG-02] a customer can cancel another customer's order",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-6b613cc879850f655028",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "[BUG-03] a customer can read another customer's order",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-167b22e5fb93c3cf71e1",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 69,
+          "column": 1
+        },
+        {
+          "title": "[BUG-04] cart accepts zero and negative quantities",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-41216afbb288918b079c",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 89,
+          "column": 1
+        },
+        {
+          "title": "[BUG-05] the same discount code stacks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-38d09c4456625243a14d",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 105,
+          "column": 1
+        },
+        {
+          "title": "[BUG-06] discount reduces VIP tickets",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-1b1defae4a0205d93747",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 121,
+          "column": 1
+        },
+        {
+          "title": "[BUG-07] service fee is charged before the discount",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-61a5e3d564c7dfe190cf",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 136,
+          "column": 1
+        },
+        {
+          "title": "[BUG-08] five VIP tickets are accepted",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-acb32eed80f94a949a06",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 152,
+          "column": 1
+        },
+        {
+          "title": "[BUG-09] a past event can be booked through the API",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-846a3dddbb56d684d467",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 167,
+          "column": 1
+        },
+        {
+          "title": "[BUG-10] cancelling after the start refunds 100%",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-93255bba0ad05a47e37d",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 190,
+          "column": 1
+        },
+        {
+          "title": "[BUG-11] repeated cancels return stock again each time",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-3c5b447773c5bd2dfa6a",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 209,
+          "column": 1
+        },
+        {
+          "title": "[BUG-14] recipient over 50 characters is silently truncated",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-4fd311dd3394271fd457",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 231,
+          "column": 1
+        },
+        {
+          "title": "[BUG-15] checkout accepts a 9 digit phone",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-9287fd0718db6416b816",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 248,
+          "column": 1
+        },
+        {
+          "title": "[BUG-16] checkout accepts a blank recipient",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-c549f4123a21bbe335ab",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 267,
+          "column": 1
+        },
+        {
+          "title": "[BUG-17] registration accepts malformed emails",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-6db15a71a7c331b7f5c3",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 281,
+          "column": 1
+        },
+        {
+          "title": "[BUG-18] profile accepts a phone made of letters",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-d490c44e5f5e01c66083",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 295,
+          "column": 1
+        },
+        {
+          "title": "[BUG-19] duplicate account through a leading space",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-52f454cadf7571440a9b",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 311,
+          "column": 1
+        },
+        {
+          "title": "[BUG-20] new password equal to the current one is accepted",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-f49c9b474f051c1ff343",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 324,
+          "column": 1
+        },
+        {
+          "title": "[BUG-21] search \"rock\" finds nothing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-e0e399c143c3d117c77d",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 343,
+          "column": 1
+        },
+        {
+          "title": "[BUG-22] search \"%\" returns every event",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-2d491f8f2a8634ca16f5",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 358,
+          "column": 1
+        },
+        {
+          "title": "[BUG-23] sort by name is per page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-981b8cde129671edef47",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 371,
+          "column": 1
+        },
+        {
+          "title": "[BUG-24] paging repeats an event",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-d0146dea228d35ce04c3",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 388,
+          "column": 1
+        },
+        {
+          "title": "[BUG-25] at 360 px Add is off screen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-474aba078ca3e93a1a60",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 407,
+          "column": 1
+        },
+        {
+          "title": "[BUG-26] profile scrolls sideways at 360 px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-f449a7b81852ae9600c3",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 427,
+          "column": 1
+        },
+        {
+          "title": "[BUG-27] event detail shows the UTC date",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-85dd26073221a5d77bfe",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 448,
+          "column": 1
+        },
+        {
+          "title": "[BUG-28] checkout phone label focuses the recipient field",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-2cc79a978e338d76223a",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 464,
+          "column": 1
+        },
+        {
+          "title": "[BUG-29] fields without a visible label",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-319c28119532074c4800",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 480,
+          "column": 1
+        },
+        {
+          "title": "[BUG-30] confirmation total is a bare number",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-cea3b74e6ed08aa263e7",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 496,
+          "column": 1
+        },
+        {
+          "title": "[BUG-31] admin event screen renders for a customer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-1223b71684c19b7f4c94",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 514,
+          "column": 1
+        },
+        {
+          "title": "[BUG-32] Next stays enabled on the last page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-1f6ec760407a76a784a9",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 528,
+          "column": 1
+        },
+        {
+          "title": "[BUG-33] success message stays after a failed add",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-1804d00be62607f753f1",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 551,
+          "column": 1
+        },
+        {
+          "title": "[BUG-34] removing the last cart line leaves the old total",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-e480ee756a53191ec107",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 569,
+          "column": 1
+        },
+        {
+          "title": "[BUG-35] cart line names are clipped",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-4d0cc8cb55c7b4e5ac2c",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 592,
+          "column": 1
+        },
+        {
+          "title": "[BUG-36] cancelled orders still offer Cancel tickets",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-e9d58ba0a0f9a4b0744a",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 610,
+          "column": 1
+        },
+        {
+          "title": "[BUG-37] phone menu is hidden behind the page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence",
+              "projectName": "evidence",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "34371add29b2847b81e2-7e6f6a3ba776aae8b450",
+          "file": "tests/evidence/bugs.evidence.spec.ts",
+          "line": 628,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-24T08:55:43.522Z",
+    "duration": 137.10399999999998,
+    "expected": 0,
+    "skipped": 161,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

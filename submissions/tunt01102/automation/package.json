@@ -1,0 +1,40 @@
+{
+  "name": "event-booking-qa-automation",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Spec-driven test automation for the Event Booking assessment site",
+  "scripts": {
+    "typecheck": "node scripts/gen-ids.mjs && tsc --noEmit",
+    "test:unit": "vitest run --coverage",
+    "test:smoke": "playwright test --project=smoke",
+    "test:api": "playwright test --project=api",
+    "test:regression": "playwright test --project=regression",
+    "test:slow": "playwright test --project=slow",
+    "test:evidence": "playwright test --project=evidence",
+    "test:evidence:timing": "playwright test --project=evidence-timing",
+    "test:all": "npm run typecheck && npm run test:unit && node scripts/run-suites.mjs && npm run gate",
+    "test:stability": "node scripts/stability.mjs",
+    "gate": "node scripts/gate.mjs",
+    "dashboard": "node scripts/relativise-reports.mjs && node ../dashboard/build.mjs && node scripts/check-dashboard.mjs",
+    "evidence:prune": "node scripts/prune-evidence.mjs 1",
+    "clean": "node -e \"for (const d of ['test-results','playwright-report']) require('fs').rmSync(d, { recursive: true, force: true })\"",
+    "gen:ids": "node scripts/gen-ids.mjs",
+    "test:cross": "node scripts/run-suites.mjs smoke-firefox,smoke-webkit,mobile-webkit",
+    "reports:prune": "node scripts/prune-reports.mjs 3",
+    "dashboard:check": "node scripts/check-dashboard.mjs",
+    "postman:build": "node scripts/build-postman.mjs",
+    "postman:run": "node scripts/run-postman.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.6.2",
+    "@vitest/coverage-v8": "^5.0.1",
+    "marked": "^14.1.4",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.1"
+  },
+  "engines": {
+    "node": ">=22.18"
+  }
+}

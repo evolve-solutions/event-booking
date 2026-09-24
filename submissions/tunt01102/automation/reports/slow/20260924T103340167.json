@@ -1,0 +1,333 @@
+{
+  "config": {
+    "argv": [
+      "~/.nvm/versions/node/v22.23.2/bin/node",
+      "submissions/tunt01102/automation/node_modules/.bin/playwright",
+      "test",
+      "--project=slow"
+    ],
+    "configFile": "submissions/tunt01102/automation/playwright.config.ts",
+    "rootDir": "submissions/tunt01102/automation",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "api",
+        "name": "api",
+        "testDir": "submissions/tunt01102/automation/tests/api",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "smoke",
+        "name": "smoke",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/smoke",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "regression",
+        "name": "regression",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/regression",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "slow",
+        "name": "slow",
+        "testDir": "submissions/tunt01102/automation/tests/slow",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 2400000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "evidence",
+        "name": "evidence",
+        "testDir": "submissions/tunt01102/automation/tests/evidence",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/slow.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "tests/slow/timeouts.spec.ts",
+      "file": "tests/slow/timeouts.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "[TC-AUTH-06] a session older than 30 minutes is refused",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 2100000,
+              "annotations": [
+                {
+                  "type": "bug",
+                  "description": "BUG-13",
+                  "location": {
+                    "file": "submissions/tunt01102/automation/tests/slow/timeouts.spec.ts",
+                    "line": 8,
+                    "column": 1
+                  }
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "slow",
+              "projectName": "slow",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1860947,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m401\u001b[39m\nReceived: \u001b[31m200\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m401\u001b[39m\nReceived: \u001b[31m200\u001b[39m\n    at submissions/tunt01102/automation/tests/slow/timeouts.spec.ts:12:41",
+                    "location": {
+                      "file": "submissions/tunt01102/automation/tests/slow/timeouts.spec.ts",
+                      "column": 41,
+                      "line": 12
+                    },
+                    "snippet": "  10 |   expect((await buyer.api.me()).status).toBe(200); // the session works before the wait, so a 401 later means expiry\n  11 |   await new Promise((r) => setTimeout(r, (SESSION_MINUTES + 1) * 60_000));\n> 12 |   expect((await buyer.api.me()).status).toBe(401);\n     |                                         ^\n  13 | });\n  14 |\n  15 | test('[TC-CHK-12] checkout after the 10 minute hold has lapsed is refused', bug('BUG-12'), async ({ buyer }) => {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/slow/timeouts.spec.ts",
+                        "column": 41,
+                        "line": 12
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m401\u001b[39m\nReceived: \u001b[31m200\u001b[39m\n\n  10 |   expect((await buyer.api.me()).status).toBe(200); // the session works before the wait, so a 401 later means expiry\n  11 |   await new Promise((r) => setTimeout(r, (SESSION_MINUTES + 1) * 60_000));\n> 12 |   expect((await buyer.api.me()).status).toBe(401);\n     |                                         ^\n  13 | });\n  14 |\n  15 | test('[TC-CHK-12] checkout after the 10 minute hold has lapsed is refused', bug('BUG-12'), async ({ buyer }) => {\n    at submissions/tunt01102/automation/tests/slow/timeouts.spec.ts:12:41"
+                    },
+                    {
+                      "message": "Error: ENOENT: no such file or directory, open 'submissions/tunt01102/automation/test-results/.playwright-artifacts-0/89c56483e2aaf4b2a7a4df13341ad46e.zip'"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T03:02:39.146Z",
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-13",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/slow/timeouts.spec.ts",
+                        "line": 8,
+                        "column": 1
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "submissions/tunt01102/automation/test-results/timeouts--TC-AUTH-06-a-ses-d418c--than-30-minutes-is-refused-slow/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "submissions/tunt01102/automation/tests/slow/timeouts.spec.ts",
+                    "column": 41,
+                    "line": 12
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2cb8346c69b45e295b85-d87771bffa889b31e2a8",
+          "file": "tests/slow/timeouts.spec.ts",
+          "line": 8,
+          "column": 1
+        },
+        {
+          "title": "[TC-CHK-12] checkout after the 10 minute hold has lapsed is refused",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 900000,
+              "annotations": [
+                {
+                  "type": "bug",
+                  "description": "BUG-12",
+                  "location": {
+                    "file": "submissions/tunt01102/automation/tests/slow/timeouts.spec.ts",
+                    "line": 15,
+                    "column": 1
+                  }
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "slow",
+              "projectName": "slow",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 631215,
+                  "error": {
+                    "message": "Error: checkout 30 s after holdExpiresAt\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m400\u001b[39m\nReceived:    \u001b[31m200\u001b[39m",
+                    "stack": "Error: checkout 30 s after holdExpiresAt\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m400\u001b[39m\nReceived:    \u001b[31m200\u001b[39m\n    at submissions/tunt01102/automation/tests/slow/timeouts.spec.ts:23:57",
+                    "location": {
+                      "file": "submissions/tunt01102/automation/tests/slow/timeouts.spec.ts",
+                      "column": 57,
+                      "line": 23
+                    },
+                    "snippet": "  21 |   await new Promise((r) => setTimeout(r, Math.max(0, hold - Date.now()) + 30_000));\n  22 |   const r = await buyer.api.checkout({ recipientName: VALID_RECIPIENT, phone: VALID_PHONE });\n> 23 |   expect(r.status, 'checkout 30 s after holdExpiresAt').toBeGreaterThanOrEqual(400);\n     |                                                         ^\n  24 | });\n  25 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/slow/timeouts.spec.ts",
+                        "column": 57,
+                        "line": 23
+                      },
+                      "message": "Error: checkout 30 s after holdExpiresAt\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m400\u001b[39m\nReceived:    \u001b[31m200\u001b[39m\n\n  21 |   await new Promise((r) => setTimeout(r, Math.max(0, hold - Date.now()) + 30_000));\n  22 |   const r = await buyer.api.checkout({ recipientName: VALID_RECIPIENT, phone: VALID_PHONE });\n> 23 |   expect(r.status, 'checkout 30 s after holdExpiresAt').toBeGreaterThanOrEqual(400);\n     |                                                         ^\n  24 | });\n  25 |\n    at submissions/tunt01102/automation/tests/slow/timeouts.spec.ts:23:57"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T03:02:39.143Z",
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-12",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/slow/timeouts.spec.ts",
+                        "line": 15,
+                        "column": 1
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "submissions/tunt01102/automation/test-results/timeouts--TC-CHK-12-checko-e82de--hold-has-lapsed-is-refused-slow/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "submissions/tunt01102/automation/test-results/timeouts--TC-CHK-12-checko-e82de--hold-has-lapsed-is-refused-slow/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "submissions/tunt01102/automation/tests/slow/timeouts.spec.ts",
+                    "column": 57,
+                    "line": 23
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2cb8346c69b45e295b85-7863274a54e55d1d64e3",
+          "file": "tests/slow/timeouts.spec.ts",
+          "line": 15,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-24T03:02:38.918Z",
+    "duration": 1861206.0489999999,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

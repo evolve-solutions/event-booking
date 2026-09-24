@@ -1,0 +1,57 @@
+
+Running 2 tests using 2 workers
+
+  ✘  1 [slow] › tests/slow/timeouts.spec.ts:15:1 › [TC-CHK-12] checkout after the 10 minute hold has lapsed is refused (10.5m)
+  ✘  2 [slow] › tests/slow/timeouts.spec.ts:8:1 › [TC-AUTH-06] a session older than 30 minutes is refused (31.0m)
+
+
+  1) [slow] › tests/slow/timeouts.spec.ts:8:1 › [TC-AUTH-06] a session older than 30 minutes is refused 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 401
+    Received: 200
+
+      10 |   expect((await buyer.api.me()).status).toBe(200); // the session works before the wait, so a 401 later means expiry
+      11 |   await new Promise((r) => setTimeout(r, (SESSION_MINUTES + 1) * 60_000));
+    > 12 |   expect((await buyer.api.me()).status).toBe(401);
+         |                                         ^
+      13 | });
+      14 |
+      15 | test('[TC-CHK-12] checkout after the 10 minute hold has lapsed is refused', bug('BUG-12'), async ({ buyer }) => {
+        at submissions/tunt01102/automation/tests/slow/timeouts.spec.ts:12:41
+
+    Error: ENOENT: no such file or directory, open 'submissions/tunt01102/automation/test-results/.playwright-artifacts-0/89c56483e2aaf4b2a7a4df13341ad46e.zip'
+
+    Error Context: test-results/timeouts--TC-AUTH-06-a-ses-d418c--than-30-minutes-is-refused-slow/error-context.md
+
+  2) [slow] › tests/slow/timeouts.spec.ts:15:1 › [TC-CHK-12] checkout after the 10 minute hold has lapsed is refused 
+
+    Error: checkout 30 s after holdExpiresAt
+
+    expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 400
+    Received:    200
+
+      21 |   await new Promise((r) => setTimeout(r, Math.max(0, hold - Date.now()) + 30_000));
+      22 |   const r = await buyer.api.checkout({ recipientName: VALID_RECIPIENT, phone: VALID_PHONE });
+    > 23 |   expect(r.status, 'checkout 30 s after holdExpiresAt').toBeGreaterThanOrEqual(400);
+         |                                                         ^
+      24 | });
+      25 |
+        at submissions/tunt01102/automation/tests/slow/timeouts.spec.ts:23:57
+
+    Error Context: test-results/timeouts--TC-CHK-12-checko-e82de--hold-has-lapsed-is-refused-slow/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/timeouts--TC-CHK-12-checko-e82de--hold-has-lapsed-is-refused-slow/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/timeouts--TC-CHK-12-checko-e82de--hold-has-lapsed-is-refused-slow/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [slow] › tests/slow/timeouts.spec.ts:8:1 › [TC-AUTH-06] a session older than 30 minutes is refused 
+    [slow] › tests/slow/timeouts.spec.ts:15:1 › [TC-CHK-12] checkout after the 10 minute hold has lapsed is refused 
