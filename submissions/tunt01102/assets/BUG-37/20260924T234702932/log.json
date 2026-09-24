@@ -1,21 +1,23 @@
 {
   "bug": "BUG-37",
-  "runId": "20260924T141727834",
+  "runId": "20260924T234702932",
   "part": "single",
-  "recordedAt": "2026-09-24T07:18:52.051Z",
+  "recordedAt": "2026-09-24T16:47:09.398Z",
   "baseUrl": "https://candidate-01.207.148.118.135.sslip.io",
   "viewport": {
     "width": 360,
     "height": 740
   },
   "steps": [
-    "Expected: Menu links on top and tappable | Actual: nav-cart-link under none; nav-my-orders-link under event-detail-title; nav-profile-link under event-detail-title"
+    "Not logged in: open the event list and tap Menu",
+    "Expected: Log in is on top and opens the login screen | Actual: nav-login-link under events-title; no other screen links to login",
+    "Expected: Logged in: Cart, My orders and Profile are on top and tappable | Actual: nav-cart-link under none; nav-my-orders-link under event-detail-title; nav-profile-link under event-detail-title"
   ],
   "reproduced": true,
-  "summary": "nav-cart-link under none; nav-my-orders-link under event-detail-title; nav-profile-link under event-detail-title",
+  "summary": "nav-login-link under events-title; nav-cart-link under none; nav-my-orders-link under event-detail-title; nav-profile-link under event-detail-title",
   "exchanges": [
     {
-      "at": "2026-09-24T07:18:48.855Z",
+      "at": "2026-09-24T16:47:04.113Z",
       "method": "GET",
       "path": "/api/config",
       "requestBody": null,
@@ -66,23 +68,7 @@
       }
     },
     {
-      "at": "2026-09-24T07:18:48.951Z",
-      "method": "POST",
-      "path": "/api/auth/register",
-      "requestBody": {
-        "email": "qa-ev-bug-37-muf7aorw@example.invalid",
-        "password": "<redacted>"
-      },
-      "status": 200,
-      "responseBody": {
-        "id": 1193,
-        "email": "qa-ev-bug-37-muf7aorw@example.invalid",
-        "role": "CUSTOMER",
-        "phone": null
-      }
-    },
-    {
-      "at": "2026-09-24T07:18:48.959Z",
+      "at": "2026-09-24T16:47:04.186Z",
       "method": "GET",
       "path": "/api/events?sort=startsAt&page=1&pageSize=10",
       "requestBody": null,
@@ -176,7 +162,7 @@
       }
     },
     {
-      "at": "2026-09-24T07:18:48.959Z",
+      "at": "2026-09-24T16:47:04.188Z",
       "method": "GET",
       "path": "/api/auth/me",
       "requestBody": null,
@@ -186,7 +172,7 @@
       }
     },
     {
-      "at": "2026-09-24T07:18:48.959Z",
+      "at": "2026-09-24T16:47:04.189Z",
       "method": "GET",
       "path": "/api/events?pageSize=100",
       "requestBody": null,
@@ -384,22 +370,38 @@
       }
     },
     {
-      "at": "2026-09-24T07:18:49.096Z",
+      "at": "2026-09-24T16:47:05.325Z",
       "method": "POST",
-      "path": "/api/auth/login",
+      "path": "/api/auth/register",
       "requestBody": {
-        "email": "qa-ev-bug-37-muf7aorw@example.invalid",
+        "email": "qa-ev-bug-37-mufrlho9@example.invalid",
         "password": "<redacted>"
       },
       "status": 200,
       "responseBody": {
-        "id": 1193,
-        "email": "qa-ev-bug-37-muf7aorw@example.invalid",
+        "id": 2125,
+        "email": "qa-ev-bug-37-mufrlho9@example.invalid",
+        "role": "CUSTOMER",
+        "phone": null
+      }
+    },
+    {
+      "at": "2026-09-24T16:47:05.460Z",
+      "method": "POST",
+      "path": "/api/auth/login",
+      "requestBody": {
+        "email": "qa-ev-bug-37-mufrlho9@example.invalid",
+        "password": "<redacted>"
+      },
+      "status": 200,
+      "responseBody": {
+        "id": 2125,
+        "email": "qa-ev-bug-37-mufrlho9@example.invalid",
         "role": "CUSTOMER"
       }
     },
     {
-      "at": "2026-09-24T07:18:49.554Z",
+      "at": "2026-09-24T16:47:05.773Z",
       "method": "GET",
       "path": "/api/config",
       "requestBody": null,
@@ -450,7 +452,7 @@
       }
     },
     {
-      "at": "2026-09-24T07:18:49.611Z",
+      "at": "2026-09-24T16:47:05.831Z",
       "method": "GET",
       "path": "/api/events/7",
       "requestBody": null,
@@ -485,14 +487,14 @@
       }
     },
     {
-      "at": "2026-09-24T07:18:49.617Z",
+      "at": "2026-09-24T16:47:05.833Z",
       "method": "GET",
       "path": "/api/auth/me",
       "requestBody": null,
       "status": 200,
       "responseBody": {
-        "id": 1193,
-        "email": "qa-ev-bug-37-muf7aorw@example.invalid",
+        "id": 2125,
+        "email": "qa-ev-bug-37-mufrlho9@example.invalid",
         "role": "CUSTOMER",
         "phone": null
       }

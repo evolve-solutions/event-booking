@@ -93,6 +93,11 @@ frontend bundle as a source of UI behaviour (its feature flags point at UI defec
   at the start of each run (upcoming, a second upcoming, a quiet one, a past one) and the choice is saved in
   `automation/reports/world/<run id>.json`. Stock-delta checks run on the quiet event, which no other test uses.
   Every test registers its own buyers.
+- Test accounts use addresses such as `qa-<name>-<id>@example.invalid`, like the brief's published accounts.
+  `.invalid` is a top-level domain reserved so that it never resolves (RFC 2606, RFC 6761): the addresses are
+  well-formed, so the site must accept them, yet no mail can ever reach a real person. The suffix does not mark
+  the input as invalid. The malformed-email cases (TC-REG, BUG-17) break the syntax instead: `not-an-email`,
+  `a@b`, `qa@@example.invalid` (two @ signs).
 - Browser time zone is set to Europe/London so a correct Vietnam-time display has to be converted.
 - Every order a test creates is cancelled once at teardown so shared stock returns.
 - Published accounts are used only for read-only smoke; they are public fixtures, not secrets.
@@ -131,7 +136,8 @@ workaround), **Low** (cosmetic or consistency). Each bug names who is harmed.
    presumably switch server behaviour. I mapped the bugs I found to behaviour, not to those flags; some flags
    may hide defects on paths I did not exercise (for example admin-only ones).
 6. **Real devices.** Smoke passes on Firefox and WebKit, and the three phone bugs (BUG-25, BUG-26, BUG-37)
-   reproduce on both Chromium's and WebKit's phone emulation, but not yet on a real phone. The full regression
+   reproduce on both Chromium's and WebKit's phone emulation. BUG-25 and BUG-37 were also confirmed by hand on a
+   real iPhone 15 Pro Max; BUG-26 and Android phones were not checked on a real device. The full regression
    suite runs on Chromium only.
 7. **A fast check for the cart hold and the session expiry.** Both need state older than 10 or 30 minutes. A
    check reusing a cart from an earlier run was designed and dropped after review: it would store working

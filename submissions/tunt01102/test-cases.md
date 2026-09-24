@@ -1,6 +1,6 @@
 # Test cases: applying a discount code
 
-**Flow picked: applying a discount code.** 16 cases below (7 positive, 7 negative, 2 boundary). Each is automated (API suite `automation/tests/api/discount.spec.ts`, UI cases in `tests/e2e/regression`) and traced to the brief in [rtm.md](./rtm.md). The full catalogue of 124 cases for every flow is in `spec/test-cases.json` and on the dashboard.
+**Flow picked: applying a discount code.** 16 cases below (7 positive, 7 negative, 2 boundary). Each is automated (API suite `automation/tests/api/discount.spec.ts`, UI cases in `tests/e2e/regression`) and traced to the brief in [rtm.md](./rtm.md). The full catalogue of 125 cases for every flow is in `spec/test-cases.json` and on the dashboard.
 
 Rules under test (quoted from the brief): "Discount codes apply to Standard tickets. Each order takes one discount code once." and "take the subtotal, subtract the discount, then charge the 5% service fee on what is left after the discount". The brief names no codes; `WELCOME10` (10% off) was found on the live system (GAP-01).
 

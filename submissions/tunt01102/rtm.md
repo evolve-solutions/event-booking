@@ -34,7 +34,7 @@ Generated from `spec/requirements.json`, `spec/test-cases.json`, the latest auto
 | REQ-SRCH-04 | Sort by date is ascending chronological over the whole list. | TC-EVT-10 | 1 | 1 | 0 | — | covered-passing |
 | REQ-SRCH-05 | Listing paginated at 10 per page; each event appears exactly once across pages. | TC-EVT-01, TC-EVT-11, TC-EVT-12, TC-SMK-01, TC-UI-12, TC-UI-14 | 8 | 5 | 3 | BUG-24, BUG-32 | covered-failing |
 | REQ-TZ-01 | Every time shown to a user is in Vietnam time (UTC+7); server stores UTC. | TC-UI-04, TC-UI-05, TC-UI-11 | 3 | 2 | 1 | BUG-27 | covered-failing |
-| REQ-UI-01 | Fully usable at 360 px wide, buying included, without zoom or sideways scroll. | TC-UI-01, TC-UI-02, TC-UI-16, TC-UI-18 | 7 | 0 | 7 | BUG-25, BUG-26, BUG-35, BUG-37 | covered-failing |
+| REQ-UI-01 | Fully usable at 360 px wide, buying included, without zoom or sideways scroll. | TC-UI-01, TC-UI-02, TC-UI-16, TC-UI-18, TC-UI-19 | 9 | 0 | 9 | BUG-25, BUG-26, BUG-35, BUG-37 | covered-failing |
 | REQ-UI-02 | Every form field has a visible label; clicking the label focuses that field. | TC-UI-03 | 1 | 0 | 1 | BUG-28, BUG-29 | covered-failing |
 | REQ-UI-03 | On-screen messages describe the result of the most recent action. | TC-DISC-13, TC-UI-09, TC-UI-13, TC-UI-15 | 4 | 1 | 3 | BUG-30, BUG-33, BUG-34 | covered-failing |
 | REQ-ADM-01 | Create/edit/delete event, adjust stock, view and export order list are admin-only; a customer must never perform them by any route. | TC-META-02, TC-ADM-01, TC-ADM-02, TC-ADM-03, TC-ADM-04, TC-ADM-05, TC-ADM-06, TC-ADM-07, TC-ADM-08, TC-ADM-09 | 10 | 8 | 2 | BUG-01, BUG-31 | covered-failing |

@@ -2201,6 +2201,26 @@
     "Find the element on top at the centre of each of Cart, My orders and Profile"
    ],
    "expected": "For each link, the topmost element at its centre is the link itself"
+  },
+  {
+   "id": "TC-UI-19",
+   "title": "360 px, logged out: Log in in the menu can be tapped",
+   "requirements": [
+    "REQ-UI-01"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "regression",
+   "bugs": [
+    "BUG-37"
+   ],
+   "preconditions": "Viewport 360 x 740 mobile; not logged in",
+   "steps": [
+    "Open the event list",
+    "Tap Menu",
+    "Find the element on top at the centre of Log in"
+   ],
+   "expected": "The topmost element at the centre of Log in is the link itself, so a visitor can open the login screen"
   }
  ]
 }

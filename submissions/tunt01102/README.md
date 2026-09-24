@@ -16,7 +16,7 @@ the file as source, so it has to be opened locally.
 | [project-overview.md](./project-overview.md) | The system as described by the brief, the API and the live app, plus how the testing is built |
 | [test-plan.md](./test-plan.md) | Strategy, scope, risks, levels, entry and exit criteria, what was not tested and why |
 | [rtm.md](./rtm.md) | Requirements traceability: brief rule ↔ test case ↔ automated result ↔ bug |
-| [spec/](./spec/) | Sources of truth: `requirements.json`, `test-cases.json` (all 124 cases), `bugs.json`, `process-log.json` |
+| [spec/](./spec/) | Sources of truth: `requirements.json`, `test-cases.json` (all 125 cases), `bugs.json`, `process-log.json` |
 | [automation/](./automation/) | Unit (Vitest, 80% gate), API, smoke, regression, slow and evidence suites (Playwright), cross-engine projects (Firefox, WebKit, iPhone), gate, CI template |
 
 ## Method in one paragraph
@@ -69,6 +69,10 @@ Every run writes under its own `YYYYMMDDTHHmmssSSS` id (Vietnam time): `automati
 `automation/test-results/<id>-<suite>/` and `assets/BUG-xx/<id>/`. Nothing is overwritten; filtered runs go to
 `<suite>-partial`. A sharded run (`SHARD=1/2 RUN_ID=<id> npx playwright test --project=api`, then the same with
 `2/2`) writes one blob per shard; `node scripts/merge-shards.mjs api <id>` merges them into the usual report.
+
+Test data: every run registers fresh buyers at `@example.invalid`. That domain is reserved so that it never
+resolves (RFC 2606, RFC 6761), so the addresses are well-formed but can never email a real person; `.invalid`
+does not mean the test input is invalid (see `test-plan.md`, section 7).
 
 Safety on the shared site: admin routes were probed only with unchanged or duplicate data and non-existent ids,
 and every order a test creates is cancelled once at teardown. The one known side effect (stock inflated by the

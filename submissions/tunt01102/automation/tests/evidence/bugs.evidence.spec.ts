@@ -630,21 +630,36 @@ test('[BUG-37] phone menu is hidden behind the page', async ({ browser }) => {
     browser,
     'BUG-37',
     async (ev) => {
+      // What is on top at the centre of each menu link, highlighted so the recording shows the covered links.
+      const covers = async (ids: string[]) => {
+        const cover: Record<string, string> = {};
+        for (const id of ids) {
+          const link = ev.page.getByTestId(id);
+          const box = await link.boundingBox();
+          cover[id] = box ? String(await ev.page.evaluate(([x, y]) => (document.elementFromPoint(x, y) as HTMLElement | null)?.closest('[data-testid]')?.getAttribute('data-testid') ?? 'none', [box.x + box.width / 2, box.y + box.height / 2] as const)) : 'not rendered';
+          if (box) await link.evaluate((el: HTMLElement) => (el.style.outline = '3px solid #ff4d4f'));
+        }
+        return cover;
+      };
+      await ev.step('Not logged in: open the event list and tap Menu');
+      await expect(ev.page.getByTestId('events-title')).toBeVisible();
+      await ev.page.getByTestId('nav-menu-button').click();
+      await ev.page.waitForTimeout(500);
+      const loggedOut = await covers(['nav-login-link']);
+      await ev.verdict('Log in is on top and opens the login screen', `nav-login-link under ${loggedOut['nav-login-link']}; no other screen links to login`);
+      await ev.snap();
       await ev.newBuyer();
       await ev.page.goto(`/events/${EVENTS.upcoming.id}`);
       await expect(ev.page.getByTestId('event-detail-title')).toBeVisible();
       await ev.page.evaluate(() => window.scrollBy(0, 400)); // mouse.wheel is not supported in mobile WebKit
       await ev.page.getByTestId('nav-menu-button').click();
       await ev.page.waitForTimeout(500);
-      const cover: Record<string, string> = {};
-      for (const id of ['nav-cart-link', 'nav-my-orders-link', 'nav-profile-link']) {
-        const box = await ev.page.getByTestId(id).boundingBox();
-        cover[id] = box ? String(await ev.page.evaluate(([x, y]) => (document.elementFromPoint(x, y) as HTMLElement | null)?.closest('[data-testid]')?.getAttribute('data-testid') ?? 'none', [box.x + box.width / 2, box.y + box.height / 2] as const)) : 'not rendered';
-      }
-      const summary = Object.entries(cover).map(([k, v]) => `${k} under ${v}`).join('; ');
-      await ev.verdict('Menu links on top and tappable', summary);
-      await ev.snap();
-      return { reproduced: Object.entries(cover).every(([k, v]) => v !== k), summary };
+      const loggedIn = await covers(['nav-cart-link', 'nav-my-orders-link', 'nav-profile-link']);
+      const all = { ...loggedOut, ...loggedIn };
+      const summary = Object.entries(all).map(([k, v]) => `${k} under ${v}`).join('; ');
+      await ev.verdict('Logged in: Cart, My orders and Profile are on top and tappable', Object.entries(loggedIn).map(([k, v]) => `${k} under ${v}`).join('; '));
+      await ev.page.waitForTimeout(1500);
+      return { reproduced: Object.entries(all).every(([k, v]) => v !== k), summary };
     },
     { viewport: { width: 360, height: 740 }, isMobile: true },
   );

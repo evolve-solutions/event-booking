@@ -118,6 +118,7 @@ export const TC_IDS = [
   'TC-UI-16',
   'TC-UI-17',
   'TC-UI-18',
+  'TC-UI-19',
   'TC-VIP-01',
   'TC-VIP-02',
   'TC-VIP-03',

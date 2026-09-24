@@ -2,13 +2,13 @@
 
 ## Summary
 
-37 bugs: 5 Critical, 10 High, 12 Medium, 10 Low. They come from 9 root-cause groups, so the fix work is smaller than the count suggests. What matters most:
+37 bugs: 6 Critical, 9 High, 12 Medium, 10 Low. They come from 9 root-cause groups, so the fix work is smaller than the count suggests. What matters most:
 
 - **Missing server-side checks on who may act.** Any customer can edit an event (BUG-01) and read or cancel any other customer's order (BUG-02, BUG-03). The observed behaviour suggests small, missing server-side guards (a hypothesis: no source was available); they should be fixed first.
 - **Business rules enforced in the UI or not at all.** Pricing (BUG-05 to BUG-07), quantities and caps (BUG-04, BUG-08), past events, refunds, repeat cancels and the cart hold (BUG-09 to BUG-12) are not enforced by the API.
-- On phones the purchase itself is blocked (BUG-25) and the menu is unreachable (BUG-37).
+- On phones a visitor cannot even log in or sign up, because the menu opens behind the page (BUG-37), and a logged-in buyer cannot reach quantity or Add (BUG-25).
 
-Environment: https://candidate-01.207.148.118.135.sslip.io, API per /docs/json (eve-qa-interview API 1.0.0). Chrome (Playwright 1.63 Chromium), desktop 1280x800 and phone 360x740. Browser time zone Europe/London so Vietnam-time conversion is visible. Fresh accounts registered per run.
+Environment: https://candidate-01.207.148.118.135.sslip.io, API per /docs/json (eve-qa-interview API 1.0.0). Chrome (Playwright 1.63 Chromium), desktop 1280x800 and phone 360x740. Browser time zone Europe/London so Vietnam-time conversion is visible. Fresh accounts registered per run. Test email addresses end in @example.invalid on purpose: .invalid is a top-level domain reserved so that it never resolves (RFC 2606, RFC 6761), so the addresses are well-formed but no mail can reach a real person. The brief's own accounts use the same domain. The name does not mean the input is invalid: the malformed-email cases (BUG-17) are broken in their syntax, e.g. 'not-an-email', 'a@b' and 'qa@@example.invalid' (two @ signs).
 
 Effort (S/M/L) is my estimate from the observed behaviour, without the source code. Severity scale (who is harmed and how much): **Critical** Money, security or the core purchase is broken for many users; no workaround; **High** A business rule in the brief is broken with real harm to buyers or the business; **Medium** A rule is broken with limited harm or an easy workaround; **Low** Cosmetic, validation or consistency issue with little harm.
 
@@ -23,6 +23,7 @@ Evidence: each bug links its newest complete recording run, `assets/BUG-xx/<YYYY
 | [BUG-03](#bug-03) | Critical | A customer can read another customer's order, including recipient name and phone | Authorisation: order ownership | S |
 | [BUG-05](#bug-05) | Critical | The same discount code can be applied repeatedly and stacks | Pricing pipeline | S |
 | [BUG-25](#bug-25) | Critical | At 360 px the quantity field and Add button are off screen, so tickets cannot be bought on a phone | Frontend rendering | S |
+| [BUG-37](#bug-37) | Critical | On a phone, the opened menu is hidden behind the page, so a visitor cannot reach Log in or Sign up | Frontend rendering | S |
 | [BUG-04](#bug-04) | High | Adding 0 or a negative quantity to the cart is accepted, producing negative totals | Cart line rules | S |
 | [BUG-06](#bug-06) | High | Discount codes also reduce VIP and Student tickets | Pricing pipeline | S |
 | [BUG-07](#bug-07) | High | Service fee is charged on the subtotal before the discount | Pricing pipeline | S |
@@ -32,7 +33,6 @@ Evidence: each bug links its newest complete recording run, `assets/BUG-xx/<YYYY
 | [BUG-13](#bug-13) | High | Sessions do not expire after 30 minutes | Session | S |
 | [BUG-21](#bug-21) | High | Search only matches the start of the event name: 'rock' finds nothing | Events list query | S |
 | [BUG-27](#bug-27) | High | Event detail shows the UTC date and no time, not Vietnam time | Frontend rendering | S |
-| [BUG-37](#bug-37) | High | On a phone, the opened menu is hidden behind the page content | Frontend rendering | S |
 | [BUG-08](#bug-08) | Medium | VIP cap lets 5 VIP tickets into one order (off by one) | Cart line rules | S |
 | [BUG-12](#bug-12) | Medium | Checkout still succeeds after the 10 minute cart hold has lapsed | Order preconditions | S |
 | [BUG-15](#bug-15) | Medium | Checkout accepts phone numbers with fewer than 10 digits or no digits | Input validation | S |
@@ -66,7 +66,7 @@ Evidence: each bug links its newest complete recording run, `assets/BUG-xx/<YYYY
 - **Session**: BUG-13 (High)
 - **Input validation**: BUG-15 (Medium), BUG-17 (Medium), BUG-19 (Medium), BUG-14 (Low), BUG-16 (Low), BUG-18 (Low), BUG-20 (Low)
 - **Events list query**: BUG-21 (High), BUG-23 (Medium), BUG-24 (Medium), BUG-22 (Low)
-- **Frontend rendering**: BUG-25 (Critical), BUG-27 (High), BUG-37 (High), BUG-33 (Medium), BUG-34 (Medium), BUG-35 (Medium), BUG-26 (Low), BUG-28 (Low), BUG-29 (Low), BUG-30 (Low), BUG-32 (Low)
+- **Frontend rendering**: BUG-25 (Critical), BUG-37 (Critical), BUG-27 (High), BUG-33 (Medium), BUG-34 (Medium), BUG-35 (Medium), BUG-26 (Low), BUG-28 (Low), BUG-29 (Low), BUG-30 (Low), BUG-32 (Low)
 
 ## BUG-01
 
@@ -237,11 +237,47 @@ Evidence: each bug links its newest complete recording run, `assets/BUG-xx/<YYYY
 
 **Hypothesis (not verified against source):** A fixed 4-column grid (11rem 8rem 9rem 9rem) with overflow hidden cannot fit 360 px.
 
-**Note:** Also reproduced on a second engine: WebKit with the iPhone 13 profile (project mobile-webkit). Not yet checked on a real phone.
+**Note:** Confirmed on a real iPhone 15 Pro Max and in the browser's phone emulation. Also reproduced on WebKit with the iPhone 13 profile (project mobile-webkit).
 
 **Evidence** (run 20260924T141727834, reproduced: x=585.109375): [recording.webm](./assets/BUG-25/20260924T141727834/recording.webm) · [screenshot.png](./assets/BUG-25/20260924T141727834/screenshot.png) · [network.har](./assets/BUG-25/20260924T141727834/network.har) · [log.json](./assets/BUG-25/20260924T141727834/log.json)
 
 ![BUG-25](./assets/BUG-25/20260924T141727834/screenshot.png)
+
+## BUG-37
+
+**On a phone, the opened menu is hidden behind the page, so a visitor cannot reach Log in or Sign up**
+
+| | |
+|---|---|
+| Severity | Critical |
+| Status | Open |
+| Area | Screens (UI) |
+| Requirement | REQ-UI-01 |
+| Found by | TC-UI-18, TC-UI-19 |
+| Who is harmed | Every visitor on a phone or tablet in portrait: they cannot log in or register, so they cannot buy at all; logged-in buyers cannot reach the cart, their orders or their profile from the menu. |
+| Why this severity | Critical: below 1024 px a visitor who is not logged in has no tappable route to Log in or Sign up, so no purchase can start on a phone. The only way in is typing /login into the address bar, which an ordinary buyer would not know, so it is not counted as a workaround. Raised from High after the logged-out case was checked (the first report covered logged-in buyers only). |
+| Root-cause group | Frontend rendering |
+| Likely location | Frontend: app header (class 'app-header is-flat' sets z-index auto, flag f30) (bundle flag `f30`) |
+| Effort (estimate) | S |
+| Related | BUG-25 |
+
+**Steps to reproduce**
+
+1. Open the site on a 360 px screen without logging in
+2. Tap Menu
+3. Tap Log in
+
+**Expected:** The login screen opens (and, once logged in, Cart, My orders and Profile in the menu can be tapped)
+
+**Actual:** The menu panel opens under the page: at the centre of Log in the topmost element is the page title 'Events', so the tap lands on the title and nothing happens. The same holds at every width below 1024 px (360 to 820 px checked), on Chromium and on WebKit (iPhone 15 Pro Max profile). No other screen links to login: the event detail, cart and orders screens have none, and Sign up exists only on the login screen. Logged in, Cart, My orders and Profile in the menu are covered the same way
+
+**Hypothesis (not verified against source):** CSS: z-index auto lets page content stack above the header's menu panel.
+
+**Note:** Confirmed on a real iPhone 15 Pro Max and in the browser's phone emulation, logged out and logged in. Also reproduced on WebKit with the iPhone 13 and iPhone 15 Pro Max profiles.
+
+**Evidence** (run 20260924T234702932, reproduced: nav-login-link under events-title; nav-cart-link under none; nav-my-orders-link under event-detail-title; nav-profile-link under event-detail-title): [recording.webm](./assets/BUG-37/20260924T234702932/recording.webm) · [screenshot.png](./assets/BUG-37/20260924T234702932/screenshot.png) · [network.har](./assets/BUG-37/20260924T234702932/network.har) · [log.json](./assets/BUG-37/20260924T234702932/log.json)
+
+![BUG-37](./assets/BUG-37/20260924T234702932/screenshot.png)
 
 ## BUG-04
 
@@ -553,42 +589,6 @@ Evidence: each bug links its newest complete recording run, `assets/BUG-xx/<YYYY
 **Evidence** (run 20260924T141727834, reproduced: "2026-10-04" vs Vietnam 2026-10-05 00:30): [recording.webm](./assets/BUG-27/20260924T141727834/recording.webm) · [screenshot.png](./assets/BUG-27/20260924T141727834/screenshot.png) · [network.har](./assets/BUG-27/20260924T141727834/network.har) · [log.json](./assets/BUG-27/20260924T141727834/log.json)
 
 ![BUG-27](./assets/BUG-27/20260924T141727834/screenshot.png)
-
-## BUG-37
-
-**On a phone, the opened menu is hidden behind the page content**
-
-| | |
-|---|---|
-| Severity | High |
-| Status | Open |
-| Area | Screens (UI) |
-| Requirement | REQ-UI-01 |
-| Found by | TC-UI-18 |
-| Who is harmed | Phone buyers cannot reach the cart, their orders or their profile from the menu. |
-| Why this severity | High: on phones the menu (cart, orders, profile) cannot be tapped; not Critical because the cart is still reachable after adding a ticket and by URL. |
-| Root-cause group | Frontend rendering |
-| Likely location | Frontend: app header (class 'app-header is-flat' sets z-index auto, flag f30) (bundle flag `f30`) |
-| Effort (estimate) | S |
-| Related | BUG-25 |
-
-**Steps to reproduce**
-
-1. Log in on a 360 px screen
-2. Open an event detail and scroll a little
-3. Tap Menu
-
-**Expected:** Cart, My orders and Profile links are visible and tappable
-
-**Actual:** The menu panel opens under the event content: at the centre of each link the topmost element is the event title or venue, so the links cannot be tapped
-
-**Hypothesis (not verified against source):** CSS: z-index auto lets page content stack above the header's menu panel.
-
-**Note:** Also reproduced on a second engine: WebKit with the iPhone 13 profile (project mobile-webkit). Not yet checked on a real phone.
-
-**Evidence** (run 20260924T141727834, reproduced: nav-cart-link under none; nav-my-orders-link under event-detail-title; nav-profile-link under event-detail-title): [recording.webm](./assets/BUG-37/20260924T141727834/recording.webm) · [screenshot.png](./assets/BUG-37/20260924T141727834/screenshot.png) · [network.har](./assets/BUG-37/20260924T141727834/network.har) · [log.json](./assets/BUG-37/20260924T141727834/log.json)
-
-![BUG-37](./assets/BUG-37/20260924T141727834/screenshot.png)
 
 ## BUG-08
 

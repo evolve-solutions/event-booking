@@ -30,7 +30,7 @@ export const PROJECTS: ProjectDef[] = [
   // tests on WebKit's iPhone emulation, which backs the 360 px findings with a second engine.
   { name: 'smoke-firefox', dir: 'e2e/smoke', browser: 'firefox', device: 'Desktop Firefox', gated: true, mustPass: true, label: 'Smoke · Firefox' },
   { name: 'smoke-webkit', dir: 'e2e/smoke', browser: 'webkit', device: 'Desktop Safari', gated: true, mustPass: true, label: 'Smoke · WebKit' },
-  { name: 'mobile-webkit', dir: 'e2e/regression', browser: 'webkit', device: 'iPhone 13', only: ['[TC-UI-01]', '[TC-UI-02]', '[TC-UI-18]'], gated: true, mustPass: false, label: 'Phone · WebKit' },
+  { name: 'mobile-webkit', dir: 'e2e/regression', browser: 'webkit', device: 'iPhone 13', only: ['[TC-UI-01]', '[TC-UI-02]', '[TC-UI-18]', '[TC-UI-19]'], gated: true, mustPass: false, label: 'Phone · WebKit' },
   { name: 'slow', dir: 'slow', browser: null, gated: false, mustPass: false, label: 'Slow (real waits)', timeoutMs: 40 * 60_000 },
 ];
 

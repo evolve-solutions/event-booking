@@ -1,5 +1,5 @@
 {
- "environment": "https://candidate-01.207.148.118.135.sslip.io, API per /docs/json (eve-qa-interview API 1.0.0). Chrome (Playwright 1.63 Chromium), desktop 1280x800 and phone 360x740. Browser time zone Europe/London so Vietnam-time conversion is visible. Fresh accounts registered per run.",
+ "environment": "https://candidate-01.207.148.118.135.sslip.io, API per /docs/json (eve-qa-interview API 1.0.0). Chrome (Playwright 1.63 Chromium), desktop 1280x800 and phone 360x740. Browser time zone Europe/London so Vietnam-time conversion is visible. Fresh accounts registered per run. Test email addresses end in @example.invalid on purpose: .invalid is a top-level domain reserved so that it never resolves (RFC 2606, RFC 6761), so the addresses are well-formed but no mail can reach a real person. The brief's own accounts use the same domain. The name does not mean the input is invalid: the malformed-email cases (BUG-17) are broken in their syntax, e.g. 'not-an-email', 'a@b' and 'qa@@example.invalid' (two @ signs).",
  "severityScale": {
   "Critical": "Money, security or the core purchase is broken for many users; no workaround",
   "High": "A business rule in the brief is broken with real harm to buyers or the business",
@@ -770,7 +770,7 @@
    ],
    "frontendFlag": "f31",
    "severityRationale": "Critical: on a 360 px phone the buyer cannot reach quantity or Add, so the core purchase is impossible on the device class the brief names explicitly.",
-   "notes": "Also reproduced on a second engine: WebKit with the iPhone 13 profile (project mobile-webkit). Not yet checked on a real phone."
+   "notes": "Confirmed on a real iPhone 15 Pro Max and in the browser's phone emulation. Also reproduced on WebKit with the iPhone 13 profile (project mobile-webkit)."
   },
   {
    "id": "BUG-26",
@@ -1091,24 +1091,25 @@
   },
   {
    "id": "BUG-37",
-   "title": "On a phone, the opened menu is hidden behind the page content",
-   "severity": "High",
+   "title": "On a phone, the opened menu is hidden behind the page, so a visitor cannot reach Log in or Sign up",
+   "severity": "Critical",
    "area": "Screens",
    "component": "UI",
    "requirements": [
     "REQ-UI-01"
    ],
    "tests": [
-    "TC-UI-18"
+    "TC-UI-18",
+    "TC-UI-19"
    ],
    "steps": [
-    "Log in on a 360 px screen",
-    "Open an event detail and scroll a little",
-    "Tap Menu"
+    "Open the site on a 360 px screen without logging in",
+    "Tap Menu",
+    "Tap Log in"
    ],
-   "expected": "Cart, My orders and Profile links are visible and tappable",
-   "actual": "The menu panel opens under the event content: at the centre of each link the topmost element is the event title or venue, so the links cannot be tapped",
-   "impact": "Phone buyers cannot reach the cart, their orders or their profile from the menu.",
+   "expected": "The login screen opens (and, once logged in, Cart, My orders and Profile in the menu can be tapped)",
+   "actual": "The menu panel opens under the page: at the centre of Log in the topmost element is the page title 'Events', so the tap lands on the title and nothing happens. The same holds at every width below 1024 px (360 to 820 px checked), on Chromium and on WebKit (iPhone 15 Pro Max profile). No other screen links to login: the event detail, cart and orders screens have none, and Sign up exists only on the login screen. Logged in, Cart, My orders and Profile in the menu are covered the same way",
+   "impact": "Every visitor on a phone or tablet in portrait: they cannot log in or register, so they cannot buy at all; logged-in buyers cannot reach the cart, their orders or their profile from the menu.",
    "rootCauseGroup": "Frontend rendering",
    "effort": "S",
    "likelyLocation": "Frontend: app header (class 'app-header is-flat' sets z-index auto, flag f30)",
@@ -1118,8 +1119,8 @@
    ],
    "frontendFlag": "f30",
    "status": "Open",
-   "severityRationale": "High: on phones the menu (cart, orders, profile) cannot be tapped; not Critical because the cart is still reachable after adding a ticket and by URL.",
-   "notes": "Also reproduced on a second engine: WebKit with the iPhone 13 profile (project mobile-webkit). Not yet checked on a real phone."
+   "severityRationale": "Critical: below 1024 px a visitor who is not logged in has no tappable route to Log in or Sign up, so no purchase can start on a phone. The only way in is typing /login into the address bar, which an ordinary buyer would not know, so it is not counted as a workaround. Raised from High after the logged-out case was checked (the first report covered logged-in buyers only).",
+   "notes": "Confirmed on a real iPhone 15 Pro Max and in the browser's phone emulation, logged out and logged in. Also reproduced on WebKit with the iPhone 13 and iPhone 15 Pro Max profiles."
   }
  ],
  "observations": [

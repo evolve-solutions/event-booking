@@ -313,4 +313,14 @@ test.describe('Phone navigation (360 px) @regression', () => {
     }
     expect(hidden).toEqual([]);
   });
+  test(tc('TC-UI-19', 'logged out, Log in in the menu can be tapped'), bug('BUG-37'), async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByTestId('events-title')).toBeVisible();
+    await page.getByTestId('nav-menu-button').click();
+    const link = page.getByTestId('nav-login-link');
+    await expect(link).toBeVisible();
+    const box = (await link.boundingBox())!;
+    const onTop = await page.evaluate(([x, y]) => (document.elementFromPoint(x, y) as HTMLElement | null)?.closest('[data-testid]')?.getAttribute('data-testid'), [box.x + box.width / 2, box.y + box.height / 2] as const);
+    expect(onTop, 'element on top of Log in').toBe('nav-login-link');
+  });
 });
