@@ -4155,7 +4155,7 @@
         },
         {
           "name": "BUG-17 [Medium] Registration accepts malformed email addresses",
-          "description": "**Severity:** Medium\n\n**Steps in bugs.md**\n\n1. POST /api/auth/register {email: 'not-an-email', password: 'eventpass123'}\n2. Repeat with 'qa@@example.invalid' and 'a@b'\n\n**Expected:** 400 for each\n\n**Actual (as reported):** 200 for each; accounts are created with unusable identities\n\nA red `[BUG-17]` test means the bug is still present.\n\nEach value carries a random part, so the check never meets an address created by an earlier run.",
+          "description": "**Severity:** Medium\n\n**Steps in bugs.md**\n\n1. POST /api/auth/register {email: 'not-an-email-<something new>', password: 'eventpass123'} (no @)\n2. Repeat with 'qa-<something new>@@example.invalid' (two @ signs) and 'a<something new>@b' (no dot in the domain)\n\n**Expected:** 400 for each\n\n**Actual (as reported):** 200 for each; accounts are created with unusable identities\n\nA red `[BUG-17]` test means the bug is still present.\n\nEach value carries a random part, so the check never meets an address created by an earlier run.",
           "item": [
             {
               "name": "Register with no @ (not-an-email)",

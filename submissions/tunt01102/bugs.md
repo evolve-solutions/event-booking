@@ -8,7 +8,7 @@
 - **Business rules enforced in the UI or not at all.** Pricing (BUG-05 to BUG-07), quantities and caps (BUG-04, BUG-08), past events, refunds, repeat cancels and the cart hold (BUG-09 to BUG-12) are not enforced by the API.
 - On phones a visitor cannot even log in or sign up, because the menu opens behind the page (BUG-37), and a logged-in buyer cannot reach quantity or Add (BUG-25).
 
-Environment: https://candidate-01.207.148.118.135.sslip.io, API per /docs/json (eve-qa-interview API 1.0.0). Chrome (Playwright 1.63 Chromium), desktop 1280x800 and phone 360x740. Browser time zone Europe/London so Vietnam-time conversion is visible. Fresh accounts registered per run. Test email addresses end in @example.invalid on purpose: .invalid is a top-level domain reserved so that it never resolves (RFC 2606, RFC 6761), so the addresses are well-formed but no mail can reach a real person. The brief's own accounts use the same domain. The name does not mean the input is invalid: the malformed-email cases (BUG-17) are broken in their syntax, e.g. 'not-an-email', 'a@b' and 'qa@@example.invalid' (two @ signs).
+Environment: https://candidate-01.207.148.118.135.sslip.io, API per /docs/json (eve-qa-interview API 1.0.0). Chrome (Playwright 1.63 Chromium), desktop 1280x800 and phone 360x740. Browser time zone Europe/London so Vietnam-time conversion is visible. Fresh accounts registered per run. Test email addresses end in @example.invalid on purpose: .invalid is a top-level domain reserved so that it never resolves (RFC 2606, RFC 6761), so the addresses are well-formed but no mail can reach a real person. The brief's own accounts use the same domain. The name does not mean the input is invalid: the malformed-email cases (BUG-17) are broken in their syntax, e.g. 'not-an-email-…' (no @), 'a…@b' and 'qa-…@@example.invalid' (two @ signs).
 
 Effort (S/M/L) is my estimate from the observed behaviour, without the source code. Severity scale (who is harmed and how much): **Critical** Money, security or the core purchase is broken for many users; no workaround; **High** A business rule in the brief is broken with real harm to buyers or the business; **Medium** A rule is broken with limited harm or an easy workaround; **Low** Cosmetic, validation or consistency issue with little harm.
 
@@ -709,14 +709,16 @@ Evidence: each bug links its newest complete recording run, `assets/BUG-xx/<YYYY
 
 **Steps to reproduce**
 
-1. POST /api/auth/register {email: 'not-an-email', password: 'eventpass123'}
-2. Repeat with 'qa@@example.invalid' and 'a@b'
+1. POST /api/auth/register {email: 'not-an-email-<something new>', password: 'eventpass123'} (no @)
+2. Repeat with 'qa-<something new>@@example.invalid' (two @ signs) and 'a<something new>@b' (no dot in the domain)
 
 **Expected:** 400 for each
 
 **Actual:** 200 for each; accounts are created with unusable identities
 
 **Hypothesis (not verified against source):** The OpenAPI schema declares email as type string with no format.
+
+**Note:** Use a value nobody has registered yet: the bare 'not-an-email', 'qa@@example.invalid' and 'a@b' were registered by earlier runs (this bug), so they now answer 409 'Email already registered' instead of 200.
 
 **Evidence** (run 20260924T141727834, reproduced: 200): [recording.webm](./assets/BUG-17/20260924T141727834/recording.webm) · [screenshot.png](./assets/BUG-17/20260924T141727834/screenshot.png) · [network.har](./assets/BUG-17/20260924T141727834/network.har) · [log.json](./assets/BUG-17/20260924T141727834/log.json)
 

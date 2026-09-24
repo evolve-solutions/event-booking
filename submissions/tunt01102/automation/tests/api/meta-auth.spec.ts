@@ -42,9 +42,12 @@ test.describe('Registration', () => {
   });
 
   test(tc('TC-REG-02', 'refuses a malformed email'), bug('BUG-17'), async ({ anon }) => {
-    for (const email of ['not-an-email', `qa@@${uniqueEmail().split('@')[0]}.invalid`]) {
+    // Each value is unique per run: a fixed value is registered by the first run (the bug) and then only ever
+    // gets 409 "already registered", which would fail this test for the wrong reason.
+    const id = uniqueEmail('x').split('@')[0].slice(2);
+    for (const email of [`not-an-email-${id}`, `qa-${id}@@example.invalid`, `a${id}@b`]) {
       const r = await anon.register({ email, password: DEFAULT_PASSWORD });
-      expect(r.status, `register ${email}`).toBe(400);
+      expect.soft(r.status, `register ${email}`).toBe(400);
     }
   });
 

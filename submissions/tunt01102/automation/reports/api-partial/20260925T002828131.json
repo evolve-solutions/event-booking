@@ -1,0 +1,337 @@
+{
+  "config": {
+    "argv": [
+      "~/.nvm/versions/node/v22.23.2/bin/node",
+      "submissions/tunt01102/automation/node_modules/.bin/playwright",
+      "test",
+      "--project=api",
+      "-g",
+      "TC-REG-02"
+    ],
+    "configFile": "submissions/tunt01102/automation/playwright.config.ts",
+    "rootDir": "submissions/tunt01102/automation",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "submissions/tunt01102/automation/tests/support/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260925T002828131-api-partial",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "smoke",
+        "name": "smoke",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/smoke",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260925T002828131-api-partial",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "api",
+        "name": "api",
+        "testDir": "submissions/tunt01102/automation/tests/api",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260925T002828131-api-partial",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "regression",
+        "name": "regression",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/regression",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260925T002828131-api-partial",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "smoke-firefox",
+        "name": "smoke-firefox",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/smoke",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260925T002828131-api-partial",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "smoke-webkit",
+        "name": "smoke-webkit",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/smoke",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260925T002828131-api-partial",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-webkit",
+        "name": "mobile-webkit",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/regression",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260925T002828131-api-partial",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "slow",
+        "name": "slow",
+        "testDir": "submissions/tunt01102/automation/tests/slow",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 2400000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260925T002828131-api-partial",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "evidence-timing",
+        "name": "evidence-timing",
+        "testDir": "submissions/tunt01102/automation/tests/evidence",
+        "testIgnore": [],
+        "testMatch": [
+          "timing.evidence.spec.ts"
+        ],
+        "timeout": 2700000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260925T002828131-api-partial",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "evidence",
+        "name": "evidence",
+        "testDir": "submissions/tunt01102/automation/tests/evidence",
+        "testIgnore": [],
+        "testMatch": [
+          "bugs.evidence.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/api-partial/20260925T002828131.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report/20260925T002828131-api-partial",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "tests/api/meta-auth.spec.ts",
+      "file": "tests/api/meta-auth.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Registration",
+          "file": "tests/api/meta-auth.spec.ts",
+          "line": 36,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-REG-02] refuses a malformed email",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "bug",
+                      "description": "BUG-17",
+                      "location": {
+                        "file": "submissions/tunt01102/automation/tests/api/meta-auth.spec.ts",
+                        "line": 44,
+                        "column": 3
+                      }
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 600,
+                      "error": {
+                        "message": "Error: register not-an-email-e34db58f\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m200\u001b[39m",
+                        "stack": "Error: register not-an-email-e34db58f\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m200\u001b[39m\n    at submissions/tunt01102/automation/tests/api/meta-auth.spec.ts:50:50",
+                        "location": {
+                          "file": "submissions/tunt01102/automation/tests/api/meta-auth.spec.ts",
+                          "column": 50,
+                          "line": 50
+                        },
+                        "snippet": "  48 |     for (const email of [`not-an-email-${id}`, `qa-${id}@@example.invalid`, `a${id}@b`]) {\n  49 |       const r = await anon.register({ email, password: DEFAULT_PASSWORD });\n> 50 |       expect.soft(r.status, `register ${email}`).toBe(400);\n     |                                                  ^\n  51 |     }\n  52 |   });\n  53 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/api/meta-auth.spec.ts",
+                            "column": 50,
+                            "line": 50
+                          },
+                          "message": "Error: register not-an-email-e34db58f\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m200\u001b[39m\n\n  48 |     for (const email of [`not-an-email-${id}`, `qa-${id}@@example.invalid`, `a${id}@b`]) {\n  49 |       const r = await anon.register({ email, password: DEFAULT_PASSWORD });\n> 50 |       expect.soft(r.status, `register ${email}`).toBe(400);\n     |                                                  ^\n  51 |     }\n  52 |   });\n  53 |\n    at submissions/tunt01102/automation/tests/api/meta-auth.spec.ts:50:50"
+                        },
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/api/meta-auth.spec.ts",
+                            "column": 50,
+                            "line": 50
+                          },
+                          "message": "Error: register qa-e34db58f@@example.invalid\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m200\u001b[39m\n\n  48 |     for (const email of [`not-an-email-${id}`, `qa-${id}@@example.invalid`, `a${id}@b`]) {\n  49 |       const r = await anon.register({ email, password: DEFAULT_PASSWORD });\n> 50 |       expect.soft(r.status, `register ${email}`).toBe(400);\n     |                                                  ^\n  51 |     }\n  52 |   });\n  53 |\n    at submissions/tunt01102/automation/tests/api/meta-auth.spec.ts:50:50"
+                        },
+                        {
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/api/meta-auth.spec.ts",
+                            "column": 50,
+                            "line": 50
+                          },
+                          "message": "Error: register ae34db58f@b\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m200\u001b[39m\n\n  48 |     for (const email of [`not-an-email-${id}`, `qa-${id}@@example.invalid`, `a${id}@b`]) {\n  49 |       const r = await anon.register({ email, password: DEFAULT_PASSWORD });\n> 50 |       expect.soft(r.status, `register ${email}`).toBe(400);\n     |                                                  ^\n  51 |     }\n  52 |   });\n  53 |\n    at submissions/tunt01102/automation/tests/api/meta-auth.spec.ts:50:50"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T17:28:28.807Z",
+                      "annotations": [
+                        {
+                          "type": "bug",
+                          "description": "BUG-17",
+                          "location": {
+                            "file": "submissions/tunt01102/automation/tests/api/meta-auth.spec.ts",
+                            "line": 44,
+                            "column": 3
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "submissions/tunt01102/automation/test-results/20260925T002828131-api-partial/meta-auth-Registration-TC-REG-02-refuses-a-malformed-email-api/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "submissions/tunt01102/automation/test-results/20260925T002828131-api-partial/meta-auth-Registration-TC-REG-02-refuses-a-malformed-email-api/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "submissions/tunt01102/automation/tests/api/meta-auth.spec.ts",
+                        "column": 50,
+                        "line": 50
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d766bbe594e435572bd3-2f1f8a18a47592563f32",
+              "file": "tests/api/meta-auth.spec.ts",
+              "line": 44,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-24T17:28:28.138Z",
+    "duration": 1330.009,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -96,8 +96,8 @@ frontend bundle as a source of UI behaviour (its feature flags point at UI defec
 - Test accounts use addresses such as `qa-<name>-<id>@example.invalid`, like the brief's published accounts.
   `.invalid` is a top-level domain reserved so that it never resolves (RFC 2606, RFC 6761): the addresses are
   well-formed, so the site must accept them, yet no mail can ever reach a real person. The suffix does not mark
-  the input as invalid. The malformed-email cases (TC-REG, BUG-17) break the syntax instead: `not-an-email`,
-  `a@b`, `qa@@example.invalid` (two @ signs).
+  the input as invalid. The malformed-email cases (TC-REG, BUG-17) break the syntax instead: `not-an-email-<id>`,
+  `a<id>@b`, `qa-<id>@@example.invalid` (two @ signs), each with a fresh id so an earlier run cannot answer 409.
 - Browser time zone is set to Europe/London so a correct Vietnam-time display has to be converted.
 - Every order a test creates is cancelled once at teardown so shared stock returns.
 - Published accounts are used only for read-only smoke; they are public fixtures, not secrets.

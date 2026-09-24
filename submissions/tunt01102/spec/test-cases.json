@@ -83,10 +83,12 @@
    ],
    "preconditions": "None",
    "steps": [
-    "POST /api/auth/register with email 'not-an-email'",
-    "POST /api/auth/register with email 'qa@@example.invalid'"
+    "POST /api/auth/register with email 'not-an-email-<run id>' (no @)",
+    "POST /api/auth/register with email 'qa-<run id>@@example.invalid' (two @ signs)",
+    "POST /api/auth/register with email 'a<run id>@b' (no dot in the domain)"
    ],
-   "expected": "Both return 400; no account is created"
+   "expected": "Each returns 400; no account is created",
+   "notes": "Every value carries a per-run id: a fixed value would be registered by the first run (the bug) and answer 409 'already registered' on every later run, failing for the wrong reason."
   },
   {
    "id": "TC-REG-03",

@@ -1,5 +1,5 @@
 {
- "environment": "https://candidate-01.207.148.118.135.sslip.io, API per /docs/json (eve-qa-interview API 1.0.0). Chrome (Playwright 1.63 Chromium), desktop 1280x800 and phone 360x740. Browser time zone Europe/London so Vietnam-time conversion is visible. Fresh accounts registered per run. Test email addresses end in @example.invalid on purpose: .invalid is a top-level domain reserved so that it never resolves (RFC 2606, RFC 6761), so the addresses are well-formed but no mail can reach a real person. The brief's own accounts use the same domain. The name does not mean the input is invalid: the malformed-email cases (BUG-17) are broken in their syntax, e.g. 'not-an-email', 'a@b' and 'qa@@example.invalid' (two @ signs).",
+ "environment": "https://candidate-01.207.148.118.135.sslip.io, API per /docs/json (eve-qa-interview API 1.0.0). Chrome (Playwright 1.63 Chromium), desktop 1280x800 and phone 360x740. Browser time zone Europe/London so Vietnam-time conversion is visible. Fresh accounts registered per run. Test email addresses end in @example.invalid on purpose: .invalid is a top-level domain reserved so that it never resolves (RFC 2606, RFC 6761), so the addresses are well-formed but no mail can reach a real person. The brief's own accounts use the same domain. The name does not mean the input is invalid: the malformed-email cases (BUG-17) are broken in their syntax, e.g. 'not-an-email-…' (no @), 'a…@b' and 'qa-…@@example.invalid' (two @ signs).",
  "severityScale": {
   "Critical": "Money, security or the core purchase is broken for many users; no workaround",
   "High": "A business rule in the brief is broken with real harm to buyers or the business",
@@ -520,8 +520,8 @@
     "TC-REG-02"
    ],
    "steps": [
-    "POST /api/auth/register {email: 'not-an-email', password: 'eventpass123'}",
-    "Repeat with 'qa@@example.invalid' and 'a@b'"
+    "POST /api/auth/register {email: 'not-an-email-<something new>', password: 'eventpass123'} (no @)",
+    "Repeat with 'qa-<something new>@@example.invalid' (two @ signs) and 'a<something new>@b' (no dot in the domain)"
    ],
    "expected": "400 for each",
    "actual": "200 for each; accounts are created with unusable identities",
@@ -533,7 +533,8 @@
    "hypothesis": "The OpenAPI schema declares email as type string with no format.",
    "relatedBugs": [
     "BUG-19"
-   ]
+   ],
+   "notes": "Use a value nobody has registered yet: the bare 'not-an-email', 'qa@@example.invalid' and 'a@b' were registered by earlier runs (this bug), so they now answer 409 'Email already registered' instead of 200."
   },
   {
    "id": "BUG-18",
