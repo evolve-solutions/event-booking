@@ -28,7 +28,7 @@ frontend bundle as a source of UI behaviour (its feature flags point at UI defec
 | Load and performance | Shared environment used by other candidates; load would harm them |
 | Destructive admin checks | Only no-op bodies and non-existent ids are sent to admin routes, so a defect can never alter shared data |
 | Checkout of carts that would drain shared stock | e.g. 100,000 tickets, negative carts; observed in the cart only |
-| Browsers other than Chromium | Time-boxed; the defects found are server-side or layout-level, not engine quirks |
+| Full regression on Firefox and WebKit | Time-boxed: smoke runs on both engines and the phone tests on WebKit's iPhone profile; the defects found are server-side or layout-level, not engine quirks |
 
 ## 3. Approach (SDD loop)
 
@@ -100,12 +100,15 @@ frontend bundle as a source of UI behaviour (its feature flags point at UI defec
   `a<id>@b`, `qa-<id>@@example.invalid` (two @ signs), each with a fresh id so an earlier run cannot answer 409.
 - Browser time zone is set to Europe/London so a correct Vietnam-time display has to be converted.
 - Every order a test creates is cancelled once at teardown so shared stock returns.
-- Published accounts are used only for read-only smoke; they are public fixtures, not secrets.
-- Known side effect: TC-CAN-02 and the BUG-11 evidence cancel an order twice, so while BUG-11 exists each
-  run adds 1 to 2 extra Standard tickets to stock (the defect itself does this). Measured on 2026-09-24:
-  event 4 (Da Nang Startup Summit) Standard stands at 228 against 200 at the start, 28 extra, from the early
-  runs; since the review these checks use the quiet event (23, New Year Countdown Hanoi), at 604 Standard.
-  Reported here so nobody mistakes it for other activity.
+- The three published accounts are not used by any test: every test registers its own buyers, so the carts and
+  order histories other candidates share are never touched. The accounts are public fixtures, not secrets.
+- Known side effect: three checks cancel an order twice, because the double cancel is BUG-11 itself: TC-CAN-02
+  (API suite), the BUG-11 evidence recording and the BUG-11 folder of the Postman collection. While BUG-11
+  exists, each of them adds its order's quantity (1 or 2 Standard tickets) to stock again. The early runs did this
+  on event 4 (Da Nang Startup Summit): 228 Standard on 2026-09-24 against 200 at the start. Since the review all
+  three use the quiet event (23, New Year Countdown Hanoi), whose Standard stock read 604 on 2026-09-24 and 633 on
+  2026-09-25 (other candidates buy and cancel there too, so not all of the change is ours). Reported here so
+  nobody mistakes it for other activity.
 
 ## 8. Entry and exit criteria
 
@@ -148,7 +151,7 @@ workaround), **Low** (cosmetic or consistency). Each bug names who is harmed.
 
 `project-overview.md`, this plan, `spec/requirements.json`, `spec/test-cases.json` (+ `test-cases.md`
 for the discount flow), `spec/bugs.json` (+ `bugs.md`), `rtm.md`, `assets/BUG-*` evidence, the
-`automation/` suites and the QA dashboard.
+`automation/` suites, the Postman collection (`automation/postman/`) and the QA dashboard.
 
 ## 12. Review and what changed
 
@@ -162,7 +165,6 @@ is in `spec/process-log.json` and on the dashboard's Process tab.
 ## 13. Iteration 3
 
 The open items from section 12 were specified in a short design, reviewed from five angles before
-any code was written, and revised (draft 2). The review added a severity
-pass (BUG-07 raised to High; every Critical and High now carries its reasoning, enforced by the spec check), and
-cut three items down. Built: cross-engine projects, compile-time ids, sharding with a guarded merge, one
+any code was written, and revised (draft 2). The review added a severity pass (BUG-07 raised to High; every
+Critical and High now carries its reasoning, enforced by the spec check), and cut three items down. Built: cross-engine projects, compile-time ids, sharding with a guarded merge, one
 dashboard data copy, quiet-event isolation enforced by a test, and report retention.

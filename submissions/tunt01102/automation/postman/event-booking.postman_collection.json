@@ -37,15 +37,19 @@
                 "type": "text/javascript",
                 "exec": [
                   "const items = pm.response.json().items;",
-                  "const up = items.filter((e) => e.status === 'UPCOMING').sort((a, b) => a.startsAt.localeCompare(b.startsAt));",
+                  "const vnDate = (iso) => new Date(new Date(iso).getTime() + 7 * 3600e3).toISOString().slice(0, 10);",
+                  "const future = items.filter((e) => e.status === 'UPCOMING' && new Date(e.startsAt).getTime() - Date.now() > 48 * 3600e3)",
+                  "  .sort((a, b) => a.startsAt.localeCompare(b.startsAt));",
                   "const past = items.filter((e) => e.status === 'PAST');",
-                  "pm.test('There is an upcoming and a past event', () => { pm.expect(up.length).to.be.above(1); pm.expect(past.length).to.be.above(0); });",
-                  "// upcoming: the soonest upcoming event (event 7 in bugs.md); quiet: the latest one, used for stock counts;",
-                  "// past: an event that already happened (event 11 in bugs.md).",
-                  "pm.collectionVariables.set('upcomingEventId', up[0].id);",
-                  "pm.collectionVariables.set('quietEventId', up[up.length - 1].id);",
+                  "pm.test('A past event and at least two upcoming events more than 48 h away', () => { pm.expect(past.length).to.be.above(0); pm.expect(future.length).to.be.above(1); });",
+                  "const upcoming = future.find((e) => vnDate(e.startsAt) !== e.startsAt.slice(0, 10)) || future[0];",
+                  "const rest = future.filter((e) => e.id !== upcoming.id);",
+                  "const quiet = rest[rest.length - 1];",
+                  "// upcoming: event 7 in bugs.md; quiet: the latest one, used for stock counts; past: event 11 in bugs.md.",
+                  "pm.collectionVariables.set('upcomingEventId', upcoming.id);",
+                  "pm.collectionVariables.set('quietEventId', quiet.id);",
                   "pm.collectionVariables.set('pastEventId', past[0].id);",
-                  "console.log('upcoming', up[0].id, up[0].title, '| quiet', up[up.length - 1].id, up[up.length - 1].title, '| past', past[0].id, past[0].title);"
+                  "console.log('upcoming', upcoming.id, upcoming.title, '| quiet', quiet.id, quiet.title, '| past', past[0].id, past[0].title);"
                 ]
               }
             }
@@ -3167,7 +3171,7 @@
                   "script": {
                     "type": "text/javascript",
                     "exec": [
-                      "pm.test('Status 200', () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                      "console.log('add', pm.response.code);"
                     ]
                   }
                 }
@@ -3201,7 +3205,7 @@
                     "type": "text/javascript",
                     "exec": [
                       "if (pm.response.code === 200) pm.collectionVariables.set('b10_order', pm.response.json().id);",
-                      "pm.test('Status 200', () => pm.expect(pm.response.code).to.be.oneOf([200]));"
+                      "console.log('checkout', pm.response.code, '(BUG-10 can only be shown while BUG-09 lets this through)');"
                     ]
                   }
                 }

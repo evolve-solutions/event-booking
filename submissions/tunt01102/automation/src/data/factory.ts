@@ -7,13 +7,6 @@ export const DEFAULT_PASSWORD = 'eventpass123';
 export const VALID_PHONE = '0912345678';
 export const VALID_RECIPIENT = 'QA Buyer';
 
-/** Published fixtures from the brief. Public placeholders, not secrets; used only for read-only smoke. */
-export const PUBLISHED_ACCOUNTS = [
-  'meadow-60b5@example.invalid',
-  'cobalt-7ad0@example.invalid',
-  'juniper-f15b@example.invalid',
-] as const;
-
 export function uniqueEmail(prefix = 'qa', rand: () => string = () => randomBytes(4).toString('hex')): string {
   return `${prefix}-${rand()}@example.invalid`;
 }

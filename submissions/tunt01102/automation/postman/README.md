@@ -6,7 +6,7 @@ sets `baseUrl` (the candidate-01 site) and `password` (the password every fresh 
 
 | Folder | What it does |
 |---|---|
-| `00 Setup (run first)` | Picks the events by rule (soonest upcoming, latest upcoming for stock counts, a past one) and stores their ticket type ids and prices |
+| `00 Setup (run first)` | Picks the events by the automated suites' rule (upcoming events more than 48 h away; the latest one for stock counts; a past one) and stores their ticket type ids and prices |
 | `01 API reference (27 operations)` | One request per operation in `/docs/json`, in a working order, with a fresh buyer; admin routes return 403 for a customer |
 | `02 Bug reproductions` | `BUG-01` to `BUG-24` (without 12 and 13), each self-contained: it registers its own buyers and cleans up |
 | `03 Slow bugs (manual waits)` | `BUG-12` (wait 11 minutes) and `BUG-13` (wait 31 minutes), sent by hand |
@@ -31,5 +31,6 @@ npm run postman:build   # regenerate both files from scripts/build-postman.mjs a
 npm run postman:run     # 00 + 01 + 02 with Newman; expected: only [BUG-xx] tests red
 ```
 
-Last run (2026-09-25): 153 requests and 156 assertions. The 37 red assertions are all `[BUG-xx]` tests and
-cover all 22 bugs in folder 02; there were no other failures, and no order was left CONFIRMED.
+Last run (2026-09-25): 153 requests and 154 assertions. The 37 red assertions are all `[BUG-xx]` tests and
+cover all 22 bugs in folder 02; there were no other failures, and no order was left CONFIRMED. `00 Setup` picks
+events with the same rule as the automated suites (`src/data/world.ts`), so both test events 7, 23 and 11 today.

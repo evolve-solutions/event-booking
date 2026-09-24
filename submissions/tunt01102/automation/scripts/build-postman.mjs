@@ -65,16 +65,22 @@ const t = (id, text, body) => `pm.test('[${id}] ${text.replace(/'/g, "\\'")}', (
 const setup = folder('00 Setup (run first)', [
   req('Log out (clear any old session)', 'POST', '/api/auth/logout', { test: status(200, 401) }),
   req('Pick events by rule', 'GET', '/api/events?pageSize=100', {
+    // The same rule as the automated suites (src/data/world.ts): only events more than 48 h away, so no clean-up
+    // cancel can fall in the 50% refund tier; prefer one whose Vietnam date differs from its UTC date.
     test: `const items = pm.response.json().items;
-      const up = items.filter((e) => e.status === 'UPCOMING').sort((a, b) => a.startsAt.localeCompare(b.startsAt));
+      const vnDate = (iso) => new Date(new Date(iso).getTime() + 7 * 3600e3).toISOString().slice(0, 10);
+      const future = items.filter((e) => e.status === 'UPCOMING' && new Date(e.startsAt).getTime() - Date.now() > 48 * 3600e3)
+        .sort((a, b) => a.startsAt.localeCompare(b.startsAt));
       const past = items.filter((e) => e.status === 'PAST');
-      pm.test('There is an upcoming and a past event', () => { pm.expect(up.length).to.be.above(1); pm.expect(past.length).to.be.above(0); });
-      // upcoming: the soonest upcoming event (event 7 in bugs.md); quiet: the latest one, used for stock counts;
-      // past: an event that already happened (event 11 in bugs.md).
-      ${set('upcomingEventId', 'up[0].id')}
-      ${set('quietEventId', 'up[up.length - 1].id')}
+      pm.test('A past event and at least two upcoming events more than 48 h away', () => { pm.expect(past.length).to.be.above(0); pm.expect(future.length).to.be.above(1); });
+      const upcoming = future.find((e) => vnDate(e.startsAt) !== e.startsAt.slice(0, 10)) || future[0];
+      const rest = future.filter((e) => e.id !== upcoming.id);
+      const quiet = rest[rest.length - 1];
+      // upcoming: event 7 in bugs.md; quiet: the latest one, used for stock counts; past: event 11 in bugs.md.
+      ${set('upcomingEventId', 'upcoming.id')}
+      ${set('quietEventId', 'quiet.id')}
       ${set('pastEventId', 'past[0].id')}
-      console.log('upcoming', up[0].id, up[0].title, '| quiet', up[up.length - 1].id, up[up.length - 1].title, '| past', past[0].id, past[0].title);`,
+      console.log('upcoming', upcoming.id, upcoming.title, '| quiet', quiet.id, quiet.title, '| past', past[0].id, past[0].title);`,
   }),
   ...[['upcoming', 'up'], ['quiet', 'quiet'], ['past', 'past']].map(([ev, p]) => req(`Ticket types of the ${ev} event`, 'GET', `/api/events/{{${ev}EventId}}`, {
     test: `const tts = pm.response.json().ticketTypes;
@@ -261,8 +267,9 @@ B.push(bugFolder('BUG-08', [
 
 const pastBooking = (p, id) => [
   req('Read the past event', 'GET', '/api/events/{{pastEventId}}', { test: `pm.test('Status PAST', () => pm.expect(pm.response.json().status).to.eql('PAST'));` }),
-  add('Add 1 Standard of the past event', 'pastStandardTt', 1, id === 'BUG-09' ? t('BUG-09', 'Brief: past events cannot be booked, so the add is refused', '  pm.expect(pm.response.code).to.be.within(400, 499);') : status(200)),
-  checkout('Check out', p, 'order', OK_CHECKOUT, id === 'BUG-09' ? t('BUG-09', 'The checkout is refused', '  pm.expect(pm.response.code).to.be.within(400, 499);') : status(200)),
+  // In BUG-10 these two steps are only the set-up: no test here, so a fixed BUG-09 cannot turn red under BUG-10.
+  add('Add 1 Standard of the past event', 'pastStandardTt', 1, id === 'BUG-09' ? t('BUG-09', 'Brief: past events cannot be booked, so the add is refused', '  pm.expect(pm.response.code).to.be.within(400, 499);') : `console.log('add', pm.response.code);`),
+  checkout('Check out', p, 'order', OK_CHECKOUT, id === 'BUG-09' ? t('BUG-09', 'The checkout is refused', '  pm.expect(pm.response.code).to.be.within(400, 499);') : `console.log('checkout', pm.response.code, '(BUG-10 can only be shown while BUG-09 lets this through)');`),
 ];
 B.push(bugFolder('BUG-09', [...buyer('b09', 'A', { first: true }), ...pastBooking('b09', 'BUG-09'), cancelOnce('b09', 'order')]));
 B.push(bugFolder('BUG-10', [
