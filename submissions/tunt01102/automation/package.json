@@ -22,7 +22,9 @@
     "gen:ids": "node scripts/gen-ids.mjs",
     "test:cross": "node scripts/run-suites.mjs smoke-firefox,smoke-webkit,mobile-webkit",
     "reports:prune": "node scripts/prune-reports.mjs 3",
-    "dashboard:check": "node scripts/check-dashboard.mjs"
+    "dashboard:check": "node scripts/check-dashboard.mjs",
+    "postman:build": "node scripts/build-postman.mjs",
+    "postman:run": "node scripts/run-postman.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",

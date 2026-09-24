@@ -17,6 +17,7 @@ the file as source, so it has to be opened locally.
 | [test-plan.md](./test-plan.md) | Strategy, scope, risks, levels, entry and exit criteria, what was not tested and why |
 | [rtm.md](./rtm.md) | Requirements traceability: brief rule ↔ test case ↔ automated result ↔ bug |
 | [spec/](./spec/) | Sources of truth: `requirements.json`, `test-cases.json` (all 125 cases), `bugs.json`, `process-log.json` |
+| [automation/postman/](./automation/postman/) | Postman collection: all 27 API operations and one folder per API bug (BUG-01 to BUG-24), for reproducing by hand |
 | [automation/](./automation/) | Unit (Vitest, 80% gate), API, smoke, regression, slow and evidence suites (Playwright), cross-engine projects (Firefox, WebKit, iPhone), gate, CI template |
 
 ## Method in one paragraph

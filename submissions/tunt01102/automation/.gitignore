@@ -14,3 +14,5 @@ evidence-archive/
 reports/**/*.blobs/
 # Older reports, moved here by npm run reports:prune (kept locally, never deleted)
 reports-archive/
+# Newman runs of the Postman collection: they carry live session cookies (BUG-13 keeps them valid), so they stay local
+postman/runs/
