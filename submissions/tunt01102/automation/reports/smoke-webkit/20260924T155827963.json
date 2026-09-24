@@ -1,0 +1,482 @@
+{
+  "config": {
+    "argv": [
+      "~/.nvm/versions/node/v22.23.2/bin/node",
+      "submissions/tunt01102/automation/node_modules/.bin/playwright",
+      "test",
+      "--project=smoke-webkit"
+    ],
+    "configFile": "submissions/tunt01102/automation/playwright.config.ts",
+    "rootDir": "submissions/tunt01102/automation",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "submissions/tunt01102/automation/tests/support/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T155827963-smoke-webkit",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "smoke",
+        "name": "smoke",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/smoke",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T155827963-smoke-webkit",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "api",
+        "name": "api",
+        "testDir": "submissions/tunt01102/automation/tests/api",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T155827963-smoke-webkit",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "regression",
+        "name": "regression",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/regression",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T155827963-smoke-webkit",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "smoke-firefox",
+        "name": "smoke-firefox",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/smoke",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T155827963-smoke-webkit",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "smoke-webkit",
+        "name": "smoke-webkit",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/smoke",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T155827963-smoke-webkit",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-webkit",
+        "name": "mobile-webkit",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/regression",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T155827963-smoke-webkit",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "slow",
+        "name": "slow",
+        "testDir": "submissions/tunt01102/automation/tests/slow",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 2400000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T155827963-smoke-webkit",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "evidence-timing",
+        "name": "evidence-timing",
+        "testDir": "submissions/tunt01102/automation/tests/evidence",
+        "testIgnore": [],
+        "testMatch": [
+          "timing.evidence.spec.ts"
+        ],
+        "timeout": 2700000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T155827963-smoke-webkit",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "evidence",
+        "name": "evidence",
+        "testDir": "submissions/tunt01102/automation/tests/evidence",
+        "testIgnore": [],
+        "testMatch": [
+          "bugs.evidence.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/smoke-webkit/20260924T155827963.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report/20260924T155827963-smoke-webkit",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "tests/e2e/smoke/smoke.spec.ts",
+      "file": "tests/e2e/smoke/smoke.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Smoke @smoke",
+          "file": "tests/e2e/smoke/smoke.spec.ts",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-SMK-01] the event list loads",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "smoke-webkit",
+                  "projectName": "smoke-webkit",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1400,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T08:58:28.546Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4219922fea2e2bd3c691-248dcbaf7e8d284575ff",
+              "file": "tests/e2e/smoke/smoke.spec.ts",
+              "line": 8,
+              "column": 3
+            },
+            {
+              "title": "[TC-SMK-02] an event detail shows the three ticket types",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "smoke-webkit",
+                  "projectName": "smoke-webkit",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1233,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T08:58:33.049Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4219922fea2e2bd3c691-1ae0599668eff318f67a",
+              "file": "tests/e2e/smoke/smoke.spec.ts",
+              "line": 16,
+              "column": 3
+            },
+            {
+              "title": "[TC-SMK-03] register through the UI",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "smoke-webkit",
+                  "projectName": "smoke-webkit",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1791,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T08:58:34.287Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4219922fea2e2bd3c691-ccf6087c97b19898e988",
+              "file": "tests/e2e/smoke/smoke.spec.ts",
+              "line": 26,
+              "column": 3
+            },
+            {
+              "title": "[TC-SMK-04] log in through the UI",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "smoke-webkit",
+                  "projectName": "smoke-webkit",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2243,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T08:58:36.082Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4219922fea2e2bd3c691-0ed51adce8d0f39f5e64",
+              "file": "tests/e2e/smoke/smoke.spec.ts",
+              "line": 36,
+              "column": 3
+            },
+            {
+              "title": "[TC-SMK-05] add a Standard ticket and see it priced in the cart",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "smoke-webkit",
+                  "projectName": "smoke-webkit",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2292,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T08:58:38.329Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4219922fea2e2bd3c691-9bc8b3392aeeacaf7806",
+              "file": "tests/e2e/smoke/smoke.spec.ts",
+              "line": 45,
+              "column": 3
+            },
+            {
+              "title": "[TC-SMK-06] check out through the UI and see the confirmation",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "smoke-webkit",
+                  "projectName": "smoke-webkit",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2181,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T08:58:40.626Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4219922fea2e2bd3c691-c07743379cbb157a3e74",
+              "file": "tests/e2e/smoke/smoke.spec.ts",
+              "line": 58,
+              "column": 3
+            },
+            {
+              "title": "[TC-SMK-07] my orders shows the new order",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "smoke-webkit",
+                  "projectName": "smoke-webkit",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1379,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T08:58:42.811Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4219922fea2e2bd3c691-d6b0e00ec26d25c83782",
+              "file": "tests/e2e/smoke/smoke.spec.ts",
+              "line": 74,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-24T08:58:27.969Z",
+    "duration": 16244.260999999999,
+    "expected": 7,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

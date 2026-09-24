@@ -1,0 +1,1148 @@
+{
+ "environment": "https://candidate-01.207.148.118.135.sslip.io, API per /docs/json (eve-qa-interview API 1.0.0). Chrome (Playwright 1.63 Chromium), desktop 1280x800 and phone 360x740. Browser time zone Europe/London so Vietnam-time conversion is visible. Fresh accounts registered per run.",
+ "severityScale": {
+  "Critical": "Money, security or the core purchase is broken for many users; no workaround",
+  "High": "A business rule in the brief is broken with real harm to buyers or the business",
+  "Medium": "A rule is broken with limited harm or an easy workaround",
+  "Low": "Cosmetic, validation or consistency issue with little harm"
+ },
+ "bugs": [
+  {
+   "id": "BUG-01",
+   "title": "Any customer can edit any event through PUT /api/events/{id}",
+   "severity": "Critical",
+   "area": "Administration",
+   "component": "API",
+   "requirements": [
+    "REQ-ADM-01"
+   ],
+   "tests": [
+    "TC-ADM-04"
+   ],
+   "steps": [
+    "Register and log in as an ordinary customer",
+    "GET /api/events/7 and keep its slug, title, venue and startsAt",
+    "PUT /api/events/7 with exactly those values (an edit that changes nothing)",
+    "Send POST /api/events (reusing that event's slug) and the other admin routes from the same session for comparison"
+   ],
+   "expected": "403 'Administrator access required', as POST, DELETE and every other admin route return",
+   "actual": "200 with the event returned, while POST /api/events, DELETE /api/events/999999, PATCH /api/ticket-types/{id}, GET /api/admin/orders, GET /api/admin/orders.csv and DELETE /api/admin/orders/{id} all return 403 for the same customer. Only the edit route lacks the guard. Probed with the event's unchanged body, so no shared data was changed.",
+   "impact": "Every buyer and the organiser: the route accepts an edit from any customer. A real edit was deliberately not sent, so renaming or re-dating is inferred from the accepted request, not demonstrated.",
+   "notes": "Combined with BUG-31 the admin event screen is also reachable in the UI.",
+   "status": "Open",
+   "rootCauseGroup": "Authorisation: admin role guard",
+   "effort": "S",
+   "likelyLocation": "Server: PUT /api/events/{id} route handler has no admin guard (POST, DELETE and the other admin routes do)",
+   "hypothesis": "The route is missing the role check the other admin routes share.",
+   "relatedBugs": [
+    "BUG-31"
+   ],
+   "severityRationale": "Critical: a customer can use an administrator-only operation that changes what every buyer sees (dates, venues), which the brief forbids \"by any route\". Rated on the accepted request; no real edit was sent, to protect the shared site."
+  },
+  {
+   "id": "BUG-02",
+   "title": "A customer can cancel another customer's order",
+   "severity": "Critical",
+   "area": "Orders",
+   "component": "API",
+   "requirements": [
+    "REQ-SEC-01"
+   ],
+   "tests": [
+    "TC-ORD-04"
+   ],
+   "steps": [
+    "Buyer A adds 1 Standard of event 7 and checks out; note order id N",
+    "Buyer B (a different fresh account) sends POST /api/orders/N/cancel",
+    "Buyer A sends GET /api/orders/N"
+   ],
+   "expected": "B gets 403 or 404; A's order stays CONFIRMED",
+   "actual": "B gets 200 and A's order is CANCELLED with a refund; order ids are sequential, so every order on the site can be cancelled",
+   "impact": "Every buyer can lose their tickets to anyone; the business refunds orders nobody asked to cancel.",
+   "status": "Open",
+   "rootCauseGroup": "Authorisation: order ownership",
+   "effort": "S",
+   "likelyLocation": "Server: POST /api/orders/{id}/cancel loads the order by id without matching it to the session user",
+   "hypothesis": "No order.userId === session.userId check.",
+   "relatedBugs": [
+    "BUG-03",
+    "BUG-11"
+   ],
+   "severityRationale": "Critical: any customer can destroy any other customer's purchase, and sequential ids make every order reachable. Harm to many buyers, no workaround for the victim."
+  },
+  {
+   "id": "BUG-03",
+   "title": "A customer can read another customer's order, including recipient name and phone",
+   "severity": "Critical",
+   "area": "Orders",
+   "component": "API",
+   "requirements": [
+    "REQ-SEC-01"
+   ],
+   "tests": [
+    "TC-ORD-03"
+   ],
+   "steps": [
+    "Buyer A checks out; note order id N",
+    "Buyer B sends GET /api/orders/N"
+   ],
+   "expected": "403 or 404",
+   "actual": "200 with A's recipientName, phone, studentCardNo and amounts; ids are sequential so all orders can be enumerated",
+   "impact": "Every buyer: name, phone and student card number of any order are readable by any logged-in user, and ids are sequential, so every order can be enumerated. Same flaw as BUG-02, so the same severity.",
+   "status": "Open",
+   "rootCauseGroup": "Authorisation: order ownership",
+   "effort": "S",
+   "likelyLocation": "Server: GET /api/orders/{id} loads the order by id without matching it to the session user",
+   "hypothesis": "Same missing ownership check as BUG-02.",
+   "relatedBugs": [
+    "BUG-02"
+   ],
+   "severityRationale": "Critical: personal data (name, phone, student card) of every buyer is readable by any logged-in user through sequential ids. Same missing ownership check as BUG-02."
+  },
+  {
+   "id": "BUG-04",
+   "title": "Adding 0 or a negative quantity to the cart is accepted, producing negative totals",
+   "severity": "High",
+   "area": "Booking",
+   "component": "API",
+   "requirements": [
+    "REQ-BOOK-01"
+   ],
+   "tests": [
+    "TC-CART-02",
+    "TC-CART-03"
+   ],
+   "steps": [
+    "Log in as a fresh buyer",
+    "POST /api/cart/items {ticketTypeId: <Standard of event 7>, quantity: 0}",
+    "POST the same with quantity -1",
+    "GET /api/cart"
+   ],
+   "expected": "Both adds rejected with 400 (\"Each add is a whole number of at least 1\"); cart empty. Removing a line with PATCH quantity 0 is a separate, legitimate action and is not part of this bug.",
+   "actual": "Both return 200; the cart holds quantity -1 with gross -100,000, serviceFee -5,000, total -105,000",
+   "impact": "Business: negative lines can offset other lines in the price. Checkout of a negative cart was deliberately not attempted, because it would change shared stock.",
+   "status": "Open",
+   "rootCauseGroup": "Cart line rules",
+   "effort": "S",
+   "likelyLocation": "Server: POST /api/cart/items body schema (quantity has no minimum); negative PATCH is already refused",
+   "hypothesis": "The add schema allows any integer; PATCH refuses negatives, so only the add path is affected.",
+   "relatedBugs": [
+    "BUG-08"
+   ],
+   "severityRationale": "High: a stated booking rule is broken and the cart total goes negative; not Critical because checkout of a negative cart was not attempted, so the money effect is shown only in the cart."
+  },
+  {
+   "id": "BUG-05",
+   "title": "The same discount code can be applied repeatedly and stacks",
+   "severity": "Critical",
+   "area": "Pricing",
+   "component": "API",
+   "requirements": [
+    "REQ-DISC-02"
+   ],
+   "tests": [
+    "TC-DISC-03",
+    "TC-DISC-08"
+   ],
+   "steps": [
+    "Add 2 Standard (100,000 each) of event 7",
+    "POST /api/cart/discount {code: 'WELCOME10'}",
+    "POST the same code again",
+    "POST it a third time",
+    "Check out"
+   ],
+   "expected": "The second apply is refused or ignored; discount stays 20,000; one code on the order",
+   "actual": "discountCode becomes 'WELCOME10,WELCOME10,WELCOME10' and discount grows 20,000, 40,000, 60,000; the stacked discount is saved on the confirmed order",
+   "impact": "Business revenue: any buyer can reach 100% off Standard tickets by repeating one request.",
+   "status": "Open",
+   "rootCauseGroup": "Pricing pipeline",
+   "effort": "S",
+   "likelyLocation": "Server: POST /api/cart/discount appends the code to a list instead of replacing or refusing",
+   "hypothesis": "Codes are concatenated (\"WELCOME10,WELCOME10\") and each entry is applied.",
+   "relatedBugs": [
+    "BUG-06",
+    "BUG-07"
+   ],
+   "severityRationale": "Critical: direct revenue loss without limit; repeating one request reaches 100% off Standard tickets and the stacked discount is saved on the order."
+  },
+  {
+   "id": "BUG-06",
+   "title": "Discount codes also reduce VIP and Student tickets",
+   "severity": "High",
+   "area": "Pricing",
+   "component": "API",
+   "requirements": [
+    "REQ-DISC-01"
+   ],
+   "tests": [
+    "TC-DISC-04",
+    "TC-DISC-05",
+    "TC-DISC-06",
+    "TC-DISC-15"
+   ],
+   "steps": [
+    "Add 1 VIP (300,000) of event 7",
+    "Apply WELCOME10",
+    "Read the cart"
+   ],
+   "expected": "discount 0, because codes apply to Standard tickets only; total 315,000",
+   "actual": "discount 30,000 (10% of the VIP ticket); the same happens for Student tickets",
+   "impact": "Business revenue on the highest-priced tickets.",
+   "status": "Open",
+   "rootCauseGroup": "Pricing pipeline",
+   "effort": "S",
+   "likelyLocation": "Server: cart totals function applies the discount to the whole subtotal, not the Standard lines",
+   "hypothesis": "No filter on ticket type before the discount is computed.",
+   "relatedBugs": [
+    "BUG-05",
+    "BUG-07"
+   ],
+   "notes": "The brief says \"Discount codes apply to Standard tickets\". I read that as Standard tickets only (GAP-09); if the product owner reads it otherwise, this bug and TC-DISC-04/05 change.",
+   "severityRationale": "High: revenue lost on the most expensive tickets on every discounted VIP or Student line; rests on reading GAP-09 (\"Standard only\")."
+  },
+  {
+   "id": "BUG-07",
+   "title": "Service fee is charged on the subtotal before the discount",
+   "severity": "High",
+   "area": "Pricing",
+   "component": "API + UI",
+   "requirements": [
+    "REQ-PRICE-01"
+   ],
+   "tests": [
+    "TC-DISC-07",
+    "TC-DISC-06",
+    "TC-DISC-08",
+    "TC-DISC-10",
+    "TC-DISC-12",
+    "TC-DISC-14",
+    "TC-DISC-16"
+   ],
+   "steps": [
+    "Add 2 Standard (100,000 each)",
+    "Apply WELCOME10",
+    "Read serviceFee and total"
+   ],
+   "expected": "discount 20,000; fee 5% of 180,000 = 9,000; total 189,000",
+   "actual": "discount 20,000; fee 10,000 (5% of 200,000); total 190,000. Same numbers in the cart UI and on the order",
+   "impact": "Every buyer who uses a code is overcharged 5% of the discount; the brief calls this order of operations out explicitly.",
+   "status": "Open",
+   "rootCauseGroup": "Pricing pipeline",
+   "effort": "S",
+   "likelyLocation": "Server: cart totals function computes the fee from gross instead of gross minus discount",
+   "hypothesis": "fee = 5% × gross.",
+   "relatedBugs": [
+    "BUG-05",
+    "BUG-06"
+   ],
+   "severityRationale": "High: every buyer who uses a code is overcharged, and the brief states this order of operations explicitly (\"on what is left after the discount\"). Small per order but systematic, and it is the buyer's money."
+  },
+  {
+   "id": "BUG-08",
+   "title": "VIP cap lets 5 VIP tickets into one order (off by one)",
+   "severity": "Medium",
+   "area": "Booking",
+   "component": "API",
+   "requirements": [
+    "REQ-BOOK-02"
+   ],
+   "tests": [
+    "TC-VIP-02",
+    "TC-VIP-03",
+    "TC-VIP-04",
+    "TC-VIP-05",
+    "TC-VIP-06"
+   ],
+   "steps": [
+    "Log in as a fresh buyer",
+    "POST /api/cart/items with 5 VIP tickets of event 7",
+    "GET /api/cart",
+    "POST /api/orders"
+   ],
+   "expected": "The fifth VIP is refused with 'An order may contain at most 4 VIP tickets'",
+   "actual": "The add returns 200, the cart holds 5 VIP and the order is CONFIRMED with 5 VIP. The same fifth ticket is also accepted as 4 + 1, as 3 + 1 + 1 across two events, and by PATCH 4 to 5. Six is refused on every route.",
+   "impact": "Business: VIP allocation rules are bypassed; scarce VIP stock goes to fewer buyers.",
+   "status": "Open",
+   "rootCauseGroup": "Cart line rules",
+   "effort": "S",
+   "likelyLocation": "Server: VIP cap check on add and on PATCH",
+   "hypothesis": "Observed: 5 accepted, 6 refused on every route, so the comparison allows one more than the cap (for example > 5 instead of > 4).",
+   "relatedBugs": [
+    "BUG-04"
+   ]
+  },
+  {
+   "id": "BUG-09",
+   "title": "Past events can be booked through the API",
+   "severity": "High",
+   "area": "Booking",
+   "component": "API",
+   "requirements": [
+    "REQ-BOOK-07"
+   ],
+   "tests": [
+    "TC-CHK-11"
+   ],
+   "steps": [
+    "GET /api/events/11 (Autumn Symphony Night, status PAST)",
+    "POST /api/cart/items with its Standard ticket type",
+    "POST /api/orders"
+   ],
+   "expected": "The add or the checkout is refused",
+   "actual": "Both succeed; order CONFIRMED for an event that ended on 15 Aug 2026. The UI hides the Add buttons, so only the server check is missing",
+   "impact": "Buyers pay for an event that already happened; refunds and complaints follow.",
+   "status": "Open",
+   "rootCauseGroup": "Order preconditions",
+   "effort": "S",
+   "likelyLocation": "Server: POST /api/cart/items and POST /api/orders do not check event status",
+   "hypothesis": "The UI hides Add for past events; the server never checks.",
+   "relatedBugs": [
+    "BUG-10"
+   ],
+   "severityRationale": "High: buyers are charged for an event that has already happened; the UI hides it, so only direct API callers are affected today."
+  },
+  {
+   "id": "BUG-10",
+   "title": "Cancelling after the event started refunds 100% instead of 0%",
+   "severity": "High",
+   "area": "Refunds",
+   "component": "API",
+   "requirements": [
+    "REQ-REF-03"
+   ],
+   "tests": [
+    "TC-CAN-03"
+   ],
+   "steps": [
+    "Book the past event 11 through the API (only possible because of BUG-09)",
+    "Open My orders",
+    "Click Cancel tickets on that order",
+    "Read refundAmount"
+   ],
+   "expected": "refundAmount 0 (\"After the start: 0%\")",
+   "actual": "refundAmount equals the full totalAmount (e.g. 420,000 of 420,000)",
+   "impact": "Business revenue: every post-event cancellation is fully refunded. The 50% tier could not be tested (GAP-08).",
+   "status": "Open",
+   "rootCauseGroup": "Order preconditions",
+   "effort": "S",
+   "likelyLocation": "Server: refund-tier function (cancel handler)",
+   "hypothesis": "Refund appears to be 100% whatever the time to start; the 0% tier is never reached.",
+   "relatedBugs": [
+    "BUG-09"
+   ],
+   "notes": "Depends on BUG-09 for its only reproduction. The real-world scenario (booked before the start, cancelled after it) needs an event that starts during the test; only an administrator can create one. Once BUG-09 is fixed, re-test with such a fixture before closing.",
+   "severityRationale": "High: every post-start cancellation is refunded in full, against a stated refund rule; depends on BUG-09 for its only reproduction."
+  },
+  {
+   "id": "BUG-11",
+   "title": "A cancelled order can be cancelled again, and each cancel returns its tickets to stock again",
+   "severity": "High",
+   "area": "Orders",
+   "component": "API",
+   "requirements": [
+    "REQ-INV-01"
+   ],
+   "tests": [
+    "TC-CAN-02"
+   ],
+   "steps": [
+    "Buy 1 Standard ticket of a quiet event and note remaining R after the purchase",
+    "Cancel the order: remaining returns to R + 1",
+    "Cancel the same order again",
+    "Read remaining"
+   ],
+   "expected": "The second cancel is refused (4xx) and remaining stays at R + 1",
+   "actual": "The second cancel returns 200 and remaining rises by 1 again, to R + 2. Each extra cancel adds the order's quantity once more, so stock grows past the event's capacity. The recorded run shows the exact numbers.",
+   "impact": "Organiser and buyers: stock inflates past capacity, so the event oversells.",
+   "status": "Open",
+   "rootCauseGroup": "Order preconditions",
+   "effort": "S",
+   "likelyLocation": "Server: POST /api/orders/{id}/cancel has no CONFIRMED check before restocking",
+   "hypothesis": "Cancel restocks unconditionally. The UI offers the button on cancelled orders too (BUG-36).",
+   "relatedBugs": [
+    "BUG-36",
+    "BUG-02"
+   ],
+   "severityRationale": "High: stock grows past capacity with each repeated cancel, so the event can oversell; reachable in one click through BUG-36."
+  },
+  {
+   "id": "BUG-12",
+   "title": "Checkout still succeeds after the 10 minute cart hold has lapsed",
+   "severity": "Medium",
+   "area": "Booking",
+   "component": "API",
+   "requirements": [
+    "REQ-BOOK-03"
+   ],
+   "tests": [
+    "TC-CHK-12"
+   ],
+   "steps": [
+    "Add 1 Standard; note holdExpiresAt (add time + 10 min)",
+    "Wait 11 minutes without touching the cart",
+    "POST /api/orders"
+   ],
+   "expected": "Checkout refused until the cart is refreshed",
+   "actual": "Order CONFIRMED 11 minutes after the last add; GET /api/cart still shows the lapsed holdExpiresAt",
+   "impact": "Buyers can check out a cart whose hold has expired, at the prices and stock of more than 10 minutes earlier. Whether expired holds keep stock reserved from other buyers was not measured.",
+   "status": "Open",
+   "rootCauseGroup": "Order preconditions",
+   "effort": "S",
+   "likelyLocation": "Server: POST /api/orders does not compare now with cart.holdExpiresAt",
+   "hypothesis": "holdExpiresAt is computed and returned but never enforced.",
+   "relatedBugs": []
+  },
+  {
+   "id": "BUG-13",
+   "title": "Sessions do not expire after 30 minutes",
+   "severity": "High",
+   "area": "Accounts",
+   "component": "API",
+   "requirements": [
+    "REQ-ACC-06"
+   ],
+   "tests": [
+    "TC-AUTH-06",
+    "TC-AUTH-03"
+   ],
+   "steps": [
+    "Log in; the token's exp is iat + 1800 s",
+    "Wait 31 minutes",
+    "GET /api/auth/me and GET /api/cart"
+   ],
+   "expected": "401; a fresh login is needed",
+   "actual": "200 for both 31 minutes later: the expiry in the token is not enforced",
+   "impact": "Every buyer on a shared device: an abandoned session stays usable; a leaked cookie never ages out.",
+   "status": "Open",
+   "rootCauseGroup": "Session",
+   "effort": "S",
+   "likelyLocation": "Server: session middleware verifies the token signature but not exp",
+   "hypothesis": "The token carries exp = iat + 1800 s; requests after exp are still accepted.",
+   "relatedBugs": [],
+   "severityRationale": "High: a stated security rule (30-minute expiry) is not enforced, so an abandoned or leaked session stays usable indefinitely."
+  },
+  {
+   "id": "BUG-14",
+   "title": "Recipient names over 50 characters are silently truncated instead of refused",
+   "severity": "Low",
+   "area": "Booking",
+   "component": "API",
+   "requirements": [
+    "REQ-BOOK-04"
+   ],
+   "tests": [
+    "TC-CHK-04"
+   ],
+   "steps": [
+    "Add 1 Standard",
+    "POST /api/orders with a 51 character recipientName"
+   ],
+   "expected": "400 naming the 50 character limit. The brief says the buyer \"supplies a recipient name of at most 50 characters\": a longer name must be refused, not changed.",
+   "actual": "200; the stored name is cut to 50 characters without telling the buyer",
+   "impact": "Buyer: the ticket carries a name that is not the one entered.",
+   "status": "Open",
+   "rootCauseGroup": "Input validation",
+   "effort": "S",
+   "likelyLocation": "Server: POST /api/orders schema (recipientName)",
+   "hypothesis": "The value is cut to 50 characters instead of being refused.",
+   "relatedBugs": [
+    "BUG-16"
+   ]
+  },
+  {
+   "id": "BUG-15",
+   "title": "Checkout accepts phone numbers with fewer than 10 digits or no digits",
+   "severity": "Medium",
+   "area": "Booking",
+   "component": "API",
+   "requirements": [
+    "REQ-BOOK-05"
+   ],
+   "tests": [
+    "TC-CHK-06",
+    "TC-CHK-07"
+   ],
+   "steps": [
+    "Add 1 Standard",
+    "POST /api/orders with phone '091234567' (9 digits)",
+    "Repeat with 'abcdefghij'"
+   ],
+   "expected": "400 for both",
+   "actual": "200 for both; orders are confirmed with unusable contact numbers",
+   "impact": "Organiser cannot contact the buyer about changes or cancellations.",
+   "status": "Open",
+   "rootCauseGroup": "Input validation",
+   "effort": "S",
+   "likelyLocation": "Server: POST /api/orders schema (phone has no length or digit rule)",
+   "hypothesis": "Neither length nor character class is checked at checkout.",
+   "relatedBugs": [
+    "BUG-18"
+   ]
+  },
+  {
+   "id": "BUG-16",
+   "title": "Checkout accepts a blank recipient name",
+   "severity": "Low",
+   "area": "Booking",
+   "component": "API",
+   "requirements": [
+    "REQ-BOOK-04"
+   ],
+   "tests": [
+    "TC-CHK-05"
+   ],
+   "steps": [
+    "Add 1 Standard",
+    "POST /api/orders with recipientName '   '"
+   ],
+   "expected": "400. The brief only says \"at most 50 characters\"; treating a name of spaces as empty is my reading (GAP-07), stated so it can be challenged.",
+   "actual": "200; order confirmed for recipient ' '",
+   "impact": "Door staff cannot match the ticket to a person.",
+   "status": "Open",
+   "rootCauseGroup": "Input validation",
+   "effort": "S",
+   "likelyLocation": "Server: POST /api/orders schema (recipientName not trimmed)",
+   "hypothesis": "Only minLength 1 is checked, and spaces count.",
+   "relatedBugs": [
+    "BUG-14"
+   ]
+  },
+  {
+   "id": "BUG-17",
+   "title": "Registration accepts malformed email addresses",
+   "severity": "Medium",
+   "area": "Accounts",
+   "component": "API",
+   "requirements": [
+    "REQ-ACC-01"
+   ],
+   "tests": [
+    "TC-REG-02"
+   ],
+   "steps": [
+    "POST /api/auth/register {email: 'not-an-email', password: 'eventpass123'}",
+    "Repeat with 'qa@@example.invalid' and 'a@b'"
+   ],
+   "expected": "400 for each",
+   "actual": "200 for each; accounts are created with unusable identities",
+   "impact": "Administrators resetting passwords cannot reach the user; junk accounts accumulate.",
+   "status": "Open",
+   "rootCauseGroup": "Input validation",
+   "effort": "S",
+   "likelyLocation": "Server: POST /api/auth/register schema (email is a plain string)",
+   "hypothesis": "The OpenAPI schema declares email as type string with no format.",
+   "relatedBugs": [
+    "BUG-19"
+   ]
+  },
+  {
+   "id": "BUG-18",
+   "title": "Phone numbers made of letters are accepted at registration and in the profile",
+   "severity": "Low",
+   "area": "Accounts",
+   "component": "API",
+   "requirements": [
+    "REQ-ACC-03",
+    "REQ-ACC-07"
+   ],
+   "tests": [
+    "TC-REG-06",
+    "TC-PROF-03"
+   ],
+   "steps": [
+    "POST /api/auth/register with phone 'abcdefghij'",
+    "PATCH /api/profile with phone 'abcdefghij'"
+   ],
+   "expected": "400: only 10 to 15 digits",
+   "actual": "200 for both: only the length is checked, not that the characters are digits",
+   "impact": "Contact data is unusable.",
+   "status": "Open",
+   "rootCauseGroup": "Input validation",
+   "effort": "S",
+   "likelyLocation": "Server: register and PATCH /api/profile schemas (phone)",
+   "hypothesis": "Only minLength 10 / maxLength 15 are declared in the OpenAPI schema; no digit pattern.",
+   "relatedBugs": [
+    "BUG-15"
+   ]
+  },
+  {
+   "id": "BUG-19",
+   "title": "The same email can register a second account by adding a leading space",
+   "severity": "Medium",
+   "area": "Accounts",
+   "component": "API",
+   "requirements": [
+    "REQ-ACC-04",
+    "REQ-ACC-01"
+   ],
+   "tests": [
+    "TC-REG-09"
+   ],
+   "steps": [
+    "Register E",
+    "Register ' ' + E"
+   ],
+   "expected": "409 (\"One email can register only one account\"), as the same address in upper case already gets",
+   "actual": "200: a second account with ' E' is created; upper-case variants are correctly refused, so only whitespace is missed",
+   "impact": "Breaks one account per email; lets one person bypass per-account limits.",
+   "status": "Open",
+   "rootCauseGroup": "Input validation",
+   "effort": "S",
+   "likelyLocation": "Server: register handler (email not trimmed before the uniqueness check)",
+   "hypothesis": "Case is folded before the check, whitespace is not.",
+   "relatedBugs": [
+    "BUG-17"
+   ]
+  },
+  {
+   "id": "BUG-20",
+   "title": "New password equal to the current one is accepted",
+   "severity": "Low",
+   "area": "Accounts",
+   "component": "API",
+   "requirements": [
+    "REQ-ACC-08"
+   ],
+   "tests": [
+    "TC-PROF-06"
+   ],
+   "steps": [
+    "Log in with password P",
+    "POST /api/profile/password {currentPassword: P, newPassword: P}"
+   ],
+   "expected": "400: the new password must differ",
+   "actual": "200 'Password changed'",
+   "impact": "Password rotation can be faked; the rule in the brief is not enforced. The UI hint says 'not the current one'.",
+   "status": "Open",
+   "rootCauseGroup": "Input validation",
+   "effort": "S",
+   "likelyLocation": "Server: POST /api/profile/password (no comparison of new with current)",
+   "hypothesis": "The current password is verified, then the new one is saved without comparing.",
+   "relatedBugs": []
+  },
+  {
+   "id": "BUG-21",
+   "title": "Search only matches the start of the event name: 'rock' finds nothing",
+   "severity": "High",
+   "area": "Search",
+   "component": "API + UI",
+   "requirements": [
+    "REQ-SRCH-01"
+   ],
+   "tests": [
+    "TC-EVT-04",
+    "TC-UI-06"
+   ],
+   "steps": [
+    "Open the event list",
+    "Type 'rock' in the search box",
+    "Click Search"
+   ],
+   "expected": "'Hanoi Rock Fest' is listed (the brief's own example)",
+   "actual": "0 events. 'hanoi rock' finds it, 'fest' finds nothing (case is correctly ignored)",
+   "impact": "Buyers cannot find events by the words they remember; direct lost sales.",
+   "status": "Open",
+   "rootCauseGroup": "Events list query",
+   "effort": "S",
+   "likelyLocation": "Server: GET /api/events search filter",
+   "hypothesis": "Observed: \"hanoi rock\" finds the event, \"rock\" and \"fest\" do not, so the filter matches the start of the title only (for example LIKE q%).",
+   "relatedBugs": [
+    "BUG-22"
+   ],
+   "severityRationale": "High: the brief's own example (\"rock\" returns Hanoi Rock Fest) fails; buyers cannot find events by the words they remember, which loses sales directly."
+  },
+  {
+   "id": "BUG-22",
+   "title": "Search treats % and _ as wildcards and returns every event",
+   "severity": "Low",
+   "area": "Search",
+   "component": "API",
+   "requirements": [
+    "REQ-SRCH-01"
+   ],
+   "tests": [
+    "TC-EVT-06"
+   ],
+   "steps": [
+    "GET /api/events?q=%25",
+    "GET /api/events?q=_"
+   ],
+   "expected": "0 results. The brief: \"The search box matches any part of the event name\"; no title contains % or _.",
+   "actual": "All 23 events",
+   "impact": "Minor for buyers; a sign that user text reaches the query as a pattern.",
+   "status": "Open",
+   "rootCauseGroup": "Events list query",
+   "effort": "S",
+   "likelyLocation": "Server: GET /api/events search filter",
+   "hypothesis": "% and _ return every event, consistent with the text being used as a LIKE pattern without escaping.",
+   "relatedBugs": [
+    "BUG-21"
+   ]
+  },
+  {
+   "id": "BUG-23",
+   "title": "Sort by name sorts each page on its own, not the whole list",
+   "severity": "Medium",
+   "area": "Search",
+   "component": "API + UI",
+   "requirements": [
+    "REQ-SRCH-03"
+   ],
+   "tests": [
+    "TC-EVT-09",
+    "TC-UI-07"
+   ],
+   "steps": [
+    "Open the event list",
+    "Choose Sort by name",
+    "Read the first card, then go to page 2"
+   ],
+   "expected": "Page 1 opens with 'Autumn Symphony Night', the first title of the whole list",
+   "actual": "Page 1 opens with \"Bat Trang Pottery Workshop\"; \"Autumn Symphony Night\" (the first title of the whole list) is on page 2. The API returns the same order, so the defect is on the server.",
+   "impact": "Buyers browsing alphabetically miss events.",
+   "status": "Open",
+   "rootCauseGroup": "Events list query",
+   "effort": "M",
+   "likelyLocation": "Server: GET /api/events applies the title sort after LIMIT/OFFSET",
+   "hypothesis": "Observed on the API: sort=title page 1 returns ids 1 to 10 sorted, page 2 ids 10 to 19, page 3 ids 20 to 23. The server takes the id-order slice first and sorts it afterwards; id 10 appearing on two pages is BUG-24.",
+   "relatedBugs": [
+    "BUG-24"
+   ]
+  },
+  {
+   "id": "BUG-24",
+   "title": "Paging repeats the last event of each page at the top of the next page",
+   "severity": "Medium",
+   "area": "Search",
+   "component": "API + UI",
+   "requirements": [
+    "REQ-SRCH-05"
+   ],
+   "tests": [
+    "TC-EVT-11",
+    "TC-UI-12"
+   ],
+   "steps": [
+    "Open the event list (default sort)",
+    "Note the last card of page 1",
+    "Click Next"
+   ],
+   "expected": "Page 2 starts with the 11th event; 23 events over 3 pages without repeats",
+   "actual": "'Mui Ne Kitesurf Open' ends page 1 and starts page 2; 24 rows for 23 events",
+   "impact": "Buyers see duplicates; with more events the error compounds across pages.",
+   "status": "Open",
+   "rootCauseGroup": "Events list query",
+   "effort": "S",
+   "likelyLocation": "Server: GET /api/events offset computation",
+   "hypothesis": "Page p starts at index (p-1)*10-1 for p>1 (fits pages 2 and 3), so each page repeats the previous page's last event.",
+   "relatedBugs": [
+    "BUG-23",
+    "BUG-32"
+   ]
+  },
+  {
+   "id": "BUG-25",
+   "title": "At 360 px the quantity field and Add button are off screen, so tickets cannot be bought on a phone",
+   "severity": "Critical",
+   "area": "Screens",
+   "component": "UI",
+   "requirements": [
+    "REQ-UI-01"
+   ],
+   "tests": [
+    "TC-UI-01"
+   ],
+   "steps": [
+    "Open an upcoming event on a 360 px wide phone screen",
+    "Look at a ticket card"
+   ],
+   "expected": "Quantity and Add are visible and usable without zoom or sideways scrolling",
+   "actual": "The card clips its contents: price is cut off, quantity starts at x=428 and Add at x=585, beyond the 360 px screen. Page scrollWidth stays 360, so the controls cannot be reached at all",
+   "impact": "Every buyer on a phone: the purchase flow cannot be completed at 360 px, which the brief names explicitly.",
+   "status": "Open",
+   "rootCauseGroup": "Frontend rendering",
+   "effort": "S",
+   "likelyLocation": "Frontend: event detail ticket list (class \"ticket-list is-tabular\", flag f31)",
+   "hypothesis": "A fixed 4-column grid (11rem 8rem 9rem 9rem) with overflow hidden cannot fit 360 px.",
+   "relatedBugs": [
+    "BUG-26",
+    "BUG-37"
+   ],
+   "frontendFlag": "f31",
+   "severityRationale": "Critical: on a 360 px phone the buyer cannot reach quantity or Add, so the core purchase is impossible on the device class the brief names explicitly.",
+   "notes": "Also reproduced on a second engine: WebKit with the iPhone 13 profile (project mobile-webkit). Not yet checked on a real phone."
+  },
+  {
+   "id": "BUG-26",
+   "title": "Profile screen scrolls sideways at 360 px when the email has no break point",
+   "severity": "Low",
+   "area": "Screens",
+   "component": "UI",
+   "requirements": [
+    "REQ-UI-01"
+   ],
+   "tests": [
+    "TC-UI-02"
+   ],
+   "steps": [
+    "Register nguyenvananh<digits>@example.invalid",
+    "Open /profile on a 360 px screen"
+   ],
+   "expected": "No sideways scroll",
+   "actual": "scrollWidth about 490 px with a 41-character address such as nguyenvananh1790...@example.invalid; short hyphenated addresses wrap and hide the defect.",
+   "impact": "Phone users with ordinary email addresses.",
+   "status": "Open",
+   "rootCauseGroup": "Frontend rendering",
+   "effort": "S",
+   "likelyLocation": "Frontend: profile email line (no overflow-wrap)",
+   "hypothesis": "Long unbroken email text does not wrap.",
+   "relatedBugs": [
+    "BUG-25"
+   ],
+   "notes": "Also reproduced on a second engine: WebKit with the iPhone 13 profile (project mobile-webkit). Not yet checked on a real phone."
+  },
+  {
+   "id": "BUG-27",
+   "title": "Event detail shows the UTC date and no time, not Vietnam time",
+   "severity": "High",
+   "area": "Time zone",
+   "component": "UI",
+   "requirements": [
+    "REQ-TZ-01"
+   ],
+   "tests": [
+    "TC-UI-04"
+   ],
+   "steps": [
+    "Open Mid-Autumn Lantern Night (startsAt 2026-10-04T17:30Z)"
+   ],
+   "expected": "5 Oct 2026, 00:30 (Vietnam time), as the list card correctly shows ('10/5/26, 12:30 AM')",
+   "actual": "'2026-10-04': the UTC date, one day early, with no time",
+   "impact": "Buyers of late-evening events plan for the wrong day; the detail page is where they decide.",
+   "status": "Open",
+   "rootCauseGroup": "Frontend rendering",
+   "effort": "S",
+   "likelyLocation": "Frontend: event detail start line (flag f24)",
+   "hypothesis": "Bundle: new Date(startsAt).toISOString().slice(0,10) instead of the Vietnam-time formatter the list uses.",
+   "relatedBugs": [],
+   "frontendFlag": "f24",
+   "severityRationale": "High: the detail page, where buyers decide, shows the day before for evening events after 17:00 UTC, so buyers can plan for the wrong day."
+  },
+  {
+   "id": "BUG-28",
+   "title": "Checkout 'Phone number' label focuses the recipient field",
+   "severity": "Low",
+   "area": "Screens",
+   "component": "UI",
+   "requirements": [
+    "REQ-UI-02"
+   ],
+   "tests": [
+    "TC-UI-03"
+   ],
+   "steps": [
+    "Open /checkout with a cart line",
+    "Click the 'Phone number' label"
+   ],
+   "expected": "Cursor in the phone field",
+   "actual": "Cursor in the recipient name field: the label has for='checkout-recipient'",
+   "impact": "Keyboard and screen-reader users; everyone who clicks labels.",
+   "status": "Open",
+   "rootCauseGroup": "Frontend rendering",
+   "effort": "S",
+   "likelyLocation": "Frontend: checkout form (flag f32)",
+   "hypothesis": "Bundle: the Phone label htmlFor is \"checkout-recipient\" when f32 is on.",
+   "relatedBugs": [
+    "BUG-29"
+   ],
+   "frontendFlag": "f32"
+  },
+  {
+   "id": "BUG-29",
+   "title": "Search, discount code and cart quantity fields have no visible label",
+   "severity": "Low",
+   "area": "Screens",
+   "component": "UI",
+   "requirements": [
+    "REQ-UI-02"
+   ],
+   "tests": [
+    "TC-UI-03"
+   ],
+   "steps": [
+    "Open /, then /cart with a line",
+    "Look for a label on the search box, the discount code field and the quantity field"
+   ],
+   "expected": "Every form field has a visible label that focuses it",
+   "actual": "Placeholder or aria-label only; nothing to click",
+   "impact": "Accessibility; the brief requires a visible label on every field.",
+   "status": "Open",
+   "rootCauseGroup": "Frontend rendering",
+   "effort": "S",
+   "likelyLocation": "Frontend: event list search box, cart discount field, cart quantity field",
+   "hypothesis": "These inputs use placeholder or aria-label only; no <label>.",
+   "relatedBugs": [
+    "BUG-28"
+   ]
+  },
+  {
+   "id": "BUG-30",
+   "title": "Order confirmation shows the total as a bare number",
+   "severity": "Low",
+   "area": "Pricing",
+   "component": "UI",
+   "requirements": [
+    "REQ-PRICE-02",
+    "REQ-UI-03"
+   ],
+   "tests": [
+    "TC-UI-13"
+   ],
+   "steps": [
+    "Check out any order",
+    "Read the confirmation"
+   ],
+   "expected": "Total formatted like the other lines, e.g. '₫210,000'",
+   "actual": "Total reads '210000' while Service fee reads '₫10,000'",
+   "impact": "Buyers misread the amount they paid.",
+   "status": "Open",
+   "rootCauseGroup": "Frontend rendering",
+   "effort": "S",
+   "likelyLocation": "Frontend: order confirmation total (flag f03)",
+   "hypothesis": "Bundle: String(totalAmount) instead of the currency formatter used on the other lines.",
+   "relatedBugs": [],
+   "frontendFlag": "f03"
+  },
+  {
+   "id": "BUG-31",
+   "title": "Admin event screen renders for a customer, with Create and edit controls",
+   "severity": "Medium",
+   "area": "Administration",
+   "component": "UI",
+   "requirements": [
+    "REQ-ADM-01"
+   ],
+   "tests": [
+    "TC-ADM-09"
+   ],
+   "steps": [
+    "Log in as a customer",
+    "Open /admin/events directly"
+   ],
+   "expected": "Access refused or redirected; no admin controls",
+   "actual": "The admin events screen renders with its Create button. The API refuses create and delete, but edit is open (BUG-01), so this is a working UI route to it. No edit was submitted.",
+   "impact": "Makes BUG-01 reachable without any tooling.",
+   "status": "Open",
+   "rootCauseGroup": "Authorisation: admin role guard",
+   "effort": "S",
+   "likelyLocation": "Frontend: /admin/events route renders without a role check",
+   "hypothesis": "The client route is not guarded; the API refuses create and delete but not edit (BUG-01).",
+   "relatedBugs": [
+    "BUG-01"
+   ]
+  },
+  {
+   "id": "BUG-32",
+   "title": "Next stays enabled on the last page and opens an empty 'page 4 of 3'",
+   "severity": "Low",
+   "area": "Search",
+   "component": "UI",
+   "requirements": [
+    "REQ-SRCH-05"
+   ],
+   "tests": [
+    "TC-UI-14"
+   ],
+   "steps": [
+    "Open the event list",
+    "Click Next until page 3 of 3",
+    "Click Next again"
+   ],
+   "expected": "Next is disabled on the last page",
+   "actual": "Next is enabled; clicking it shows 0 events and the footer reads '23 events — page 4 of 3'",
+   "impact": "Buyers paging through the list reach an empty page and may think events are missing.",
+   "rootCauseGroup": "Frontend rendering",
+   "effort": "S",
+   "likelyLocation": "Frontend: events list pager (flag f34)",
+   "hypothesis": "Bundle: disabled when page > totalPages instead of page >= totalPages.",
+   "relatedBugs": [
+    "BUG-24"
+   ],
+   "frontendFlag": "f34",
+   "status": "Open"
+  },
+  {
+   "id": "BUG-33",
+   "title": "'Added to cart' stays on screen next to the error of a later failed add",
+   "severity": "Medium",
+   "area": "Screens",
+   "component": "UI",
+   "requirements": [
+    "REQ-UI-03"
+   ],
+   "tests": [
+    "TC-UI-09"
+   ],
+   "steps": [
+    "Open an upcoming event while logged in",
+    "Add 1 Standard ticket",
+    "Set VIP quantity to 6",
+    "Click Add on VIP"
+   ],
+   "expected": "Only the VIP error is shown: 'Messages on screen describe the result of the most recent action'",
+   "actual": "'Added to cart — view cart' is still shown together with 'An order may contain at most 4 VIP tickets'",
+   "impact": "Buyers are told the last add succeeded when it failed.",
+   "rootCauseGroup": "Frontend rendering",
+   "effort": "S",
+   "likelyLocation": "Frontend: event detail add handler (flag f35)",
+   "hypothesis": "Bundle: the success message is not cleared before a new add when f35 is on.",
+   "relatedBugs": [
+    "BUG-34"
+   ],
+   "frontendFlag": "f35",
+   "status": "Open"
+  },
+  {
+   "id": "BUG-34",
+   "title": "Removing the last cart line leaves the old total on screen",
+   "severity": "Medium",
+   "area": "Pricing",
+   "component": "UI",
+   "requirements": [
+    "REQ-PRICE-02",
+    "REQ-UI-03"
+   ],
+   "tests": [
+    "TC-UI-15"
+   ],
+   "steps": [
+    "Add 1 Standard ticket",
+    "Open the cart",
+    "Set the line quantity to 0 and leave the field"
+   ],
+   "expected": "The cart shows it is empty and the total reads ₫0",
+   "actual": "The empty-cart message appears but the order summary still shows Total ₫105,000; the API returns total 0",
+   "impact": "Buyers see an amount that no longer matches their cart.",
+   "rootCauseGroup": "Frontend rendering",
+   "effort": "S",
+   "likelyLocation": "Frontend: cart quantity handler (flag f01)",
+   "hypothesis": "Bundle: on quantity 0 only the items are replaced from the response, not the totals.",
+   "relatedBugs": [
+    "BUG-33"
+   ],
+   "frontendFlag": "f01",
+   "status": "Open"
+  },
+  {
+   "id": "BUG-35",
+   "title": "Cart line names are clipped, hiding which ticket type each line is",
+   "severity": "Medium",
+   "area": "Screens",
+   "component": "UI",
+   "requirements": [
+    "REQ-UI-01"
+   ],
+   "tests": [
+    "TC-UI-16"
+   ],
+   "steps": [
+    "Add 1 Standard and 1 VIP ticket of the same event",
+    "Open the cart on a desktop screen"
+   ],
+   "expected": "Each line shows the event and the ticket type, e.g. 'Mid-Autumn Lantern Night — VIP'",
+   "actual": "Both lines read 'Mid-Autumn Lant…'; the text is cut at 144 px of its 242 px, so the ticket type is never visible",
+   "impact": "Buyers cannot tell their Standard and VIP lines apart before paying.",
+   "rootCauseGroup": "Frontend rendering",
+   "effort": "S",
+   "likelyLocation": "Frontend: cart line name (class 'line-name is-clamped', flag f33)",
+   "hypothesis": "CSS: max-width 9rem with nowrap and ellipsis.",
+   "relatedBugs": [],
+   "frontendFlag": "f33",
+   "status": "Open"
+  },
+  {
+   "id": "BUG-36",
+   "title": "My orders offers 'Cancel tickets' on orders that are already cancelled",
+   "severity": "Medium",
+   "area": "Orders",
+   "component": "UI",
+   "requirements": [
+    "REQ-INV-01"
+   ],
+   "tests": [
+    "TC-UI-17"
+   ],
+   "steps": [
+    "Buy 1 ticket and cancel the order",
+    "Open My orders"
+   ],
+   "expected": "No cancel button on a CANCELLED order",
+   "actual": "The CANCELLED order still shows 'Cancel tickets'; clicking it cancels again and returns stock again (BUG-11)",
+   "impact": "Gives every buyer a one-click route to BUG-11's stock inflation.",
+   "rootCauseGroup": "Order preconditions",
+   "effort": "S",
+   "likelyLocation": "Frontend: my orders row actions (flag f04)",
+   "hypothesis": "Bundle: the button renders when f04 is on regardless of status.",
+   "relatedBugs": [
+    "BUG-11"
+   ],
+   "frontendFlag": "f04",
+   "status": "Open"
+  },
+  {
+   "id": "BUG-37",
+   "title": "On a phone, the opened menu is hidden behind the page content",
+   "severity": "High",
+   "area": "Screens",
+   "component": "UI",
+   "requirements": [
+    "REQ-UI-01"
+   ],
+   "tests": [
+    "TC-UI-18"
+   ],
+   "steps": [
+    "Log in on a 360 px screen",
+    "Open an event detail and scroll a little",
+    "Tap Menu"
+   ],
+   "expected": "Cart, My orders and Profile links are visible and tappable",
+   "actual": "The menu panel opens under the event content: at the centre of each link the topmost element is the event title or venue, so the links cannot be tapped",
+   "impact": "Phone buyers cannot reach the cart, their orders or their profile from the menu.",
+   "rootCauseGroup": "Frontend rendering",
+   "effort": "S",
+   "likelyLocation": "Frontend: app header (class 'app-header is-flat' sets z-index auto, flag f30)",
+   "hypothesis": "CSS: z-index auto lets page content stack above the header's menu panel.",
+   "relatedBugs": [
+    "BUG-25"
+   ],
+   "frontendFlag": "f30",
+   "status": "Open",
+   "severityRationale": "High: on phones the menu (cart, orders, profile) cannot be tapped; not Critical because the cart is still reachable after adding a ticket and by URL.",
+   "notes": "Also reproduced on a second engine: WebKit with the iPhone 13 profile (project mobile-webkit). Not yet checked on a real phone."
+  }
+ ],
+ "observations": [
+  {
+   "id": "OBS-01",
+   "text": "Changing the password does not end other sessions of the same account (GAP-06). Not a stated rule, raised as a question."
+  },
+  {
+   "id": "OBS-02",
+   "text": "/api/config publishes 40 enabled flags (f01 to f65). Ten of them (f01, f03, f04, f24, f30, f31, f32, f33, f34, f35) appear in the frontend bundle, each switching a UI defect on; each UI bug names its flag. The others are presumably server-side; without the server source they are not mapped."
+  },
+  {
+   "id": "OBS-03",
+   "text": "The cart accepts more tickets than remain in stock (100,000 Standard). Checkout was not attempted, to avoid draining shared stock (GAP-05)."
+  },
+  {
+   "id": "OBS-04",
+   "text": "Discount codes are accepted in any letter case and on an empty cart. The brief is silent; noted, not filed."
+  },
+  {
+   "id": "OBS-05",
+   "text": "POST /api/events validates the body before it checks the role: a customer sending an incomplete body gets 400 with the admin schema's field list instead of 403. Nothing is created, so it is not a breach of the brief, but it discloses the admin API shape to customers."
+  }
+ ],
+ "effortNote": "Effort (S/M/L) is my estimate from the observed behaviour, without the source code."
+}

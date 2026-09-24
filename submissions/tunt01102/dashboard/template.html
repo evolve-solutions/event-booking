@@ -1,0 +1,518 @@
+<title>Event Booking QA Ledger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ground:#f2f4f3; --surface:#ffffff; --sunken:#e8ecea; --ink:#161b22; --ink-2:#3d4652; --muted:#66707c;
+  --line:#d5dbd8; --accent:#1f5fad; --accent-soft:#e3ecf8;
+  --good:#0ca30c; --warning:#fab219; --serious:#ec835a; --critical:#d03b3b; --neutral:#9aa3ad;
+  --good-ink:#0a6e0a; --critical-ink:#a82828; --serious-ink:#a24a24; --warning-ink:#7d5600;
+  --shadow:0 1px 2px rgba(22,27,34,.06),0 4px 14px rgba(22,27,34,.05);
+  --f-display:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme:dark; --ground:#101418; --surface:#171c22; --sunken:#1e252d; --ink:#e7ebef; --ink-2:#c1c9d2; --muted:#8d97a3;
+  --line:#2b333c; --accent:#7eb0ef; --accent-soft:#1b2a3d; --neutral:#6d7680;
+  --good-ink:#5fd35f; --critical-ink:#ff8a8a; --serious-ink:#f3a582; --warning-ink:#fbc75a; --shadow:none;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark; --ground:#101418; --surface:#171c22; --sunken:#1e252d; --ink:#e7ebef; --ink-2:#c1c9d2; --muted:#8d97a3;
+  --line:#2b333c; --accent:#7eb0ef; --accent-soft:#1b2a3d; --neutral:#6d7680;
+  --good-ink:#5fd35f; --critical-ink:#ff8a8a; --serious-ink:#f3a582; --warning-ink:#fbc75a; --shadow:none;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font:15px/1.55 var(--f-body);padding-inline:16px;padding-block:0 48px}
+.wrap{max-width:1180px;margin:0 auto}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mono{font-family:var(--f-mono);font-size:.92em}
+.num{font-variant-numeric:tabular-nums}
+h1,h2,h3{text-wrap:balance;margin:0}
+h1{font:700 clamp(26px,4vw,36px)/1.1 var(--f-display);letter-spacing:-.01em}
+h2{font:700 21px/1.25 var(--f-display)}
+h3{font:600 15px/1.35 var(--f-body)}
+.eyebrow{font:500 11px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)}
+
+/* header: a ticket stub, perforated along its bottom edge */
+header.stub{position:relative;margin:20px auto 0;max-width:1180px;background:var(--surface);border:1px solid var(--line);border-radius:14px 14px 4px 4px;padding:22px 24px 26px;box-shadow:var(--shadow)}
+header.stub::after{content:"";position:absolute;left:14px;right:14px;bottom:-1px;height:10px;
+  background:radial-gradient(circle at 7px 10px,var(--ground) 5px,transparent 5.5px) 0 0/16px 10px repeat-x}
+.stub-top{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:flex-end;justify-content:space-between}
+.stub-meta{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:13px;color:var(--ink-2)}
+.stub-meta b{font-weight:600;color:var(--ink)}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:18px}
+.strip>div{background:var(--surface);padding:12px 14px}
+.strip .v{font:600 24px/1.1 var(--f-mono);font-variant-numeric:tabular-nums}
+.strip .l{font-size:12px;color:var(--muted);margin-top:4px}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ground);margin:18px auto 0;max-width:1180px;padding:8px 0;display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--line)}
+nav.tabs button{font:500 14px var(--f-body);color:var(--ink-2);background:none;border:0;padding:8px 12px;border-radius:8px;cursor:pointer;white-space:nowrap}
+nav.tabs button:hover{background:var(--sunken)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--surface)}
+main{max-width:1180px;margin:20px auto 0}
+section.panel{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+/* Every block below the header spans the header's width and may shrink; wide content scrolls inside it */
+section.panel>*,.grid2>*,.card,.bug-layout>*{min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:20px}
+.section-head{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;justify-content:space-between;margin-bottom:12px}
+
+/* chips */
+.chip{display:inline-flex;align-items:center;gap:6px;font:500 12px/1 var(--f-body);padding:4px 8px;border-radius:999px;border:1px solid var(--line);background:var(--sunken);color:var(--ink-2);white-space:nowrap}
+.chip i{width:8px;height:8px;border-radius:2px;display:inline-block;flex:none}
+.o-passed i,.s-covered-passing i{background:var(--good)} .o-passed,.s-covered-passing{color:var(--good-ink)}
+.o-failed-known-bug i,.s-covered-failing i{background:var(--serious)} .o-failed-known-bug,.s-covered-failing{color:var(--serious-ink)}
+.o-failed-unexplained i{background:var(--critical)} .o-failed-unexplained{color:var(--critical-ink)}
+.o-skipped i,.s-designed-not-run i,.o-not-run i{background:var(--neutral)}
+.o-flaky i{background:var(--warning)} .o-flaky{color:var(--warning-ink)}
+.s-not-covered i{background:var(--critical)} .s-not-covered{color:var(--critical-ink)}
+.sev{font:600 11px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:4px 7px;border-radius:5px;color:#fff}
+.sev-Critical{background:var(--critical)} .sev-High{background:var(--serious);color:#2a1206} .sev-Medium{background:var(--warning);color:#2a1d00} .sev-Low{background:var(--neutral);color:#111}
+
+/* stacked bars */
+.bars{display:grid;gap:12px}
+.bar-row{display:grid;grid-template-columns:128px 1fr 56px;gap:12px;align-items:center}
+.bar-row .name{font-size:13px;color:var(--ink-2)}
+.bar-row .tot{font:500 13px var(--f-mono);text-align:right;color:var(--muted)}
+.bar{display:flex;gap:2px;height:14px;border-radius:4px;overflow:hidden;background:var(--sunken)}
+.bar span{display:block;height:100%;min-width:3px;cursor:default}
+.bar span:first-child{border-radius:4px 0 0 4px}.bar span:last-child{border-radius:0 4px 4px 0}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--ink-2);margin-top:12px}
+.legend span{display:inline-flex;align-items:center;gap:6px}.legend i{width:10px;height:10px;border-radius:2px}
+#tip{position:fixed;pointer-events:none;z-index:50;background:var(--ink);color:var(--surface);font:12px/1.4 var(--f-body);padding:6px 9px;border-radius:6px;max-width:280px;opacity:0;transition:opacity .08s}
+
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:12px}
+.kpi{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--surface)}
+.kpi .v{font:600 26px/1 var(--f-mono);font-variant-numeric:tabular-nums}
+.kpi .l{font-size:12px;color:var(--muted);margin-top:6px}
+.meter{height:6px;border-radius:3px;background:var(--sunken);margin-top:10px;overflow:hidden}
+.meter b{display:block;height:100%;background:var(--good)}
+
+/* tables */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{font:500 11px/1.2 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);background:var(--sunken);position:sticky;top:0}
+td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+tbody tr.clickable{cursor:pointer}tbody tr.clickable:hover td{background:var(--accent-soft)}
+td.id{font-family:var(--f-mono);font-size:12.5px;white-space:nowrap}
+td.id.list{white-space:normal;min-width:180px}
+td.rule{min-width:240px}
+tr.detail td{background:var(--sunken)}
+.steps{margin:6px 0 8px;padding-left:20px}.steps li{margin:2px 0}
+.err{font:12px/1.45 var(--f-mono);white-space:pre-wrap;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:8px;margin-top:6px;max-height:160px;overflow:auto}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end;margin-bottom:12px} /* bottom-align: selects carry a caption above, the search box does not */
+.filters input,.filters select{font:14px var(--f-body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:0 10px;height:36px;min-width:0}
+.filters input{flex:1 1 220px}
+.filters label{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:3px}
+.count{font:500 12px var(--f-mono);color:var(--muted)}
+.nw,td.id a,.bug-detail a[data-bug]{white-space:nowrap}
+.filters .count{line-height:36px}
+
+/* bugs */
+.bug-layout{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:860px){.bug-layout{grid-template-columns:1fr}}
+.bug-list{display:grid;gap:6px;max-height:calc(100vh - 170px);overflow:auto;padding-right:2px}
+.bug-item{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;text-align:left;font:inherit;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer}
+.bug-item:hover{border-color:var(--accent)}
+.bug-item[aria-current="true"]{border-color:var(--ink);box-shadow:inset 3px 0 0 var(--ink)}
+.bug-item .t{font-size:13.5px;line-height:1.35}
+.bug-item .m{grid-column:2;font-size:12px;color:var(--muted)}
+.bug-detail{position:sticky;top:64px}
+.bug-detail dl{display:grid;grid-template-columns:130px 1fr;gap:8px 14px;margin:14px 0}
+.bug-detail dt{font-size:12px;color:var(--muted)}.bug-detail dd{margin:0}
+.media{display:grid;gap:12px;margin-top:12px}
+.media img,.media video{width:100%;max-width:100%;border:1px solid var(--line);border-radius:8px;background:var(--sunken)}
+.files{display:flex;flex-wrap:wrap;gap:8px}
+.files a{font:500 12.5px var(--f-mono);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:5px 8px;background:var(--sunken)}
+.repro{font:500 12px var(--f-body)}
+
+/* docs */
+.doc{max-width:none;font-size:15px;line-height:1.6}
+.doc h1{font-size:28px;margin:0 0 12px}.doc h2{margin:28px 0 10px}.doc h3{margin:18px 0 8px}
+.doc p,.doc li{color:var(--ink-2)}
+.doc-table{margin:12px 0;overflow-x:auto;max-width:100%;border:1px solid var(--line);border-radius:10px}
+.doc table{width:100%;border-collapse:collapse;font-size:13.5px}
+.doc tr:last-child td{border-bottom:0}
+.doc th{font:500 11px/1.2 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--sunken)}
+.doc td,.doc th{padding:8px 12px;vertical-align:top}
+.doc th,.doc td{border:0;border-bottom:1px solid var(--line);text-align:left}
+.doc td+td,.doc th+th{border-left:1px solid var(--line)}
+.doc code{font-family:var(--f-mono);font-size:.88em;background:var(--sunken);padding:1px 5px;border-radius:4px;overflow-wrap:anywhere}
+.doc pre{background:var(--sunken);border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto;max-width:100%;font-size:13px;line-height:1.5}
+.doc pre code{overflow-wrap:normal;font-size:inherit;padding:0;background:none}
+.doc td code,.doc th code{font-size:12.5px}
+.doc pre code{background:none;padding:0}
+
+.timeline{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:step}
+.timeline li{display:grid;grid-template-columns:44px 1fr;gap:14px;position:relative;padding-bottom:18px}
+.timeline li::before{counter-increment:step;content:counter(step,decimal-leading-zero);font:500 12px/28px var(--f-mono);text-align:center;width:32px;height:28px;border-radius:6px;background:var(--sunken);border:1px solid var(--line);color:var(--ink-2)}
+.timeline li::after{content:"";position:absolute;left:16px;top:30px;bottom:0;width:1px;background:var(--line)}
+.timeline li:last-child::after{display:none}
+.timeline .rule{font-size:12.5px;color:var(--accent);margin-top:4px}
+.timeline .art{font:12px var(--f-mono);color:var(--muted);margin-top:2px;overflow-wrap:anywhere}
+.timeline li>div{min-width:0;overflow-wrap:anywhere}
+.drift{display:grid;gap:6px;font-size:13.5px}
+.drift div{display:flex;gap:10px;align-items:baseline}
+.ok-mark{color:var(--good-ink);font-weight:600}.bad-mark{color:var(--critical-ink);font-weight:600}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (max-width:560px){header.stub{padding:18px 16px 24px}.bar-row{grid-template-columns:84px 1fr 44px}.bug-detail dl{grid-template-columns:1fr}.bug-detail dt{margin-top:6px}}
+</style>
+
+<header class="stub">
+  <div class="stub-top">
+    <div>
+      <div class="eyebrow">QA ledger · spec-driven</div>
+      <h1>Event Booking QA Ledger</h1>
+    </div>
+    <div class="stub-meta" id="meta"></div>
+  </div>
+  <div class="strip" id="strip"></div>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Dashboard sections" id="tabs"></nav>
+<main id="main"></main>
+<div id="tip" role="tooltip"></div>
+
+<script>
+const DATA = /*__QA_DATA__*/null;
+const ASSET = location.protocol === 'file:' ? '../' : '';
+const $ = (s, el = document) => el.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const OUTCOMES = [
+  ['passed', 'Passed', 'var(--good)'],
+  ['failed-known-bug', 'Failed on a known bug', 'var(--serious)'],
+  ['failed-unexplained', 'Failed, unexplained', 'var(--critical)'],
+  ['flaky', 'Flaky (passed on retry)', 'var(--warning)'],
+  ['skipped', 'Skipped with reason', 'var(--neutral)'],
+];
+const STATES = [
+  ['covered-passing', 'Covered, passing', 'var(--good)'],
+  ['covered-failing', 'Covered, failing (bug)', 'var(--serious)'],
+  ['designed-not-run', 'Designed, not runnable', 'var(--neutral)'],
+  ['not-covered', 'Not covered', 'var(--critical)'],
+];
+const SEVS = [['Critical', 'var(--critical)'], ['High', 'var(--serious)'], ['Medium', 'var(--warning)'], ['Low', 'var(--neutral)']];
+// Project names and labels come from src/projects.ts via the build, so new projects appear without edits here.
+const SUITE_NAMES = Object.fromEntries(DATA.projects.map((p) => [p.name, p.label]));
+const PROJECT_NAMES = DATA.projects.map((p) => p.name);
+const fmtTime = (iso) => (iso ? new Date(iso).toLocaleString('en-GB', { timeZone: 'Asia/Ho_Chi_Minh', dateStyle: 'medium', timeStyle: 'short' }) + ' ICT' : '—');
+const outcomeChip = (o) => { const x = OUTCOMES.find((a) => a[0] === o) || [o, o]; return `<span class="chip o-${o}"><i></i>${esc(x[1])}</span>`; };
+const stateChip = (s) => { const x = STATES.find((a) => a[0] === s) || [s, s]; return `<span class="chip s-${s}"><i></i>${esc(x[1])}</span>`; };
+const sevBadge = (s) => `<span class="sev sev-${s}">${s}</span>`;
+// Lists of ids wrap between ids, never inside one (TC-REG-09 must not break at its hyphen).
+const idList = (ids, sep = ', ') => ids.map((id) => `<span class="nw">${esc(id)}</span>`).join(sep);
+const count = (arr, key) => arr.reduce((m, x) => ((m[x[key]] = (m[x[key]] || 0) + 1), m), {});
+
+function stackBar(label, parts, total) {
+  const segs = parts.filter((p) => p.n > 0).map((p) => `<span style="flex:${p.n};background:${p.color}" data-tip="${esc(label)} · ${esc(p.label)}: ${p.n} of ${total} (${Math.round((p.n / total) * 100)}%)"></span>`).join('');
+  return `<div class="bar-row"><div class="name">${esc(label)}</div><div class="bar" role="img" aria-label="${esc(label)}: ${parts.map((p) => `${p.label} ${p.n}`).join(', ')}">${segs || ''}</div><div class="tot num">${total}</div></div>`;
+}
+const legend = (items) => `<div class="legend">${items.map(([, l, c]) => `<span><i style="background:${c}"></i>${esc(l)}</span>`).join('')}</div>`;
+
+// ---------- header
+(function header() {
+  const res = DATA.results, bugs = DATA.bugs, cov = DATA.unit.coverage;
+  const by = count(res, 'outcome');
+  const unexplained = by['failed-unexplained'] || 0;
+  $('#meta').innerHTML = `<span>Target <b>${esc(DATA.envName)} · live site</b></span><span>Built <b>${fmtTime(DATA.generatedAt)}</b></span><span>Author <b>tunt01102</b></span>`;
+  const cells = [
+    [DATA.requirements.length, 'requirements from the brief'],
+    [DATA.testCases.length, 'test cases designed'],
+    [res.length, 'automated results, latest runs'],
+    [bugs.length, `bugs · ${bugs.filter((b) => b.severity === 'Critical').length} critical`],
+    [cov ? cov.lines.toFixed(1) + '%' : '—', 'unit line coverage (gate 80%)'],
+    [unexplained, unexplained ? 'unexplained failures: investigate' : 'unexplained failures'],
+  ];
+  $('#strip').innerHTML = cells.map(([v, l]) => `<div><div class="v">${v}</div><div class="l">${esc(l)}</div></div>`).join('');
+})();
+
+// ---------- tabs
+const TABS = [
+  ['overview', 'Overview', renderOverview],
+  ['project', 'Project', () => `<section class="panel"><article class="card doc">${DATA.docs.overview}</article></section>`],
+  ['plan', 'Test plan', () => `<section class="panel"><article class="card doc">${DATA.docs.plan}</article></section>`],
+  ['cases', 'Test cases', renderCases],
+  ['rtm', 'RTM', renderRtm],
+  ['automation', 'Automation', renderAutomation],
+  ['bugs', 'Bug tracker', renderBugs],
+  ['process', 'Process', renderProcess],
+];
+function select(id) {
+  const t = TABS.find((x) => x[0] === id) || TABS[0];
+  document.querySelectorAll('#tabs button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === t[0])));
+  $('#main').innerHTML = t[2]();
+  const after = { cases: wireCases, rtm: wireRtm, automation: wireAutomation, bugs: wireBugs }[t[0]];
+  if (after) after();
+  if (location.hash.slice(1) !== t[0] && !location.hash.startsWith('#BUG')) history.replaceState(null, '', '#' + t[0]);
+}
+$('#tabs').innerHTML = TABS.map(([id, label]) => `<button role="tab" data-tab="${id}" aria-selected="false">${label}</button>`).join('');
+$('#tabs').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) { select(b.dataset.tab); window.scrollTo({ top: 0 }); } });
+
+// ---------- overview
+function renderOverview() {
+  const res = DATA.results;
+  const suites = PROJECT_NAMES;
+  const suiteBars = suites.map((s) => {
+    const rs = res.filter((r) => r.suite === s);
+    if (!rs.length) return `<div class="bar-row"><div class="name">${SUITE_NAMES[s]}</div><div class="muted" style="font-size:13px">not run yet</div><div class="tot">0</div></div>`;
+    const c = count(rs, 'outcome');
+    return stackBar(SUITE_NAMES[s], OUTCOMES.map(([k, l, col]) => ({ n: c[k] || 0, label: l, color: col })), rs.length);
+  }).join('');
+  const st = count(DATA.rtm, 'state');
+  const rtmBar = stackBar('Requirements', STATES.map(([k, l, col]) => ({ n: st[k] || 0, label: l, color: col })), DATA.rtm.length);
+  const areas = [...new Set(DATA.rtm.map((r) => r.area))];
+  const areaBars = areas.map((a) => { const rs = DATA.rtm.filter((r) => r.area === a); const c = count(rs, 'state'); return stackBar(a, STATES.map(([k, l, col]) => ({ n: c[k] || 0, label: l, color: col })), rs.length); }).join('');
+  const sevC = count(DATA.bugs, 'severity');
+  const sevBars = SEVS.map(([s, col]) => `<div class="bar-row"><div class="name">${sevBadge(s)}</div><div class="bar"><span style="flex:${sevC[s] || 0};background:${col}" data-tip="${s}: ${sevC[s] || 0} bugs"></span><span style="flex:${DATA.bugs.length - (sevC[s] || 0)};background:transparent;min-width:0"></span></div><div class="tot num">${sevC[s] || 0}</div></div>`).join('');
+  const areaBug = count(DATA.bugs, 'area');
+  const cov = DATA.unit.coverage;
+  const covTiles = cov ? ['lines', 'statements', 'functions', 'branches'].map((k) => `<div class="kpi"><div class="v">${cov[k].toFixed(1)}%</div><div class="l">${k}</div><div class="meter"><b style="width:${cov[k]}%"></b></div></div>`).join('') : '<p class="muted">Coverage summary missing: run npm run test:unit.</p>';
+  const d = DATA.drift;
+  const driftRow = (ok, text) => `<div><span class="${ok ? 'ok-mark' : 'bad-mark'}">${ok ? '✓' : '!'}</span><span>${text}</span></div>`;
+  const reproduced = DATA.bugs.filter((b) => b.evidence?.reproduced).length;
+  return `<section class="panel">
+    <div class="grid2">
+      <div class="card"><div class="section-head"><h2>Automated results by suite</h2><span class="count">latest run of each suite</span></div>
+        <div class="bars">${suiteBars}</div>${legend(OUTCOMES)}
+        <p class="muted" style="font-size:13px;margin:12px 0 0">Tests that expose a bug stay red on purpose, labelled with the bug id. Retries are off, so every pass came from the first attempt.</p></div>
+      <div class="card"><div class="section-head"><h2>Requirement coverage</h2><span class="count">${DATA.rtm.length} rules from the brief</span></div>
+        <div class="bars">${rtmBar}</div><div style="height:14px"></div><div class="bars">${areaBars}</div>${legend(STATES)}</div>
+    </div>
+    <div class="grid2">
+      <div class="card"><div class="section-head"><h2>Bugs by severity</h2><span class="count">${reproduced} of ${DATA.bugs.length} with browser evidence</span></div>
+        <div class="bars">${sevBars}</div>
+        <p style="font-size:13px;margin:14px 0 0" class="muted">By area: ${Object.entries(areaBug).sort((a, b) => b[1] - a[1]).map(([a, n]) => `${esc(a)} ${n}`).join(' · ')}</p>
+        <h3 style="margin:16px 0 6px">Root-cause groups</h3>
+        <ul style="margin:0;padding-left:18px;font-size:13.5px;color:var(--ink-2)">${[...new Set(DATA.bugs.map((b) => b.rootCauseGroup))].map((g) => { const gb = DATA.bugs.filter((b) => b.rootCauseGroup === g); return `<li><b>${esc(g)}</b> · ${gb.length} bug${gb.length > 1 ? 's' : ''}: <span class="mono">${idList(gb.map((b) => b.id))}</span></li>`; }).join('')}</ul></div>
+      <div class="card"><div class="section-head"><h2>Unit tests of the oracle and tooling</h2><span class="count">${DATA.unit.passed ?? '—'} / ${DATA.unit.tests ?? '—'} passed</span></div>
+        <div class="kpis">${covTiles}</div></div>
+    </div>
+    <div class="grid2">
+      <div class="card"><h2 style="margin-bottom:12px">Catalogue and code agree?</h2><div class="drift">
+        ${driftRow(!d.notAutomated.length, d.notAutomated.length ? `Cases without an automated run: <span class="mono">${idList(d.notAutomated)}</span>` : 'Every automatable case has a run')}
+        ${driftRow(!d.unknownInTests.length, d.unknownInTests.length ? `Ids in code but not in the catalogue: <span class="mono">${idList(d.unknownInTests)}</span>` : 'No test id outside the catalogue')}
+        ${driftRow(!d.bugsWithoutTest.length, d.bugsWithoutTest.length ? `Bugs with no automated test run yet: <span class="mono">${idList(d.bugsWithoutTest)}</span>` : 'Every bug is pinned by an automated test')}
+        ${driftRow(!d.unknownBugsInTests.length, d.unknownBugsInTests.length ? `Bug ids in code missing from the tracker: <span class="mono">${idList(d.unknownBugsInTests)}</span>` : 'No unknown bug id in code')}
+        ${driftRow(!d.passedWithOpenBug.length, d.passedWithOpenBug.length ? `Passed while their bug is open (fixed, or passing for the wrong reason): <span class="mono">${esc(d.passedWithOpenBug.join(', '))}</span>` : 'No test passes while its bug is still open')}
+      </div></div>
+      <div class="card"><h2 style="margin-bottom:12px">Not tested, and why it matters</h2><ul style="margin:0;padding-left:18px;font-size:14px;color:var(--ink-2)">
+        <li><b>50% refund tier.</b> No event starts within 24 h and only an admin can create one (GAP-08). Most likely place for an off-by-one at exactly 24 h.</li>
+        <li><b>Checkout of a negative cart.</b> The cart accepts it (BUG-04); checking out would change shared stock.</li>
+        <li><b>Last-ticket concurrency.</b> Needs an event with tiny stock, which only an admin can set.</li>
+        <li><b>Admin flows as an admin.</b> No admin account; CSV and date filters untested.</li>
+        <li><b>Server-side feature flags.</b> 30 of the 40 enabled flags are not in the bundle; some may hide defects on paths not exercised.</li>
+        <li><b>Other browsers and real phones.</b> 360 px checks use Chromium's mobile emulation.</li></ul></div>
+    </div>
+  </section>`;
+}
+
+// ---------- test cases
+function renderCases() {
+  const opts = (vals) => ['all', ...vals].map((v) => `<option value="${v}">${v === 'all' ? 'All' : v}</option>`).join('');
+  return `<section class="panel"><div class="card">
+    <div class="section-head"><h2>Test cases</h2><span class="count" id="tc-count"></span></div>
+    <div class="filters">
+      <input id="tc-q" type="search" placeholder="Search id, title or requirement" aria-label="Search test cases">
+      <label>Suite<select id="tc-suite">${opts(['smoke', 'api', 'regression', 'slow'])}</select></label>
+      <label>Type<select id="tc-type">${opts(['positive', 'negative', 'boundary'])}</select></label>
+      <label>Priority<select id="tc-prio">${opts(['P1', 'P2', 'P3'])}</select></label>
+      <label>Last result<select id="tc-res">${opts(['passed', 'failed-known-bug', 'failed-unexplained', 'skipped', 'not-run'])}</select></label>
+    </div>
+    <div class="table-wrap"><table><thead><tr><th>Id</th><th>Title</th><th>Type</th><th>Priority</th><th>Suite</th><th>Requirement</th><th>Last result</th></tr></thead><tbody id="tc-body"></tbody></table></div>
+    <p class="muted" style="font-size:13px;margin:10px 0 0">Select a row for numbered steps, the expected result and the latest error.</p></div></section>`;
+}
+const caseOutcome = (c) => (c.results.length ? c.results[0].outcome : c.automated === false ? 'skipped' : 'not-run');
+function wireCases() {
+  const draw = () => {
+    const q = $('#tc-q').value.toLowerCase(), su = $('#tc-suite').value, ty = $('#tc-type').value, pr = $('#tc-prio').value, re = $('#tc-res').value;
+    const rows = DATA.testCases.filter((c) => (su === 'all' || c.suite === su) && (ty === 'all' || c.type === ty) && (pr === 'all' || c.priority === pr) && (re === 'all' || caseOutcome(c) === re) && (!q || `${c.id} ${c.title} ${c.requirements.join(' ')} ${(c.bugs || []).join(' ')}`.toLowerCase().includes(q)));
+    $('#tc-count').textContent = `${rows.length} of ${DATA.testCases.length}`;
+    $('#tc-body').innerHTML = rows.map((c) => `<tr class="clickable" data-id="${c.id}" tabindex="0"><td class="id">${c.id}</td><td>${esc(c.title)}</td><td>${c.type}</td><td>${c.priority}</td><td>${c.suite}</td><td class="id">${idList(c.requirements, '<br>')}</td><td>${outcomeChip(caseOutcome(c))}${(c.bugs || []).length ? ` <span class="mono muted">${c.bugs.join(', ')}</span>` : ''}</td></tr>`).join('') || `<tr><td colspan="7" class="muted">No case matches these filters.</td></tr>`;
+  };
+  ['#tc-q', '#tc-suite', '#tc-type', '#tc-prio', '#tc-res'].forEach((s) => $(s).addEventListener('input', draw));
+  const toggle = (tr) => {
+    if (!tr || !tr.dataset.id) return;
+    const next = tr.nextElementSibling;
+    if (next && next.classList.contains('detail')) { next.remove(); return; }
+    const c = DATA.testCases.find((x) => x.id === tr.dataset.id);
+    const r = c.results[0];
+    const d = document.createElement('tr'); d.className = 'detail';
+    d.innerHTML = `<td></td><td colspan="6"><div><b>Preconditions:</b> ${esc(c.preconditions)}</div><ol class="steps">${c.steps.map((s) => `<li>${esc(s)}</li>`).join('')}</ol><div><b>Expected:</b> ${esc(c.expected)}</div>${c.notes ? `<div class="muted" style="margin-top:6px">${esc(c.notes)}</div>` : ''}${r ? `<div style="margin-top:6px" class="muted">Last run: ${esc(SUITE_NAMES[r.suite])}, ${esc(r.mechanism)}, ${r.durationMs} ms${r.skipReason ? ` · skipped: ${esc(r.skipReason)}` : ''}</div>${r.error ? `<div class="err">${esc(r.error)}</div>` : ''}` : ''}</td>`;
+    tr.after(d);
+  };
+  $('#tc-body').addEventListener('click', (e) => toggle(e.target.closest('tr')));
+  $('#tc-body').addEventListener('keydown', (e) => { if (e.key === 'Enter') toggle(e.target.closest('tr')); });
+  draw();
+}
+
+// ---------- RTM
+function renderRtm() {
+  return `<section class="panel"><div class="card">
+    <div class="section-head"><h2>Requirements traceability matrix</h2><span class="count" id="rtm-count"></span></div>
+    <p class="muted" style="margin:0 0 12px;font-size:14px">Brief rule → test cases → automated runs → bugs. Every requirement carries an explicit state; an uncovered rule shows as <b>Not covered</b>, never as a blank row.</p>
+    <div class="filters"><input id="rtm-q" type="search" placeholder="Filter by id, rule or bug" aria-label="Filter requirements">
+      <label>State<select id="rtm-state"><option value="all">All</option>${STATES.map(([k, l]) => `<option value="${k}">${l}</option>`).join('')}</select></label></div>
+    <div class="table-wrap"><table><thead><tr><th>Requirement</th><th>Rule</th><th>Test cases</th><th class="num">Runs</th><th class="num">Pass</th><th class="num">Fail</th><th>Bugs</th><th>State</th></tr></thead><tbody id="rtm-body"></tbody></table></div>
+    <h3 style="margin:20px 0 8px">Specification gaps raised</h3>
+    <div class="table-wrap"><table><thead><tr><th>Gap</th><th>Question for the product owner</th></tr></thead><tbody>${DATA.gaps.map((g) => `<tr><td class="id">${g.id}</td><td>${esc(g.question)}</td></tr>`).join('')}</tbody></table></div>
+  </div></section>`;
+}
+function wireRtm() {
+  const draw = () => {
+    const q = $('#rtm-q').value.toLowerCase(), st = $('#rtm-state').value;
+    const rows = DATA.rtm.filter((r) => (st === 'all' || r.state === st) && (!q || `${r.id} ${r.rule} ${r.bugs.join(' ')} ${r.testCases.join(' ')}`.toLowerCase().includes(q)));
+    $('#rtm-count').textContent = `${rows.length} of ${DATA.rtm.length}`;
+    $('#rtm-body').innerHTML = rows.map((r) => `<tr><td class="id">${r.id}</td><td class="rule">${esc(r.rule)}</td><td class="id list">${idList(r.testCases) || '—'}</td><td class="num">${r.automatedTests}</td><td class="num">${r.outcomes.passed}</td><td class="num">${r.outcomes['failed-known-bug'] + r.outcomes['failed-unexplained']}</td><td class="id list">${r.bugs.map((b) => `<a href="#${b}" data-bug="${b}">${b}</a>`).join(' ') || '—'}</td><td>${stateChip(r.state)}</td></tr>`).join('');
+  };
+  $('#rtm-q').addEventListener('input', draw); $('#rtm-state').addEventListener('input', draw);
+  $('#rtm-body').addEventListener('click', (e) => { const a = e.target.closest('a[data-bug]'); if (a) { e.preventDefault(); openBug(a.dataset.bug); } });
+  draw();
+}
+
+// ---------- automation
+function renderAutomation() {
+  const runs = PROJECT_NAMES.map((s) => {
+    const r = DATA.runs[s];
+    if (!r || r.status !== 'ran') return `<div class="kpi"><div class="eyebrow">${SUITE_NAMES[s]}</div><div class="v" style="font-size:18px;margin-top:8px">not run</div></div>`;
+    const b = r.summary.byOutcome;
+    return `<div class="kpi"><div class="eyebrow">${SUITE_NAMES[s]}</div><div class="v" style="margin-top:8px">${b.passed}<span class="muted" style="font-size:16px"> / ${r.summary.total}</span></div><div class="l">passed · ${b['failed-known-bug']} on known bugs · ${b['failed-unexplained']} unexplained · ${b.skipped} skipped</div><div class="l">${fmtTime(r.startedAt)} · ${(r.durationMs / 1000).toFixed(1)} s</div><div class="l mono">run ${esc(r.runId)} · ${r.history} kept</div></div>`;
+  }).join('');
+  const files = DATA.unit.files.map((f) => `<tr><td class="id">${esc(f.file)}</td><td class="num">${f.lines}%</td><td class="num">${f.branches}%</td><td class="num">${f.functions}%</td></tr>`).join('');
+  return `<section class="panel">
+    <div class="card"><div class="section-head"><h2>Latest runs</h2><span class="count">Playwright 1.63 · Chromium · retries 0</span></div><div class="kpis">${runs}</div>
+      ${DATA.stability ? `<p style="margin:14px 0 0;font-size:14px"><span class="${DATA.stability.differences.length ? 'bad-mark' : 'ok-mark'}">${DATA.stability.differences.length ? '!' : '✓'}</span> Stability: ${DATA.stability.runs} consecutive runs of smoke, API and regression, ${DATA.stability.tests} tests, ${DATA.stability.differences.length ? 'outcomes changed for ' + DATA.stability.differences.join(', ') : 'no test changed outcome between runs'} (${fmtTime(DATA.stability.at)}).</p>` : ''}</div>
+    <div class="card"><div class="section-head"><h2>Every automated result</h2><span class="count" id="ar-count"></span></div>
+      <div class="filters"><input id="ar-q" type="search" placeholder="Filter by title, id or bug" aria-label="Filter results">
+        <label>Suite<select id="ar-suite"><option value="all">All</option>${PROJECT_NAMES.map((s) => `<option value="${s}">${SUITE_NAMES[s]}</option>`).join('')}</select></label>
+        <label>Outcome<select id="ar-out"><option value="all">All</option>${OUTCOMES.map(([k, l]) => `<option value="${k}">${l}</option>`).join('')}</select></label></div>
+      <div class="table-wrap"><table><thead><tr><th>Suite</th><th>Test</th><th>Outcome</th><th>Route</th><th class="num">ms</th><th>Bug</th></tr></thead><tbody id="ar-body"></tbody></table></div></div>
+    <div class="card"><div class="section-head"><h2>Unit coverage by file</h2><span class="count">Vitest · v8 · thresholds 80% on lines, statements, functions, branches</span></div>
+      <div class="table-wrap"><table><thead><tr><th>File</th><th class="num">Lines</th><th class="num">Branches</th><th class="num">Functions</th></tr></thead><tbody>${files}</tbody></table></div></div>
+    <div class="card"><h2 style="margin-bottom:8px">How to run</h2><div class="err" style="max-height:none">cd submissions/tunt01102/automation && npm ci && npx playwright install chromium
+npm run test:unit         # oracle + tooling, coverage gate 80%
+npm run test:smoke        # shortest buyer path, run first
+npm run test:api          # every documented operation, every rule
+npm run test:regression   # UI: 360 px, labels, time zone, search, admin screens
+npm run test:slow         # real 10 and 30 minute waits
+npm run test:evidence     # one browser reproduction per bug -> ../assets/BUG-xx
+npm run dashboard         # rebuild bugs.md, test-cases.md, rtm.md and this page</div></div>
+  </section>`;
+}
+function wireAutomation() {
+  const draw = () => {
+    const q = $('#ar-q').value.toLowerCase(), su = $('#ar-suite').value, o = $('#ar-out').value;
+    const rows = DATA.results.filter((r) => (su === 'all' || r.suite === su) && (o === 'all' || r.outcome === o) && (!q || `${r.title} ${r.bugIds.join(' ')}`.toLowerCase().includes(q)));
+    $('#ar-count').textContent = `${rows.length} of ${DATA.results.length}`;
+    $('#ar-body').innerHTML = rows.map((r) => `<tr><td>${SUITE_NAMES[r.suite]}</td><td>${esc(r.title)}${r.error ? `<details><summary class="muted" style="font-size:12px;cursor:pointer">error</summary><div class="err">${esc(r.error)}</div></details>` : ''}${r.skipReason ? `<div class="muted" style="font-size:12px">${esc(r.skipReason)}</div>` : ''}</td><td>${outcomeChip(r.outcome)}</td><td class="mono muted">${r.mechanism}</td><td class="num">${r.durationMs}</td><td class="id">${r.bugIds.map((b) => `<a href="#${b}" data-bug="${b}">${b}</a>`).join(' ')}</td></tr>`).join('');
+  };
+  ['#ar-q', '#ar-suite', '#ar-out'].forEach((s) => $(s).addEventListener('input', draw));
+  $('#ar-body').addEventListener('click', (e) => { const a = e.target.closest('a[data-bug]'); if (a) { e.preventDefault(); openBug(a.dataset.bug); } });
+  draw();
+}
+
+// ---------- bugs
+let currentBug = null;
+function renderBugs() {
+  const areas = [...new Set(DATA.bugs.map((b) => b.area))];
+  return `<section class="panel">
+    <div class="filters"><input id="bg-q" type="search" placeholder="Search bugs" aria-label="Search bugs">
+      <label>Severity<select id="bg-sev"><option value="all">All</option>${SEVS.map(([s]) => `<option>${s}</option>`).join('')}</select></label>
+      <label>Area<select id="bg-area"><option value="all">All</option>${areas.map((a) => `<option>${esc(a)}</option>`).join('')}</select></label>
+      <span class="count" id="bg-count"></span></div>
+    <div class="bug-layout"><div class="bug-list" id="bg-list" role="list"></div><article class="card bug-detail" id="bg-detail" aria-live="polite"></article></div>
+  </section>`;
+}
+function bugDetail(b) {
+  const ev = b.evidence;
+  const file = (f) => `${ASSET}${f}`;
+  const media = ev ? `<div class="media">
+      ${ev.files.find((f) => f.endsWith('/recording-start.webm')) ? `<div class="muted" style="font-size:13px">Part 1, before the wait</div><video controls preload="metadata" src="${file(ev.files.find((f) => f.endsWith('/recording-start.webm')))}" aria-label="Recording of ${b.id} before the wait"></video><div class="muted" style="font-size:13px">Part 2, after the wait</div>` : ''}
+      ${ev.files.find((f) => f.endsWith('/recording.webm')) ? `<video controls preload="metadata" src="${file(ev.files.find((f) => f.endsWith('/recording.webm')))}" aria-label="Screen recording of ${b.id}"></video>` : ''}
+      ${ev.files.find((f) => f.endsWith('/screenshot.png')) ? `<img loading="lazy" src="${file(ev.files.find((f) => f.endsWith('/screenshot.png')))}" alt="Screenshot of ${b.id} at the moment it reproduces">` : ''}
+      <div class="muted" style="font-size:12px">Evidence run <span class="mono">${esc(ev.runId)}</span> · ${ev.history} run${ev.history > 1 ? 's' : ''} kept</div><div class="files">${ev.files.map((f) => `<a href="${file(f)}" target="_blank" rel="noopener">${f.split('/').pop()}</a>`).join('')}</div>
+    </div>` : `<p class="muted">Browser evidence pending: this bug needs a real ${b.id === 'BUG-13' ? '30' : '10'} minute wait. The slow-suite run records it.</p>`;
+  const autos = b.automated.map((a) => `<span class="mono">${a.tc}</span> ${outcomeChip(a.outcome)}`).join(' ');
+  return `<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">${sevBadge(b.severity)}<span class="mono muted">${b.id}</span>${ev ? `<span class="chip ${ev.reproduced ? 'o-failed-known-bug' : 'o-passed'} repro"><i></i>${ev.reproduced ? 'Reproduced' : 'Not reproduced'} ${fmtTime(ev.recordedAt)}</span>` : ''}</div>
+    <h2 style="margin-top:10px">${esc(b.title)}</h2>
+    <dl>
+      <dt>Area</dt><dd>${esc(b.area)} · ${esc(b.component)}</dd>
+      <dt>Requirement</dt><dd class="mono">${b.requirements.join(', ')}</dd>
+      <dt>Who is harmed</dt><dd>${esc(b.impact)}</dd>
+      <dt>Steps</dt><dd><ol class="steps" style="margin:0">${b.steps.map((s) => `<li>${esc(s)}</li>`).join('')}</ol></dd>
+      <dt>Expected</dt><dd>${esc(b.expected)}</dd>
+      <dt>Actual</dt><dd>${esc(b.actual)}</dd>
+      ${b.notes ? `<dt>Note</dt><dd>${esc(b.notes)}</dd>` : ''}
+      <dt>Hypothesis</dt><dd>${esc(b.hypothesis)} <span class="muted">(not verified against source)</span></dd>
+      <dt>Likely location</dt><dd>${esc(b.likelyLocation)}${b.frontendFlag ? ` · flag <span class="mono">${b.frontendFlag}</span>` : ''}</dd>
+      <dt>Root cause · effort</dt><dd>${esc(b.rootCauseGroup)} · ${b.effort}</dd>
+      ${b.relatedBugs?.length ? `<dt>Related</dt><dd>${b.relatedBugs.map((r) => `<a href="#${r}" data-bug="${r}">${r}</a>`).join(' ')}</dd>` : ''}
+      <dt>Pinned by</dt><dd>${autos || '<span class="muted">no automated run yet</span>'}</dd>
+    </dl>${ev?.apiOnly ? '<p class="muted" style="font-size:13px;margin:0">API defect: log.json and the HAR are the primary evidence; the screenshot shows the on-screen request log.</p>' : ''}${media}`;
+}
+function openBug(id) { select('bugs'); currentBug = id; drawBugs(); history.replaceState(null, '', '#' + id); }
+function drawBugs() {
+  const q = $('#bg-q').value.toLowerCase(), sv = $('#bg-sev').value, ar = $('#bg-area').value;
+  const SEV = ['Critical', 'High', 'Medium', 'Low'];
+  const rows = [...DATA.bugs].sort((a, b) => SEV.indexOf(a.severity) - SEV.indexOf(b.severity) || a.id.localeCompare(b.id)).filter((b) => (sv === 'all' || b.severity === sv) && (ar === 'all' || b.area === ar) && (!q || `${b.id} ${b.title} ${b.actual} ${b.requirements.join(' ')}`.toLowerCase().includes(q)));
+  $('#bg-count').textContent = `${rows.length} of ${DATA.bugs.length}`;
+  if (!rows.find((b) => b.id === currentBug)) currentBug = rows[0]?.id ?? null;
+  $('#bg-list').innerHTML = rows.map((b) => `<button class="bug-item" role="listitem" data-id="${b.id}" aria-current="${b.id === currentBug}">${sevBadge(b.severity)}<span class="t">${esc(b.title)}</span><span class="m"><span class="mono">${b.id}</span> · ${esc(b.area)} · ${b.evidence ? 'video + screenshot + HAR + log' : 'evidence pending'}</span></button>`).join('');
+  const b = DATA.bugs.find((x) => x.id === currentBug);
+  $('#bg-detail').innerHTML = b ? bugDetail(b) : '<p class="muted">No bug matches these filters.</p>';
+}
+function wireBugs() {
+  ['#bg-q', '#bg-sev', '#bg-area'].forEach((s) => $(s).addEventListener('input', drawBugs));
+  $('#bg-detail').addEventListener('click', (e) => { const a = e.target.closest('a[data-bug]'); if (a) { e.preventDefault(); currentBug = a.dataset.bug; drawBugs(); history.replaceState(null, '', '#' + a.dataset.bug); } });
+  $('#bg-list').addEventListener('click', (e) => { const b = e.target.closest('.bug-item'); if (b) { currentBug = b.dataset.id; drawBugs(); history.replaceState(null, '', '#' + b.dataset.id); if (innerWidth < 860) $('#bg-detail').scrollIntoView({ behavior: 'smooth' }); } });
+  drawBugs();
+}
+
+// ---------- process
+function renderProcess() {
+  return `<section class="panel"><div class="card">
+    <div class="section-head"><h2>How this was done</h2><span class="count">spec-driven loop · playbook rules applied</span></div>
+    <p class="muted" style="margin:0 0 18px;font-size:14px;max-width:75ch">Each step names the rule from the agentic quality engineering playbook it applies, and the artefact that shows it. Misses are listed too: they are where the method earned its keep.</p>
+    <ol class="timeline">${DATA.process.map((p) => `<li><div><div class="eyebrow">${esc(p.phase)}</div><div style="margin-top:4px">${esc(p.what)}</div><div class="rule">${esc(p.rule)}</div><div class="art">${esc(p.artefact)}</div></div></li>`).join('')}</ol>
+  </div>
+  <div class="card"><h2 style="margin-bottom:10px">Observations not filed as bugs</h2><ul style="margin:0;padding-left:18px;color:var(--ink-2)">${DATA.observations.map((o) => `<li><span class="mono">${o.id}</span> ${esc(o.text)}</li>`).join('')}</ul></div></section>`;
+}
+
+// ---------- tooltip for chart segments
+const tip = $('#tip');
+document.addEventListener('mousemove', (e) => {
+  const t = e.target.closest('[data-tip]');
+  if (!t) { tip.style.opacity = 0; return; }
+  tip.textContent = t.dataset.tip; tip.style.opacity = 1;
+  const x = Math.min(e.clientX + 12, innerWidth - tip.offsetWidth - 8);
+  tip.style.left = x + 'px'; tip.style.top = e.clientY + 14 + 'px';
+});
+
+// ---------- keep every id (TC-REG-09, BUG-37, REQ-REF-01, GAP-02, OBS-05) on one line wherever it is rendered,
+// including tables that filters redraw: text nodes are wrapped as they appear.
+const ID_RE = /\b(?:TC|BUG|REQ|GAP|OBS|OI)-[A-Z0-9]+(?:-[0-9]+)?\b/g;
+function keepIdsWhole(root) {
+  const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: (n) => (n.parentElement.closest('.nw, script, style, input, select, textarea') || !ID_RE.test(n.textContent) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT) });
+  const nodes = []; let n; while ((n = w.nextNode())) nodes.push(n);
+  for (const node of nodes) {
+    const frag = document.createDocumentFragment(); let last = 0; const t = node.textContent;
+    for (const m of t.matchAll(ID_RE)) {
+      frag.append(t.slice(last, m.index));
+      const span = document.createElement('span'); span.className = 'nw'; span.textContent = m[0]; frag.append(span);
+      last = m.index + m[0].length;
+    }
+    frag.append(t.slice(last)); node.replaceWith(frag);
+  }
+}
+new MutationObserver(() => keepIdsWhole($('#main'))).observe($('#main'), { childList: true, subtree: true });
+
+// ---------- boot from the hash: a tab name or a bug id
+const h = location.hash.slice(1);
+if (/^BUG-\d+$/.test(h)) openBug(h); else select(h || 'overview');
+addEventListener('hashchange', () => { const x = location.hash.slice(1); if (/^BUG-\d+$/.test(x)) { if (x !== currentBug) openBug(x); } else if (TABS.some((t) => t[0] === x)) select(x); });
+</script>

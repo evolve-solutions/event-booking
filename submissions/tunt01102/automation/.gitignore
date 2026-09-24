@@ -1,0 +1,16 @@
+node_modules/
+# Per-run output folders (YYYYMMDDTHHmmssSSS-<suite>): large traces and videos; the JSON reports are the receipt
+test-results/
+playwright-report/
+# Coverage: keep each run's summary, not the HTML
+coverage/*/*
+!coverage/*/coverage-summary.json
+*.log
+!reports/logs/*.log
+test-results-*/
+# Older evidence runs, moved here by `npm run evidence:prune` (kept locally, never deleted)
+evidence-archive/
+# Shard blobs hold traces and screenshots; only the merged JSON is kept
+reports/**/*.blobs/
+# Older reports, moved here by npm run reports:prune (kept locally, never deleted)
+reports-archive/

@@ -1,0 +1,236 @@
+{
+  "bug": "BUG-12",
+  "runId": "20260924T161339675",
+  "part": "end",
+  "recordedAt": "2026-09-24T09:24:44.976Z",
+  "baseUrl": "https://candidate-01.207.148.118.135.sslip.io",
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "steps": [
+    "Part 2 of 2: now 2026-09-24T09:24:42.742Z, hold expired at 2026-09-24T09:23:41.850Z",
+    "Expected: Refused: hold expired at 2026-09-24T09:23:41.850Z | Actual: 200 CONFIRMED",
+    "Clean-up: cancel this buyer's confirmed orders once"
+  ],
+  "reproduced": true,
+  "summary": "checkout 200 CONFIRMED after hold 2026-09-24T09:23:41.850Z",
+  "exchanges": [
+    {
+      "at": "2026-09-24T09:24:42.926Z",
+      "method": "GET",
+      "path": "/api/config",
+      "requestBody": null,
+      "status": 200,
+      "responseBody": {
+        "flags": [
+          "f60",
+          "f48",
+          "f42",
+          "f24",
+          "f46",
+          "f64",
+          "f49",
+          "f41",
+          "f31",
+          "f37",
+          "f34",
+          "f63",
+          "f43",
+          "f52",
+          "f04",
+          "f01",
+          "f40",
+          "f59",
+          "f58",
+          "f44",
+          "f61",
+          "f32",
+          "f30",
+          "f51",
+          "f57",
+          "f45",
+          "f53",
+          "f54",
+          "f39",
+          "f33",
+          "f56",
+          "f50",
+          "f36",
+          "f65",
+          "f47",
+          "f03",
+          "f62",
+          "f35",
+          "f38",
+          "f55"
+        ]
+      }
+    },
+    {
+      "at": "2026-09-24T09:24:42.932Z",
+      "method": "GET",
+      "path": "/api/cart",
+      "requestBody": null,
+      "status": 200,
+      "responseBody": {
+        "items": [
+          {
+            "id": 1252,
+            "ticketTypeId": 10,
+            "ticketTypeName": "STANDARD",
+            "eventId": 4,
+            "eventTitle": "Da Nang Startup Summit",
+            "unitPrice": 200000,
+            "quantity": 1
+          }
+        ],
+        "discountCode": null,
+        "holdExpiresAt": "2026-09-24T09:23:41.850Z",
+        "gross": 200000,
+        "discount": 0,
+        "serviceFee": 10000,
+        "total": 210000
+      }
+    },
+    {
+      "at": "2026-09-24T09:24:42.982Z",
+      "method": "GET",
+      "path": "/api/auth/me",
+      "requestBody": null,
+      "status": 200,
+      "responseBody": {
+        "id": 1996,
+        "email": "qa-ev-bug-12-mufbeel8@example.invalid",
+        "role": "CUSTOMER",
+        "phone": null
+      }
+    },
+    {
+      "at": "2026-09-24T09:24:43.021Z",
+      "method": "GET",
+      "path": "/api/cart",
+      "requestBody": null,
+      "status": 200,
+      "responseBody": {
+        "items": [
+          {
+            "id": 1252,
+            "ticketTypeId": 10,
+            "ticketTypeName": "STANDARD",
+            "eventId": 4,
+            "eventTitle": "Da Nang Startup Summit",
+            "unitPrice": 200000,
+            "quantity": 1
+          }
+        ],
+        "discountCode": null,
+        "holdExpiresAt": "2026-09-24T09:23:41.850Z",
+        "gross": 200000,
+        "discount": 0,
+        "serviceFee": 10000,
+        "total": 210000
+      }
+    },
+    {
+      "at": "2026-09-24T09:24:43.071Z",
+      "method": "POST",
+      "path": "/api/orders",
+      "requestBody": {
+        "recipientName": "QA Buyer",
+        "phone": "0912345678"
+      },
+      "status": 200,
+      "responseBody": {
+        "id": 513,
+        "status": "CONFIRMED",
+        "recipientName": "QA Buyer",
+        "phone": "0912345678",
+        "studentCardNo": null,
+        "discountCode": null,
+        "grossAmount": 200000,
+        "discountAmount": 0,
+        "serviceFeeAmount": 10000,
+        "totalAmount": 210000,
+        "refundAmount": 0,
+        "createdAt": "2026-09-24T09:24:43.412Z",
+        "items": [
+          {
+            "id": 513,
+            "ticketTypeId": 10,
+            "ticketTypeName": "STANDARD",
+            "eventTitle": "Da Nang Startup Summit",
+            "unitPrice": 200000,
+            "quantity": 1
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-09-24T09:24:43.559Z",
+      "method": "GET",
+      "path": "/api/orders",
+      "requestBody": null,
+      "status": 200,
+      "responseBody": {
+        "items": [
+          {
+            "id": 513,
+            "status": "CONFIRMED",
+            "recipientName": "QA Buyer",
+            "phone": "0912345678",
+            "studentCardNo": null,
+            "discountCode": null,
+            "grossAmount": 200000,
+            "discountAmount": 0,
+            "serviceFeeAmount": 10000,
+            "totalAmount": 210000,
+            "refundAmount": 0,
+            "createdAt": "2026-09-24T09:24:43.412Z",
+            "items": [
+              {
+                "id": 513,
+                "ticketTypeId": 10,
+                "ticketTypeName": "STANDARD",
+                "eventTitle": "Da Nang Startup Summit",
+                "unitPrice": 200000,
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-09-24T09:24:43.629Z",
+      "method": "POST",
+      "path": "/api/orders/513/cancel",
+      "requestBody": null,
+      "status": 200,
+      "responseBody": {
+        "id": 513,
+        "status": "CANCELLED",
+        "recipientName": "QA Buyer",
+        "phone": "0912345678",
+        "studentCardNo": null,
+        "discountCode": null,
+        "grossAmount": 200000,
+        "discountAmount": 0,
+        "serviceFeeAmount": 10000,
+        "totalAmount": 210000,
+        "refundAmount": 210000,
+        "createdAt": "2026-09-24T09:24:43.412Z",
+        "items": [
+          {
+            "id": 513,
+            "ticketTypeId": 10,
+            "ticketTypeName": "STANDARD",
+            "eventTitle": "Da Nang Startup Summit",
+            "unitPrice": 200000,
+            "quantity": 1
+          }
+        ]
+      }
+    }
+  ]
+}

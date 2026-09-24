@@ -1,0 +1,289 @@
+{
+  "config": {
+    "argv": [
+      "~/.nvm/versions/node/v22.23.2/bin/node",
+      "submissions/tunt01102/automation/node_modules/.bin/playwright",
+      "test",
+      "--project=evidence-timing"
+    ],
+    "configFile": "submissions/tunt01102/automation/playwright.config.ts",
+    "rootDir": "submissions/tunt01102/automation",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "submissions/tunt01102/automation/tests/support/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T161339675-evidence-timing",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "smoke",
+        "name": "smoke",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/smoke",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T161339675-evidence-timing",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "api",
+        "name": "api",
+        "testDir": "submissions/tunt01102/automation/tests/api",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T161339675-evidence-timing",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "regression",
+        "name": "regression",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/regression",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T161339675-evidence-timing",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "smoke-firefox",
+        "name": "smoke-firefox",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/smoke",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T161339675-evidence-timing",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "smoke-webkit",
+        "name": "smoke-webkit",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/smoke",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T161339675-evidence-timing",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "mobile-webkit",
+        "name": "mobile-webkit",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/regression",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T161339675-evidence-timing",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "slow",
+        "name": "slow",
+        "testDir": "submissions/tunt01102/automation/tests/slow",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 2400000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T161339675-evidence-timing",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "evidence-timing",
+        "name": "evidence-timing",
+        "testDir": "submissions/tunt01102/automation/tests/evidence",
+        "testIgnore": [],
+        "testMatch": [
+          "timing.evidence.spec.ts"
+        ],
+        "timeout": 2700000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T161339675-evidence-timing",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "evidence",
+        "name": "evidence",
+        "testDir": "submissions/tunt01102/automation/tests/evidence",
+        "testIgnore": [],
+        "testMatch": [
+          "bugs.evidence.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/evidence-timing/20260924T161339675.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report/20260924T161339675-evidence-timing",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "tests/evidence/timing.evidence.spec.ts",
+      "file": "tests/evidence/timing.evidence.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "[BUG-12] checkout succeeds after the cart hold lapsed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 1200000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence-timing",
+              "projectName": "evidence-timing",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 664609,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T09:13:40.195Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bea2b84affdb35e3a496-7e3b70c69be7220a573d",
+          "file": "tests/evidence/timing.evidence.spec.ts",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "[BUG-13] session still valid after 30 minutes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 2400000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "evidence-timing",
+              "projectName": "evidence-timing",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1865391,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T09:13:40.195Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bea2b84affdb35e3a496-e6cea3b71d549018d59b",
+          "file": "tests/evidence/timing.evidence.spec.ts",
+          "line": 39,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-24T09:13:39.680Z",
+    "duration": 1866005.1069999998,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,619 @@
+{
+  "bug": "BUG-32",
+  "runId": "20260924T141955958",
+  "part": "single",
+  "recordedAt": "2026-09-24T07:20:00.580Z",
+  "baseUrl": "https://candidate-01.207.148.118.135.sslip.io",
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "steps": [
+    "On page 3 of 3, Next enabled: true. Clicking it.",
+    "Expected: Next disabled on the last page | Actual: Next enabled; now on page 4 of 3 with 0 events"
+  ],
+  "reproduced": true,
+  "summary": "page 4 of 3",
+  "exchanges": [
+    {
+      "at": "2026-09-24T07:19:57.365Z",
+      "method": "GET",
+      "path": "/api/config",
+      "requestBody": null,
+      "status": 200,
+      "responseBody": {
+        "flags": [
+          "f60",
+          "f48",
+          "f42",
+          "f24",
+          "f46",
+          "f64",
+          "f49",
+          "f41",
+          "f31",
+          "f37",
+          "f34",
+          "f63",
+          "f43",
+          "f52",
+          "f04",
+          "f01",
+          "f40",
+          "f59",
+          "f58",
+          "f44",
+          "f61",
+          "f32",
+          "f30",
+          "f51",
+          "f57",
+          "f45",
+          "f53",
+          "f54",
+          "f39",
+          "f33",
+          "f56",
+          "f50",
+          "f36",
+          "f65",
+          "f47",
+          "f03",
+          "f62",
+          "f35",
+          "f38",
+          "f55"
+        ]
+      }
+    },
+    {
+      "at": "2026-09-24T07:19:57.388Z",
+      "method": "GET",
+      "path": "/api/events",
+      "requestBody": null,
+      "status": 200,
+      "responseBody": {
+        "items": [
+          {
+            "id": 11,
+            "slug": "autumn-symphony-night",
+            "title": "Autumn Symphony Night",
+            "venue": "Vietnam National Academy of Music",
+            "startsAt": "2026-08-15T12:00:00.000Z",
+            "status": "PAST"
+          },
+          {
+            "id": 7,
+            "slug": "mid-autumn-lantern-night",
+            "title": "Mid-Autumn Lantern Night",
+            "venue": "Hoi An Ancient Town",
+            "startsAt": "2026-10-04T17:30:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 4,
+            "slug": "da-nang-startup-summit",
+            "title": "Da Nang Startup Summit",
+            "venue": "Ariyana Convention Centre",
+            "startsAt": "2026-10-18T01:30:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 14,
+            "slug": "hanoi-autumn-jazz-evening",
+            "title": "Hanoi Autumn Jazz Evening",
+            "venue": "Binh Minh Jazz Club",
+            "startsAt": "2026-10-24T13:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 8,
+            "slug": "bat-trang-pottery-workshop",
+            "title": "Bat Trang Pottery Workshop",
+            "venue": "Bat Trang Pottery Village",
+            "startsAt": "2026-10-25T02:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 15,
+            "slug": "hue-royal-cuisine-cooking-class",
+            "title": "Hue Royal Cuisine Cooking Class",
+            "venue": "Hue Imperial City",
+            "startsAt": "2026-10-31T03:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 5,
+            "slug": "hue-photography-exhibition",
+            "title": "Hue Photography Exhibition",
+            "venue": "Hue Museum of Fine Arts",
+            "startsAt": "2026-11-02T02:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 16,
+            "slug": "buon-ma-thuot-coffee-festival",
+            "title": "Buon Ma Thuot Coffee Festival",
+            "venue": "Dak Lak Provincial Square",
+            "startsAt": "2026-11-07T02:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 1,
+            "slug": "trinh-cong-son-tribute",
+            "title": "Trinh Cong Son Tribute Night",
+            "venue": "Hanoi Opera House",
+            "startsAt": "2026-11-12T13:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 17,
+            "slug": "mui-ne-kitesurf-open",
+            "title": "Mui Ne Kitesurf Open",
+            "venue": "Mui Ne Beach, Phan Thiet",
+            "startsAt": "2026-11-14T02:00:00.000Z",
+            "status": "UPCOMING"
+          }
+        ],
+        "total": 23,
+        "page": 1,
+        "pageSize": 10
+      }
+    },
+    {
+      "at": "2026-09-24T07:19:57.470Z",
+      "method": "GET",
+      "path": "/api/events?sort=startsAt&page=1&pageSize=10",
+      "requestBody": null,
+      "status": 200,
+      "responseBody": {
+        "items": [
+          {
+            "id": 11,
+            "slug": "autumn-symphony-night",
+            "title": "Autumn Symphony Night",
+            "venue": "Vietnam National Academy of Music",
+            "startsAt": "2026-08-15T12:00:00.000Z",
+            "status": "PAST"
+          },
+          {
+            "id": 7,
+            "slug": "mid-autumn-lantern-night",
+            "title": "Mid-Autumn Lantern Night",
+            "venue": "Hoi An Ancient Town",
+            "startsAt": "2026-10-04T17:30:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 4,
+            "slug": "da-nang-startup-summit",
+            "title": "Da Nang Startup Summit",
+            "venue": "Ariyana Convention Centre",
+            "startsAt": "2026-10-18T01:30:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 14,
+            "slug": "hanoi-autumn-jazz-evening",
+            "title": "Hanoi Autumn Jazz Evening",
+            "venue": "Binh Minh Jazz Club",
+            "startsAt": "2026-10-24T13:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 8,
+            "slug": "bat-trang-pottery-workshop",
+            "title": "Bat Trang Pottery Workshop",
+            "venue": "Bat Trang Pottery Village",
+            "startsAt": "2026-10-25T02:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 15,
+            "slug": "hue-royal-cuisine-cooking-class",
+            "title": "Hue Royal Cuisine Cooking Class",
+            "venue": "Hue Imperial City",
+            "startsAt": "2026-10-31T03:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 5,
+            "slug": "hue-photography-exhibition",
+            "title": "Hue Photography Exhibition",
+            "venue": "Hue Museum of Fine Arts",
+            "startsAt": "2026-11-02T02:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 16,
+            "slug": "buon-ma-thuot-coffee-festival",
+            "title": "Buon Ma Thuot Coffee Festival",
+            "venue": "Dak Lak Provincial Square",
+            "startsAt": "2026-11-07T02:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 1,
+            "slug": "trinh-cong-son-tribute",
+            "title": "Trinh Cong Son Tribute Night",
+            "venue": "Hanoi Opera House",
+            "startsAt": "2026-11-12T13:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 17,
+            "slug": "mui-ne-kitesurf-open",
+            "title": "Mui Ne Kitesurf Open",
+            "venue": "Mui Ne Beach, Phan Thiet",
+            "startsAt": "2026-11-14T02:00:00.000Z",
+            "status": "UPCOMING"
+          }
+        ],
+        "total": 23,
+        "page": 1,
+        "pageSize": 10
+      }
+    },
+    {
+      "at": "2026-09-24T07:19:57.472Z",
+      "method": "GET",
+      "path": "/api/events?pageSize=100",
+      "requestBody": null,
+      "status": 200,
+      "responseBody": {
+        "items": [
+          {
+            "id": 11,
+            "slug": "autumn-symphony-night",
+            "title": "Autumn Symphony Night",
+            "venue": "Vietnam National Academy of Music",
+            "startsAt": "2026-08-15T12:00:00.000Z",
+            "status": "PAST"
+          },
+          {
+            "id": 7,
+            "slug": "mid-autumn-lantern-night",
+            "title": "Mid-Autumn Lantern Night",
+            "venue": "Hoi An Ancient Town",
+            "startsAt": "2026-10-04T17:30:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 4,
+            "slug": "da-nang-startup-summit",
+            "title": "Da Nang Startup Summit",
+            "venue": "Ariyana Convention Centre",
+            "startsAt": "2026-10-18T01:30:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 14,
+            "slug": "hanoi-autumn-jazz-evening",
+            "title": "Hanoi Autumn Jazz Evening",
+            "venue": "Binh Minh Jazz Club",
+            "startsAt": "2026-10-24T13:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 8,
+            "slug": "bat-trang-pottery-workshop",
+            "title": "Bat Trang Pottery Workshop",
+            "venue": "Bat Trang Pottery Village",
+            "startsAt": "2026-10-25T02:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 15,
+            "slug": "hue-royal-cuisine-cooking-class",
+            "title": "Hue Royal Cuisine Cooking Class",
+            "venue": "Hue Imperial City",
+            "startsAt": "2026-10-31T03:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 5,
+            "slug": "hue-photography-exhibition",
+            "title": "Hue Photography Exhibition",
+            "venue": "Hue Museum of Fine Arts",
+            "startsAt": "2026-11-02T02:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 16,
+            "slug": "buon-ma-thuot-coffee-festival",
+            "title": "Buon Ma Thuot Coffee Festival",
+            "venue": "Dak Lak Provincial Square",
+            "startsAt": "2026-11-07T02:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 1,
+            "slug": "trinh-cong-son-tribute",
+            "title": "Trinh Cong Son Tribute Night",
+            "venue": "Hanoi Opera House",
+            "startsAt": "2026-11-12T13:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 17,
+            "slug": "mui-ne-kitesurf-open",
+            "title": "Mui Ne Kitesurf Open",
+            "venue": "Mui Ne Beach, Phan Thiet",
+            "startsAt": "2026-11-14T02:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 2,
+            "slug": "hanoi-rock-fest",
+            "title": "Hanoi Rock Fest",
+            "venue": "My Dinh National Stadium",
+            "startsAt": "2026-11-20T12:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 18,
+            "slug": "thang-long-water-puppet-gala",
+            "title": "Thang Long Water Puppet Gala",
+            "venue": "Thang Long Water Puppet Theatre",
+            "startsAt": "2026-11-21T12:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 9,
+            "slug": "my-tam-live-in-concert",
+            "title": "My Tam Live in Concert",
+            "venue": "Phu Tho Indoor Stadium",
+            "startsAt": "2026-11-28T12:30:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 19,
+            "slug": "vietnam-esports-winter-cup",
+            "title": "Vietnam Esports Winter Cup",
+            "venue": "Nguyen Du Gymnasium, Ho Chi Minh City",
+            "startsAt": "2026-12-05T08:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 3,
+            "slug": "saigon-street-food-festival",
+            "title": "Saigon Street Food Festival",
+            "venue": "September 23 Park",
+            "startsAt": "2026-12-05T10:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 13,
+            "slug": "indie-night-final-release",
+            "title": "Indie Night Da Lat: Final Release",
+            "venue": "May Lang Thang, Da Lat",
+            "startsAt": "2026-12-06T13:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 20,
+            "slug": "sapa-winter-trail-run",
+            "title": "Sapa Winter Trail Run",
+            "venue": "Sa Pa Town Square",
+            "startsAt": "2026-12-12T00:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 6,
+            "slug": "ha-long-marathon",
+            "title": "Ha Long Marathon",
+            "venue": "Bai Chay, Ha Long",
+            "startsAt": "2026-12-13T22:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 21,
+            "slug": "da-lat-flower-festival",
+            "title": "Da Lat Flower Festival",
+            "venue": "Lam Vien Square, Da Lat",
+            "startsAt": "2026-12-19T01:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 10,
+            "slug": "the-good-neighbour-stage-play",
+            "title": "Stage Play: The Good Neighbour",
+            "venue": "Le Ngoc Theatre",
+            "startsAt": "2026-12-20T13:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 22,
+            "slug": "saigon-christmas-choir-concert",
+            "title": "Saigon Christmas Choir Concert",
+            "venue": "Saigon Opera House",
+            "startsAt": "2026-12-23T12:30:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 12,
+            "slug": "software-testing-careers-talkshow",
+            "title": "Software Testing Careers Talkshow",
+            "venue": "Toong Trang Thi Coworking",
+            "startsAt": "2026-12-27T07:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 23,
+            "slug": "hanoi-new-year-countdown",
+            "title": "New Year Countdown Hanoi",
+            "venue": "Hoan Kiem Lake Walking Street",
+            "startsAt": "2026-12-31T15:00:00.000Z",
+            "status": "UPCOMING"
+          }
+        ],
+        "total": 23,
+        "page": 1,
+        "pageSize": 100
+      }
+    },
+    {
+      "at": "2026-09-24T07:19:57.475Z",
+      "method": "GET",
+      "path": "/api/auth/me",
+      "requestBody": null,
+      "status": 401,
+      "responseBody": {
+        "message": "Unauthorized"
+      }
+    },
+    {
+      "at": "2026-09-24T07:19:57.958Z",
+      "method": "GET",
+      "path": "/api/events?sort=startsAt&page=2&pageSize=10",
+      "requestBody": null,
+      "status": 200,
+      "responseBody": {
+        "items": [
+          {
+            "id": 17,
+            "slug": "mui-ne-kitesurf-open",
+            "title": "Mui Ne Kitesurf Open",
+            "venue": "Mui Ne Beach, Phan Thiet",
+            "startsAt": "2026-11-14T02:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 2,
+            "slug": "hanoi-rock-fest",
+            "title": "Hanoi Rock Fest",
+            "venue": "My Dinh National Stadium",
+            "startsAt": "2026-11-20T12:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 18,
+            "slug": "thang-long-water-puppet-gala",
+            "title": "Thang Long Water Puppet Gala",
+            "venue": "Thang Long Water Puppet Theatre",
+            "startsAt": "2026-11-21T12:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 9,
+            "slug": "my-tam-live-in-concert",
+            "title": "My Tam Live in Concert",
+            "venue": "Phu Tho Indoor Stadium",
+            "startsAt": "2026-11-28T12:30:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 19,
+            "slug": "vietnam-esports-winter-cup",
+            "title": "Vietnam Esports Winter Cup",
+            "venue": "Nguyen Du Gymnasium, Ho Chi Minh City",
+            "startsAt": "2026-12-05T08:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 3,
+            "slug": "saigon-street-food-festival",
+            "title": "Saigon Street Food Festival",
+            "venue": "September 23 Park",
+            "startsAt": "2026-12-05T10:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 13,
+            "slug": "indie-night-final-release",
+            "title": "Indie Night Da Lat: Final Release",
+            "venue": "May Lang Thang, Da Lat",
+            "startsAt": "2026-12-06T13:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 20,
+            "slug": "sapa-winter-trail-run",
+            "title": "Sapa Winter Trail Run",
+            "venue": "Sa Pa Town Square",
+            "startsAt": "2026-12-12T00:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 6,
+            "slug": "ha-long-marathon",
+            "title": "Ha Long Marathon",
+            "venue": "Bai Chay, Ha Long",
+            "startsAt": "2026-12-13T22:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 21,
+            "slug": "da-lat-flower-festival",
+            "title": "Da Lat Flower Festival",
+            "venue": "Lam Vien Square, Da Lat",
+            "startsAt": "2026-12-19T01:00:00.000Z",
+            "status": "UPCOMING"
+          }
+        ],
+        "total": 23,
+        "page": 2,
+        "pageSize": 10
+      }
+    },
+    {
+      "at": "2026-09-24T07:19:58.251Z",
+      "method": "GET",
+      "path": "/api/events?sort=startsAt&page=3&pageSize=10",
+      "requestBody": null,
+      "status": 200,
+      "responseBody": {
+        "items": [
+          {
+            "id": 10,
+            "slug": "the-good-neighbour-stage-play",
+            "title": "Stage Play: The Good Neighbour",
+            "venue": "Le Ngoc Theatre",
+            "startsAt": "2026-12-20T13:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 22,
+            "slug": "saigon-christmas-choir-concert",
+            "title": "Saigon Christmas Choir Concert",
+            "venue": "Saigon Opera House",
+            "startsAt": "2026-12-23T12:30:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 12,
+            "slug": "software-testing-careers-talkshow",
+            "title": "Software Testing Careers Talkshow",
+            "venue": "Toong Trang Thi Coworking",
+            "startsAt": "2026-12-27T07:00:00.000Z",
+            "status": "UPCOMING"
+          },
+          {
+            "id": 23,
+            "slug": "hanoi-new-year-countdown",
+            "title": "New Year Countdown Hanoi",
+            "venue": "Hoan Kiem Lake Walking Street",
+            "startsAt": "2026-12-31T15:00:00.000Z",
+            "status": "UPCOMING"
+          }
+        ],
+        "total": 23,
+        "page": 3,
+        "pageSize": 10
+      }
+    },
+    {
+      "at": "2026-09-24T07:19:58.469Z",
+      "method": "GET",
+      "path": "/api/events?sort=startsAt&page=4&pageSize=10",
+      "requestBody": null,
+      "status": 200,
+      "responseBody": {
+        "items": [],
+        "total": 23,
+        "page": 4,
+        "pageSize": 10
+      }
+    }
+  ]
+}

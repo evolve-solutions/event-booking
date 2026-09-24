@@ -1,0 +1,2206 @@
+{
+ "legend": {
+  "type": "positive | negative | boundary",
+  "priority": "P1: release blocker if it fails. P2: must be fixed before the next release. P3: fix when convenient.",
+  "suite": "api | smoke | regression | slow (long waits, run on demand)"
+ },
+ "testCases": [
+  {
+   "id": "TC-META-01",
+   "title": "Health endpoint reports ok",
+   "requirements": [
+    "REQ-ACC-05"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "None",
+   "steps": [
+    "Send GET /api/health"
+   ],
+   "expected": "Status 200 and body {\"status\":\"ok\"}"
+  },
+  {
+   "id": "TC-META-02",
+   "title": "Every operation in the OpenAPI document is exercised by the API suite",
+   "requirements": [
+    "REQ-ADM-01"
+   ],
+   "type": "positive",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "None",
+   "steps": [
+    "Send GET /docs/json",
+    "List every method and path",
+    "Compare with the operation map of the API suite"
+   ],
+   "expected": "27 documented operations, 0 without an API test"
+  },
+  {
+   "id": "TC-META-03",
+   "title": "Public config and robots endpoints respond",
+   "requirements": [
+    "REQ-ACC-05"
+   ],
+   "type": "positive",
+   "priority": "P3",
+   "suite": "api",
+   "preconditions": "None",
+   "steps": [
+    "Send GET /api/config",
+    "Send GET /robots.txt"
+   ],
+   "expected": "Both return 200; config has a flags array; robots.txt contains 'Disallow: /'"
+  },
+  {
+   "id": "TC-REG-01",
+   "title": "Register with a well-formed email and an 8+ character password",
+   "requirements": [
+    "REQ-ACC-01",
+    "REQ-ACC-02"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "Unused email",
+   "steps": [
+    "POST /api/auth/register with a unique email and password 'eventpass123'"
+   ],
+   "expected": "Status 200, role CUSTOMER, email echoed, phone null"
+  },
+  {
+   "id": "TC-REG-02",
+   "title": "Register rejects a malformed email",
+   "requirements": [
+    "REQ-ACC-01"
+   ],
+   "type": "negative",
+   "priority": "P2",
+   "suite": "api",
+   "bugs": [
+    "BUG-17"
+   ],
+   "preconditions": "None",
+   "steps": [
+    "POST /api/auth/register with email 'not-an-email'",
+    "POST /api/auth/register with email 'qa@@example.invalid'"
+   ],
+   "expected": "Both return 400; no account is created"
+  },
+  {
+   "id": "TC-REG-03",
+   "title": "Register rejects a 7 character password",
+   "requirements": [
+    "REQ-ACC-02"
+   ],
+   "type": "boundary",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "Unused email",
+   "steps": [
+    "POST /api/auth/register with password '1234567'"
+   ],
+   "expected": "Status 400 with a message naming the 8 character minimum"
+  },
+  {
+   "id": "TC-REG-04",
+   "title": "Register accepts an 8 character password",
+   "requirements": [
+    "REQ-ACC-02"
+   ],
+   "type": "boundary",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "Unused email",
+   "steps": [
+    "POST /api/auth/register with password '12345678'"
+   ],
+   "expected": "Status 200"
+  },
+  {
+   "id": "TC-REG-05",
+   "title": "Register phone length boundaries (9 rejected, 10 and 15 accepted, 16 rejected)",
+   "requirements": [
+    "REQ-ACC-03"
+   ],
+   "type": "boundary",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "Unused emails",
+   "steps": [
+    "Register with phone '091234567' (9 digits)",
+    "Register with phone '0912345678' (10)",
+    "Register with phone '123456789012345' (15)",
+    "Register with phone '1234567890123456' (16)"
+   ],
+   "expected": "400, 200, 200, 400 respectively"
+  },
+  {
+   "id": "TC-REG-06",
+   "title": "Register rejects a phone made of letters",
+   "requirements": [
+    "REQ-ACC-03"
+   ],
+   "type": "negative",
+   "priority": "P2",
+   "suite": "api",
+   "bugs": [
+    "BUG-18"
+   ],
+   "preconditions": "Unused email",
+   "steps": [
+    "POST /api/auth/register with phone 'abcdefghij'"
+   ],
+   "expected": "Status 400; phone must be digits"
+  },
+  {
+   "id": "TC-REG-07",
+   "title": "Register refuses an email that is already registered",
+   "requirements": [
+    "REQ-ACC-04"
+   ],
+   "type": "negative",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "Email registered once",
+   "steps": [
+    "Register email E",
+    "Register email E again"
+   ],
+   "expected": "Second call returns 409 'Email already registered'"
+  },
+  {
+   "id": "TC-REG-08",
+   "title": "Register refuses the same email in different letter case",
+   "requirements": [
+    "REQ-ACC-04"
+   ],
+   "type": "negative",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "Email E registered",
+   "steps": [
+    "Register E in upper case"
+   ],
+   "expected": "Status 409"
+  },
+  {
+   "id": "TC-REG-09",
+   "title": "Register refuses the same email with surrounding spaces",
+   "requirements": [
+    "REQ-ACC-04",
+    "REQ-ACC-01"
+   ],
+   "type": "negative",
+   "priority": "P2",
+   "suite": "api",
+   "bugs": [
+    "BUG-19"
+   ],
+   "preconditions": "Email E registered",
+   "steps": [
+    "Register ' ' + E (leading space)"
+   ],
+   "expected": "Status 400 or 409; no second account"
+  },
+  {
+   "id": "TC-AUTH-01",
+   "title": "Login returns an HttpOnly session cookie and /me identifies the user",
+   "requirements": [
+    "REQ-ACC-05"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "Registered account",
+   "steps": [
+    "POST /api/auth/login with valid credentials",
+    "Read the Set-Cookie header",
+    "GET /api/auth/me with that cookie"
+   ],
+   "expected": "Cookie 'token' with HttpOnly and Secure; /me returns 200 with the same email"
+  },
+  {
+   "id": "TC-AUTH-02",
+   "title": "Login with a wrong password is refused",
+   "requirements": [
+    "REQ-ACC-05"
+   ],
+   "type": "negative",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "Registered account",
+   "steps": [
+    "POST /api/auth/login with password 'wrongpass1'"
+   ],
+   "expected": "Status 401 'Incorrect email or password'; no cookie set"
+  },
+  {
+   "id": "TC-AUTH-03",
+   "title": "Session token lifetime is 30 minutes",
+   "requirements": [
+    "REQ-ACC-06"
+   ],
+   "type": "boundary",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "Logged in",
+   "steps": [
+    "Log in",
+    "Decode the token payload",
+    "Compute exp minus iat"
+   ],
+   "expected": "exp - iat = 1800 seconds"
+  },
+  {
+   "id": "TC-AUTH-04",
+   "title": "Logout ends the session",
+   "requirements": [
+    "REQ-ACC-05"
+   ],
+   "type": "positive",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "Logged in",
+   "steps": [
+    "POST /api/auth/logout",
+    "GET /api/auth/me"
+   ],
+   "expected": "Logout 200; /me 401"
+  },
+  {
+   "id": "TC-AUTH-05",
+   "title": "Login-only endpoints refuse anonymous callers",
+   "requirements": [
+    "REQ-ACC-06"
+   ],
+   "type": "negative",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "No cookie",
+   "steps": [
+    "GET /api/cart",
+    "GET /api/orders",
+    "GET /api/profile",
+    "POST /api/cart/items",
+    "POST /api/orders"
+   ],
+   "expected": "Every call returns 401"
+  },
+  {
+   "id": "TC-AUTH-06",
+   "title": "A session older than 30 minutes is refused",
+   "requirements": [
+    "REQ-ACC-06"
+   ],
+   "type": "boundary",
+   "priority": "P1",
+   "suite": "slow",
+   "bugs": [
+    "BUG-13"
+   ],
+   "preconditions": "Logged in",
+   "steps": [
+    "Log in",
+    "Wait 31 minutes",
+    "GET /api/auth/me"
+   ],
+   "expected": "Status 401"
+  },
+  {
+   "id": "TC-PROF-01",
+   "title": "Profile phone update with 10 digits",
+   "requirements": [
+    "REQ-ACC-07"
+   ],
+   "type": "positive",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "Logged in",
+   "steps": [
+    "PATCH /api/profile with phone '0912345678'",
+    "GET /api/profile"
+   ],
+   "expected": "200 both; phone is '0912345678'"
+  },
+  {
+   "id": "TC-PROF-02",
+   "title": "Profile phone update rejects 9 and 16 digits",
+   "requirements": [
+    "REQ-ACC-07",
+    "REQ-ACC-03"
+   ],
+   "type": "boundary",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "Logged in",
+   "steps": [
+    "PATCH phone '091234567'",
+    "PATCH phone '1234567890123456'"
+   ],
+   "expected": "Both 400"
+  },
+  {
+   "id": "TC-PROF-03",
+   "title": "Profile phone update rejects letters",
+   "requirements": [
+    "REQ-ACC-07",
+    "REQ-ACC-03"
+   ],
+   "type": "negative",
+   "priority": "P2",
+   "suite": "api",
+   "bugs": [
+    "BUG-18"
+   ],
+   "preconditions": "Logged in",
+   "steps": [
+    "PATCH /api/profile with phone 'abcdefghij'"
+   ],
+   "expected": "Status 400; stored phone unchanged"
+  },
+  {
+   "id": "TC-PROF-04",
+   "title": "Password change takes effect for the next login",
+   "requirements": [
+    "REQ-ACC-07"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "Logged in with password P",
+   "steps": [
+    "POST /api/profile/password current P, new 'newpass1234'",
+    "Log in with P",
+    "Log in with 'newpass1234'"
+   ],
+   "expected": "Change 200; old password 401; new password 200"
+  },
+  {
+   "id": "TC-PROF-05",
+   "title": "Password change with a wrong current password is refused",
+   "requirements": [
+    "REQ-ACC-07"
+   ],
+   "type": "negative",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "Logged in",
+   "steps": [
+    "POST /api/profile/password with current 'wrongpass9'"
+   ],
+   "expected": "Status 400 'Current password is incorrect'"
+  },
+  {
+   "id": "TC-PROF-06",
+   "title": "New password equal to the current one is refused",
+   "requirements": [
+    "REQ-ACC-08"
+   ],
+   "type": "negative",
+   "priority": "P2",
+   "suite": "api",
+   "bugs": [
+    "BUG-20"
+   ],
+   "preconditions": "Logged in with password P",
+   "steps": [
+    "POST /api/profile/password with current P and new P"
+   ],
+   "expected": "Status 400"
+  },
+  {
+   "id": "TC-PROF-07",
+   "title": "New password of 7 characters is refused",
+   "requirements": [
+    "REQ-ACC-02",
+    "REQ-ACC-07"
+   ],
+   "type": "boundary",
+   "priority": "P3",
+   "suite": "api",
+   "preconditions": "Logged in",
+   "steps": [
+    "POST /api/profile/password with new 'short12'"
+   ],
+   "expected": "Status 400"
+  },
+  {
+   "id": "TC-EVT-01",
+   "title": "Listing is paginated at 10 per page with a total",
+   "requirements": [
+    "REQ-SRCH-05"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "None",
+   "steps": [
+    "GET /api/events"
+   ],
+   "expected": "10 items, pageSize 10, page 1, total equals the pageSize=100 count"
+  },
+  {
+   "id": "TC-EVT-02",
+   "title": "Event detail offers Standard, VIP and Student",
+   "requirements": [
+    "REQ-BOOK-01"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "None",
+   "steps": [
+    "GET /api/events/{upcoming id}"
+   ],
+   "expected": "Exactly three ticket types named STANDARD, VIP, STUDENT with price and remaining"
+  },
+  {
+   "id": "TC-EVT-03",
+   "title": "Unknown event id returns 404",
+   "requirements": [
+    "REQ-BOOK-01"
+   ],
+   "type": "negative",
+   "priority": "P3",
+   "suite": "api",
+   "preconditions": "None",
+   "steps": [
+    "GET /api/events/999999"
+   ],
+   "expected": "Status 404"
+  },
+  {
+   "id": "TC-EVT-04",
+   "title": "Search 'rock' returns Hanoi Rock Fest (any part of the name)",
+   "requirements": [
+    "REQ-SRCH-01"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "api",
+   "bugs": [
+    "BUG-21"
+   ],
+   "preconditions": "None",
+   "steps": [
+    "GET /api/events?q=rock",
+    "GET /api/events?q=fest"
+   ],
+   "expected": "'rock' result contains 'Hanoi Rock Fest'; 'fest' result contains every title with 'fest' in it"
+  },
+  {
+   "id": "TC-EVT-05",
+   "title": "Search ignores letter case",
+   "requirements": [
+    "REQ-SRCH-01"
+   ],
+   "type": "positive",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "None",
+   "steps": [
+    "GET /api/events?q=hanoi",
+    "GET /api/events?q=HANOI"
+   ],
+   "expected": "Same non-empty set of ids"
+  },
+  {
+   "id": "TC-EVT-06",
+   "title": "Search treats % and _ as literal text",
+   "requirements": [
+    "REQ-SRCH-01"
+   ],
+   "type": "negative",
+   "priority": "P3",
+   "suite": "api",
+   "bugs": [
+    "BUG-22"
+   ],
+   "preconditions": "No title contains % or _",
+   "steps": [
+    "GET /api/events?q=%25",
+    "GET /api/events?q=_"
+   ],
+   "expected": "Both return total 0"
+  },
+  {
+   "id": "TC-EVT-07",
+   "title": "Venue filter returns the exact venue",
+   "requirements": [
+    "REQ-SRCH-02"
+   ],
+   "type": "positive",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "None",
+   "steps": [
+    "GET /api/events?venue=Hanoi Opera House"
+   ],
+   "expected": "Every item has venue exactly 'Hanoi Opera House'; at least one item"
+  },
+  {
+   "id": "TC-EVT-08",
+   "title": "Venue filter does not match partial or differently cased venues",
+   "requirements": [
+    "REQ-SRCH-02"
+   ],
+   "type": "negative",
+   "priority": "P3",
+   "suite": "api",
+   "preconditions": "None",
+   "steps": [
+    "GET ?venue=Hanoi Opera",
+    "GET ?venue=hanoi opera house"
+   ],
+   "expected": "Both total 0"
+  },
+  {
+   "id": "TC-EVT-09",
+   "title": "Sort by name covers the whole list",
+   "requirements": [
+    "REQ-SRCH-03"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "api",
+   "bugs": [
+    "BUG-23"
+   ],
+   "preconditions": "None",
+   "steps": [
+    "GET ?pageSize=100 to learn every event",
+    "GET ?sort=title&page=1",
+    "GET ?sort=title&page=2",
+    "GET ?sort=title&page=3"
+   ],
+   "expected": "Each page equals the matching slice of the full list sorted alphabetically; page 1 opens with 'Autumn Symphony Night'"
+  },
+  {
+   "id": "TC-EVT-10",
+   "title": "Sort by date is ascending over the whole list",
+   "requirements": [
+    "REQ-SRCH-04"
+   ],
+   "type": "positive",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "None",
+   "steps": [
+    "GET ?pageSize=100",
+    "GET ?sort=startsAt pages 1 to 3"
+   ],
+   "expected": "Concatenated pages are in ascending startsAt order"
+  },
+  {
+   "id": "TC-EVT-11",
+   "title": "Paging through the list shows each event exactly once",
+   "requirements": [
+    "REQ-SRCH-05"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "api",
+   "bugs": [
+    "BUG-24"
+   ],
+   "preconditions": "None",
+   "steps": [
+    "GET pages 1..ceil(total/10) with default sort",
+    "Collect ids"
+   ],
+   "expected": "No duplicate id, no missing id, count equals total"
+  },
+  {
+   "id": "TC-EVT-12",
+   "title": "pageSize boundaries 0 and 101 rejected, 1 and 100 accepted",
+   "requirements": [
+    "REQ-SRCH-05"
+   ],
+   "type": "boundary",
+   "priority": "P3",
+   "suite": "api",
+   "preconditions": "None",
+   "steps": [
+    "GET ?pageSize=0",
+    "GET ?pageSize=1",
+    "GET ?pageSize=100",
+    "GET ?pageSize=101"
+   ],
+   "expected": "400, 200 with 1 item, 200, 400"
+  },
+  {
+   "id": "TC-EVT-13",
+   "title": "Events that already started are marked PAST",
+   "requirements": [
+    "REQ-BOOK-07"
+   ],
+   "type": "positive",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "None",
+   "steps": [
+    "GET ?pageSize=100",
+    "Compare each startsAt with now"
+   ],
+   "expected": "status PAST exactly for events whose start is before now"
+  },
+  {
+   "id": "TC-CART-01",
+   "title": "Adding one Standard ticket prices the cart per the spec",
+   "requirements": [
+    "REQ-BOOK-01",
+    "REQ-PRICE-01",
+    "REQ-PRICE-02"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "Fresh buyer",
+   "steps": [
+    "POST /api/cart/items Standard quantity 1"
+   ],
+   "expected": "gross = price, discount 0, serviceFee = 5% of price, total = 105% of price"
+  },
+  {
+   "id": "TC-CART-02",
+   "title": "Quantity 0 is refused",
+   "requirements": [
+    "REQ-BOOK-01"
+   ],
+   "type": "boundary",
+   "priority": "P1",
+   "suite": "api",
+   "bugs": [
+    "BUG-04"
+   ],
+   "preconditions": "Fresh buyer",
+   "steps": [
+    "POST /api/cart/items Standard quantity 0",
+    "GET /api/cart"
+   ],
+   "expected": "Add returns 400; cart has no items"
+  },
+  {
+   "id": "TC-CART-03",
+   "title": "Negative quantity is refused and the total never goes below zero",
+   "requirements": [
+    "REQ-BOOK-01"
+   ],
+   "type": "negative",
+   "priority": "P1",
+   "suite": "api",
+   "bugs": [
+    "BUG-04"
+   ],
+   "preconditions": "Fresh buyer",
+   "steps": [
+    "POST /api/cart/items Standard quantity -1",
+    "GET /api/cart"
+   ],
+   "expected": "Add returns 400; cart total is 0"
+  },
+  {
+   "id": "TC-CART-04",
+   "title": "Fractional quantity is refused",
+   "requirements": [
+    "REQ-BOOK-01"
+   ],
+   "type": "negative",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "Fresh buyer",
+   "steps": [
+    "POST /api/cart/items Standard quantity 1.5"
+   ],
+   "expected": "Status 400"
+  },
+  {
+   "id": "TC-CART-05",
+   "title": "Unknown ticket type is refused",
+   "requirements": [
+    "REQ-BOOK-01"
+   ],
+   "type": "negative",
+   "priority": "P3",
+   "suite": "api",
+   "preconditions": "Fresh buyer",
+   "steps": [
+    "POST /api/cart/items ticketTypeId 999999 quantity 1"
+   ],
+   "expected": "Status 404 'Ticket type not found'"
+  },
+  {
+   "id": "TC-CART-06",
+   "title": "Hold expiry is 10 minutes after the most recent add",
+   "requirements": [
+    "REQ-BOOK-03"
+   ],
+   "type": "boundary",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "Fresh buyer",
+   "steps": [
+    "Add Standard 1 and note the server Date header",
+    "Wait 2 seconds",
+    "Add Standard 1 again"
+   ],
+   "expected": "holdExpiresAt is 10 minutes after each add (tolerance 5 s) and moves forward with the second add"
+  },
+  {
+   "id": "TC-CART-07",
+   "title": "Changing a line quantity reprices the cart",
+   "requirements": [
+    "REQ-PRICE-01"
+   ],
+   "type": "positive",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "Cart with Standard 1",
+   "steps": [
+    "PATCH /api/cart/items/{id} quantity 3"
+   ],
+   "expected": "gross = 3 x price; totals match the oracle"
+  },
+  {
+   "id": "TC-CART-08",
+   "title": "Mixed cart without discount shows the fee on its own line",
+   "requirements": [
+    "REQ-PRICE-01",
+    "REQ-PRICE-02"
+   ],
+   "type": "positive",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "Fresh buyer",
+   "steps": [
+    "Add VIP 1",
+    "Add Student 1",
+    "GET /api/cart"
+   ],
+   "expected": "serviceFee = 5% of gross; total = gross + serviceFee"
+  },
+  {
+   "id": "TC-VIP-01",
+   "title": "Four VIP tickets in one add are accepted",
+   "requirements": [
+    "REQ-BOOK-02"
+   ],
+   "type": "boundary",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "Fresh buyer",
+   "steps": [
+    "POST /api/cart/items VIP quantity 4"
+   ],
+   "expected": "Status 200; VIP quantity 4"
+  },
+  {
+   "id": "TC-VIP-02",
+   "title": "Five VIP tickets in one add are refused",
+   "requirements": [
+    "REQ-BOOK-02"
+   ],
+   "type": "boundary",
+   "priority": "P1",
+   "suite": "api",
+   "bugs": [
+    "BUG-08"
+   ],
+   "preconditions": "Fresh buyer",
+   "steps": [
+    "POST /api/cart/items VIP quantity 5"
+   ],
+   "expected": "Status 400 'An order may contain at most 4 VIP tickets'"
+  },
+  {
+   "id": "TC-VIP-03",
+   "title": "A fifth VIP added to four is refused",
+   "requirements": [
+    "REQ-BOOK-02"
+   ],
+   "type": "boundary",
+   "priority": "P1",
+   "suite": "api",
+   "bugs": [
+    "BUG-08"
+   ],
+   "preconditions": "Cart with VIP 4",
+   "steps": [
+    "POST /api/cart/items VIP quantity 1"
+   ],
+   "expected": "Status 400; VIP quantity stays 4"
+  },
+  {
+   "id": "TC-VIP-04",
+   "title": "VIP cap counts all events in the order",
+   "requirements": [
+    "REQ-BOOK-02"
+   ],
+   "type": "negative",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "Cart with VIP 3 of event A",
+   "steps": [
+    "Add 3 VIP of event A",
+    "Add 1 VIP of event B",
+    "Add 1 more VIP of event B"
+   ],
+   "expected": "Step 2 returns 200 (4 VIP in total is allowed); step 3 returns 400 \"An order may contain at most 4 VIP tickets\"",
+   "bugs": [
+    "BUG-08"
+   ]
+  },
+  {
+   "id": "TC-VIP-05",
+   "title": "Raising a VIP line above four by PATCH is refused",
+   "requirements": [
+    "REQ-BOOK-02"
+   ],
+   "type": "boundary",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "Cart with VIP 4",
+   "steps": [
+    "PATCH the VIP line to quantity 5"
+   ],
+   "expected": "Status 400; quantity stays 4",
+   "bugs": [
+    "BUG-08"
+   ]
+  },
+  {
+   "id": "TC-VIP-06",
+   "title": "Checkout refuses an order holding five VIP tickets",
+   "requirements": [
+    "REQ-BOOK-02"
+   ],
+   "type": "negative",
+   "priority": "P1",
+   "suite": "api",
+   "bugs": [
+    "BUG-08"
+   ],
+   "preconditions": "Cart holding VIP 5 (only reachable while BUG-08 exists)",
+   "steps": [
+    "Add VIP 4",
+    "Add VIP 1",
+    "POST /api/orders"
+   ],
+   "expected": "Checkout returns 400; no order created. Clean-up cancels any order created."
+  },
+  {
+   "id": "TC-DISC-01",
+   "title": "WELCOME10 takes 10% off a Standard-only cart",
+   "requirements": [
+    "REQ-DISC-01",
+    "REQ-PRICE-01"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "Logged-in buyer with 2 Standard tickets (100,000 each) in the cart",
+   "steps": [
+    "Send POST /api/cart/discount with code \"WELCOME10\"",
+    "Read the cart totals in the response"
+   ],
+   "expected": "discountCode \"WELCOME10\"; gross 200,000; discount 20,000; serviceFee 9,000; total 189,000",
+   "notes": "Prices below are those of the live \"upcoming\" event at the time of writing (Standard 100,000, VIP 300,000, Student 50,000); the automated check computes the same figures from the live price with the spec oracle."
+  },
+  {
+   "id": "TC-DISC-02",
+   "title": "Unknown code is refused and totals do not change",
+   "requirements": [
+    "REQ-DISC-02"
+   ],
+   "type": "negative",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "Logged-in buyer with 1 Standard ticket (100,000) in the cart",
+   "steps": [
+    "Send POST /api/cart/discount with code \"NOPE99\"",
+    "Send GET /api/cart"
+   ],
+   "expected": "First call 404 \"Discount code not found\"; cart discountCode null, discount 0, total 105,000"
+  },
+  {
+   "id": "TC-DISC-03",
+   "title": "Applying the same code twice does not discount twice",
+   "requirements": [
+    "REQ-DISC-02"
+   ],
+   "type": "negative",
+   "priority": "P1",
+   "suite": "api",
+   "bugs": [
+    "BUG-05"
+   ],
+   "preconditions": "Logged-in buyer with 2 Standard tickets (100,000 each) and WELCOME10 applied once",
+   "steps": [
+    "Send POST /api/cart/discount with \"WELCOME10\" again",
+    "Send GET /api/cart"
+   ],
+   "expected": "Second apply refused (4xx) or ignored; discountCode \"WELCOME10\" (once); discount 20,000; total 189,000"
+  },
+  {
+   "id": "TC-DISC-04",
+   "title": "Discount does not reduce VIP tickets",
+   "requirements": [
+    "REQ-DISC-01"
+   ],
+   "type": "negative",
+   "priority": "P1",
+   "suite": "api",
+   "bugs": [
+    "BUG-06"
+   ],
+   "preconditions": "Logged-in buyer with 1 VIP ticket (300,000) and nothing else in the cart",
+   "steps": [
+    "Send POST /api/cart/discount with \"WELCOME10\"",
+    "Send GET /api/cart"
+   ],
+   "expected": "discount 0; serviceFee 15,000; total 315,000",
+   "notes": "Prices below are those of the live \"upcoming\" event at the time of writing (Standard 100,000, VIP 300,000, Student 50,000); the automated check computes the same figures from the live price with the spec oracle. Depends on reading GAP-09."
+  },
+  {
+   "id": "TC-DISC-05",
+   "title": "Discount does not reduce Student tickets",
+   "requirements": [
+    "REQ-DISC-01"
+   ],
+   "type": "negative",
+   "priority": "P1",
+   "suite": "api",
+   "bugs": [
+    "BUG-06"
+   ],
+   "preconditions": "Logged-in buyer with 1 Student ticket (50,000) and nothing else in the cart",
+   "steps": [
+    "Send POST /api/cart/discount with \"WELCOME10\"",
+    "Send GET /api/cart"
+   ],
+   "expected": "discount 0; serviceFee 2,500; total 52,500",
+   "notes": "Prices below are those of the live \"upcoming\" event at the time of writing (Standard 100,000, VIP 300,000, Student 50,000); the automated check computes the same figures from the live price with the spec oracle. Depends on reading GAP-09."
+  },
+  {
+   "id": "TC-DISC-06",
+   "title": "Mixed cart: discount only on the Standard part",
+   "requirements": [
+    "REQ-DISC-01",
+    "REQ-PRICE-01"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "api",
+   "bugs": [
+    "BUG-06",
+    "BUG-07"
+   ],
+   "preconditions": "Logged-in buyer with 2 Standard, 1 VIP and 1 Student ticket of the same event in the cart",
+   "steps": [
+    "Send POST /api/cart/discount with \"WELCOME10\"",
+    "Send GET /api/cart"
+   ],
+   "expected": "gross 550,000; discount 20,000 (10% of the 200,000 Standard part only); serviceFee 26,500; total 556,500",
+   "notes": "Prices below are those of the live \"upcoming\" event at the time of writing (Standard 100,000, VIP 300,000, Student 50,000); the automated check computes the same figures from the live price with the spec oracle."
+  },
+  {
+   "id": "TC-DISC-07",
+   "title": "Service fee is charged on what is left after the discount",
+   "requirements": [
+    "REQ-PRICE-01"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "api",
+   "bugs": [
+    "BUG-07"
+   ],
+   "preconditions": "Logged-in buyer with 2 Standard tickets (100,000 each) in the cart",
+   "steps": [
+    "Send POST /api/cart/discount with \"WELCOME10\"",
+    "Read serviceFee and total"
+   ],
+   "expected": "discount 20,000; serviceFee 9,000 (5% of 180,000), not 10,000; total 189,000",
+   "notes": "Prices below are those of the live \"upcoming\" event at the time of writing (Standard 100,000, VIP 300,000, Student 50,000); the automated check computes the same figures from the live price with the spec oracle."
+  },
+  {
+   "id": "TC-DISC-08",
+   "title": "Order confirmation keeps the cart's discount and a single code",
+   "requirements": [
+    "REQ-DISC-02",
+    "REQ-PRICE-02"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "api",
+   "bugs": [
+    "BUG-05",
+    "BUG-07"
+   ],
+   "preconditions": "Logged-in buyer with 2 Standard tickets (100,000 each) and WELCOME10 applied",
+   "steps": [
+    "Send POST /api/orders with recipient \"QA Buyer\" and phone \"0912345678\"",
+    "Read the amounts of the returned order"
+   ],
+   "expected": "status CONFIRMED; discountCode \"WELCOME10\"; grossAmount 200,000; discountAmount 20,000; serviceFeeAmount 9,000; totalAmount 189,000. Clean-up cancels the order.",
+   "notes": "Prices below are those of the live \"upcoming\" event at the time of writing (Standard 100,000, VIP 300,000, Student 50,000); the automated check computes the same figures from the live price with the spec oracle."
+  },
+  {
+   "id": "TC-DISC-09",
+   "title": "Blank code is refused",
+   "requirements": [
+    "REQ-DISC-02"
+   ],
+   "type": "negative",
+   "priority": "P3",
+   "suite": "api",
+   "preconditions": "Cart with Standard 1",
+   "steps": [
+    "POST /api/cart/discount code ''"
+   ],
+   "expected": "4xx; discountCode null"
+  },
+  {
+   "id": "TC-DISC-10",
+   "title": "Discount follows Standard tickets added after the code",
+   "requirements": [
+    "REQ-DISC-01"
+   ],
+   "type": "positive",
+   "priority": "P3",
+   "suite": "api",
+   "preconditions": "Logged-in buyer with an empty cart",
+   "steps": [
+    "Send POST /api/cart/discount with \"WELCOME10\"",
+    "Send POST /api/cart/items with 2 Standard tickets",
+    "Send GET /api/cart"
+   ],
+   "expected": "The brief does not say whether a code may be applied to an empty cart. The live site accepts it (step 1 returns 200); given that, step 3 shows discount 20,000, serviceFee 9,000, total 189,000. If step 1 is refused, the check is skipped with that reason.",
+   "bugs": [
+    "BUG-07"
+   ],
+   "notes": "Prices below are those of the live \"upcoming\" event at the time of writing (Standard 100,000, VIP 300,000, Student 50,000); the automated check computes the same figures from the live price with the spec oracle."
+  },
+  {
+   "id": "TC-DISC-11",
+   "title": "Anonymous caller cannot apply a code",
+   "requirements": [
+    "REQ-ACC-05"
+   ],
+   "type": "negative",
+   "priority": "P3",
+   "suite": "api",
+   "preconditions": "No session",
+   "steps": [
+    "POST /api/cart/discount 'WELCOME10' without a cookie"
+   ],
+   "expected": "Status 401"
+  },
+  {
+   "id": "TC-DISC-12",
+   "title": "UI: applying WELCOME10 in the cart shows the code and the discount line",
+   "requirements": [
+    "REQ-DISC-01",
+    "REQ-PRICE-02"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "regression",
+   "preconditions": "Logged-in buyer with 2 Standard tickets (100,000 each) in the cart",
+   "steps": [
+    "Open /cart",
+    "Type \"WELCOME10\" in the discount field",
+    "Click Apply"
+   ],
+   "expected": "Badge reads WELCOME10; Discount line ₫20,000; Service fee line ₫9,000; Total ₫189,000",
+   "notes": "Prices below are those of the live \"upcoming\" event at the time of writing (Standard 100,000, VIP 300,000, Student 50,000); the automated check computes the same figures from the live price with the spec oracle."
+  },
+  {
+   "id": "TC-DISC-13",
+   "title": "UI: after a refused code, applying a valid code leaves no stale error",
+   "requirements": [
+    "REQ-UI-03"
+   ],
+   "type": "negative",
+   "priority": "P2",
+   "suite": "regression",
+   "preconditions": "Logged-in buyer with 1 Standard ticket (100,000) in the cart",
+   "steps": [
+    "Open /cart",
+    "Type 'NOPE99'",
+    "Click Apply",
+    "Replace with 'WELCOME10'",
+    "Click Apply"
+   ],
+   "expected": "After step 3 an error reading \"Discount code not found\" is shown; after step 5 no error is shown and the badge reads WELCOME10"
+  },
+  {
+   "id": "TC-CHK-01",
+   "title": "Valid checkout confirms the order, empties the cart and takes stock",
+   "requirements": [
+    "REQ-BOOK-04",
+    "REQ-BOOK-05",
+    "REQ-PRICE-02"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "Cart with Standard 2",
+   "steps": [
+    "Note remaining stock",
+    "POST /api/orders recipient 'QA Buyer' phone '0912345678'",
+    "GET /api/cart",
+    "GET the event"
+   ],
+   "expected": "Order CONFIRMED with amounts equal to the oracle; cart empty; remaining down by 2. Clean-up cancels."
+  },
+  {
+   "id": "TC-CHK-02",
+   "title": "Checkout of an empty cart is refused",
+   "requirements": [
+    "REQ-BOOK-01"
+   ],
+   "type": "negative",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "Fresh buyer",
+   "steps": [
+    "POST /api/orders"
+   ],
+   "expected": "Status 400 'Your cart is empty'"
+  },
+  {
+   "id": "TC-CHK-03",
+   "title": "Recipient of exactly 50 characters is accepted",
+   "requirements": [
+    "REQ-BOOK-04"
+   ],
+   "type": "boundary",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "Cart with Standard 1",
+   "steps": [
+    "POST /api/orders recipient of 50 characters"
+   ],
+   "expected": "Status 200; recipientName stored with all 50 characters. Clean-up cancels."
+  },
+  {
+   "id": "TC-CHK-04",
+   "title": "Recipient of 51 characters is refused",
+   "requirements": [
+    "REQ-BOOK-04"
+   ],
+   "type": "boundary",
+   "priority": "P2",
+   "suite": "api",
+   "bugs": [
+    "BUG-14"
+   ],
+   "preconditions": "Cart with Standard 1",
+   "steps": [
+    "POST /api/orders recipient of 51 characters"
+   ],
+   "expected": "Status 400; no order created (not silently truncated)"
+  },
+  {
+   "id": "TC-CHK-05",
+   "title": "Blank recipient is refused",
+   "requirements": [
+    "REQ-BOOK-04"
+   ],
+   "type": "negative",
+   "priority": "P3",
+   "suite": "api",
+   "bugs": [
+    "BUG-16"
+   ],
+   "preconditions": "Cart with Standard 1",
+   "steps": [
+    "POST /api/orders recipient '   '"
+   ],
+   "expected": "Status 400"
+  },
+  {
+   "id": "TC-CHK-06",
+   "title": "Checkout phone with 9 digits is refused",
+   "requirements": [
+    "REQ-BOOK-05"
+   ],
+   "type": "boundary",
+   "priority": "P2",
+   "suite": "api",
+   "bugs": [
+    "BUG-15"
+   ],
+   "preconditions": "Cart with Standard 1",
+   "steps": [
+    "POST /api/orders phone '091234567'"
+   ],
+   "expected": "Status 400"
+  },
+  {
+   "id": "TC-CHK-07",
+   "title": "Checkout phone without digits is refused",
+   "requirements": [
+    "REQ-BOOK-05"
+   ],
+   "type": "negative",
+   "priority": "P2",
+   "suite": "api",
+   "bugs": [
+    "BUG-15"
+   ],
+   "preconditions": "Cart with Standard 1",
+   "steps": [
+    "POST /api/orders phone 'abcdefghij'"
+   ],
+   "expected": "Status 400"
+  },
+  {
+   "id": "TC-CHK-08",
+   "title": "Checkout phone with exactly 10 digits is accepted",
+   "requirements": [
+    "REQ-BOOK-05"
+   ],
+   "type": "boundary",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "Cart with Standard 1",
+   "steps": [
+    "POST /api/orders phone '0912345678'"
+   ],
+   "expected": "Status 200. Clean-up cancels."
+  },
+  {
+   "id": "TC-CHK-09",
+   "title": "Student ticket without a card number is refused",
+   "requirements": [
+    "REQ-BOOK-06"
+   ],
+   "type": "negative",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "Cart with Student 1",
+   "steps": [
+    "POST /api/orders without studentCardNo",
+    "POST /api/orders with studentCardNo '   '"
+   ],
+   "expected": "Both 400 'A student ticket requires a student card number'"
+  },
+  {
+   "id": "TC-CHK-10",
+   "title": "Student ticket with any card value is accepted",
+   "requirements": [
+    "REQ-BOOK-06"
+   ],
+   "type": "positive",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "Cart with Student 1",
+   "steps": [
+    "POST /api/orders with studentCardNo 'ANY-VALUE-1'"
+   ],
+   "expected": "Status 200; studentCardNo stored. Clean-up cancels."
+  },
+  {
+   "id": "TC-CHK-11",
+   "title": "A past event cannot be booked through the API",
+   "requirements": [
+    "REQ-BOOK-07"
+   ],
+   "type": "negative",
+   "priority": "P1",
+   "suite": "api",
+   "bugs": [
+    "BUG-09"
+   ],
+   "preconditions": "Fresh buyer; event with status PAST",
+   "steps": [
+    "POST /api/cart/items Standard of the past event",
+    "POST /api/orders"
+   ],
+   "expected": "The add or the checkout is refused; no CONFIRMED order for a past event. Clean-up cancels any order created."
+  },
+  {
+   "id": "TC-CHK-12",
+   "title": "Checkout after the 10 minute hold has lapsed is refused",
+   "requirements": [
+    "REQ-BOOK-03"
+   ],
+   "type": "boundary",
+   "priority": "P1",
+   "suite": "slow",
+   "bugs": [
+    "BUG-12"
+   ],
+   "preconditions": "Cart with Standard 1",
+   "steps": [
+    "Add Standard 1",
+    "Wait 10 minutes 30 seconds",
+    "POST /api/orders"
+   ],
+   "expected": "Checkout refused until the cart is refreshed"
+  },
+  {
+   "id": "TC-ORD-01",
+   "title": "My orders lists only my own orders",
+   "requirements": [
+    "REQ-SEC-01"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "Buyer A with one order; buyer B with none",
+   "steps": [
+    "A: GET /api/orders",
+    "B: GET /api/orders"
+   ],
+   "expected": "A sees exactly its order; B sees an empty list"
+  },
+  {
+   "id": "TC-ORD-02",
+   "title": "Order detail is readable by its owner",
+   "requirements": [
+    "REQ-SEC-01"
+   ],
+   "type": "positive",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "Buyer A with an order",
+   "steps": [
+    "A: GET /api/orders/{id}"
+   ],
+   "expected": "Status 200 with the same amounts as at checkout"
+  },
+  {
+   "id": "TC-ORD-03",
+   "title": "Another customer cannot read my order",
+   "requirements": [
+    "REQ-SEC-01"
+   ],
+   "type": "negative",
+   "priority": "P1",
+   "suite": "api",
+   "bugs": [
+    "BUG-03"
+   ],
+   "preconditions": "Buyer A with an order; buyer B",
+   "steps": [
+    "B: GET /api/orders/{A's id}"
+   ],
+   "expected": "Status 403 or 404; no recipient name or phone returned"
+  },
+  {
+   "id": "TC-ORD-04",
+   "title": "Another customer cannot cancel my order",
+   "requirements": [
+    "REQ-SEC-01"
+   ],
+   "type": "negative",
+   "priority": "P1",
+   "suite": "api",
+   "bugs": [
+    "BUG-02"
+   ],
+   "preconditions": "Buyer A with an order; buyer B",
+   "steps": [
+    "B: POST /api/orders/{A's id}/cancel",
+    "A: GET /api/orders/{id}"
+   ],
+   "expected": "B gets 403 or 404; A's order is still CONFIRMED"
+  },
+  {
+   "id": "TC-ORD-05",
+   "title": "Another customer cannot change a line in my cart",
+   "requirements": [
+    "REQ-SEC-01"
+   ],
+   "type": "negative",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "Buyer A with Standard 2 in the cart; buyer B",
+   "steps": [
+    "B: PATCH /api/cart/items/{A's line id} quantity 3",
+    "A: GET /api/cart"
+   ],
+   "expected": "B gets 403 or 404; A's line still has quantity 2"
+  },
+  {
+   "id": "TC-CAN-01",
+   "title": "Cancelling more than 24 h before the start refunds 100% and returns stock",
+   "requirements": [
+    "REQ-REF-01",
+    "REQ-INV-01"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "Order of Standard 2 for an event starting in more than 24 h",
+   "steps": [
+    "Confirm the event starts more than 24 h from now",
+    "Note remaining stock",
+    "POST /api/orders/{id}/cancel",
+    "GET the event"
+   ],
+   "expected": "status CANCELLED; refundAmount = totalAmount; remaining back up by 2"
+  },
+  {
+   "id": "TC-CAN-02",
+   "title": "A cancelled order cannot be cancelled again",
+   "requirements": [
+    "REQ-INV-01"
+   ],
+   "type": "negative",
+   "priority": "P1",
+   "suite": "api",
+   "bugs": [
+    "BUG-11"
+   ],
+   "preconditions": "Order of Standard 2 on the quiet event (no other test uses it), already cancelled once",
+   "steps": [
+    "Note remaining stock",
+    "POST /api/orders/{id}/cancel again",
+    "GET the event"
+   ],
+   "expected": "Second cancel refused (4xx); remaining unchanged"
+  },
+  {
+   "id": "TC-CAN-03",
+   "title": "Cancelling after the start refunds 0%",
+   "requirements": [
+    "REQ-REF-03"
+   ],
+   "type": "boundary",
+   "priority": "P2",
+   "suite": "api",
+   "bugs": [
+    "BUG-10"
+   ],
+   "preconditions": "A CONFIRMED order for a PAST event (only reachable while BUG-09 exists)",
+   "steps": [
+    "Book the past event",
+    "POST /api/orders/{id}/cancel"
+   ],
+   "expected": "Either the cancel is refused (4xx) or refundAmount is 0; never the full total"
+  },
+  {
+   "id": "TC-CAN-04",
+   "title": "Cancelling within 24 h of the start refunds 50%",
+   "requirements": [
+    "REQ-REF-02"
+   ],
+   "type": "boundary",
+   "priority": "P1",
+   "suite": "api",
+   "automated": false,
+   "preconditions": "An event starting within the next 24 h",
+   "steps": [
+    "Book it",
+    "Cancel it",
+    "Read refundAmount"
+   ],
+   "expected": "refundAmount = 50% of totalAmount",
+   "notes": "Not executable here (GAP-08): no event starts within 24 h and only an administrator can create one. Kept as a skipped test with that reason, never substituted."
+  },
+  {
+   "id": "TC-CAN-05",
+   "title": "Cancelling an unknown order returns 404",
+   "requirements": [
+    "REQ-INV-01"
+   ],
+   "type": "negative",
+   "priority": "P3",
+   "suite": "api",
+   "preconditions": "Fresh buyer",
+   "steps": [
+    "POST /api/orders/999999/cancel"
+   ],
+   "expected": "Status 404"
+  },
+  {
+   "id": "TC-ADM-01",
+   "title": "Customer cannot list all orders",
+   "requirements": [
+    "REQ-ADM-01"
+   ],
+   "type": "negative",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "Customer session",
+   "steps": [
+    "GET /api/admin/orders?status=CONFIRMED"
+   ],
+   "expected": "Status 403"
+  },
+  {
+   "id": "TC-ADM-02",
+   "title": "Customer cannot export orders as CSV",
+   "requirements": [
+    "REQ-ADM-01"
+   ],
+   "type": "negative",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "Customer session",
+   "steps": [
+    "GET /api/admin/orders.csv"
+   ],
+   "expected": "Status 403; no CSV body"
+  },
+  {
+   "id": "TC-ADM-03",
+   "title": "Customer cannot create an event",
+   "requirements": [
+    "REQ-ADM-01"
+   ],
+   "type": "negative",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "Customer session",
+   "steps": [
+    "GET the upcoming event",
+    "POST /api/events with its slug, title, venue and startsAt (a duplicate slug, so a missing guard still could not add a new event)"
+   ],
+   "expected": "Status 403 \"Administrator access required\""
+  },
+  {
+   "id": "TC-ADM-04",
+   "title": "Customer cannot edit an event",
+   "requirements": [
+    "REQ-ADM-01"
+   ],
+   "type": "negative",
+   "priority": "P1",
+   "suite": "api",
+   "bugs": [
+    "BUG-01"
+   ],
+   "preconditions": "Customer session",
+   "steps": [
+    "GET /api/events/{id} and keep slug, title, venue and startsAt",
+    "PUT /api/events/{id} with exactly those values (changes nothing)",
+    "GET /api/events/{id} again"
+   ],
+   "expected": "PUT returns 403; the event is identical before and after"
+  },
+  {
+   "id": "TC-ADM-05",
+   "title": "Customer cannot delete an event",
+   "requirements": [
+    "REQ-ADM-01"
+   ],
+   "type": "negative",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "Customer session",
+   "steps": [
+    "DELETE /api/events/999999 (non-existent id, so a defect could not destroy shared data)"
+   ],
+   "expected": "Status 403 (authorisation checked before lookup)"
+  },
+  {
+   "id": "TC-ADM-06",
+   "title": "Customer cannot adjust ticket stock",
+   "requirements": [
+    "REQ-ADM-01"
+   ],
+   "type": "negative",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "Customer session",
+   "steps": [
+    "Read the current remaining R of a ticket type",
+    "PATCH /api/ticket-types/{id} remaining R (a no-op value)"
+   ],
+   "expected": "Status 403"
+  },
+  {
+   "id": "TC-ADM-07",
+   "title": "Customer cannot delete an order through the admin route",
+   "requirements": [
+    "REQ-ADM-01"
+   ],
+   "type": "negative",
+   "priority": "P1",
+   "suite": "api",
+   "preconditions": "Customer with an own order",
+   "steps": [
+    "DELETE /api/admin/orders/{own id}",
+    "GET /api/orders/{own id}"
+   ],
+   "expected": "403; order still exists"
+  },
+  {
+   "id": "TC-ADM-08",
+   "title": "Anonymous callers get 401 on every admin route",
+   "requirements": [
+    "REQ-ADM-01"
+   ],
+   "type": "negative",
+   "priority": "P2",
+   "suite": "api",
+   "preconditions": "No session",
+   "steps": [
+    "Call each admin route without a cookie"
+   ],
+   "expected": "Every call returns 401"
+  },
+  {
+   "id": "TC-ADM-09",
+   "title": "UI: a customer sees no admin navigation and cannot use admin screens",
+   "requirements": [
+    "REQ-ADM-01"
+   ],
+   "type": "negative",
+   "priority": "P2",
+   "suite": "regression",
+   "preconditions": "Logged-in customer",
+   "steps": [
+    "Open /",
+    "Open the menu",
+    "Open /admin/orders",
+    "Open /admin/events"
+   ],
+   "expected": "No admin links; admin screens show no order or event administration data",
+   "bugs": [
+    "BUG-31"
+   ]
+  },
+  {
+   "id": "TC-SMK-01",
+   "title": "Smoke: the event list loads",
+   "requirements": [
+    "REQ-SRCH-05",
+    "REQ-BOOK-07"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "smoke",
+   "preconditions": "None",
+   "steps": [
+    "Open /"
+   ],
+   "expected": "10 event cards; total label shows the API total; the past event card shows 'Past'"
+  },
+  {
+   "id": "TC-SMK-02",
+   "title": "Smoke: an event detail shows the three ticket types",
+   "requirements": [
+    "REQ-BOOK-01"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "smoke",
+   "preconditions": "None",
+   "steps": [
+    "Open /",
+    "Click an upcoming event"
+   ],
+   "expected": "Detail shows Standard, Student and VIP with prices"
+  },
+  {
+   "id": "TC-SMK-03",
+   "title": "Smoke: register through the UI",
+   "requirements": [
+    "REQ-ACC-01",
+    "REQ-ACC-02"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "smoke",
+   "preconditions": "Unused email",
+   "steps": [
+    "Open /login",
+    "Click the Register tab",
+    "Type email",
+    "Type password",
+    "Click submit"
+   ],
+   "expected": "The nav shows the new email (logged in) or the login form accepts the new account"
+  },
+  {
+   "id": "TC-SMK-04",
+   "title": "Smoke: log in through the UI",
+   "requirements": [
+    "REQ-ACC-05"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "smoke",
+   "preconditions": "Registered account",
+   "steps": [
+    "Open /login",
+    "Type email",
+    "Type password",
+    "Click submit"
+   ],
+   "expected": "Nav shows the user email"
+  },
+  {
+   "id": "TC-SMK-05",
+   "title": "Smoke: add a Standard ticket and see it priced in the cart",
+   "requirements": [
+    "REQ-PRICE-01",
+    "REQ-PRICE-02"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "smoke",
+   "preconditions": "Logged-in buyer",
+   "steps": [
+    "Open the event detail",
+    "Set Standard quantity 1",
+    "Click Add",
+    "Open /cart"
+   ],
+   "expected": "One line; Service fee line = 5% of price; Total = 105% of price"
+  },
+  {
+   "id": "TC-SMK-06",
+   "title": "Smoke: check out through the UI and see the confirmation",
+   "requirements": [
+    "REQ-BOOK-04",
+    "REQ-BOOK-05",
+    "REQ-PRICE-02"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "smoke",
+   "preconditions": "Logged-in buyer with Standard 1 in the cart",
+   "steps": [
+    "Open /checkout",
+    "Type recipient",
+    "Type phone",
+    "Click Pay"
+   ],
+   "expected": "Confirmation shows an order id, status CONFIRMED and the oracle total. Clean-up cancels."
+  },
+  {
+   "id": "TC-SMK-07",
+   "title": "Smoke: my orders shows the new order",
+   "requirements": [
+    "REQ-SEC-01"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "smoke",
+   "preconditions": "Buyer with one order",
+   "steps": [
+    "Open /orders"
+   ],
+   "expected": "The order row with status CONFIRMED and its total"
+  },
+  {
+   "id": "TC-UI-01",
+   "title": "360 px: a buyer can reach quantity and Add without scrolling sideways",
+   "requirements": [
+    "REQ-UI-01"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "regression",
+   "bugs": [
+    "BUG-25"
+   ],
+   "preconditions": "Viewport 360 x 740; logged-in buyer",
+   "steps": [
+    "Open an upcoming event detail",
+    "Measure the Standard quantity field and Add button"
+   ],
+   "expected": "Both lie fully inside 0..360 px horizontally and Add can be clicked"
+  },
+  {
+   "id": "TC-UI-02",
+   "title": "360 px: no buyer screen scrolls sideways",
+   "requirements": [
+    "REQ-UI-01"
+   ],
+   "type": "positive",
+   "priority": "P2",
+   "suite": "regression",
+   "bugs": [
+    "BUG-26"
+   ],
+   "preconditions": "Viewport 360 x 740 mobile; logged-in buyer with a realistic 40-character email address; one cart line",
+   "steps": [
+    "Open /, event detail, /cart, /checkout, /my-orders, /profile in turn",
+    "Read document scrollWidth on each"
+   ],
+   "expected": "scrollWidth <= 360 on every screen"
+  },
+  {
+   "id": "TC-UI-03",
+   "title": "Clicking each form label focuses its field",
+   "requirements": [
+    "REQ-UI-02"
+   ],
+   "type": "positive",
+   "priority": "P2",
+   "suite": "regression",
+   "bugs": [
+    "BUG-28",
+    "BUG-29"
+   ],
+   "preconditions": "Logged-in buyer with a cart line",
+   "steps": [
+    "On /login, /checkout, /profile, /cart and / click every visible label",
+    "Read document.activeElement"
+   ],
+   "expected": "Every form field has a visible label; clicking it focuses exactly that field"
+  },
+  {
+   "id": "TC-UI-04",
+   "title": "Event detail shows the start in Vietnam time",
+   "requirements": [
+    "REQ-TZ-01"
+   ],
+   "type": "positive",
+   "priority": "P2",
+   "suite": "regression",
+   "bugs": [
+    "BUG-27"
+   ],
+   "preconditions": "Browser time zone set to Europe/London (not UTC+7); event 2026-10-04T17:30Z",
+   "steps": [
+    "Open the event detail"
+   ],
+   "expected": "Start shows 5 Oct 2026, 00:30 (Vietnam), not 2026-10-04"
+  },
+  {
+   "id": "TC-UI-05",
+   "title": "Event list shows starts in Vietnam time",
+   "requirements": [
+    "REQ-TZ-01"
+   ],
+   "type": "positive",
+   "priority": "P2",
+   "suite": "regression",
+   "preconditions": "Browser time zone Europe/London",
+   "steps": [
+    "Open /",
+    "Read the start of each card"
+   ],
+   "expected": "Every card shows the Vietnam date and time of its startsAt"
+  },
+  {
+   "id": "TC-UI-06",
+   "title": "UI search 'rock' shows Hanoi Rock Fest",
+   "requirements": [
+    "REQ-SRCH-01"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "regression",
+   "bugs": [
+    "BUG-21"
+   ],
+   "preconditions": "None",
+   "steps": [
+    "Open /",
+    "Type 'rock' in search",
+    "Click Search"
+   ],
+   "expected": "A card titled 'Hanoi Rock Fest' is shown"
+  },
+  {
+   "id": "TC-UI-07",
+   "title": "UI sort by name opens with the first event alphabetically",
+   "requirements": [
+    "REQ-SRCH-03"
+   ],
+   "type": "positive",
+   "priority": "P2",
+   "suite": "regression",
+   "bugs": [
+    "BUG-23"
+   ],
+   "preconditions": "None",
+   "steps": [
+    "Open /",
+    "Choose sort by name",
+    "Wait for the sorted list to load",
+    "Read the ten card titles"
+   ],
+   "expected": "The ten titles equal the first ten of the whole list in alphabetical order, starting with \"Autumn Symphony Night\""
+  },
+  {
+   "id": "TC-UI-08",
+   "title": "Past event shows Past and offers no Add button",
+   "requirements": [
+    "REQ-BOOK-07"
+   ],
+   "type": "positive",
+   "priority": "P2",
+   "suite": "regression",
+   "preconditions": "None",
+   "steps": [
+    "Open the past event detail"
+   ],
+   "expected": "Past label shown; zero Add buttons"
+  },
+  {
+   "id": "TC-UI-09",
+   "title": "Event detail message reflects the latest add",
+   "requirements": [
+    "REQ-UI-03"
+   ],
+   "type": "negative",
+   "priority": "P2",
+   "suite": "regression",
+   "preconditions": "Logged-in buyer",
+   "steps": [
+    "Set VIP quantity 6",
+    "Click Add",
+    "Set Standard quantity 1",
+    "Click Add",
+    "Set VIP quantity 6",
+    "Click Add"
+   ],
+   "expected": "After step 2 only an error is shown; after step 4 only a success message; after step 6 only the error again, with no \"Added to cart\" left from step 4",
+   "bugs": [
+    "BUG-33"
+   ]
+  },
+  {
+   "id": "TC-UI-10",
+   "title": "Cancel from My Orders shows CANCELLED and the refund",
+   "requirements": [
+    "REQ-REF-01"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "regression",
+   "preconditions": "Buyer with a CONFIRMED order for an event more than 24 h away",
+   "steps": [
+    "Open /orders",
+    "Click Cancel on the order",
+    "Confirm if asked"
+   ],
+   "expected": "Status CANCELLED; refund equals the total"
+  },
+  {
+   "id": "TC-UI-11",
+   "title": "Cart shows the hold expiry in Vietnam time",
+   "requirements": [
+    "REQ-BOOK-03",
+    "REQ-TZ-01"
+   ],
+   "type": "positive",
+   "priority": "P3",
+   "suite": "regression",
+   "preconditions": "Browser time zone Europe/London; cart with one line",
+   "steps": [
+    "Open /cart",
+    "Read the hold expiry text"
+   ],
+   "expected": "Shows the Vietnam wall-clock time of holdExpiresAt"
+  },
+  {
+   "id": "TC-UI-12",
+   "title": "UI paging shows each event once",
+   "requirements": [
+    "REQ-SRCH-05"
+   ],
+   "type": "positive",
+   "priority": "P2",
+   "suite": "regression",
+   "bugs": [
+    "BUG-24"
+   ],
+   "preconditions": "None",
+   "steps": [
+    "Open /",
+    "Collect card titles",
+    "Click Next",
+    "Repeat until the last page"
+   ],
+   "expected": "Titles collected equal the total with no repeats"
+  },
+  {
+   "id": "TC-UI-13",
+   "title": "Order confirmation shows every amount in the same currency format",
+   "requirements": [
+    "REQ-PRICE-02",
+    "REQ-UI-03"
+   ],
+   "type": "positive",
+   "priority": "P3",
+   "suite": "regression",
+   "bugs": [
+    "BUG-30"
+   ],
+   "preconditions": "Buyer with a CONFIRMED order",
+   "steps": [
+    "Open /orders/{id}/confirm",
+    "Read the Service fee line",
+    "Read the Total line"
+   ],
+   "expected": "Both read like '₫210,000'; the total is not shown as a bare number"
+  },
+  {
+   "id": "TC-DISC-14",
+   "title": "Smallest discounted cart: one Standard ticket",
+   "requirements": [
+    "REQ-DISC-01",
+    "REQ-PRICE-01"
+   ],
+   "type": "boundary",
+   "priority": "P2",
+   "suite": "api",
+   "bugs": [
+    "BUG-07"
+   ],
+   "preconditions": "Logged-in buyer with 1 Standard ticket (100,000) in the cart",
+   "steps": [
+    "Send POST /api/cart/discount with \"WELCOME10\"",
+    "Read the cart totals"
+   ],
+   "expected": "discount 10,000; serviceFee 4,500; total 94,500",
+   "notes": "Prices below are those of the live \"upcoming\" event at the time of writing (Standard 100,000, VIP 300,000, Student 50,000); the automated check computes the same figures from the live price with the spec oracle."
+  },
+  {
+   "id": "TC-DISC-15",
+   "title": "Removing every Standard line takes the discount back to zero",
+   "requirements": [
+    "REQ-DISC-01",
+    "REQ-PRICE-01"
+   ],
+   "type": "boundary",
+   "priority": "P2",
+   "suite": "api",
+   "bugs": [
+    "BUG-06"
+   ],
+   "preconditions": "Logged-in buyer with 1 Standard and 1 VIP ticket and WELCOME10 applied",
+   "steps": [
+    "Send PATCH /api/cart/items/{Standard line id} with quantity 0",
+    "Send GET /api/cart"
+   ],
+   "expected": "Only the VIP line remains; discount 0; serviceFee 15,000; total 315,000",
+   "notes": "Prices below are those of the live \"upcoming\" event at the time of writing (Standard 100,000, VIP 300,000, Student 50,000); the automated check computes the same figures from the live price with the spec oracle."
+  },
+  {
+   "id": "TC-DISC-16",
+   "title": "Discount follows a quantity change on the Standard line",
+   "requirements": [
+    "REQ-DISC-01",
+    "REQ-PRICE-01"
+   ],
+   "type": "positive",
+   "priority": "P3",
+   "suite": "api",
+   "bugs": [
+    "BUG-07"
+   ],
+   "preconditions": "Logged-in buyer with 2 Standard tickets and WELCOME10 applied",
+   "steps": [
+    "Send PATCH /api/cart/items/{line id} with quantity 3",
+    "Read the cart totals"
+   ],
+   "expected": "gross 300,000; discount 30,000; serviceFee 13,500; total 283,500",
+   "notes": "Prices below are those of the live \"upcoming\" event at the time of writing (Standard 100,000, VIP 300,000, Student 50,000); the automated check computes the same figures from the live price with the spec oracle."
+  },
+  {
+   "id": "TC-UI-14",
+   "title": "Next is disabled on the last page of the event list",
+   "requirements": [
+    "REQ-SRCH-05"
+   ],
+   "type": "boundary",
+   "priority": "P3",
+   "suite": "regression",
+   "bugs": [
+    "BUG-32"
+   ],
+   "preconditions": "None",
+   "steps": [
+    "Open /",
+    "Click Next until the footer shows the last page",
+    "Read the Next button state"
+   ],
+   "expected": "Next is disabled; the footer never shows a page beyond the page count"
+  },
+  {
+   "id": "TC-UI-15",
+   "title": "Removing the last cart line resets the totals on screen",
+   "requirements": [
+    "REQ-PRICE-02",
+    "REQ-UI-03"
+   ],
+   "type": "boundary",
+   "priority": "P2",
+   "suite": "regression",
+   "bugs": [
+    "BUG-34"
+   ],
+   "preconditions": "Logged-in buyer with 1 Standard ticket in the cart",
+   "steps": [
+    "Open /cart",
+    "Set the line quantity to 0",
+    "Move focus out of the field"
+   ],
+   "expected": "The cart shows it is empty and no total above ₫0 is displayed"
+  },
+  {
+   "id": "TC-UI-16",
+   "title": "Each cart line shows its ticket type",
+   "requirements": [
+    "REQ-UI-01"
+   ],
+   "type": "positive",
+   "priority": "P2",
+   "suite": "regression",
+   "bugs": [
+    "BUG-35"
+   ],
+   "preconditions": "Logged-in buyer with 1 Standard and 1 VIP ticket of the same event",
+   "steps": [
+    "Open /cart",
+    "Read the visible name of each line"
+   ],
+   "expected": "The two lines are visibly different: each name is shown in full (no clipped text) and names its ticket type"
+  },
+  {
+   "id": "TC-UI-17",
+   "title": "A cancelled order offers no Cancel button",
+   "requirements": [
+    "REQ-INV-01"
+   ],
+   "type": "negative",
+   "priority": "P2",
+   "suite": "regression",
+   "bugs": [
+    "BUG-36"
+   ],
+   "preconditions": "Buyer with one CANCELLED order",
+   "steps": [
+    "Open /my-orders",
+    "Look at the row of the cancelled order"
+   ],
+   "expected": "Status CANCELLED and no 'Cancel tickets' button in that row"
+  },
+  {
+   "id": "TC-UI-18",
+   "title": "360 px: the menu links can be tapped",
+   "requirements": [
+    "REQ-UI-01"
+   ],
+   "type": "positive",
+   "priority": "P1",
+   "suite": "regression",
+   "bugs": [
+    "BUG-37"
+   ],
+   "preconditions": "Viewport 360 x 740 mobile; logged-in buyer",
+   "steps": [
+    "Open an event detail",
+    "Scroll down 400 px",
+    "Tap Menu",
+    "Find the element on top at the centre of each of Cart, My orders and Profile"
+   ],
+   "expected": "For each link, the topmost element at its centre is the link itself"
+  }
+ ]
+}

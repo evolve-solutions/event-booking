@@ -1,0 +1,482 @@
+{
+  "config": {
+    "argv": [
+      "~/.nvm/versions/node/v22.23.2/bin/node",
+      "submissions/tunt01102/automation/node_modules/.bin/playwright",
+      "test",
+      "--project=smoke-firefox"
+    ],
+    "configFile": "submissions/tunt01102/automation/playwright.config.ts",
+    "rootDir": "submissions/tunt01102/automation",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "submissions/tunt01102/automation/tests/support/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T160516887-smoke-firefox",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "smoke",
+        "name": "smoke",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/smoke",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T160516887-smoke-firefox",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "api",
+        "name": "api",
+        "testDir": "submissions/tunt01102/automation/tests/api",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T160516887-smoke-firefox",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "regression",
+        "name": "regression",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/regression",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T160516887-smoke-firefox",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "smoke-firefox",
+        "name": "smoke-firefox",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/smoke",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T160516887-smoke-firefox",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "smoke-webkit",
+        "name": "smoke-webkit",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/smoke",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T160516887-smoke-firefox",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-webkit",
+        "name": "mobile-webkit",
+        "testDir": "submissions/tunt01102/automation/tests/e2e/regression",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T160516887-smoke-firefox",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "slow",
+        "name": "slow",
+        "testDir": "submissions/tunt01102/automation/tests/slow",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 2400000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T160516887-smoke-firefox",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "evidence-timing",
+        "name": "evidence-timing",
+        "testDir": "submissions/tunt01102/automation/tests/evidence",
+        "testIgnore": [],
+        "testMatch": [
+          "timing.evidence.spec.ts"
+        ],
+        "timeout": 2700000
+      },
+      {
+        "outputDir": "submissions/tunt01102/automation/test-results/20260924T160516887-smoke-firefox",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "evidence",
+        "name": "evidence",
+        "testDir": "submissions/tunt01102/automation/tests/evidence",
+        "testIgnore": [],
+        "testMatch": [
+          "bugs.evidence.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/smoke-firefox/20260924T160516887.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report/20260924T160516887-smoke-firefox",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "tests/e2e/smoke/smoke.spec.ts",
+      "file": "tests/e2e/smoke/smoke.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Smoke @smoke",
+          "file": "tests/e2e/smoke/smoke.spec.ts",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[TC-SMK-01] the event list loads",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "smoke-firefox",
+                  "projectName": "smoke-firefox",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1321,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T09:05:17.465Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4219922fea2e2bd3c691-e65b55199eb36e0c7031",
+              "file": "tests/e2e/smoke/smoke.spec.ts",
+              "line": 8,
+              "column": 3
+            },
+            {
+              "title": "[TC-SMK-02] an event detail shows the three ticket types",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "smoke-firefox",
+                  "projectName": "smoke-firefox",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1128,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T09:05:19.150Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4219922fea2e2bd3c691-3b2aec68b1f0e2572db4",
+              "file": "tests/e2e/smoke/smoke.spec.ts",
+              "line": 16,
+              "column": 3
+            },
+            {
+              "title": "[TC-SMK-03] register through the UI",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "smoke-firefox",
+                  "projectName": "smoke-firefox",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1207,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T09:05:20.284Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4219922fea2e2bd3c691-f873f3f22e268ead489b",
+              "file": "tests/e2e/smoke/smoke.spec.ts",
+              "line": 26,
+              "column": 3
+            },
+            {
+              "title": "[TC-SMK-04] log in through the UI",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "smoke-firefox",
+                  "projectName": "smoke-firefox",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1518,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T09:05:21.496Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4219922fea2e2bd3c691-b027ba549d31ab052b06",
+              "file": "tests/e2e/smoke/smoke.spec.ts",
+              "line": 36,
+              "column": 3
+            },
+            {
+              "title": "[TC-SMK-05] add a Standard ticket and see it priced in the cart",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "smoke-firefox",
+                  "projectName": "smoke-firefox",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1702,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T09:05:23.020Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4219922fea2e2bd3c691-4ed554fb75f39250aeb9",
+              "file": "tests/e2e/smoke/smoke.spec.ts",
+              "line": 45,
+              "column": 3
+            },
+            {
+              "title": "[TC-SMK-06] check out through the UI and see the confirmation",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "smoke-firefox",
+                  "projectName": "smoke-firefox",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1636,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T09:05:24.729Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4219922fea2e2bd3c691-26f58790ac8ea1b028c0",
+              "file": "tests/e2e/smoke/smoke.spec.ts",
+              "line": 58,
+              "column": 3
+            },
+            {
+              "title": "[TC-SMK-07] my orders shows the new order",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "smoke-firefox",
+                  "projectName": "smoke-firefox",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1451,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T09:05:26.370Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4219922fea2e2bd3c691-0d69aee7f97489221340",
+              "file": "tests/e2e/smoke/smoke.spec.ts",
+              "line": 74,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-24T09:05:16.894Z",
+    "duration": 11074.28,
+    "expected": 7,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

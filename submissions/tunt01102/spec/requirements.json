@@ -1,0 +1,282 @@
+{
+ "source": "round-1-brief.md (read directly, not paraphrased)",
+ "extractedOn": "2026-09-24",
+ "requirements": [
+  {
+   "id": "REQ-ACC-01",
+   "area": "Accounts",
+   "rule": "Email must be a well-formed address.",
+   "quote": "The email must be a well-formed address",
+   "section": "Accounts"
+  },
+  {
+   "id": "REQ-ACC-02",
+   "area": "Accounts",
+   "rule": "Password must be at least 8 characters.",
+   "quote": "the password must be at least 8 characters",
+   "section": "Accounts"
+  },
+  {
+   "id": "REQ-ACC-03",
+   "area": "Accounts",
+   "rule": "Phone, if given, must be 10 to 15 digits.",
+   "quote": "a phone number, if given, must be 10 to 15 digits",
+   "section": "Accounts"
+  },
+  {
+   "id": "REQ-ACC-04",
+   "area": "Accounts",
+   "rule": "One email can register only one account.",
+   "quote": "One email can register only one account.",
+   "section": "Accounts"
+  },
+  {
+   "id": "REQ-ACC-05",
+   "area": "Accounts",
+   "rule": "Login returns a session stored in a cookie.",
+   "quote": "Logging in returns a session stored in a cookie",
+   "section": "Accounts"
+  },
+  {
+   "id": "REQ-ACC-06",
+   "area": "Accounts",
+   "rule": "Session expires after 30 minutes; afterwards every login-only action needs a fresh login.",
+   "quote": "the session expires after 30 minutes",
+   "section": "Accounts"
+  },
+  {
+   "id": "REQ-ACC-07",
+   "area": "Accounts",
+   "rule": "Profile lets the user change phone (same 10 to 15 digit rule) and password.",
+   "quote": "a user can change their phone number and their password",
+   "section": "Accounts"
+  },
+  {
+   "id": "REQ-ACC-08",
+   "area": "Accounts",
+   "rule": "New password must differ from the current one.",
+   "quote": "the new password must differ from the current one",
+   "section": "Accounts"
+  },
+  {
+   "id": "REQ-BOOK-01",
+   "area": "Booking",
+   "rule": "Each add to cart is a whole number of at least 1.",
+   "quote": "Each add is a whole number of at least 1.",
+   "section": "Booking rules"
+  },
+  {
+   "id": "REQ-BOOK-02",
+   "area": "Booking",
+   "rule": "One order takes at most 4 VIP tickets.",
+   "quote": "one order takes at most 4 VIP tickets",
+   "section": "Booking rules"
+  },
+  {
+   "id": "REQ-BOOK-03",
+   "area": "Booking",
+   "rule": "Cart holds tickets for 10 minutes from the most recent add; after that the cart must be refreshed before checkout.",
+   "quote": "The cart holds its tickets for 10 minutes counted from the most recent add",
+   "section": "Booking rules"
+  },
+  {
+   "id": "REQ-BOOK-04",
+   "area": "Booking",
+   "rule": "Checkout recipient name is at most 50 characters.",
+   "quote": "a recipient name of at most 50 characters",
+   "section": "Booking rules"
+  },
+  {
+   "id": "REQ-BOOK-05",
+   "area": "Booking",
+   "rule": "Checkout phone number has at least 10 digits.",
+   "quote": "a phone number of at least 10 digits",
+   "section": "Booking rules"
+  },
+  {
+   "id": "REQ-BOOK-06",
+   "area": "Booking",
+   "rule": "Student tickets require a student card number (value not validated).",
+   "quote": "Student tickets require a student card number",
+   "section": "Behaviour that is intentional"
+  },
+  {
+   "id": "REQ-BOOK-07",
+   "area": "Booking",
+   "rule": "Past events stay listed with a Past label and cannot be booked.",
+   "quote": "carry a Past label, and cannot be booked",
+   "section": "Behaviour that is intentional"
+  },
+  {
+   "id": "REQ-DISC-01",
+   "area": "Pricing",
+   "rule": "Discount codes apply to Standard tickets (read as: Standard tickets only, see GAP-09).",
+   "quote": "Discount codes apply to Standard tickets.",
+   "section": "Booking rules"
+  },
+  {
+   "id": "REQ-DISC-02",
+   "area": "Pricing",
+   "rule": "Each order takes one discount code, once.",
+   "quote": "Each order takes one discount code once.",
+   "section": "Booking rules"
+  },
+  {
+   "id": "REQ-PRICE-01",
+   "area": "Pricing",
+   "rule": "Total = (subtotal - discount) + 5% of (subtotal - discount).",
+   "quote": "charge the 5% service fee on what is left after the discount",
+   "section": "Booking rules"
+  },
+  {
+   "id": "REQ-PRICE-02",
+   "area": "Pricing",
+   "rule": "Cart and order confirmation show the service fee on its own line.",
+   "quote": "Both the cart and the order confirmation show it on its own line.",
+   "section": "Behaviour that is intentional"
+  },
+  {
+   "id": "REQ-REF-01",
+   "area": "Refunds",
+   "rule": "Cancelled more than 24 h before start: 100% refund.",
+   "quote": "More than 24 hours before the start | 100%",
+   "section": "Booking rules"
+  },
+  {
+   "id": "REQ-REF-02",
+   "area": "Refunds",
+   "rule": "Cancelled within 24 h of start: 50% refund.",
+   "quote": "Within 24 hours of the start | 50%",
+   "section": "Booking rules"
+  },
+  {
+   "id": "REQ-REF-03",
+   "area": "Refunds",
+   "rule": "Cancelled after the start: 0% refund.",
+   "quote": "After the start | 0%",
+   "section": "Booking rules"
+  },
+  {
+   "id": "REQ-SRCH-01",
+   "area": "Search",
+   "rule": "Search matches any part of the event name, case-insensitive (rock returns Hanoi Rock Fest).",
+   "quote": "typing rock must return Hanoi Rock Fest",
+   "section": "Search and sorting"
+  },
+  {
+   "id": "REQ-SRCH-02",
+   "area": "Search",
+   "rule": "Venue filter matches the venue name exactly.",
+   "quote": "The venue filter matches the venue name exactly.",
+   "section": "Search and sorting"
+  },
+  {
+   "id": "REQ-SRCH-03",
+   "area": "Search",
+   "rule": "Sort by name is alphabetical over the whole list; page 1 opens with the first event of the full sorted list.",
+   "quote": "either way the order covers the whole list",
+   "section": "Search and sorting"
+  },
+  {
+   "id": "REQ-SRCH-04",
+   "area": "Search",
+   "rule": "Sort by date is ascending chronological over the whole list.",
+   "quote": "sorting by date uses ascending chronological order",
+   "section": "Search and sorting"
+  },
+  {
+   "id": "REQ-SRCH-05",
+   "area": "Search",
+   "rule": "Listing paginated at 10 per page; each event appears exactly once across pages.",
+   "quote": "each event appears exactly once when you page through the whole list",
+   "section": "Search and sorting"
+  },
+  {
+   "id": "REQ-TZ-01",
+   "area": "Time zone",
+   "rule": "Every time shown to a user is in Vietnam time (UTC+7); server stores UTC.",
+   "quote": "Every time shown to a user is in Vietnam time (UTC+7).",
+   "section": "Time zone"
+  },
+  {
+   "id": "REQ-UI-01",
+   "area": "Screens",
+   "rule": "Fully usable at 360 px wide, buying included, without zoom or sideways scroll.",
+   "quote": "a phone screen as narrow as 360 px",
+   "section": "Screens and devices"
+  },
+  {
+   "id": "REQ-UI-02",
+   "area": "Screens",
+   "rule": "Every form field has a visible label; clicking the label focuses that field.",
+   "quote": "clicking that label puts the cursor in that field",
+   "section": "Screens and devices"
+  },
+  {
+   "id": "REQ-UI-03",
+   "area": "Screens",
+   "rule": "On-screen messages describe the result of the most recent action.",
+   "quote": "Messages on screen describe the result of the most recent action.",
+   "section": "Screens and devices"
+  },
+  {
+   "id": "REQ-ADM-01",
+   "area": "Administration",
+   "rule": "Create/edit/delete event, adjust stock, view and export order list are admin-only; a customer must never perform them by any route.",
+   "quote": "A customer account must never be able to perform them, by any route.",
+   "section": "Administration"
+  },
+  {
+   "id": "REQ-SEC-01",
+   "area": "Implied",
+   "rule": "A customer can read and cancel only their own orders (implied by ownership; admin-only order list).",
+   "quote": "viewing the whole order list ... administrator-only",
+   "section": "Administration (implied)"
+  },
+  {
+   "id": "REQ-INV-01",
+   "area": "Implied",
+   "rule": "Cancelling an order returns its tickets to stock exactly once; a cancelled order cannot be cancelled again.",
+   "quote": "not stated; implied by stock integrity",
+   "section": "Spec gap (implied)"
+  }
+ ],
+ "specGaps": [
+  {
+   "id": "GAP-01",
+   "question": "Which discount codes exist and what they are worth. The brief names none; WELCOME10 (10% of Standard) was found by probing."
+  },
+  {
+   "id": "GAP-02",
+   "question": "Refund at exactly 24 h before start: 100% or 50%? The table uses 'more than' and 'within', so exactly 24 h falls in 'within' (50%)."
+  },
+  {
+   "id": "GAP-03",
+   "question": "Is the service fee refunded? The brief says 100% refund; the system refunds the total including the fee."
+  },
+  {
+   "id": "GAP-04",
+   "question": "Is the VIP cap per event or per order across events? The brief says 'one order', so the cap is per order across all events."
+  },
+  {
+   "id": "GAP-05",
+   "question": "Can the cart hold more tickets than remain in stock? Not stated; stock is checked (or not) at checkout."
+  },
+  {
+   "id": "GAP-06",
+   "question": "Does changing the password end existing sessions? Not stated."
+  },
+  {
+   "id": "GAP-07",
+   "question": "Is a whitespace-only recipient name valid? Not stated; treated as invalid (empty)."
+  },
+  {
+   "id": "GAP-08",
+   "question": "Can the 50% refund tier be exercised? Only an admin can create an event starting within 24 h; no such event exists in this environment."
+  },
+  {
+   "id": "GAP-09",
+   "question": "\"Discount codes apply to Standard tickets\": only to Standard, or to Standard among others? Read here as only, which BUG-06 depends on."
+  }
+ ]
+}
